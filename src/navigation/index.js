@@ -8,6 +8,9 @@ import VerificationCode from '../screens/VerificationCode/VerificationCode';
 import ForgetPassword from '../screens/ForgetPassword/ForgetPassword';
 import OrderBracelet from '../screens/OrderBracelet/OrderBracelet';
 import ResetPassword from '../screens/ResetPassword/ResetPassword';
+import HomeScreen from '../screens/HomeScreen/HomeScreen';
+import NewMember1 from '../screens/NewMember1/NewMember1';
+import essai from '../screens/essai/essai';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +19,10 @@ const Navigation = () => {
   return (
     <NavigationContainer >
       <Stack.Navigator screenOptions={{headerShown:false}}>
+      <Stack.Screen name="New Member1" component={NewMember1}/>
+      <Stack.Screen name="Essai" component={essai}/>
+      
+      <Stack.Screen name="Home Screen" component={HomeScreen}/>
       <Stack.Screen name="Verification code" component={VerificationCode}/>
       <Stack.Screen name="Sign in" component={Signin}/>
       <Stack.Screen name="Order Bracelet" component={OrderBracelet}/>

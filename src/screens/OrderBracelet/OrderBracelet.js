@@ -53,7 +53,7 @@ const OrderBracelet = () => {
 
     const [isImageClicked, setIsImageClicked] = useState(false);
 
-    const countries = ["Egypt", "Canada", "Australia", "Ireland"]
+   
 
     const handleImageClick = () => {
       setIsImageClicked(!isImageClicked);
