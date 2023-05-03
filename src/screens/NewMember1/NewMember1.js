@@ -4,14 +4,15 @@ import React, { useLayoutEffect ,useState, useRef} from 'react'
 import { useNavigation } from '@react-navigation/native'
 import LinearGradient from 'react-native-linear-gradient'
 import CustomButton from '../../components/CustomButton/CustomButton'
-import Custominput from '../../components/Custominput/Custominput';
-import NewAvatar from '../../../assets/images/NewAvatar.png'
+
 import Swiper from 'react-native-swiper';
 import StepIndicator from 'react-native-step-indicator';
-import { RadioButton } from 'react-native-paper';
-import PhoneInput from "react-native-phone-number-input";
+import Swipe1 from '../../components/Swipe/Swipe1/Swipe1';
+import Swipe3 from '../../components/Swipe/Swipe3/Swipe3';
 
-import DatePicker from 'react-native-datepicker'
+
+
+
 const firstIndicatorStyles = {
   stepIndicatorSize: 30,
   currentStepIndicatorSize: 40,
@@ -36,30 +37,20 @@ const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 const NewMember1 = () => {
-  const [date, setDate] = useState('2023-05-2');
+  
 
-  const [checked, setChecked] = React.useState('first');
+  
 
-  const [valuee, setValuee] = useState("");
-  const [formattedValue, setFormattedValue] = useState("");
-
-  const phoneInput = useRef(null);
+  
+  
 
   const [value, setValue] = useState()
   const [step, setStep] = useState(0);
-  const [firstname, setfirstname] = useState('');
-  const [lastname, setlastname] = useState('');
-  const [email, setemail] = useState('');
-  const [phone, setphone] = useState('');
+  
+  
 
 
-  const nextStep = () => {
-    setStep(step + 1);
-  };
-
-  const prevStep = () => {
-    setStep(step - 1);
-  };
+  
 
   const [currentPage, setCurrentPage] = React.useState(0);
 
@@ -120,103 +111,11 @@ const NewMember1 = () => {
         />
       </View>
 
-      <View >
-
-        <Image source={NewAvatar} style={{alignItems:'center', justifyContent: 'center'}}/>
-      </View>
-      <View>
-      <Custominput 
-          placeholder="Firstname" 
-          value={firstname} 
-          setValue={setfirstname}
-          />
-      </View>
-
-      <View>
-      <Custominput 
-          placeholder="Lastname" 
-          value={lastname} 
-          setValue={setlastname}
-          />
-
-      </View>
-
-      <View>
-      <Custominput 
-          placeholder="Email" 
-          value={email} 
-          setValue={setemail}
-          />
-
-      </View>
-
-      <View style={{ width: '100%',bordercolor:'#A5ABB3',
-      borderWidth:1,
-      borderRadius:15,
-
-      paddingHorizontal:10,
-      marginVertical:10,}}>
-
-      <PhoneInput
-            ref={phoneInput}
-            defaultValue={valuee}
-            defaultCode="TN"
-            onChangeText={(text) => {
-              setValuee(text);
-            }}
-            onChangeFormattedText={(text) => {
-              setFormattedValue(text);
-            }}
-           
-            
-            autoFocus
-          />
-      </View>
-
-
-      <View style={{flexDirection:"row"}}>
-      <Text>Male</Text>
-      <RadioButton
-        value="Male"
-        status={ checked === 'Male' ? 'checked' : 'unchecked' }
-        onPress={() => setChecked('Male')}
-        color='#E20522'
-      />
-       <Text>Female</Text>
-      <RadioButton
-        value="Female"
-        status={ checked === 'Female' ? 'checked' : 'unchecked' }
-        onPress={() => setChecked('Female')}
-        color='#E20522'
-      />
-      </View>
-
-      <View>
-      <DatePicker
-        style={{width: 200}}
-        date={date}
-        mode="date"
-        placeholder="select date"
-        format="YYYY-MM-DD"
+     
        
-        confirmBtnText="Confirm"
-        cancelBtnText="Cancel"
-        customStyles={{
-          dateIcon: {
-            position: 'absolute',
-            left: 0,
-            top: 4,
-            marginLeft: 0
-          },
-          dateInput: {
-            marginLeft: 36
-          }
-          // ... You can check the source to find the other keys.
-        }}
-        onDateChange={(date) => {this.setState({date: date})}}
-      />
-      </View>
-
+        <Swipe3/>
+      
+      
       
             
           </View>

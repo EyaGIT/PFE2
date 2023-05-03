@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState, useRef}from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Swiper from 'react-native-swiper';
 import StepIndicator from 'react-native-step-indicator';
