@@ -67,10 +67,11 @@ const Swipe1 = () => {
   };
 
   return (
-    <SafeAreaView style={{ width:'100%',justifyContent: 'center', alignItems: 'center'}}>
-      <View >
-    <ImagePickerAvatar  uri={uri} onPress={()=>setVisible(true)}/>
+    <SafeAreaView style={{ width:'100%',justifyContent: "flex-start", alignItems: "center"}}>
+      <View style={{alignItems:"center",justifyContent:"flex-start",width:300,height:150,flexGrow:1,marginTop:-150,top:140,marginBottom:170}} >
+    <ImagePickerAvatar  style={{backgroundColor:"red",margin:0,padding:0,top:-20,height:100}} uri={uri} onPress={()=>setVisible(true)}/>
     <ImagePickerModal
+    style={{backgroundColor:"red",height:100}}
     isVisible={Visible}
     onClose={()=>setVisible(false)}
     onImageLibraryPress={onImageLibraryPress}
@@ -79,7 +80,7 @@ const Swipe1 = () => {
       
     </View>
 
-    <View style={{width:'80%',flexDirection:"row",paddingTop:30}}>
+    <View style={{width:'80%',flexDirection:"row",paddingTop:10}}>
 
 
 

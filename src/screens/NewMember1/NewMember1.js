@@ -25,6 +25,7 @@ const firstIndicatorStyles = {
   currentStepIndicatorSize: 40,
   separatorStrokeWidth: 3,
   currentStepStrokeWidth: 5,
+  stepStrokeCurrentColor: '#E20522',
   separatorFinishedColor: '#E20522',
   separatorUnFinishedColor: '#db4256',
   stepIndicatorFinishedColor: '#E20522',
@@ -109,7 +110,7 @@ const NewMember1 = () => {
           <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
           
          <View>
-            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:20,paddingTop:20}}>New member</Text>
+            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}>New member</Text>
             
         </View>      
 
@@ -131,7 +132,7 @@ const NewMember1 = () => {
      
        
       <Swiper
-        style={{ flexGrow: 1 }}
+        style={{  }}
         loop={false}
         showsPagination={false}
         index={currentPage}
@@ -203,7 +204,7 @@ body:{
     marginVertical: 50,
     position:"absolute",
     width:screenWidth,
-    top:-(screenHeight/10.2),
+    top:-70,
     
     
   },
