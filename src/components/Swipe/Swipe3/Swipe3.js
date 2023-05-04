@@ -17,13 +17,13 @@ const Swipe3 = () => {
     <SafeAreaView style={{alignItems:'center',justifyContent:'center',flexDirection:'row'}}>
     <ScrollView style={{width:screenWidth,height:screenHeight}} showsVerticalScrollIndicator={false}>
 
-    <View style={{alignItems:'center',justifyContent:'center'}}>
+    <View style={{alignItems:'center',justifyContent:'center',paddingTop:'50%'}}>
       <Image source={SuccessAvatar} />
     </View>
 
     <View style={{alignItems:'center',justifyContent:'center'}}>
 
-        <Text style={{fontSize: 30, color: 'black',fontWeight: 'bold',paddingTop:20}}>Member created</Text>
+        <Text style={{fontSize: 30, color: 'black',fontWeight: 'bold',paddingTop:40}}>Member created</Text>
     </View>
     
     <View style={{alignItems:'center',justifyContent:'center'}}>
@@ -33,10 +33,7 @@ const Swipe3 = () => {
         <Text> created a new member</Text>
     </View>
 
-    <View style={{alignItems:'center',justifyContent:'center',paddingTop:30,width:'60%'}}>
-    <CustomButton  text="Continue " onPress={onContinuePressed}/>
-        
-    </View>
+    
     </ScrollView>
     </SafeAreaView>
 

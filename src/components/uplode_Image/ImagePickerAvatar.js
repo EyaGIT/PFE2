@@ -42,6 +42,7 @@ const Styles= StyleSheet.create({
   },
   addButton:{
 
+
   },
   usernameText:{},
   

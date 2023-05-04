@@ -20,7 +20,7 @@ const Navigation = () => {
   return (
     <NavigationContainer >
       <Stack.Navigator screenOptions={{headerShown:false}}>
-      <Stack.Screen name="Swipe1" component={Swipe1}/>
+      
       <Stack.Screen name="New Member1" component={NewMember1}/>
       <Stack.Screen name="Essai" component={essai}/>
       

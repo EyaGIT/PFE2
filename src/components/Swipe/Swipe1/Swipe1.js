@@ -11,8 +11,12 @@ import ImagePickerModal from '../../uplode_Image/ImagePickerModal';
 import { launchImageLibrary } from 'react-native-image-picker';
 import * as ImagePicker from 'react-native-image-picker'
 import { SafeAreaView } from 'react-native-safe-area-context';
+import DateTimePicker from '@react-native-community/datetimepicker'
 
 const Swipe1 = () => {
+  const [date, setDate] = useState(new Date());
+  const [showDatePicker, setShowDatePicker] = useState(false);
+
 
   const onContinePressed = () => {
     console.warn("Contine");}
@@ -47,7 +51,7 @@ const Swipe1 = () => {
 
      const uri = pickerResponse?.assets && pickerResponse.assets[0].uri;
 
-
+  const [password, setpassword] = useState('');
   const [valuee, setValuee] = useState("");
   const [formattedValue, setFormattedValue] = useState("");
   const phoneInput = useRef(null);
@@ -55,12 +59,16 @@ const Swipe1 = () => {
   const [lastname, setlastname] = useState('');
   const [email, setemail] = useState('');
   const [checked, setChecked] = React.useState('first');
+  const onDateChange = (event, selectedDate) => {
+    setShowDatePicker(false);
+    if (selectedDate) {
+      setDate(selectedDate);
+    }
+  };
 
   return (
-    <SafeAreaView style={{flex: 1,
-      justifyContent: 'center', 
-      alignItems: 'center'}}>
-      <View style={{ width:'100%',flex:1}}>
+    <SafeAreaView style={{ width:'100%',justifyContent: 'center', alignItems: 'center'}}>
+      <View >
     <ImagePickerAvatar  uri={uri} onPress={()=>setVisible(true)}/>
     <ImagePickerModal
     isVisible={Visible}
@@ -70,7 +78,34 @@ const Swipe1 = () => {
     />
       
     </View>
+
+    <View style={{width:'80%',flexDirection:"row",paddingTop:30}}>
+
+
+
+
+
+<Text style={{paddingTop:5}}>Male</Text>
+<RadioButton
+value="Male"
+status={ checked === 'Male' ? 'checked' : 'unchecked' }
+onPress={() => setChecked('Male')}
+color='#E20522'
+/>
+<Text style={{paddingTop:5}}>Female</Text>
+<RadioButton
+value="Female"
+status={ checked === 'Female' ? 'checked' : 'unchecked' }
+onPress={() => setChecked('Female')}
+color='#E20522'
+/>
+
+</View>
 <View style={{width:'80%'}}>
+<Text>
+          <Text> Firt name </Text>
+          <Text style={{color:'red'}}> *</Text>
+          </Text>
 <Custominput 
   placeholder="Firstname" 
   value={firstname} 
@@ -78,7 +113,11 @@ const Swipe1 = () => {
   />
 </View>
 
-<View>
+<View style={{width:'80%'}}>
+<Text>
+          <Text> Last name </Text>
+          <Text style={{color:'red'}}> *</Text>
+          </Text>
 <Custominput 
   placeholder="Lastname" 
   value={lastname} 
@@ -87,7 +126,11 @@ const Swipe1 = () => {
 
 </View>
 
-<View>
+<View style={{width:'80%'}}>
+<Text>
+          <Text> Email name </Text>
+          <Text style={{color:'red'}}> *</Text>
+          </Text>
 <Custominput 
   placeholder="Email" 
   value={email} 
@@ -95,50 +138,45 @@ const Swipe1 = () => {
   />
 
 </View>
-
-<View style={{ width: '100%',bordercolor:'#A5ABB3',
-borderWidth:1,
-borderRadius:15,
-
-paddingHorizontal:10,
-marginVertical:10,}}>
-
-<PhoneInput
-    ref={phoneInput}
-    defaultValue={valuee}
-    defaultCode="TN"
-    onChangeText={(text) => {
-      setValuee(text);
-    }}
-    onChangeFormattedText={(text) => {
-      setFormattedValue(text);
-    }}
-   
-    
-    autoFocus
+<View style={{width:'80%'}}>
+<Text>
+          <Text> Password </Text>
+          <Text style={{color:'red'}}> *</Text>
+          </Text>
+<Custominput 
+  placeholder="Password" 
+  value={password} 
+  setValue={setpassword}
   />
+
 </View>
 
 
-<View style={{flexDirection:"row"}}>
-<Text>Male</Text>
-<RadioButton
-value="Male"
-status={ checked === 'Male' ? 'checked' : 'unchecked' }
-onPress={() => setChecked('Male')}
-color='#E20522'
-/>
-<Text>Female</Text>
-<RadioButton
-value="Female"
-status={ checked === 'Female' ? 'checked' : 'unchecked' }
-onPress={() => setChecked('Female')}
-color='#E20522'
-/>
-</View>
-<View style={{width:'60%'}}> 
-  <CustomButton text='Continue' onPress={onContinePressed}/>
-</View>
+
+
+
+
+
+<View style={{width:'80%'}}>
+<Text>
+          <Text> Date of birth </Text>
+          <Text style={{color:'red'}}> *</Text>
+          </Text>
+<Custominput 
+          placeholder="Date" 
+          value={date.getDate().toString()+'/'+(date.getMonth()+1).toString()+'/'+date.getFullYear().toString()}
+          
+          focus={() => setShowDatePicker(true)}
+          />
+      
+      {showDatePicker && (
+        <DateTimePicker
+          value={date}
+          mode="date"
+          onChange={onDateChange}
+        />)}
+        </View>
+
 
 
 

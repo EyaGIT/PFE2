@@ -48,15 +48,23 @@ const NewMember1 = () => {
 
   
 
-  
+  const goToNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+  const goToPreviousPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
   
 
- 
+  const [value, setValue] = useState()
+  const [step, setStep] = useState(0);
+  
   
 
   const renderViewPagerPage = (Data) => {
     return (
       <Data key={Data} />
+      
     );
   };
   
@@ -66,8 +74,6 @@ const NewMember1 = () => {
   const onStepPress = (position) => {
     setCurrentPage(position);
   };
-
-  
 
   const renderLabel = ({
     position,
@@ -127,6 +133,7 @@ const NewMember1 = () => {
       <Swiper
         style={{ flexGrow: 1 }}
         loop={false}
+        showsPagination={false}
         index={currentPage}
         autoplay={false}
         showsButtons={false}
@@ -136,6 +143,15 @@ const NewMember1 = () => {
       >
         {PAGES.map((page) => renderViewPagerPage(page))}
       </Swiper>
+
+      <View style={{width:'50%',flexDirection:'row',justifyContent:'space-between',backgroundColor:'black'}}>
+  {currentPage > 0 && (
+    <CustomButton text="Précédent" onPress={goToPreviousPage} />
+  )}
+  {currentPage < PAGES.length - 1 && (
+    <CustomButton text="Suivant" onPress={goToNextPage} />
+  )}
+</View>
       
       
       
@@ -167,13 +183,14 @@ const styles = StyleSheet.create({
  
 
 body:{
-
- 
+  paddingtop:10,
+  paddingLeft:10,
+  paddingRight:10,
   zIndex: 2,
   backgroundColor:'#FBFBFB',
   borderTopLeftRadius:45,
   borderTopRightRadius:45,
-  flex:1,
+  flex:2,
   minHeight: screenHeight/1.3,
   
   
@@ -184,6 +201,9 @@ body:{
   },
   stepIndicator: {
     marginVertical: 50,
+    position:"absolute",
+    width:screenWidth,
+    top:-(screenHeight/10.2),
     
     
   },
@@ -223,6 +243,7 @@ body:{
     marginBottom: 16,
   },
 });
+
 
 
 
