@@ -8,7 +8,7 @@ const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 const Swipe3 = () => {
 
-    const onContinuePressed = () => {
+    const onConfirmPressed = () => {
         console.warn("Sign in ");
        
   
@@ -32,6 +32,10 @@ const Swipe3 = () => {
         </Text>
         <Text> created a new member</Text>
     </View>
+
+    <View style={{width:"80%"}}>
+        <CustomButton  text="Confirm " onPress={onConfirmPressed}/>
+        </View>
 
     
     </ScrollView>

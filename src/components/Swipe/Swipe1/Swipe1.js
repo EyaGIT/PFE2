@@ -178,7 +178,9 @@ color='#E20522'
         />)}
         </View>
 
-
+        <View style={{width:"80%"}}>
+        <CustomButton  text="Continue " onPress={onContinePressed}/>
+        </View>
 
 
 </SafeAreaView>

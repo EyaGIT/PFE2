@@ -178,6 +178,9 @@ const OrderBracelet = () => {
     </View>
     
     </View>
+    <View style={{width:"80%"}}>
+        <CustomButton  text="Continue " onPress={onContinuePressed}/>
+        </View>
     
              
     
