@@ -4,6 +4,7 @@ import { RadioButton } from 'react-native-paper';
 import PhoneInput from "react-native-phone-number-input";
 import CustomButton from '../../CustomButton/CustomButton';
 import Custominput from '../../Custominput/Custominput';
+import DateTimePicker from '@react-native-community/datetimepicker'
 import NewAvatar from '../../../../assets/images/NewAvatar.png'
 import ImagePickerAvatar from '../../uplode_Image/ImagePickerAvatar';
 import ImagePickerHeader from '../../uplode_Image/ImagePickerHeader';
@@ -12,6 +13,8 @@ import { launchImageLibrary } from 'react-native-image-picker';
 import * as ImagePicker from 'react-native-image-picker'
 
 const Swipe1 = () => {
+  const [date, setDate] = useState(new Date());
+  const [showDatePicker, setShowDatePicker] = useState(false);
 
   const [pickerResponse,setPickerResponse]=useState(null);
      const[Visible,setVisible]=useState(false);
@@ -26,7 +29,8 @@ const Swipe1 = () => {
         includeBase64:false,
 
       };
-      ImagePicker,launchImageLibrary(options,setPickerResponse);
+      ImagePicker.launchImageLibrary(options,setPickerResponse);
+     
      },[]
      
      );
@@ -39,6 +43,7 @@ const Swipe1 = () => {
         includeBase64:false,
       };
       ImagePicker.launchCamera(options,setPickerResponse);
+      
      },[]);
 
      const uri = pickerResponse?.assets && pickerResponse.assets[0].uri;
@@ -51,6 +56,12 @@ const Swipe1 = () => {
   const [lastname, setlastname] = useState('');
   const [email, setemail] = useState('');
   const [checked, setChecked] = React.useState('first');
+  const onDateChange = (event, selectedDate) => {
+    setShowDatePicker(false);
+    if (selectedDate) {
+      setDate(selectedDate);
+    }
+  };
 
   return (
     <View>
@@ -130,6 +141,21 @@ onPress={() => setChecked('Female')}
 color='#E20522'
 />
 </View>
+<View>
+<Custominput 
+          placeholder="Date" 
+          value={date.getDate().toString()+'/'+(date.getMonth()+1).toString()+'/'+date.getFullYear().toString()}
+          
+          focus={() => setShowDatePicker(true)}
+          />
+      
+      {showDatePicker && (
+        <DateTimePicker
+          value={date}
+          mode="date"
+          onChange={onDateChange}
+        />)}
+        </View>
     </View>
   )
 }

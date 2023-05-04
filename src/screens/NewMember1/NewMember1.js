@@ -56,11 +56,10 @@ const NewMember1 = () => {
   
   
 
-  const renderViewPagerPage = (data) => {
+  const renderViewPagerPage = (Data) => {
     return (
-      <View key={data} style={styles.page}>
-        <Text>{data}</Text>
-      </View>
+      <Data key={Data} />
+      
     );
   };
   
@@ -187,6 +186,9 @@ body:{
   },
   stepIndicator: {
     marginVertical: 50,
+    position:"absolute",
+    width:screenWidth,
+    top:-(screenHeight/11.6),
     
     
   },
