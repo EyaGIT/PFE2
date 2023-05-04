@@ -9,6 +9,13 @@ import Swiper from 'react-native-swiper';
 import StepIndicator from 'react-native-step-indicator';
 import Swipe1 from '../../components/Swipe/Swipe1/Swipe1';
 import Swipe3 from '../../components/Swipe/Swipe3/Swipe3';
+import Swipe2 from '../../screens/OrderBracelet/OrderBracelet'
+
+import ImagePickerModal from '../../components/uplode_Image/ImagePickerModal';
+
+
+
+const PAGES = [Swipe1, Swipe2, Swipe3];
 
 
 
@@ -49,7 +56,13 @@ const NewMember1 = () => {
   
   
 
-
+  const renderViewPagerPage = (data) => {
+    return (
+      <View key={data} style={styles.page}>
+        <Text>{data}</Text>
+      </View>
+    );
+  };
   
 
   const [currentPage, setCurrentPage] = React.useState(0);
@@ -113,7 +126,18 @@ const NewMember1 = () => {
 
      
        
-        <Swipe3/>
+      <Swiper
+        style={{ flexGrow: 1 }}
+        loop={false}
+        index={currentPage}
+        autoplay={false}
+        showsButtons
+        onIndexChanged={(page) => {
+          setCurrentPage(page);
+        }}
+      >
+        {PAGES.map((page) => renderViewPagerPage(page))}
+      </Swiper>
       
       
       
