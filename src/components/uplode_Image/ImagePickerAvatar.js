@@ -30,7 +30,9 @@ const Styles= StyleSheet.create({
   avatar:{
   
   alignItems:'center',
-  marginTop:'40%',
+  marginTop:'20%',
+  
+
   
   
   },

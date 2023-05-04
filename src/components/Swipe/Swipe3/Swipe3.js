@@ -33,7 +33,7 @@ const Swipe3 = () => {
         <Text> created a new member</Text>
     </View>
 
-    <View style={{alignItems:'center',justifyContent:'center',paddingTop:30}}>
+    <View style={{alignItems:'center',justifyContent:'center',paddingTop:30,width:'60%'}}>
     <CustomButton  text="Continue " onPress={onContinuePressed}/>
         
     </View>

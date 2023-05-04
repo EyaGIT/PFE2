@@ -10,8 +10,12 @@ import ImagePickerHeader from '../../uplode_Image/ImagePickerHeader';
 import ImagePickerModal from '../../uplode_Image/ImagePickerModal';
 import { launchImageLibrary } from 'react-native-image-picker';
 import * as ImagePicker from 'react-native-image-picker'
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Swipe1 = () => {
+
+  const onContinePressed = () => {
+    console.warn("Contine");}
 
   const [pickerResponse,setPickerResponse]=useState(null);
      const[Visible,setVisible]=useState(false);
@@ -53,8 +57,10 @@ const Swipe1 = () => {
   const [checked, setChecked] = React.useState('first');
 
   return (
-    <View>
-      <View >
+    <SafeAreaView style={{flex: 1,
+      justifyContent: 'center', 
+      alignItems: 'center'}}>
+      <View style={{ width:'100%',flex:1}}>
     <ImagePickerAvatar  uri={uri} onPress={()=>setVisible(true)}/>
     <ImagePickerModal
     isVisible={Visible}
@@ -64,7 +70,7 @@ const Swipe1 = () => {
     />
       
     </View>
-<View>
+<View style={{width:'80%'}}>
 <Custominput 
   placeholder="Firstname" 
   value={firstname} 
@@ -130,7 +136,13 @@ onPress={() => setChecked('Female')}
 color='#E20522'
 />
 </View>
-    </View>
+<View style={{width:'60%'}}> 
+  <CustomButton text='Continue' onPress={onContinePressed}/>
+</View>
+
+
+
+</SafeAreaView>
   )
 }
 

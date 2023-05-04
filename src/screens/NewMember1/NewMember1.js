@@ -11,7 +11,7 @@ import Swipe1 from '../../components/Swipe/Swipe1/Swipe1';
 import Swipe3 from '../../components/Swipe/Swipe3/Swipe3';
 import Swipe2 from '../../screens/OrderBracelet/OrderBracelet'
 
-import ImagePickerModal from '../../components/uplode_Image/ImagePickerModal';
+
 
 
 
@@ -51,16 +51,12 @@ const NewMember1 = () => {
   
   
 
-  const [value, setValue] = useState()
-  const [step, setStep] = useState(0);
-  
+ 
   
 
-  const renderViewPagerPage = (data) => {
+  const renderViewPagerPage = (Data) => {
     return (
-      <View key={data} style={styles.page}>
-        <Text>{data}</Text>
-      </View>
+      <Data key={Data} />
     );
   };
   
@@ -70,6 +66,8 @@ const NewMember1 = () => {
   const onStepPress = (position) => {
     setCurrentPage(position);
   };
+
+  
 
   const renderLabel = ({
     position,
@@ -131,7 +129,7 @@ const NewMember1 = () => {
         loop={false}
         index={currentPage}
         autoplay={false}
-        showsButtons
+        showsButtons={false}
         onIndexChanged={(page) => {
           setCurrentPage(page);
         }}
@@ -169,14 +167,13 @@ const styles = StyleSheet.create({
  
 
 body:{
-  paddingtop:10,
-  paddingLeft:25,
-  paddingRight:25,
+
+ 
   zIndex: 2,
   backgroundColor:'#FBFBFB',
   borderTopLeftRadius:45,
   borderTopRightRadius:45,
-  flex:2,
+  flex:1,
   minHeight: screenHeight/1.3,
   
   

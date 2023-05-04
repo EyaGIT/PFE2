@@ -11,6 +11,7 @@ import ResetPassword from '../screens/ResetPassword/ResetPassword';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import NewMember1 from '../screens/NewMember1/NewMember1';
 import essai from '../screens/essai/essai';
+import Swipe1 from '../components/Swipe/Swipe1/Swipe1';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ const Navigation = () => {
   return (
     <NavigationContainer >
       <Stack.Navigator screenOptions={{headerShown:false}}>
+      <Stack.Screen name="Swipe1" component={Swipe1}/>
       <Stack.Screen name="New Member1" component={NewMember1}/>
       <Stack.Screen name="Essai" component={essai}/>
       
