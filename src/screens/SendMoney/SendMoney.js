@@ -1,4 +1,4 @@
-import { StyleSheet,View, Text,Image,TouchableOpacity,ScrollView,Dimensions,StatusBar } from 'react-native'
+import { StyleSheet,View, Text,Image,TouchableOpacity,ScrollView,Dimensions,StatusBar,TextInput } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useLayoutEffect ,useState, useRef} from 'react'
 import { useNavigation } from '@react-navigation/native'
@@ -7,6 +7,7 @@ import CustomButton from '../../components/CustomButton/CustomButton'
 import AvatarAnas from '../../../assets/images/AvatarAnas.png'
 import Custominput from '../../components/Custominput/Custominput';
 import DateTimePicker from '@react-native-community/datetimepicker'
+import cal from '../../../assets/images/Calendar.png'
 
 
 
@@ -35,7 +36,11 @@ const SendMoney = () => {
         }
       };
     
-
+      const showDate = () =>{
+        console.log("test");
+        setShowDatePicker(true);
+        console.log("test");
+      }
 
 
     const [Montant, setMontant] = useState('');
@@ -71,34 +76,78 @@ const SendMoney = () => {
             <Text style={styles.title}>Anas Cherni </Text>
         </View>
           
-        <View style={{paddingTop:10,alignItems:'center', justifyContent:'center',backgroundColor:'black',paddingLeft:30,paddingRight:30}}>
+        <View style={{paddingTop:10,alignItems:'center', justifyContent:'center',paddingLeft:30,paddingRight:30,marginBottom:50}}>
 
-        <Custominput
-           placeholder="1000" 
-           value={Montant} 
-           setValue={setMontant}
-           secureTextEntry={true}
-           />
+          <View style={{backgroundColor:"white",borderRadius:30,borderColor:'#E20522',borderWidth:1.5,width:267,height:72,alignItems:"center",justifyContent:"center",flexDirection:"row"}}>
+          <TextInput 
+            style={{fontSize:35,height:"100%"}}
+            placeholder="1,500"
+            value={Montant}
+            
+            onChangeText={setMontant}
+            
+            
+            />
+            <Text style={{fontSize:35,fontWeight:"bold",color:"#E20522"}}>TND</Text>
+            </View>
         </View>
 
-        <View >
-         <View style={{width:'50%',paddingTop:30}}>
 
-         <Custominput 
-          placeholder="Date" 
-          value={date.getDate().toString()+'/'+(date.getMonth()+1).toString()+'/'+date.getFullYear().toString()}
-          
-          focus={() => setShowDatePicker(true)}
-          />
-      
-      {showDatePicker && (
+        <View style={{flexDirection:"row",justifyContent:'space-around',alignItems:'center',height:90}}>
+        <View style={{backgroundColor:"white",borderRadius:50,borderColor:'rgba(0,0,0,0.3)',borderWidth:1.5,width:207,height:72,alignItems:"center",justifyContent:"center",flexDirection:"row"}}>
+          <TextInput 
+            style={{fontSize:20,height:"100%"}}
+            placeholder="1,500"
+            value={date.getDate().toString()+'/'+(date.getMonth()+1).toString()+'/'+date.getFullYear().toString()}
+            
+              
+              onFocus={() => setShowDatePicker(true)}
+            
+            
+            />
+            <TouchableOpacity onPress={() => setShowDatePicker(true)}>
+            <Image source={cal}  />
+            </TouchableOpacity>
+            {showDatePicker && (
         <DateTimePicker
           value={date}
           mode="date"
           onChange={onDateChange}
         />)}
-         </View>
-
+            
+            </View>
+            <View style={{backgroundColor:"white",borderRadius:50,borderColor:'rgba(0,0,0,0.3)',borderWidth:1.5,width:127,height:72,alignItems:"center",justifyContent:"center",flexDirection:"row"}}>
+          <TextInput 
+            style={{fontSize:25,height:"100%"}}
+            placeholder="10:50"
+            
+            
+            onChangeText={setMontant}
+            
+            
+            />
+            </View>
+        </View>
+        <View style={{flexDirection:"row",justifyContent:'center',alignItems:'center',height:90}}>
+        
+            <View style={{backgroundColor:"white",borderRadius:50,borderColor:'rgba(0,0,0,0.3)',borderWidth:1.5,width:345,height:72,alignItems:"center",justifyContent:"center",flexDirection:"row"}}>
+          <TextInput 
+            style={{fontSize:35,height:"100%"}}
+            
+            
+            
+            onChangeText={setMontant}
+            
+            
+            />
+            </View>
+            
+        </View>
+        <View>
+        <CustomButton text={'Transfer'}/>
+        </View>
+        <View >
+         
 
 
         </View>
@@ -142,7 +191,7 @@ body:{
   borderTopLeftRadius:45,
   borderTopRightRadius:45,
   flex:2,
-  minHeight: screenHeight/1.3,
+  minHeight: screenHeight-70,
   width:'100%'
   
   

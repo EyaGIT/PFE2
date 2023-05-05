@@ -24,7 +24,6 @@ const Navigation = () => {
       <Stack.Screen name="Send Money" component={SendMoney}/>
       <Stack.Screen name="New Member1" component={NewMember1}/>
       <Stack.Screen name="Essai" component={essai}/>
-      
       <Stack.Screen name="Home Screen" component={HomeScreen}/>
       <Stack.Screen name="Verification code" component={VerificationCode}/>
       <Stack.Screen name="Sign in" component={Signin}/>
