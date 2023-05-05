@@ -13,7 +13,7 @@ import NewMember1 from '../screens/NewMember1/NewMember1';
 import essai from '../screens/essai/essai';
 import Swipe1 from '../components/Swipe/Swipe1/Swipe1';
 import SendMoney from '../screens/SendMoney/SendMoney';
-
+import Receipt from '../screens/Receipt/Receipt';
 const Stack = createNativeStackNavigator();
 
 
@@ -21,6 +21,7 @@ const Navigation = () => {
   return (
     <NavigationContainer >
       <Stack.Navigator screenOptions={{headerShown:false}}>
+      <Stack.Screen name="Receipt" component={Receipt}/>
       <Stack.Screen name="Send Money" component={SendMoney}/>
       <Stack.Screen name="New Member1" component={NewMember1}/>
       <Stack.Screen name="Essai" component={essai}/>
