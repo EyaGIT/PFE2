@@ -5,9 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import LinearGradient from 'react-native-linear-gradient'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import AvatarAnas from '../../../assets/images/AvatarAnas.png'
-import Custominput from '../../components/Custominput/Custominput';
-import DateTimePicker from '@react-native-community/datetimepicker'
-import cal from '../../../assets/images/Calendar.png'
+
 import succ from '../../../assets/images/Succ.png'
 
 
@@ -27,24 +25,7 @@ const screenWidth = Dimensions.get('window').width;
 
 const Receipt = () => {
   
-    const [date, setDate] = useState(new Date());
-    const [showDatePicker, setShowDatePicker] = useState(false);
-  
-    const onDateChange = (event, selectedDate) => {
-        setShowDatePicker(false);
-        if (selectedDate) {
-          setDate(selectedDate);
-        }
-      };
     
-      const showDate = () =>{
-        console.log("test");
-        setShowDatePicker(true);
-        console.log("test");
-      }
-
-
-    const [Montant, setMontant] = useState('');
     const navigation=useNavigation();
     useLayoutEffect(()=>{
       navigation.setOptions({
@@ -61,7 +42,7 @@ const Receipt = () => {
           <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
           
          <View>
-            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}>SendMoney</Text>
+            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}>Receipt</Text>
             
         </View>      
      <View>

@@ -101,23 +101,23 @@ const HomeScreen = () => {
                 </View>
               </View>
               <View style={{flexDirection:"row",marginTop:10}}>
-                <View style={{alignItems:"center",marginRight:18}}>
+                <TouchableOpacity style={{alignItems:"center",marginRight:18}} onPress={() => navigation.navigate('Member')}>
                 <Image source={avatar} style={{width:45,height:45,borderRadius:10}} />
                 <Text>Hena</Text>
-                </View>
-                <View style={{alignItems:"center",marginRight:18}}>
+                </TouchableOpacity>
+                <TouchableOpacity style={{alignItems:"center",marginRight:18}} onPress={() => navigation.navigate('Member')}>
                 <Image source={avatar} style={{width:45,height:45,borderRadius:10}} />
                 <Text>Hena</Text>
-                </View>
+                </TouchableOpacity>
 
-                <View style={{alignItems:"center",marginRight:18}}>
+                <TouchableOpacity style={{alignItems:"center",marginRight:18}} onPress={() => navigation.navigate('New Member1')}>
                   <View style={{width:45,height:45,borderRadius:10, backgroundColor:'rgba(142, 147, 153, 0.24)',alignItems:"center",justifyContent:"center",padding:0}}>
                     <Text style={{fontSize:35,margin:0,padding:0,textAlignVertical:'bottom',textAlign:'center',lineHeight:47}}>+</Text>
                   </View>
                   
                 
                 
-                </View>
+                </TouchableOpacity>
               </View>
             </View>
 
