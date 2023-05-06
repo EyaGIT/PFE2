@@ -8,10 +8,12 @@ import {
   StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
+  useColorScheme,Image,TouchableOpacity,
   View,PermissionsAndroid,ToastAndroid,Dimensions ,
 } from 'react-native';
 import  mark  from "../../../assets/images/Groupmark.png";
+import  loc  from "../../../assets/images/loc.png";
+import  star  from "../../../assets/images/Star.png";
 import {
   Colors,
   
@@ -72,7 +74,7 @@ const ShopMapScreen = () => {
   
     return (
       <View style={styles.container}>
-        <Text style={{fontSize:30}}>Branches</Text>
+        <Text style={{fontSize:30,height:72}}>Branches</Text>
         {userLocation && (
           <MapView
             style={styles.map}
@@ -96,6 +98,7 @@ const ShopMapScreen = () => {
               ))*/}
           </MapView>
         )}
+        
       </View>
     );
   };
@@ -119,12 +122,92 @@ const ShopMapScreen = () => {
         <StatusBar
           
         />
+        <View style={{width:'100%',height:500}}>
+        <ShopMapScreen></ShopMapScreen>
+        </View>
         <ScrollView
-          contentInsetAdjustmentBehavior="automatic">
-          <View>
-            <ShopMapScreen></ShopMapScreen>
-            <Text>tesssst</Text>
-            
+          contentInsetAdjustmentBehavior="automatic" style={{height:330}}>
+            <View style={{alignItems:'center',flex:1}}>
+                <TouchableOpacity style={{justifyContent:'center',width:'100%',height:80,flexDirection:'row',alignItems:"center"}}>
+                    <View><Image source={loc} style={{width:56,height:56}}></Image></View>
+                    <View style={{justifyContent:'flex-start',width:200,paddingLeft:10}}>
+                        <Text style={{fontSize:18,fontWeight:'bold',color:'black'}}>Franklin Guvk</Text>
+                        <Text>Franklin Guvk</Text>
+                    </View>
+                    <View style={{alignItems:'flex-end'}}>
+                    <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',alignSelf:'flex-start'}}>
+                        <Image source={star} style={{width:16,height:16}} />
+                        <Image source={star} style={{width:16,height:16}} />
+                        <Image source={star} style={{width:16,height:16}} />
+                        <Image source={star} style={{width:16,height:16}} />
+                        <Image source={star} style={{width:16,height:16}} />
+                    </View>
+                        <Text>0.7 km</Text>
+                    </View>
+                </TouchableOpacity>
+                <View style={{width:'85%',borderWidth:0.5,marginTop:10,marginBottom:10,borderColor:'#C0C6CD'}}>
+
+                </View>
+                <TouchableOpacity style={{justifyContent:'center',width:'100%',height:80,flexDirection:'row',alignItems:"center"}}>
+                    <View><Image source={loc} style={{width:56,height:56}}></Image></View>
+                    <View style={{justifyContent:'flex-start',width:200,paddingLeft:10}}>
+                        <Text style={{fontSize:18,fontWeight:'bold',color:'black'}}>Franklin Guvk</Text>
+                        <Text>Franklin Guvk</Text>
+                    </View>
+                    <View style={{alignItems:'flex-end'}}>
+                    <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',alignSelf:'flex-start'}}>
+                        <Image source={star} style={{width:16,height:16}} />
+                        <Image source={star} style={{width:16,height:16}} />
+                        <Image source={star} style={{width:16,height:16}} />
+                        <Image source={star} style={{width:16,height:16}} />
+                        <Image source={star} style={{width:16,height:16}} />
+                    </View>
+                        <Text>0.7 km</Text>
+                    </View>
+                </TouchableOpacity>
+                <View style={{width:'85%',borderWidth:0.5,marginTop:10,marginBottom:10,borderColor:'#C0C6CD'}}>
+
+                </View>
+                <TouchableOpacity style={{justifyContent:'center',width:'100%',height:80,flexDirection:'row',alignItems:"center"}}>
+                    <View><Image source={loc} style={{width:56,height:56}}></Image></View>
+                    <View style={{justifyContent:'flex-start',width:200,paddingLeft:10}}>
+                        <Text style={{fontSize:18,fontWeight:'bold',color:'black'}}>Franklin Guvk</Text>
+                        <Text>Franklin Guvk</Text>
+                    </View>
+                    <View style={{alignItems:'flex-end'}}>
+                    <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',alignSelf:'flex-start'}}>
+                        <Image source={star} style={{width:16,height:16}} />
+                        <Image source={star} style={{width:16,height:16}} />
+                        <Image source={star} style={{width:16,height:16}} />
+                        <Image source={star} style={{width:16,height:16}} />
+                        <Image source={star} style={{width:16,height:16}} />
+                    </View>
+                        <Text>0.7 km</Text>
+                    </View>
+                </TouchableOpacity>
+                <View style={{width:'85%',borderWidth:0.5,marginTop:10,marginBottom:10,borderColor:'#C0C6CD'}}>
+
+                </View>
+                <TouchableOpacity style={{justifyContent:'center',width:'100%',height:80,flexDirection:'row',alignItems:"center"}}>
+                    <View><Image source={loc} style={{width:56,height:56}}></Image></View>
+                    <View style={{justifyContent:'flex-start',width:200,paddingLeft:10}}>
+                        <Text style={{fontSize:18,fontWeight:'bold',color:'black'}}>Franklin Guvk</Text>
+                        <Text>Franklin Guvk</Text>
+                    </View>
+                    <View style={{alignItems:'flex-end'}}>
+                    <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',alignSelf:'flex-start'}}>
+                        <Image source={star} style={{width:16,height:16}} />
+                        <Image source={star} style={{width:16,height:16}} />
+                        <Image source={star} style={{width:16,height:16}} />
+                        <Image source={star} style={{width:16,height:16}} />
+                        <Image source={star} style={{width:16,height:16}} />
+                    </View>
+                        <Text>0.7 km</Text>
+                    </View>
+                </TouchableOpacity>
+                <View style={{width:'85%',borderWidth:0.5,marginTop:10,marginBottom:10,borderColor:'#C0C6CD'}}>
+
+                </View>
           </View>
         </ScrollView>
       </SafeAreaView>);
