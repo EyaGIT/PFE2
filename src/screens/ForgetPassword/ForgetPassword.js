@@ -4,12 +4,13 @@ import Custominput from '../../components/Custominput/Custominput'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import { useNavigation } from '@react-navigation/native';
 
-const ForgetPassword = () => {
 
+const ForgetPassword = () => {
+  const navigation = useNavigation();
     const [email, setEmail] = useState('');
 
     const onContinuePressed = () => {
-        console.warn("Continue");
+        navigation.navigate("Reset Password");
     }
         
 

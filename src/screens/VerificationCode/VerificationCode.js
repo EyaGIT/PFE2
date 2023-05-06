@@ -1,9 +1,10 @@
-import { View, Text, TextInput,StyleSheet } from 'react-native'
+import { View, Text, TextInput,StyleSheet, TouchableOpacity } from 'react-native'
 import React,{useRef,useState} from 'react'
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import Custominput from '../../components/Custominput/Custominput'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import { useNavigation } from '@react-navigation/native';
+import BackArrowB from '../../components/BackArrowB/BackArrowB'
 
 const VerificationCode = () => {
  
@@ -13,11 +14,28 @@ const VerificationCode = () => {
    const fourthInput = useRef()
 
    const {otp,setOtp}= useState({ 1:'', 2:'', 3:'', 4:''})
+   const navigation = useNavigation();
 
+   const onVerifyPressed = () => {
+   
+     navigation.navigate("Order Bracelet");
+ 
+   }
+
+   const onBackPressed = () => {
+   
+    navigation.navigate("Sign up");
+
+  }
 
 
   return (
+    
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <TouchableOpacity onPress={onBackPressed}> 
+        <BackArrowB />
+      </TouchableOpacity>
+      
     <View style={{justifyContent: "flex-start",flexDirection:"row",alignItems:"center",width:"90%",paddingBottom:30}}>
       <Text style={{fontSize: 33, color: '#394452',height:60 }}>Verification Code</Text> 
       
@@ -75,7 +93,7 @@ const VerificationCode = () => {
       
     </View>
     <View style={{width:"80%",paddingTop:20}} >
-        <CustomButton  text="Verify "  />
+        <CustomButton  text="Verify " onPress={onVerifyPressed} />
         </View>
 
       <View>

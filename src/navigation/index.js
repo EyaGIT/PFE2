@@ -23,6 +23,7 @@ const Navigation = () => {
   return (
     <NavigationContainer >
       <Stack.Navigator screenOptions={{headerShown:false}}>
+      <Stack.Screen name="Order Bracelet" component={OrderBracelet}/>
       <Stack.Screen name="Map" component={Map}/>
       <Stack.Screen name="Home Screen" component={HomeScreen}/>
       <Stack.Screen name="Member" component={Member}/>
@@ -30,10 +31,10 @@ const Navigation = () => {
       <Stack.Screen name="Send Money" component={SendMoney}/>
       <Stack.Screen name="New Member1" component={NewMember1}/>
       <Stack.Screen name="Essai" component={essai}/>
-      
+     
       <Stack.Screen name="Verification code" component={VerificationCode}/>
       <Stack.Screen name="Sign in" component={Signin}/>
-      <Stack.Screen name="Order Bracelet" component={OrderBracelet}/>
+      
       <Stack.Screen name="Reset Password" component={ResetPassword}/>
       <Stack.Screen name="Forget ¨Password" component={ForgetPassword}/>
       <Stack.Screen name="Sign up" component={CreateNewAccount}/>

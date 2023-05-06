@@ -1,7 +1,8 @@
-import { View, Text,StyleSheet } from 'react-native'
+import { View, Text,StyleSheet, TouchableOpacity } from 'react-native'
 import React,{useState}  from 'react'
 import Custominput from '../../components/Custominput/Custominput'
 import CustomButton from '../../components/CustomButton/CustomButton'
+import { useNavigation } from '@react-navigation/native';
 
 const CreateNewAccount = () => {
   const [firstname, setFirstname] = useState('');
@@ -9,8 +10,15 @@ const CreateNewAccount = () => {
   const [mail, setMail] = useState('');
   const [password, setPassword] = useState('');
 
+
+  const navigation = useNavigation();
   const onContinuePressed = () => {
-    console.warn("Continue");
+   navigation.navigate("Verification code");
+
+}
+
+const onSigninPressed = () => {
+  navigation.navigate("Sign in");
 
 }
 
@@ -85,7 +93,8 @@ const CreateNewAccount = () => {
 
         <Text style={{paddingTop:20}}>
           <Text style={{color:'#858C94'}}>Already have an account ?</Text>
-          <Text style={{color:'#E20522',fontWeight:'bold'}}> Sign in</Text>
+          <TouchableOpacity onPress={onSigninPressed} >
+          <Text style={{color:'#E20522',fontWeight:'bold'}} > Sign in</Text></TouchableOpacity>
        </Text>
 
 

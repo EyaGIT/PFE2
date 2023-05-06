@@ -1,4 +1,4 @@
-import { View, Text,Image,StyleSheet,Pressable,shadow, TouchableWithoutFeedback, ScrollView} from 'react-native'
+import { View, Text,Image,StyleSheet,Pressable,shadow, TouchableWithoutFeedback, ScrollView, TouchableOpacity} from 'react-native'
 import React ,{useState} from 'react'
 import bracelet1 from '../../../assets/images/bracelet1.png'
 import bracelet2 from '../../../assets/images/bracelet2.png'
@@ -9,6 +9,7 @@ import { SelectList } from 'react-native-dropdown-select-list'
 import SelectDropdown from 'react-native-select-dropdown'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import { useNavigation } from '@react-navigation/native';
+import BackArrowB from '../../components/BackArrowB/BackArrowB'
 const colors = [
     '#E20522',
     '#000000',
@@ -39,9 +40,11 @@ const OrderBracelet = () => {
 
     const navigation = useNavigation();
 
-    const onContinuePressed = () => {
+   
+
+    const onBackPressed = () => {
     
-      navigation.navigate("Forget ¨Password");
+      navigation.navigate("Verification code");
   
     }
 
@@ -84,7 +87,11 @@ const OrderBracelet = () => {
       <SafeAreaView style={Styles.ViewContainer}>
       <ScrollView style={{width:'100%',height:'500%',zIndex:-1,flex:1}}>
       <View style={{flex:1,justifyContent:'center',alignItems:'center',minHeight:700}}>
-      <View style={{justifyContent: "center",flexDirection:'column',alignItems:"center",width:"90%",flex:2}}>
+      <TouchableOpacity onPress={onBackPressed}>
+      <BackArrowB />
+      </TouchableOpacity>
+        
+      <View style={{justifyContent: "center",flexDirection:'column',alignItems:"center",width:"90%",flex:2,paddingTop:10}}>
       
        <Text style={{fontSize: 20, color: '#394452',height:30,alignSelf:'flex-start'}}>Choose the type you prefer</Text> 
       
@@ -179,7 +186,7 @@ const OrderBracelet = () => {
     
     </View>
     <View style={{width:"80%"}}>
-        <CustomButton  text="Continue " onPress={onContinuePressed}/>
+        <CustomButton  text="Continue " />
         </View>
     
              
