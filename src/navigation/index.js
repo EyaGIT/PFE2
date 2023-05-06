@@ -15,6 +15,7 @@ import Swipe1 from '../components/Swipe/Swipe1/Swipe1';
 import SendMoney from '../screens/SendMoney/SendMoney';
 import Receipt from '../screens/Receipt/Receipt';
 import Member from '../screens/Member/Member';
+import Map from '../screens/Map/Map';
 const Stack = createNativeStackNavigator();
 
 
@@ -22,6 +23,7 @@ const Navigation = () => {
   return (
     <NavigationContainer >
       <Stack.Navigator screenOptions={{headerShown:false}}>
+      <Stack.Screen name="Map" component={Map}/>
       <Stack.Screen name="Home Screen" component={HomeScreen}/>
       <Stack.Screen name="Member" component={Member}/>
       <Stack.Screen name="Receipt" component={Receipt}/>
