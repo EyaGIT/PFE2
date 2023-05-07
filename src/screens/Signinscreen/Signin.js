@@ -12,7 +12,7 @@ const Signin = () => {
  
 
   const onSignInPressed = () => {
-      console.warn("Sign in ");
+    navigation.navigate("HomeNav");
      }
   const onforgetpasswordPressed = () => {
     
