@@ -4,10 +4,10 @@ import PicherIm from '../../components/PickerIm/PicherIm'
 
 const EditProfil = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ width:'100%',justifyContent: "flex-start", alignItems: "center"}} >
     <PicherIm/>
 
-    
+
 
 
     </SafeAreaView>
