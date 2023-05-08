@@ -17,67 +17,74 @@ const EditProfil = () => {
      <View style={{alignItems:"center",justifyContent:"flex-start",width:300,height:150,flex:1,marginTop:-150,top:140,marginBottom:170}}> 
     <PicherIm/>
     </View>  
-    <ScrollView >
-    <View style={{flex:0.3,flexDirection:'row',width:'95%'}}>
-
-        <Image source={User}   /> 
-         <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5}}>Edit Profile </Text> 
-         <View style={{flex:0.5,width:'5%',paddingLeft:'55%',paddingTop:10}}>
-        <TouchableOpacity>
+    <ScrollView style={{width:'100%',paddingLeft:30,paddingRight:30}}>
+    
+      <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>
+        <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
+            <Image source={User}   /> 
+            <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5}}>Edit Profile </Text>
+        </View>
+         
+         <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>
+        
          <Image source={Vector}/>
-         </TouchableOpacity>
+         
          </View>
+         </TouchableOpacity>
+         <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>
+        <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
+            <Image source={not}   /> 
+            <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5}}>Notifications</Text>
+        </View>
+         
+         <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>
         
-        
-    </View>
-    <View style={{flex:0.3,flexDirection:'row',width:'95%',paddingTop:5}}>
-
-    <Image source={not}   /> 
-         <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5}}>Notifications </Text> 
-         <View style={{flex:0.5,width:'5%',paddingLeft:'52%',paddingTop:10}}>
-        <TouchableOpacity>
          <Image source={Vector}/>
-         </TouchableOpacity>
+         
          </View>
+         </TouchableOpacity>
+         <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>
+        <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
+            <Image source={lang}   /> 
+            <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5}}>Language</Text>
+        </View>
+         
+         <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>
         
-        
-    </View>
-    <View style={{flex:0.3,flexDirection:'row',width:'95%',paddingTop:5}}>
-
-        <Image source={lang}   /> 
-         <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5,paddingLeft:2}}>Language </Text> 
-         <View style={{flex:0.5,width:'5%',paddingLeft:'57.5%',paddingTop:10}}>
-        <TouchableOpacity>
          <Image source={Vector}/>
-         </TouchableOpacity>
+         
          </View>
+         </TouchableOpacity>
+         <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>
+        <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
+            <Image source={eye}   /> 
+            <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5}}>Dark Theme</Text>
+        </View>
+         
+         <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>
         
-        
-    </View>
-    <View style={{flex:0.3,flexDirection:'row',width:'95%',paddingTop:5}}>
-
-    <Image source={eye}   /> 
-         <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5}}>Dark Theme </Text> 
-         <View style={{flex:0.5,width:'5%',paddingLeft:'55%',paddingTop:10}}>
-        <TouchableOpacity>
          <Image source={Vector}/>
-         </TouchableOpacity>
+         
          </View>
+         </TouchableOpacity>
+         <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>
+        <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
+            <Image source={logout}   /> 
+            <Text style={{color:'#E20522',fontSize:16,fontWeight:'600',paddingTop:5}}>Logout</Text>
+        </View>
+         
+         <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>
         
-        
-    </View>
-    <View style={{flex:0.3,flexDirection:'row',width:'95%',paddingTop:5}}>
-
-    <Image source={logout}   /> 
-         <Text style={{color:'#E20522',fontSize:16,fontWeight:'600',paddingTop:5}}>Logout </Text> 
-         <View style={{flex:0.5,width:'5%',paddingLeft:'55%',paddingTop:10}}>
-        <TouchableOpacity>
          <Image source={Vector}/>
-         </TouchableOpacity>
+         
          </View>
+         </TouchableOpacity>
         
-        
-    </View>
+    
+    
+    
+    
+    
     </ScrollView>
     
 
