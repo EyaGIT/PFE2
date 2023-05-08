@@ -37,6 +37,15 @@ const Navigation = () => {
       <Stack.Screen name="Forget ¨Password" component={ForgetPassword}/>
       <Stack.Screen name="Sign up" component={CreateNewAccount}/>
       <Stack.Screen name='HomeNav' component={HomeNav} />
+      <Stack.Screen name="Order Bracelet" component={OrderBracelet}/>
+      <Stack.Screen name="Map" component={Map}/>
+      <Stack.Screen name="Home Screen" component={HomeScreen}/>
+      <Stack.Screen name="Member" component={Member}/>
+      <Stack.Screen name="Receipt" component={Receipt}/>
+      <Stack.Screen name="Send Money" component={SendMoney}/>
+      <Stack.Screen name="New Member1" component={NewMember1}/>
+      <Stack.Screen name="Verification code" component={VerificationCode}/>
+      <Stack.Screen name="Essai" component={essai}/> 
  
       </Stack.Navigator>
     </NavigationContainer>

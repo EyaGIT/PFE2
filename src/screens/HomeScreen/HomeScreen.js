@@ -13,7 +13,7 @@ import card from '../../../assets/images/card.png'
 import card2 from '../../../assets/images/card2.png'
 import avatar from '../../../assets/images/avatar.png'
 import proAvatar from '../../../assets/images/proAvatar.png'
-
+import wallet from '../../../assets/images/Wallet.png'
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
@@ -54,7 +54,7 @@ const HomeScreen = () => {
                   <TouchableOpacity>
                     <View style={styles.flex}>
                       
-                    
+                    <Image source={wallet} style={{width:32,height:30}} />
                     <Text>Top Up</Text>
                     
                     </View>
@@ -236,11 +236,11 @@ body:{
   paddingLeft:25,
   paddingRight:25,
   zIndex: 2,
-  backgroundColor:'#FBFBFB',
+  backgroundColor:'#F2F2F2',
   borderTopLeftRadius:45,
   borderTopRightRadius:45,
   flex:2,
-  minHeight: screenHeight/1.3,
+  minHeight: screenHeight/1.1,
   
   
   }
