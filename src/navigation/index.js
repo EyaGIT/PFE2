@@ -16,6 +16,8 @@ import SendMoney from '../screens/SendMoney/SendMoney';
 import Receipt from '../screens/Receipt/Receipt';
 import Member from '../screens/Member/Member';
 import Map from '../screens/Map/Map';import HomeNav from './HomeNav';
+import PicherIm from '../components/PickerIm/PicherIm';
+import EditProfil from '../screens/EditProfil/EditProfil';
 const Stack = createNativeStackNavigator();
 
 /**<Stack.Screen name="Order Bracelet" component={OrderBracelet}/>
@@ -31,6 +33,7 @@ const Navigation = () => {
   return (
     <NavigationContainer >
       <Stack.Navigator screenOptions={{headerShown:false}}>
+      <Stack.Screen name="Edit Profil" component={EditProfil}/>
       <Stack.Screen name="Sign in" component={Signin}/>
       
       <Stack.Screen name="Reset Password" component={ResetPassword}/>

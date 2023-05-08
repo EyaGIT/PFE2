@@ -5,13 +5,12 @@ import PhoneInput from "react-native-phone-number-input";
 import CustomButton from '../../CustomButton/CustomButton';
 import Custominput from '../../Custominput/Custominput';
 import NewAvatar from '../../../../assets/images/NewAvatar.png'
-import ImagePickerAvatar from '../../uplode_Image/ImagePickerAvatar';
-import ImagePickerHeader from '../../uplode_Image/ImagePickerHeader';
-import ImagePickerModal from '../../uplode_Image/ImagePickerModal';
+
 import { launchImageLibrary } from 'react-native-image-picker';
 import * as ImagePicker from 'react-native-image-picker'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DateTimePicker from '@react-native-community/datetimepicker'
+import PicherIm from '../../PickerIm/PicherIm';
 
 const Swipe1 = () => {
   const [date, setDate] = useState(new Date());
@@ -21,35 +20,9 @@ const Swipe1 = () => {
   const onContinePressed = () => {
     console.warn("Contine");}
 
-  const [pickerResponse,setPickerResponse]=useState(null);
-     const[Visible,setVisible]=useState(false);
+  
 
-     const onImageLibraryPress = useCallback (()=>{
-
-
-      const options ={
-
-        selectionLimit :1,
-        mediaType:'photo',
-        includeBase64:false,
-
-      };
-      ImagePicker,launchImageLibrary(options,setPickerResponse);
-     },[]
-     
-     );
-
-     const onCameraPress=React.useCallback(()=>{
-
-      const options ={
-        saveToPhotos: true,
-        mediaType:'photo',
-        includeBase64:false,
-      };
-      ImagePicker.launchCamera(options,setPickerResponse);
-     },[]);
-
-     const uri = pickerResponse?.assets && pickerResponse.assets[0].uri;
+    
 
   const [password, setpassword] = useState('');
   const [valuee, setValuee] = useState("");
@@ -68,18 +41,8 @@ const Swipe1 = () => {
 
   return (
     <SafeAreaView style={{ width:'100%',justifyContent: "flex-start", alignItems: "center"}}>
-      <View style={{alignItems:"center",justifyContent:"flex-start",width:300,height:150,flexGrow:1,marginTop:-150,top:140,marginBottom:170}} >
-    <ImagePickerAvatar  style={{backgroundColor:"red",margin:0,padding:0,top:-20,height:100}} uri={uri} onPress={()=>setVisible(true)}/>
-    <ImagePickerModal
-    style={{backgroundColor:"red",height:100}}
-    isVisible={Visible}
-    onClose={()=>setVisible(false)}
-    onImageLibraryPress={onImageLibraryPress}
-    OnCameraPress={onCameraPress}
-    />
       
-    </View>
-
+    <PicherIm/>
     <View style={{width:'80%',flexDirection:"row",paddingTop:10}}>
 
 

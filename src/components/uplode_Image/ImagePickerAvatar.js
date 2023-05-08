@@ -4,11 +4,11 @@ import BackgroundAvatar from '../../../assets/images/BackgroundAvatar.png'
 import addButton from '../../../assets/images/addButton.png'
 const ImagePickerAvatar = ({uri, onPress}) => {
   return (
-    
+     <ImageBackground>
        <View style={Styles.avatar}> 
          <Image
          style={Styles.avatarImage}
-         source={uri ? {uri}:BackgroundAvatar}
+         source={uri ? {uri}: BackgroundAvatar}
          />
          <TouchableOpacity style={Styles.addButton} onPress={onPress}>
             <Image    style={Styles.addButton} source={addButton}          />
@@ -16,7 +16,7 @@ const ImagePickerAvatar = ({uri, onPress}) => {
         
 
        </View>
-   
+       </ImageBackground>
   )
 }
 
