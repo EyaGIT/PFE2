@@ -21,6 +21,7 @@ import Settings from "../../assets/images/icons/Settings.png";
 import SettingsOutline from "../../assets/images/icons/Settings_outline.png";
 import Static from "../../assets/images/icons/Static.png";
 import StaticOutline from "../../assets/images/icons/Static_outline.png";
+import EditProfil from '../screens/EditProfil/EditProfil';
 const Tab = createBottomTabNavigator();
 
 function HomeNav() {
@@ -59,7 +60,7 @@ function HomeNav() {
       <Tab.Screen name="History" component={Member} options={{tabBarButton: props => <CustomTabBarButton route='History' {... props} />}} />
       <Tab.Screen name="Home" component={HomeScreen} options={{tabBarButton: props => <CustomTabBarButton route='Home' {... props} />}} />
       <Tab.Screen name="Static" component={SendMoney} options={{tabBarButton: props => <CustomTabBarButton route='Static' {... props} />}} />
-      <Tab.Screen name="Settings" component={Receipt} options={{tabBarButton: props => <CustomTabBarButton route='Settings' {... props} />}} />
+      <Tab.Screen name="Settings" component={EditProfil} options={{tabBarButton: props => <CustomTabBarButton route='Settings' {... props} />}} />
     </Tab.Navigator>
   );
 }

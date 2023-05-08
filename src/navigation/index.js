@@ -33,7 +33,7 @@ const Navigation = () => {
   return (
     <NavigationContainer >
       <Stack.Navigator screenOptions={{headerShown:false}}>
-      <Stack.Screen name="Edit Profil" component={EditProfil}/>
+     
       <Stack.Screen name="Sign in" component={Signin}/>
       
       <Stack.Screen name="Reset Password" component={ResetPassword}/>
