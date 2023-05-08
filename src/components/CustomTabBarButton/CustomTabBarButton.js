@@ -6,7 +6,7 @@ const CustomTabBarButton = props => {
     const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
     const {route,children, accessibilityState,onPress} = props
-    console.log(children)
+    
 
 
     if (route ==='Home') {

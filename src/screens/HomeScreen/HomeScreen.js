@@ -54,7 +54,7 @@ const HomeScreen = () => {
                   <TouchableOpacity>
                     <View style={styles.flex}>
                       
-                    <Image source={wallet} style={{width:32,height:30}} />
+                    <Image source={wallet} style={{width:33,height:30}} />
                     <Text>Top Up</Text>
                     
                     </View>

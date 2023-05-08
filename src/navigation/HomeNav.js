@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
       margin:0,
       borderTopWidth: 0,
       
-    height: 70,
+    height: 60,
   }
 })
 export default HomeNav;
