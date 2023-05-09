@@ -83,8 +83,12 @@ const ListItem = ({
         simultaneousHandlers={simultaneousHandlers}
         onGestureEvent={panGesture}
       >
-        <Animated.View style={[styles.task, rStyle]}>
+        <Animated.View  key={task.index} style={[styles.task, rStyle]}>
           <Text style={styles.taskTitle}>{task.title}</Text>
+          <View style={{flexDirection:'row'}}>
+          {task.product.map((product,index) => (
+          <Text key={index} style={styles.taskTitle}>{product}</Text>
+        ))}</View>
         </Animated.View>
       </PanGestureHandler>
     </Animated.View>
@@ -100,17 +104,12 @@ const styles = StyleSheet.create({
       height: LIST_ITEM_HEIGHT,
       justifyContent: 'center',
       paddingLeft: 20,
-      backgroundColor: 'white',
+      backgroundColor: '#EDEDED',
       borderRadius: 10,
       // Shadow for iOS
-      shadowOpacity: 0.08,
-      shadowOffset: {
-        width: 0,
-        height: 20,
-      },
-      shadowRadius: 10,
+      
       // Shadow for Android
-      elevation: 5,
+      
     },
     taskTitle: {
       fontSize: 16,

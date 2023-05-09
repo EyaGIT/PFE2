@@ -14,8 +14,12 @@ const TITLES = [
     'Subscribe to the channel 🚀',
     'Leave a ⭐️ on the GitHub Repo',
   ];
+  const data = [
+    { shopTitle:'shop', product:['pizza','sandwich']},
+    { shopTitle:'Chaneb tacos', product:['pizza','sandwich']}
+];
   
-  const TASKS = TITLES.map((title, index) => ({ title, index }));
+  const TASKS = data.map((item, index) => ({ title:item.shopTitle,product:item.product, index }));
   const BACKGROUND_COLOR = '#FAFBFF';
 
 const screenHeight = Dimensions.get('window').height;
@@ -89,6 +93,7 @@ const Limits = () => {
                 <Text style={{fontSize:24,fontWeight:'bold',color:'black'}}>Limits</Text>
                 <TouchableOpacity><Text>add</Text></TouchableOpacity>
             </View>
+            {console.log(tasks)}
             {tasks.map((task) => (
           <ListItem
             simultaneousHandlers={scrollRef}
