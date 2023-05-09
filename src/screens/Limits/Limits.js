@@ -60,7 +60,7 @@ const Limits = () => {
 
           
       <SafeAreaView style={styles.body}>
-      <View style={{flex: 1}}>
+      <View style={{flex: 1,height:90}}>
       <Text>Limit Per transaction</Text>
             <Text>{range}</Text>
             
@@ -74,7 +74,7 @@ const Limits = () => {
             onValueChange={value => setRange(value)}
             />
         </View>
-        <View style={{flex: 1}}>
+        <View style={{flex: 1,height:90}}>
         <Text>Limit Per transaction</Text>
         <Text>{range}</Text>
             
@@ -88,12 +88,12 @@ const Limits = () => {
             onValueChange={value => setRange(value)}
             />
         </View>
-        <View style={{flex: 5}}>
+        <View style={{flex: 5,height:300}}>
             <View style={{flexDirection:'row',justifyContent:'space-between'}}>
                 <Text style={{fontSize:24,fontWeight:'bold',color:'black'}}>Limits</Text>
                 <TouchableOpacity><Text>add</Text></TouchableOpacity>
             </View>
-            {console.log(tasks)}
+            
             {tasks.map((task) => (
           <ListItem
             simultaneousHandlers={scrollRef}
