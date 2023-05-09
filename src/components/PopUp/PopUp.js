@@ -15,17 +15,7 @@ const PopUp = ({
 
 
 }) => {
-    const [selected, setSelected] = React.useState([]);
-  
-  const data = [
-      {key:'1', value:'Mobiles', disabled:true},
-      {key:'2', value:'Appliances'},
-      {key:'3', value:'Cameras'},
-      {key:'4', value:'Computers', disabled:true},
-      {key:'5', value:'Vegetables'},
-      {key:'6', value:'Diary Products'},
-      {key:'7', value:'Drinks'},
-  ]
+    
   return (
    <Modal
 
@@ -35,13 +25,13 @@ const PopUp = ({
     style={styles.modal}
     >
 
-  <SafeAreaView  style={styles.buttons}>
+  <View  style={styles.buttons}>
   <View style={{height:'90%',width:'90%'}}>
     <Text style={{alignSelf:'center',fontSize:24}}>New Limit</Text>
     
   </View>
 
-  </SafeAreaView>
+  </View>
 
 
 
@@ -53,21 +43,24 @@ const styles = StyleSheet.create({
    
     modal:{
 
-        justifyContent:'Center',
+        justifyContent:'center',
+        alignItems:'center',
         margin:0,
+        height:screenHeight,
+        
     },
     buttonIcon:{
     width:30,
-    height:screenHeight/2,
-    margin:10,
+    height:screenHeight,
+    margin:0,
 },
 
 buttons:{
   backgroundColor:'white',
   flexDirection:'row',
-  borderTopRightRadius:40,
-  borderTopLeftRadius:40,
-  minHeight:screenHeight/2,
+  borderRadius:30,
+  minHeight:screenHeight/4,
+  width:'85%',
   justifyContent:'center',
   alignItems:'center',
 
