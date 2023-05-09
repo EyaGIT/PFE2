@@ -6,7 +6,9 @@ import LinearGradient from 'react-native-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ListItem from '../../components/ListItem/ListItem'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import Takos from '../../../assets/images/Tacos.png'
+import Takos from '../../../assets/images/Tacos.png';
+import  CustomButton  from "../../components/CustomButton/CustomButton";
+import ModalLimits from '../../components/ModalLimits/ModalLimits';
 const takos = require('../../../assets/images/Tacos.png');
 const TITLES = [
     'Record the dismissible tutorial 🎥',
@@ -36,7 +38,7 @@ const Limits = () => {
         headerShown:false,
       })
     }, [])
-
+    const[Visible,setVisible]=useState(false);
 
     const [tasks, setTasks] = useState(TASKS);
 
@@ -75,7 +77,7 @@ const Limits = () => {
             minimumTrackTintColor='tomato'
             maximumTrackTintColor='#000'
             thumbTintColor='red'
-            value={.5}
+            value={1}
             onValueChange={value => setRange(value)}
             />
         </View>
@@ -89,14 +91,19 @@ const Limits = () => {
             minimumTrackTintColor='tomato'
             maximumTrackTintColor='#000'
             thumbTintColor='red'
-            value={.5}
+            value={1}
             onValueChange={value => setRange(value)}
             />
         </View>
-        <View style={{flex: 5,height:300}}>
+        <View style={{flex: 5,minHeight:300}}>
             <View style={{flexDirection:'row',justifyContent:'space-between'}}>
                 <Text style={{fontSize:24,fontWeight:'bold',color:'black'}}>Limits</Text>
-                <TouchableOpacity><Text>add</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => setVisible(true)}><Text>add</Text></TouchableOpacity>
+                <ModalLimits
+                isVisible={Visible}
+                onClose={() => setVisible(false)}
+                
+                />
             </View>
             
             {tasks.map((task) => (
@@ -127,6 +134,10 @@ const Limits = () => {
             
           </SafeAreaView>
           </ScrollView>
+          <View style={{width:'100%',backgroundColor:'white',paddingLeft:50,paddingRight:50}}>
+            <CustomButton text='Save Changes'></CustomButton>
+          </View>
+          
           </SafeAreaView>
         </LinearGradient>
        
