@@ -94,53 +94,51 @@ const TopUp = () => {
 <View style={{width:'100%',paddingBottom:30,}}>
     <Text style={{color:'#8E9399'}}>Select Card</Text>
 </View>
-<View style={{backgroundColor:"#EBEBEB",borderRadius:30,borderColor:'#EBEBEB',width:267,height:150,alignItems:"center",justifyContent:"center",flexDirection:"column"}}>
-<View style={{flexDirection:'row'}}>
-<View style={{width:'100%',paddingTop:10,flexDirection:'row'}}>
+<View style={{backgroundColor:"#EBEBEB",borderRadius:30,borderColor:'#EBEBEB',width:280,minHeight:150,alignItems:'center',justifyContent:'center',flexDirection:"column"}}>
+<SafeAreaView style={{flexDirection:'row'}}>
+      <View style={{width:'90%',paddingTop:0,flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
                 <View style={{width:'25%',alignItems:'center'}}>
                         <Image  source={mastercard} />
                 </View>
-                <View style={{height:90,paddingTop:10,paddingLeft:5,flexDirection:'column',width:'70%'}}>
+                <View style={{height:60,paddingTop:0,paddingLeft:5,flexDirection:'column',width:'70%'}}>
                     <View style={{}}>
                 
                     <Text style={{color:'#000000',fontSize:13}}>Mastercard</Text>
                     <Text >**** **** **** **22</Text>
                     
+                  </View>
                 </View>
-                </View>
-            </View>
-<View style={{backgroundColor:'blue'}}>
-<RadioButton
-value="Male"
-status={ checked === 'Male' ? 'checked' : 'unchecked' }
-onPress={() => setChecked('Male')}
-color='#E20522'
-/>
+                <RadioButton
+                value="Female"
+                status={ checked === 'Female' ? 'checked' : 'unchecked' }
+                onPress={() => setChecked('Female')}
+                color='#E20522'
+                />
 </View>
-</View>
-<View style={{flexDirection:'row'}}>
-<View style={{width:'100%',paddingTop:10,flexDirection:'row'}}>
+</SafeAreaView >
+
+<SafeAreaView style={{flexDirection:'row'}}>
+      <View style={{width:'90%',paddingTop:0,flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
                 <View style={{width:'25%',alignItems:'center'}}>
                         <Image  source={mastercard} />
                 </View>
-                <View style={{height:90,paddingTop:10,paddingLeft:5,flexDirection:'column',width:'70%'}}>
+                <View style={{height:60,paddingTop:0,paddingLeft:5,flexDirection:'column',width:'70%'}}>
                     <View style={{}}>
                 
                     <Text style={{color:'#000000',fontSize:13}}>Mastercard</Text>
                     <Text >**** **** **** **22</Text>
                     
+                  </View>
                 </View>
-                </View>
-            </View>
-<View style={{backgroundColor:'blue'}}>
-<RadioButton
-value="Female"
-status={ checked === 'Female' ? 'checked' : 'unchecked' }
-onPress={() => setChecked('Female')}
-color='#E20522'
-/>
+                <RadioButton
+                value="Male"
+                status={ checked === 'Male' ? 'checked' : 'unchecked' }
+                onPress={() => setChecked('Male')}
+                color='#E20522'
+                />
 </View>
-</View>
+</SafeAreaView >
+
 
 
   </View>
