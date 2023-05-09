@@ -22,6 +22,7 @@ import Limits from '../screens/Limits/Limits';
 import EditProfil from '../screens/EditProfil/EditProfil';
 import Contacts from '../screens/Contacts/Contacts';
 import Notifications from '../screens/Notifications/Notifications';
+import TopUp from '../screens/TopUp/TopUp';
 const Stack = createNativeStackNavigator();
 
 /**<Stack.Screen name="Order Bracelet" component={OrderBracelet}/>
@@ -52,6 +53,7 @@ const Navigation = () => {
       <Stack.Screen name="Send Money" component={SendMoney}/>
       <Stack.Screen name="New Member1" component={NewMember1}/>
       <Stack.Screen name="Verification code" component={VerificationCode}/>
+      <Stack.Screen name="Top Up" component={TopUp}/>
       <Stack.Screen name="Notifications" component={Notifications}/>
       <Stack.Screen name="Contacts" component={Contacts}/>
       <Stack.Screen name="Edit Profil" component={EditProfil}/>

@@ -31,6 +31,10 @@ const HomeScreen = () => {
   const onNotificationPressed = () => {
       navigation.navigate("Notifications");
        }
+
+       const onTopUpPressed = () => {
+        navigation.navigate("Top Up");
+         }
   
   useLayoutEffect(()=>{
     navigation.setOptions({
@@ -63,7 +67,7 @@ const HomeScreen = () => {
                 
                 <View style={{width:'100%',height:50,alignItems: 'center',justifyContent:'center',height:'100%'}}>
                   <View style={styles.menu}>
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={onTopUpPressed}>
                     <View style={styles.flex}>
                       
                     <Image source={wallet} style={{width:33,height:30}} />

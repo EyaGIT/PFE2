@@ -29,7 +29,7 @@ const Notifications = () => {
                 </View>
                 </View>
             </View>
-            <View style={{width:"80%",borderColor:'#B9BABB',alignSelf:'center',borderTopWidth:0.7}}></View>
+            <View style={{width:"85%",borderColor:'#B9BABB',alignSelf:'center',borderTopWidth:0.7}}></View>
             <View style={{width:'100%',paddingTop:20,flexDirection:'row'}}>
                 <View style={{width:'25%',alignItems:'center'}}>
                         <Image  source={ImageContact} />
@@ -70,7 +70,7 @@ const Notifications = () => {
                 </View>
                 </View>
             </View>
-            <View style={{width:"80%",borderColor:'#B9BABB',alignSelf:'center',borderTopWidth:0.7}}></View>
+            <View style={{width:"85%",borderColor:'#B9BABB',alignSelf:'center',borderTopWidth:0.7}}></View>
             <View style={{width:'100%',paddingTop:20,flexDirection:'row'}}>
                 <View style={{width:'25%',alignItems:'center'}}>
                         <Image  source={ImageContact} />
@@ -111,7 +111,7 @@ const Notifications = () => {
                 </View>
                 </View>
             </View>
-            <View style={{width:"80%",borderColor:'#B9BABB',alignSelf:'center',borderTopWidth:0.7}}></View>
+            <View style={{width:"85%",borderColor:'#B9BABB',alignSelf:'center',borderTopWidth:0.7}}></View>
             <View style={{width:'100%',paddingTop:20,flexDirection:'row'}}>
                 <View style={{width:'25%',alignItems:'center'}}>
                         <Image  source={ImageContact} />
