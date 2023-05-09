@@ -1,9 +1,22 @@
-import React,{useState,useLayoutEffect} from 'react';
+import React,{useState,useLayoutEffect,useCallback,useRef} from 'react';
 import {StyleSheet,View, Text,Image,TouchableOpacity,ScrollView,Dimensions,StatusBar} from 'react-native';
 import Slider from "@react-native-community/slider";
 import { useNavigation } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import ListItem from '../../components/ListItem/ListItem'
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
+const TITLES = [
+    'Record the dismissible tutorial 🎥',
+    'Leave 👍🏼 to the video',
+    'Check YouTube comments',
+    'Subscribe to the channel 🚀',
+    'Leave a ⭐️ on the GitHub Repo',
+  ];
+  
+  const TASKS = TITLES.map((title, index) => ({ title, index }));
+  const BACKGROUND_COLOR = '#FAFBFF';
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
@@ -14,6 +27,17 @@ const Limits = () => {
         headerShown:false,
       })
     }, [])
+
+
+    const [tasks, setTasks] = useState(TASKS);
+
+    const onDismiss = useCallback((task) => {
+      setTasks((tasks) => tasks.filter((item) => item.index !== task.index));
+    }, []);
+  
+    const scrollRef = useRef(null);
+
+
     const [range, setRange] = useState('50%');
     const [sliding, setSliding] = useState('Inactive');
     return (
@@ -65,7 +89,14 @@ const Limits = () => {
                 <Text style={{fontSize:24,fontWeight:'bold',color:'black'}}>Limits</Text>
                 <TouchableOpacity><Text>add</Text></TouchableOpacity>
             </View>
-            <Text>test</Text>
+            {tasks.map((task) => (
+          <ListItem
+            simultaneousHandlers={scrollRef}
+            key={task.index}
+            task={task}
+            onDismiss={onDismiss}
+          />
+        ))}
         </View>
           
         
@@ -177,8 +208,14 @@ const styles = StyleSheet.create({
       marginBottom: 16,
     },
   });
+  export default () => {
+    return (
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <Limits />
+      </GestureHandlerRootView>
+    );
+  };
 
-export default Limits;
 
 
   
