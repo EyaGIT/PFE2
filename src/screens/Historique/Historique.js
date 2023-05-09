@@ -16,28 +16,22 @@ const Historique = () => {
     })
   }, [])
   return (
-    <LinearGradient start={{x: 1, y: 0}} end={{x: 0, y: 1}} locations={[0,0.6]} colors={['#E20522', '#000000']} style={styles.linearGradient}>
+    
          
     <SafeAreaView style={styles.SafeAreaView}>
-    <StatusBar barStyle="light-content" backgroundColor={'transparent'} translucent={true} />
+   
    
       
     <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
-    < View style={styles.head}>
-              
-              <View  >
-            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:40}}>Historique</Text>
-            
-        </View> 
-          </View>
+    
     
 
-        <View style={styles.body}>
-        <View style={{width:'100%',paddingTop:10,flexDirection:'row'}}>
-                <View style={{width:'25%',alignItems:'center',paddingTop:10}}>
-                     <Image source={tacos} style={{width:55,aspectRatio: 1, resizeMode: 'contain',marginRight:10}}/>   
+        <View >
+        <View style={{width:'100%',paddingTop:10,flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+                <View style={{width:'25%',alignItems:'center'}}>
+                     <Image source={tacos} style={{width:40,aspectRatio: 1, resizeMode: 'contain',marginRight:10}}/>   
                 </View>
-                <View style={{height:90,paddingTop:10,paddingLeft:5,flexDirection:'column',width:'70%'}}>
+                <View style={{paddingLeft:5,flexDirection:'column',width:'70%'}}>
                     <View style={{flexDirection:'row',alignItems:'center'}}>
                     <View>
                     <Text style={{fontSize:17,fontWeight:'500'}} >Chaneb Tacos</Text></View>
@@ -49,7 +43,7 @@ const Historique = () => {
                 <View style={{paddingTop:5}}>
                <Text>
                 <Text style={{color:'#6D7580',paddingTop:5}}>Dec 09, 2023 |</Text>
-                <Text style={{color:'#6D7580',paddingTop:5}}>14:50 PM</Text>
+                <Text style={{color:'#6D7580',paddingTop:5}}> 14:50 PM</Text>
                 </Text>
                 </View>
                 </View>
@@ -61,7 +55,7 @@ const Historique = () => {
 
      </ScrollView>
     </SafeAreaView> 
-    </LinearGradient> 
+   
   )
 }
 const styles = StyleSheet.create({
