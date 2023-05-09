@@ -1,7 +1,7 @@
 import { StyleSheet,View, Text,Image,TouchableOpacity,ScrollView,Dimensions,StatusBar } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useLayoutEffect } from 'react'
-import { useNavigation } from '@react-navigation/native'
+import {useNavigation } from '@react-navigation/native'
 import LinearGradient from 'react-native-linear-gradient'
 
 import tran from '../../../assets/images/tran.png'
@@ -15,11 +15,20 @@ import avatar from '../../../assets/images/avatar.png'
 import proAvatar from '../../../assets/images/proAvatar.png'
 import wallet from '../../../assets/images/Wallet.png'
 
+
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 const HomeScreen = () => {
-  const navigation=useNavigation();
+
+  const navigation = useNavigation();
+
+ 
+
+  const onviewallPressed = () => {
+    navigation.navigate("Contacts");
+     }
+  
   useLayoutEffect(()=>{
     navigation.setOptions({
       headerShown:false,
@@ -95,7 +104,7 @@ const HomeScreen = () => {
               <View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between'}}>
                 <Text style={{fontSize:30,fontWeight:'bold'}}>Members</Text>
                 <View>
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={onviewallPressed}>
                   <Text>View All</Text>
                   </TouchableOpacity>
                 </View>
