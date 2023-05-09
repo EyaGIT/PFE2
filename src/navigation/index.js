@@ -17,8 +17,9 @@ import Receipt from '../screens/Receipt/Receipt';
 import Member from '../screens/Member/Member';
 import Map from '../screens/Map/Map';import HomeNav from './HomeNav';
 import PicherIm from '../components/PickerIm/PicherIm';
-import EditProfil from '../screens/EditProfil/EditProfil';
+import Settings from '../screens/Settings1/Settings1';
 import Limits from '../screens/Limits/Limits';
+import EditProfil from '../screens/EditProfil/EditProfil';
 const Stack = createNativeStackNavigator();
 
 /**<Stack.Screen name="Order Bracelet" component={OrderBracelet}/>
@@ -49,6 +50,7 @@ const Navigation = () => {
       <Stack.Screen name="Send Money" component={SendMoney}/>
       <Stack.Screen name="New Member1" component={NewMember1}/>
       <Stack.Screen name="Verification code" component={VerificationCode}/>
+      <Stack.Screen name="Edit Profil" component={EditProfil}/>
       <Stack.Screen name="Essai" component={essai}/> 
       <Stack.Screen name="Limits" component={Limits}/>
  

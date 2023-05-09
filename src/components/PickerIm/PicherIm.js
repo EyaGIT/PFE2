@@ -49,7 +49,8 @@ const PicherIm = () => {
     onImageLibraryPress={onImageLibraryPress}
     OnCameraPress={onCameraPress}
     />
-      
+    <View style={{width:'100%',height:80,alignItems:'center',justifyContent:'center'}}>
+      <Text style={{fontSize:19,color:'#000000',fontWeight:'700'}}>User name</Text></View>
     </SafeAreaView>
   )
 }

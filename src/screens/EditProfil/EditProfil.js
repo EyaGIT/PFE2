@@ -1,102 +1,102 @@
-import { View, Text ,ScrollView ,SafeAreaView,Image, TouchableOpacity} from 'react-native'
-import React from 'react'
-import PicherIm from '../../components/PickerIm/PicherIm'
-import User from '../../../assets/images/User.png'
-import Vector from '../../../assets/images/Vector.png'
-import not from '../../../assets/images/Notification.png'
-import logout from '../../../assets/images/Logout.png'
-import lang from  '../../../assets/images/Languagel.png'
-import eye from '../../../assets/images/Eye.png'
-import Toggle from '../../../assets/images/Toggle.png'
-
-
+import { View, Text,SafeAreaView, TouchableOpacity,Image,StyleSheet } from 'react-native'
+import React,{useState} from 'react'
+import Custominput from '../../components/Custominput/Custominput'
+import CustomButton from '../../components/CustomButton/CustomButton'
+import DatePicker from '../../components/DatePicker/DatePicker'
+import Tunisia from '../../../assets/images/Tunisia.png'
+import { TextInput } from 'react-native-paper'
+import CustominputImg from '../../components/CustominputImg/CustominputImg'
+import { SelectList } from 'react-native-dropdown-select-list'
 
 const EditProfil = () => {
+    const [category,setCategory]=useState('Male')
+    const categories1 =[
+        {key:'1', value:'Male'},
+        {key:'2', value:'Female'},
+      ];
+
+    const [userfirstname, setUserfirstname] = useState('');
+    const [userlastname, setUserlastname] = useState('');
+    const [usermail, setUsermail] = useState('');
+    const [userphone, setUserphone] = useState('');
   return (
-    <SafeAreaView style={{ width:'100%',justifyContent: "flex-start", alignItems: "center",flex:1}} >
-     <View style={{alignItems:"center",justifyContent:"flex-start",width:"100%",height:150,flex:1,marginTop:-150,top:140,marginBottom:170}}> 
-    <PicherIm />
-    <View style={{width:"100%",borderWidth:1,borderColor:'white'}}></View>
-    </View>
-    
-    <ScrollView style={{width:'100%',paddingLeft:30,paddingRight:30}}>
-    
-      <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>
-        <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
-            <Image source={User}   /> 
-            <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5}}>Edit Profile </Text>
-        </View>
-         
-         <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>
-        
-         <Image source={Vector}/>
-         
-         </View>
-         </TouchableOpacity>
-         <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>
-        <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
-            <Image source={not}   /> 
-            <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5}}>Notifications</Text>
-        </View>
-         
-         <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>
-        
-         <Image source={Vector}/>
-         
-         </View>
-         </TouchableOpacity>
-         <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>
-        <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
-            <Image source={lang}   /> 
-            <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5}}>Language</Text>
-        </View>
-         
-         <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>
-        
-         <Image source={Vector}/>
-         
-         </View>
-         </TouchableOpacity>
-         <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>
-        <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
-            <Image source={eye}   /> 
-            <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5}}>Dark Theme</Text>
-        </View>
-         
-         <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>
-        
-         <Image source={Vector}/>
-         
-         </View>
-         </TouchableOpacity>
-         <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>
-        <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
-            <Image source={logout}   /> 
-            <Text style={{color:'#E20522',fontSize:16,fontWeight:'600',paddingTop:5}}>Logout</Text>
-        </View>
-         
-         <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>
-        
-         <Image source={Vector}/>
-         
-         </View>
-         </TouchableOpacity>
-        
-    
-    
-    
-    
-    
-    </ScrollView>
-    
 
-
-
-
-    </SafeAreaView>
+    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <View style={{width:"90%"}} >
+      <Custominput
+           placeholder="Anas" 
+           value={userfirstname} 
+           setValue={setUserfirstname}
+           secureTextEntry={true}
+           />
+      </View>
+      <View style={{width:"90%"}} >
+      <Custominput
+           placeholder="Cherni" 
+           value={userlastname} 
+           setValue={setUserlastname}
+           secureTextEntry={true}
+           />
+      </View>
+      <View style={{width:"90%"}} >
+      <Custominput
+           placeholder="chernianas@gmail.com" 
+           value={usermail} 
+           setValue={setUsermail}
+           secureTextEntry={true}
+           />
+      </View>
+      <View style={{width:"90%"}} >
+      <DatePicker/>
+      </View>
+      <View style={{width:"90%"}} >
+        <CustominputImg
+        placeholder="22453769" 
+        value={userphone} 
+        setValue={setUserphone}
+        secureTextEntry={true}/>
       
-    
+      </View>
+      <View  style={{width:"90%"}}>
+      <SelectList
+       setSelected={setCategory}
+       data={categories1}
+       placeholder={"Select Category"}
+       defaultOption={{key:'1', value:'Male'}}
+       search={false}
+       boxStyles={styles.container}
+
+
+       
+       />
+      </View>
+      <View style={{width:"60%",paddingTop:20}}>
+      <TouchableOpacity >
+        <CustomButton  text="Save Changes" />
+        </TouchableOpacity>
+        </View>
+    </SafeAreaView>
   )
 }
+const styles= StyleSheet.create({
+    container:{
+      backgroundColor :'white',
+      width: '100%',
+
+      bordercolor:'#A5ABB3',
+      borderWidth:1,
+      borderRadius:15,
+
+      paddingHorizontal:10,
+      marginVertical:10,
+      
+
+
+
+
+    },
+    input : {},
+
+})
 
 export default EditProfil

@@ -23,6 +23,7 @@ const screenWidth = Dimensions.get('window').width;
               />
               
               
+              
                 
               <View
                 style={[
@@ -32,6 +33,7 @@ const screenWidth = Dimensions.get('window').width;
                   },
                 ]}
               />
+            
             </View>
     
             <TouchableOpacity
