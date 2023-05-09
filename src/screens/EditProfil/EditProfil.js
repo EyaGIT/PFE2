@@ -14,9 +14,11 @@ import Toggle from '../../../assets/images/Toggle.png'
 const EditProfil = () => {
   return (
     <SafeAreaView style={{ width:'100%',justifyContent: "flex-start", alignItems: "center",flex:1}} >
-     <View style={{alignItems:"center",justifyContent:"flex-start",width:300,height:150,flex:1,marginTop:-150,top:140,marginBottom:170}}> 
-    <PicherIm/>
-    </View>  
+     <View style={{alignItems:"center",justifyContent:"flex-start",width:"100%",height:150,flex:1,marginTop:-150,top:140,marginBottom:170}}> 
+    <PicherIm />
+    <View style={{width:"100%",borderWidth:1,borderColor:'white'}}></View>
+    </View>
+    
     <ScrollView style={{width:'100%',paddingLeft:30,paddingRight:30}}>
     
       <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>

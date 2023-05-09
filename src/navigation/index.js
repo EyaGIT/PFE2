@@ -18,6 +18,7 @@ import Member from '../screens/Member/Member';
 import Map from '../screens/Map/Map';import HomeNav from './HomeNav';
 import PicherIm from '../components/PickerIm/PicherIm';
 import EditProfil from '../screens/EditProfil/EditProfil';
+import Limits from '../screens/Limits/Limits';
 const Stack = createNativeStackNavigator();
 
 /**<Stack.Screen name="Order Bracelet" component={OrderBracelet}/>
@@ -33,10 +34,10 @@ const Navigation = () => {
   return (
     <NavigationContainer >
       <Stack.Navigator screenOptions={{headerShown:false}}>
-     
-      <Stack.Screen name="Sign in" component={Signin}/>
       
+      <Stack.Screen name="Sign in" component={Signin}/>
       <Stack.Screen name="Reset Password" component={ResetPassword}/>
+      
       <Stack.Screen name="Forget ¨Password" component={ForgetPassword}/>
       <Stack.Screen name="Sign up" component={CreateNewAccount}/>
       <Stack.Screen name='HomeNav' component={HomeNav} />
@@ -49,6 +50,7 @@ const Navigation = () => {
       <Stack.Screen name="New Member1" component={NewMember1}/>
       <Stack.Screen name="Verification code" component={VerificationCode}/>
       <Stack.Screen name="Essai" component={essai}/> 
+      <Stack.Screen name="Limits" component={Limits}/>
  
       </Stack.Navigator>
     </NavigationContainer>
