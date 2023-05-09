@@ -6,7 +6,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ListItem from '../../components/ListItem/ListItem'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-
+import Takos from '../../../assets/images/Tacos.png'
+const takos = require('../../../assets/images/Tacos.png');
 const TITLES = [
     'Record the dismissible tutorial 🎥',
     'Leave 👍🏼 to the video',
@@ -15,11 +16,15 @@ const TITLES = [
     'Leave a ⭐️ on the GitHub Repo',
   ];
   const data = [
-    { shopTitle:'shop', product:['pizza','sandwich']},
-    { shopTitle:'Chaneb tacos', product:['pizza','sandwich']}
+    { shopTitle:'shop', product:['pizza','sandwich'] ,image:takos},
+    { shopTitle:'Chaneb tacos', product:['pizza','sandwich'],image:takos},
+    { shopTitle:'shop', product:['pizza','sandwich'] ,image:takos},
+    { shopTitle:'Chaneb tacos', product:['pizza','sandwich'],image:takos},
+    { shopTitle:'shop', product:['pizza','sandwich'] ,image:takos},
+    { shopTitle:'Chaneb tacos', product:['pizza','sandwich'],image:takos}
 ];
   
-  const TASKS = data.map((item, index) => ({ title:item.shopTitle,product:item.product, index }));
+  const TASKS = data.map((item, index) => ({ title:item.shopTitle,product:item.product,image:item.image, index }));
   const BACKGROUND_COLOR = '#FAFBFF';
 
 const screenHeight = Dimensions.get('window').height;

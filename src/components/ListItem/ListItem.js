@@ -15,6 +15,7 @@ import Animated, {
 import { TaskInterface } from '../App';
 import { FontAwesome5 } from '@expo/vector-icons';
 import Trash from '../../../assets/images/icons/Trash.png';
+import ta from '../../../assets/images/Tacos.png';
 
 const LIST_ITEM_HEIGHT = 70;
 
@@ -86,12 +87,17 @@ const ListItem = ({
         onGestureEvent={panGesture}
       >
         <Animated.View  key={task.index} style={[styles.task, rStyle]}>
+         
+            <Image source={task.image} style={{width:50,height:50,marginRight:10}} />
+            <View>
           <Text style={styles.taskTitle}>{task.title}</Text>
           <Text>Products not allowed :</Text>
           <View style={{flexDirection:'row'}}>
           {task.product.map((product,index) => (
           <Text key={index} style={styles.taskProduct}>{product}, </Text>
+          
         ))}</View>
+        </View>
         </Animated.View>
       </PanGestureHandler>
     </Animated.View>
@@ -106,10 +112,12 @@ const styles = StyleSheet.create({
     task: {
       width: '90%',
       height: LIST_ITEM_HEIGHT,
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
       paddingLeft: 20,
       backgroundColor: '#EDEDED',
       borderRadius: 10,
+      flexDirection:'row',
+      alignItems:'center'
       // Shadow for iOS
       
       // Shadow for Android
