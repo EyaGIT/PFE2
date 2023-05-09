@@ -92,17 +92,17 @@ const TopUp = () => {
 
 </View>
 
-<View style={{paddingTop:10,alignItems:'center', justifyContent:'center',paddingLeft:30,paddingRight:30,marginBottom:30}}>
+<View style={{paddingTop:10,alignItems:'center', justifyContent:'center',paddingLeft:20,paddingRight:20,marginBottom:30}}>
 <View style={{width:'100%',paddingBottom:30}}>
     <Text style={{color:'#8E9399'}}>Select Card</Text>
 </View>
-<View style={{backgroundColor:"#EBEBEB",borderRadius:30,borderColor:'#EBEBEB',width:280,minHeight:150,alignItems:'center',justifyContent:'center',flexDirection:"column"}}>
-<SafeAreaView style={{flexDirection:'row'}}>
+<View style={{backgroundColor:"#EBEBEB",borderRadius:30,borderColor:'#EBEBEB',width:"100%",minHeight:150,alignItems:'center',justifyContent:'center',flexDirection:"column"}}>
+<View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'center',height:90}}>
       <View style={{width:'90%',height:100,flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
-                <View style={{width:'25%',alignItems:'center',paddingBottom:20}}>
+                <View style={{width:'25%',alignItems:'center'}}>
                         <Image  source={mastercard} />
                 </View>
-                <View style={{height:50,paddingLeft:5,flexDirection:'column',width:'70%',width:'50%'}}>
+                <View style={{paddingLeft:5,flexDirection:'column',width:'70%',width:'50%'}}>
                     <View style={{}}>
                 
                     <Text style={{color:'#000000',fontSize:13}}>Mastercard</Text>
@@ -110,7 +110,7 @@ const TopUp = () => {
                     
                   </View>
                 </View>
-                <View style={{width:80,height:50,alignItems:'center'}}>
+                <View style={{width:80,alignItems:'center'}}>
                 <RadioButton
                 value="Female"
                 status={ checked === 'Female' ? 'checked' : 'unchecked' }
@@ -119,14 +119,14 @@ const TopUp = () => {
                 />
                 </View>
 </View>
-</SafeAreaView >
-<View style={{width:"100%",borderColor:'#D9D9D9',alignSelf:'center',borderTopWidth:1.2}}></View>
-<SafeAreaView style={{flexDirection:'row'}}>
-      <View style={{width:'90%',flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
-                <View style={{width:'25%',alignItems:'center',paddingBottom:20}}>
+</View >
+<View style={{width:"101%",borderColor:'#F2F2F2',alignSelf:'center',borderTopWidth:1.4}}></View>
+<View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'center',height:90}}>
+      <View style={{width:'90%',height:100,flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
+                <View style={{width:'25%',alignItems:'center'}}>
                         <Image  source={mastercard} />
                 </View>
-                <View style={{height:50,paddingTop:0,paddingLeft:5,flexDirection:'column',width:'70%',width:'50%'}}>
+                <View style={{paddingLeft:5,flexDirection:'column',width:'70%',width:'50%'}}>
                     <View style={{}}>
                 
                     <Text style={{color:'#000000',fontSize:13}}>Mastercard</Text>
@@ -134,22 +134,23 @@ const TopUp = () => {
                     
                   </View>
                 </View>
-                <View style={{width:80,height:50,alignItems:'center'}}>
+                <View style={{width:80,alignItems:'center'}}>
                 <RadioButton
-                value="Male"
-                status={ checked === 'Male' ? 'checked' : 'unchecked' }
-                onPress={() => setChecked('Male')}
+                value="Female"
+                status={ checked === 'Female' ? 'checked' : 'unchecked' }
+                onPress={() => setChecked('Female')}
                 color='#E20522'
                 />
                 </View>
 </View>
-</SafeAreaView >
-<SafeAreaView style={{flexDirection:'row'}}>
-      <View style={{width:'70%',height:100,flexDirection:'row',alignItems:'center',justifyContent:'center',paddingRight:80}}>
-                <View style={{width:'25%',alignItems:'center',paddingBottom:20}}>
+</View >
+<View style={{width:"101%",borderColor:'#F2F2F2',alignSelf:'center',borderTopWidth:1.4}}></View>
+<View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'center',height:90}}>
+      <View style={{flex:1,width:'90%',flexDirection:'row',alignItems:'center',justifyContent:'center',paddingRight:80}}>
+                <View style={{width:'25%',alignItems:'center'}}>
                         <Image  source={addnewcard} />
                 </View>
-                <View style={{height:50,paddingLeft:10,flexDirection:'column',width:'100%'}}>
+                <View style={{height:50,paddingLeft:10,flexDirection:'column'}}>
                     <View >
                 
                     <Text style={{color:'#000000',fontSize:13}}>Mastercard</Text>
@@ -159,7 +160,7 @@ const TopUp = () => {
                 </View>
                
 </View>
-</SafeAreaView >
+</View >
 
 
 

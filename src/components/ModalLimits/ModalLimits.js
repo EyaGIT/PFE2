@@ -25,7 +25,7 @@ const ModalLimits = ({
 
   <SafeAreaView  style={styles.buttons}>
   <View style={{height:'90%',width:'90%'}}>
-    <Text>hhhhhh</Text>
+    <Text style={{alignSelf:'center',fontSize:24}}>hhhhhh</Text>
   </View>
 
   </SafeAreaView>
