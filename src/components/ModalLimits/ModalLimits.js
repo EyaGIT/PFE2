@@ -3,6 +3,7 @@ import React from 'react'
 import Modal from 'react-native-modal'
 import Camera from '../../../assets/images/Camera.png'
 import Gallery from '../../../assets/images/Gallery.png'
+import { MultipleSelectList } from 'react-native-dropdown-select-list'
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 const ModalLimits = ({
@@ -14,6 +15,17 @@ const ModalLimits = ({
 
 
 }) => {
+    const [selected, setSelected] = React.useState([]);
+  
+  const data = [
+      {key:'1', value:'Mobiles', disabled:true},
+      {key:'2', value:'Appliances'},
+      {key:'3', value:'Cameras'},
+      {key:'4', value:'Computers', disabled:true},
+      {key:'5', value:'Vegetables'},
+      {key:'6', value:'Diary Products'},
+      {key:'7', value:'Drinks'},
+  ]
   return (
    <Modal
 
@@ -25,7 +37,14 @@ const ModalLimits = ({
 
   <SafeAreaView  style={styles.buttons}>
   <View style={{height:'90%',width:'90%'}}>
-    <Text style={{alignSelf:'center',fontSize:24}}>hhhhhh</Text>
+    <Text style={{alignSelf:'center',fontSize:24}}>New Limit</Text>
+    <MultipleSelectList 
+        setSelected={(val) => setSelected(val)} 
+        data={data} 
+        save="value"
+       
+        label="Select Shop"
+    />
   </View>
 
   </SafeAreaView>
