@@ -93,7 +93,7 @@ const TopUp = () => {
 </View>
 
 <View style={{paddingTop:10,alignItems:'center', justifyContent:'center',paddingLeft:20,paddingRight:20,marginBottom:30}}>
-<View style={{width:'100%',paddingBottom:30}}>
+<View style={{width:'100%',paddingBottom:30,paddingTop:25}}>
     <Text style={{color:'#8E9399'}}>Select Card</Text>
 </View>
 <View style={{backgroundColor:"#EBEBEB",borderRadius:30,borderColor:'#EBEBEB',width:"100%",minHeight:150,alignItems:'center',justifyContent:'center',flexDirection:"column"}}>
@@ -136,9 +136,9 @@ const TopUp = () => {
                 </View>
                 <View style={{width:80,alignItems:'center'}}>
                 <RadioButton
-                value="Female"
-                status={ checked === 'Female' ? 'checked' : 'unchecked' }
-                onPress={() => setChecked('Female')}
+                value="Male"
+                status={ checked === 'Male' ? 'checked' : 'unchecked' }
+                onPress={() => setChecked('Male')}
                 color='#E20522'
                 />
                 </View>

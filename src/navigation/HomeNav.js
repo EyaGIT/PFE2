@@ -22,6 +22,7 @@ import SettingsOutline from "../../assets/images/icons/Settings_outline.png";
 import Static from "../../assets/images/icons/Static.png";
 import StaticOutline from "../../assets/images/icons/Static_outline.png";
 import Settings1 from '../screens/Settings1/Settings1'
+import Historique from '../screens/Historique/Historique';
 const Tab = createBottomTabNavigator();
 
 function HomeNav() {
@@ -57,7 +58,7 @@ function HomeNav() {
     })}>
       
       <Tab.Screen name="Map" component={Map} options={{tabBarButton: props => <CustomTabBarButton route='Map' {... props} />}}/>
-      <Tab.Screen name="History" component={Member} options={{tabBarButton: props => <CustomTabBarButton route='History' {... props} />}} />
+      <Tab.Screen name="History" component={Historique} options={{tabBarButton: props => <CustomTabBarButton route='History' {... props} />}} />
       <Tab.Screen name="Home" component={HomeScreen} options={{tabBarButton: props => <CustomTabBarButton route='Home' {... props} />}} />
       <Tab.Screen name="Static" component={SendMoney} options={{tabBarButton: props => <CustomTabBarButton route='Static' {... props} />}} />
       <Tab.Screen name="Settings" component={Settings1} options={{tabBarButton: props => <CustomTabBarButton route='Settings' {... props} />}} />
