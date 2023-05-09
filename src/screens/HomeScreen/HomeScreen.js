@@ -28,6 +28,9 @@ const HomeScreen = () => {
   const onviewallPressed = () => {
     navigation.navigate("Contacts");
      }
+  const onNotificationPressed = () => {
+      navigation.navigate("Notifications");
+       }
   
   useLayoutEffect(()=>{
     navigation.setOptions({
@@ -46,7 +49,7 @@ const HomeScreen = () => {
           <View style={styles.head}>
               <View style={styles.nav}>
                 <View style={{borderRadius:25,borderColor:"white",borderWidth:2,width:45,height:45,justifyContent:"center",alignItems:'center'}}><Image source={proAvatar} style={{width:'101%',height:'101%',borderRadius:25}} /></View>
-                <TouchableOpacity style={{width:45,height:45,justifyContent:'center',alignItems:'center', borderColor:"white",borderWidth:0,borderRadius:17}}>
+                <TouchableOpacity style={{width:45,height:45,justifyContent:'center',alignItems:'center', borderColor:"white",borderWidth:0,borderRadius:17}} onPress={onNotificationPressed}>
                   <Image source={not} style={{width:22,height:24}} />
                 </TouchableOpacity>
               </View>
