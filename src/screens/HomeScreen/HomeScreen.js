@@ -109,7 +109,7 @@ const HomeScreen = () => {
           
             <View style={{marginTop:70,width:'100%',marginBottom:10}}>
               <View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between'}}>
-                <Text style={{fontSize:30,fontWeight:'bold'}}>Members</Text>
+                <Text style={{fontSize:25,fontWeight:'bold'}}>Members</Text>
                 <View>
                   <TouchableOpacity onPress={onviewallPressed}>
                   <Text>View All</Text>
@@ -139,7 +139,7 @@ const HomeScreen = () => {
 
 
             <View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between'}}>
-                <Text style={{fontSize:30,fontWeight:'bold'}}>Transaction</Text>
+                <Text style={{fontSize:25,fontWeight:'bold'}}>Transaction</Text>
                 <View>
                   <TouchableOpacity>
                   <Text>Today</Text>
@@ -166,8 +166,8 @@ const HomeScreen = () => {
                 <Text>-$165.00</Text>
                 </TouchableOpacity>
               </View>
-              <View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between'}}>
-                <Text style={{fontSize:30,fontWeight:'bold'}}>Promo & Discount</Text>
+              <View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between',paddingTop:10}}>
+                <Text style={{fontSize:25,fontWeight:'bold'}}>Promo & Discount</Text>
                 <View>
                   <TouchableOpacity>
                   <Text>See More</Text>
