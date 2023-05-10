@@ -29,34 +29,39 @@ const Historique = () => {
     
 
         <View >
-        <View style={{width:'100%',paddingTop:10,flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                <View style={{width:'25%',alignItems:'center'}}>
+        <View style={{width:screenWidth,paddingTop:10,flexDirection:'row',justifyContent:'space-between',alignItems:'center',paddingLeft:10,paddingRight:10}}>
+                <View style={{flex:1,width:'25%',alignItems:'center'}}>
                      <Image source={tacos} style={{width:40,aspectRatio: 1, resizeMode: 'contain',marginRight:10}}/>   
                 </View>
-                <View style={{paddingLeft:5,flexDirection:'column',width:'70%'}}>
-                    <View style={{flexDirection:'row',alignItems:'center'}}>
-                    <View>
-                    <Text style={{fontSize:17,fontWeight:'500'}} >Chaneb Tacos</Text></View>
-                    <View><Text style={{color:'red', fontWeight:'700',marginLeft:75}}> $25</Text></View>
-                    
-                    
-                    
-                    
-                </View>
-                <View style={{width:'100%'}}>
-               <Text>
-                <Text style={{color:'#6D7580',paddingTop:5}}>Dec 09, 2023 |</Text>
-                <Text style={{color:'#6D7580',paddingTop:5}}> 14:50 PM</Text>
-                <View >
-                        <Image source={expense} style={{width:10,aspectRatio: 1, resizeMode: 'contain',marginLeft:20,paddingTop:5}}/>
+                
+                    <View style={{flex:2,flexDirection:'column',justifyContent:'flex-start'}}>
+                      <Text style={{fontSize:17,fontWeight:'500'}} >Chaneb Tacos</Text>
+                      <View style={{flexDirection:'row'}}>
+                        <Text style={{color:'#6D7580',paddingTop:5}}>Dec 09, 2023 |</Text>
+                        <Text style={{color:'#6D7580',paddingTop:5}}> 14:50 PM</Text>
+                      </View>
                     </View>
-                    <Text style={{}}>Expense</Text>
-                </Text>
-                </View>
-                </View>
 
-            </View>
-            </View>
+
+
+                    <View style={{justifyContent:'space-between',alignItems:'flex-start'}}>
+                      <Text style={{color:'red', fontWeight:'700',alignSelf:'flex-end'}}> $25</Text>
+                      <View style={{flexDirection:'row'}} >
+                          <Image source={expense} style={{width:20,aspectRatio: 1, resizeMode: 'contain'}}/>
+                          <Text style={{}}>Expense</Text>
+                      </View>
+                    </View>
+
+
+        </View>
+                    
+                    
+                    
+                    
+                </View>
+                
+                
+            
 
 
 
