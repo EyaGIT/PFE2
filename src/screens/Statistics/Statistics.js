@@ -3,15 +3,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useLayoutEffect ,useState, useRef} from 'react'
 import { useNavigation } from '@react-navigation/native'
 import LinearGradient from 'react-native-linear-gradient'
-import CustomButton from '../../components/CustomButton/CustomButton'
-import AvatarAnas from '../../../assets/images/AvatarAnas.png'
-import Custominput from '../../components/Custominput/Custominput';
-import DateTimePicker from '@react-native-community/datetimepicker'
-import cal from '../../../assets/images/Calendar.png'
-import Receipt from '../Receipt/Receipt'
-import ImageContact from '../../../assets/images/ImagContact.png'
-import { SelectList } from 'react-native-dropdown-select-list'
-
+import  PieChart  from "react-native-pie-chart";
+import Income from "../../../assets/images/icons/Income.png";
+import Expense from "../../../assets/images/icons/Expense.png";
 
 
 
@@ -24,24 +18,18 @@ import { SelectList } from 'react-native-dropdown-select-list'
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
-const SendMoneyAll = () => {
+const Statistics = () => {
   
-  const [category,setCategory]=useState('Anas Cherni')
-  const categories1 =[
-    {key:'1', value:'Anas Cherni'},
-    {key:'2', value:'Eya Belkadhi'},
-  ];
-      const onSendPressed = () => {
-        navigation.navigate("Receipt");
-         }
-    const [Montant, setMontant] = useState('');
+ 
     const navigation=useNavigation();
     useLayoutEffect(()=>{
       navigation.setOptions({
         headerShown:false,
       })
     }, [])
-
+    const widthAndHeight = 250
+    const series = [123, 123, 207]
+    const sliceColor = ['#fbd203', '#FA797D', '#6194FE']
   return (
     <LinearGradient start={{x: 1, y: 0}} end={{x: 0, y: 1}} locations={[0,0.6]} colors={['#E20522', '#000000']} style={styles.linearGradient}>
           
@@ -51,7 +39,7 @@ const SendMoneyAll = () => {
           <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
           
          <View>
-            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}>SendMoney</Text>
+            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}>Statistics</Text>
             
         </View>      
      <View>
@@ -61,50 +49,50 @@ const SendMoneyAll = () => {
 
           
       <View style={styles.body}>
-      <View style={{width:'100%',paddingTop:20,flexDirection:'row'}}>
-                <View style={{width:'25%',alignItems:'center'}}>
-                        <Image  source={ImageContact} />
-                </View>
-                <View style={{height:90,paddingTop:10,paddingLeft:5,flexDirection:'column',width:'70%'}}>
-                <View >
-    
-    <SelectList
-    
-    setSelected={(val) => setCategory(val)} 
-    data={categories1}
-    placeholder={"Select Category"}
-    
-    search={false}
+      <View style={styles.container1}>
+          <View>
+            <Text style={styles.title}>Statistics Graph</Text>
+
+          </View>
 
 
-    
-    />
-    {console.log(category)}
- </View>
+          <View style={{height:300}}>
+            <PieChart
+                widthAndHeight={widthAndHeight}
+                series={series}
+                sliceColor={sliceColor}
+                coverRadius={0.45}
+                coverFill={'#FFF'}
+            />
+          </View>
+
+          <View style={{flexDirection:'row',width:'70%',alignSelf:'flex-start',justifyContent:'space-between',marginLeft:10}}>
+            <View style={{flexDirection:'row',alignItems:'center'}}><View style={{width:18,height:18,backgroundColor:'#FA797D',borderRadius:18/2}}></View><Text>Food</Text></View>
+            <View style={{flexDirection:'row',alignItems:'center'}}><View style={{width:18,height:18,backgroundColor:'#fbd203',borderRadius:18/2}}></View><Text>Drink</Text></View>
+            <View style={{flexDirection:'row',alignItems:'center'}}><View style={{width:18,height:18,backgroundColor:'#6194FE',borderRadius:18/2}}></View><Text>Shop</Text></View>
+          </View>
+        <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',marginTop:20}}>
+            <View style={{flexDirection:'row',width:170,height:73,justifyContent:'center',alignItems:'center'}}>
+                <Image source={Income} />
+                <View>
+                    <Text>200 TND</Text>
+                    <Text>Income</Text>
                 </View>
             </View>
+            <View style={{flexDirection:'row',width:170,height:73,justifyContent:'center',alignItems:'center'}}>
+            <Image source={Expense} />
+            <View>
+                    <Text>200 TND</Text>
+                    <Text>Expense</Text>
+                </View>
+            </View>
+        </View>
+
+        </View>
+      
 
           
-        <View style={{paddingTop:10,alignItems:'center', justifyContent:'center',paddingLeft:30,paddingRight:30,marginBottom:50}}>
-
-        <View style={{borderRadius:30,borderColor:'#EBEBEB',width:267,height:150,alignItems:"center",justifyContent:"center",flexDirection:"row"}}>
-<TextInput 
-  style={{fontSize:35,height:"100%",paddingLeft:40}}
-  placeholder="20"
-  value={Montant}
-  keyboardType="numeric"
-  onChangeText={setMontant}
-  
-  
-  />
-  <Text style={{fontSize:30,fontWeight:'500',color:"#000000",paddingLeft:30}}>TND</Text>
-  </View>
-  <View style={{width:"70%",alignItems:'center',justifyContent:'center',marginTop:30}}>
-        <CustomButton  text="Send " onPress={onSendPressed} />
-        </View>
-
-  
-        </View>
+        
 
 
         
@@ -136,7 +124,14 @@ const styles = StyleSheet.create({
   SafeAreaView:{
     flex:1
   },
- 
+  container1: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 24,
+    margin: 10,
+  },
  
 
 body:{
@@ -204,4 +199,6 @@ body:{
   },
 });
 
-export default SendMoneyAll
+export default Statistics
+
+
