@@ -9,9 +9,8 @@ import Custominput from '../../components/Custominput/Custominput';
 import DateTimePicker from '@react-native-community/datetimepicker'
 import cal from '../../../assets/images/Calendar.png'
 import Receipt from '../Receipt/Receipt'
-
-
-
+import ImageContact from '../../../assets/images/ImagContact.png'
+import { SelectList } from 'react-native-dropdown-select-list'
 
 
 
@@ -25,24 +24,13 @@ import Receipt from '../Receipt/Receipt'
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
-const SendMoney = () => {
+const SendMoneyAll = () => {
   
-    const [date, setDate] = useState(new Date());
-    const [showDatePicker, setShowDatePicker] = useState(false);
-  
-    const onDateChange = (event, selectedDate) => {
-        setShowDatePicker(false);
-        if (selectedDate) {
-          setDate(selectedDate);
-        }
-      };
-    
-      const showDate = () =>{
-        console.log("test");
-        setShowDatePicker(true);
-        console.log("test");
-      }
-
+  const [category,setCategory]=useState('Anas Cherni')
+  const categories1 =[
+    {key:'1', value:'Anas Cherni'},
+    {key:'2', value:'Eya Belkadhi'},
+  ];
       const onSendPressed = () => {
         navigation.navigate("Receipt");
          }
@@ -73,7 +61,27 @@ const SendMoney = () => {
 
           
       <View style={styles.body}>
-       
+      <View style={{width:'100%',paddingTop:20,flexDirection:'row'}}>
+                <View style={{width:'25%',alignItems:'center'}}>
+                        <Image  source={ImageContact} />
+                </View>
+                <View style={{height:90,paddingTop:10,paddingLeft:5,flexDirection:'column',width:'70%'}}>
+                <View >
+    
+    <SelectList
+    setSelected={setCategory}
+    data={categories1}
+    placeholder={"Select Category"}
+    defaultOption={{key:'1', value:'Anas Cherni'}}
+    search={false}
+
+
+    
+    />
+ </View>
+                </View>
+            </View>
+
           
         <View style={{paddingTop:10,alignItems:'center', justifyContent:'center',paddingLeft:30,paddingRight:30,marginBottom:50}}>
 
@@ -194,4 +202,4 @@ body:{
   },
 });
 
-export default SendMoney
+export default SendMoneyAll

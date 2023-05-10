@@ -90,6 +90,7 @@ const Member = () => {
                 isVisible={Visible}
                 onClose={()=> setVisible(false)}
                 />
+              
             <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}} onPress={()=> navigation.navigate('Limits')}>
                 <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'rgba(209,208,208,0.5)',width:70,height:70,borderRadius:50}}>
                     <Image source={Limits} style={{width:45,height:45}}></Image>

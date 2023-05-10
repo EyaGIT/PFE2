@@ -1,9 +1,10 @@
-import { View, Text,Image,Pressable,SafeAreaView,StyleSheet,Dimensions} from 'react-native'
+import { View, Text,Image,Pressable,SafeAreaView,StyleSheet,Dimensions, TouchableOpacity} from 'react-native'
 import React from 'react'
 import Modal from 'react-native-modal'
 import Camera from '../../../assets/images/Camera.png'
 import Gallery from '../../../assets/images/Gallery.png'
 import { MultipleSelectList } from 'react-native-dropdown-select-list'
+import CustomButton from '../CustomButton/CustomButton'
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 const PopUp = ({
@@ -26,13 +27,23 @@ const PopUp = ({
     >
 
   <View  style={styles.buttons}>
-  <View style={{height:'90%',width:'90%'}}>
-    <Text style={{alignSelf:'center',fontSize:24}}>New Limit</Text>
+  <View style={{height:'90%',width:'90%',marginTop:10}}>
+    <Text style={{alignSelf:'center',fontSize:24}}>Would tou like to block </Text>
+    <Text style={{alignSelf:'center',fontSize:24}}>Anas Bracelet ?</Text>
     
+  <View style={{flexDirection:'row',justifyContent:'space-evenly',marginTop:10}}>
+    
+  <View style={{width:"30%"}}>
+        <CustomButton  text="Yes" />
+  </View>
+
+  <View style={{width:"30%"}}>
+        <CustomButton  text="No " />
+  </View>
   </View>
 
   </View>
-
+</View>
 
 
    </Modal>
@@ -71,6 +82,7 @@ button:{
  flex:1,
  justifyContent:'center',
  alignItems:'center',
+
 
 },
 buttonText:{

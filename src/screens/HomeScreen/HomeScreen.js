@@ -1,8 +1,10 @@
 import { StyleSheet,View, Text,Image,TouchableOpacity,ScrollView,Dimensions,StatusBar } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import React, { useLayoutEffect } from 'react'
+import React, { useLayoutEffect,useState } from 'react'
 import {useNavigation } from '@react-navigation/native'
 import LinearGradient from 'react-native-linear-gradient'
+import PopUp from '../../components/PopUp/PopUp';
+import SendMoneyAll from '../SendMoneyAll/SendMoneyAll';
 
 import tran from '../../../assets/images/tran.png'
 import bra from '../../../assets/images/bra.png'
@@ -20,7 +22,7 @@ const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 const HomeScreen = () => {
-
+  const [Visible,setVisible]=useState(false);
   const navigation = useNavigation();
 
  
@@ -28,6 +30,9 @@ const HomeScreen = () => {
   const onviewallPressed = () => {
     navigation.navigate("Contacts");
      }
+     const onTransressed = () => {
+      navigation.navigate("Send Money All");
+       }
   const onNotificationPressed = () => {
       navigation.navigate("Notifications");
        }
@@ -75,7 +80,7 @@ const HomeScreen = () => {
                     
                     </View>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity  onPress={onTransressed}>
                     <View style={styles.flex}>
                     
                     <Image source={tran} style={{width:30,height:30}} />
@@ -91,6 +96,11 @@ const HomeScreen = () => {
                     
                     </View>
                     </TouchableOpacity>
+                    <PopUp
+                isVisible={Visible}
+                onClose={()=> setVisible(false)}
+                />
+                    
                     <TouchableOpacity>
                     <View style={styles.flex}>
                     

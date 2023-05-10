@@ -104,6 +104,8 @@ const Limits = () => {
                 onClose={() => setVisible(false)}
                 
                 />
+               
+              
             </View>
             
             {tasks.map((task) => (
