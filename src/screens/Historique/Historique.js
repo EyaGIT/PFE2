@@ -4,6 +4,8 @@ import React, { useLayoutEffect,useState} from 'react'
 import { useNavigation } from '@react-navigation/native'
 import LinearGradient from 'react-native-linear-gradient'
 import tacos from '../../../assets/images/Tacos.png'
+import income from '../../../assets/images/income.png'
+import expense from '../../../assets/images/expense.png'
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 const Historique = () => {
@@ -35,15 +37,20 @@ const Historique = () => {
                     <View style={{flexDirection:'row',alignItems:'center'}}>
                     <View>
                     <Text style={{fontSize:17,fontWeight:'500'}} >Chaneb Tacos</Text></View>
-                    <View><Text style={{color:'red',paddingLeft:40}}> $450.00</Text></View>
+                    <View><Text style={{color:'red', fontWeight:'700',marginLeft:75}}> $25</Text></View>
+                    
                     
                     
                     
                 </View>
-                <View style={{paddingTop:5}}>
+                <View style={{width:'100%'}}>
                <Text>
                 <Text style={{color:'#6D7580',paddingTop:5}}>Dec 09, 2023 |</Text>
                 <Text style={{color:'#6D7580',paddingTop:5}}> 14:50 PM</Text>
+                <View >
+                        <Image source={expense} style={{width:10,aspectRatio: 1, resizeMode: 'contain',marginLeft:20,paddingTop:5}}/>
+                    </View>
+                    <Text style={{}}>Expense</Text>
                 </Text>
                 </View>
                 </View>
