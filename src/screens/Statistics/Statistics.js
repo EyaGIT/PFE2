@@ -67,20 +67,20 @@ const Statistics = () => {
           </View>
 
           <View style={{flexDirection:'row',width:'70%',alignSelf:'flex-start',justifyContent:'space-between',marginLeft:10}}>
-            <View style={{flexDirection:'row',alignItems:'center'}}><View style={{width:18,height:18,backgroundColor:'#FA797D',borderRadius:18/2}}></View><Text>Food</Text></View>
-            <View style={{flexDirection:'row',alignItems:'center'}}><View style={{width:18,height:18,backgroundColor:'#fbd203',borderRadius:18/2}}></View><Text>Drink</Text></View>
-            <View style={{flexDirection:'row',alignItems:'center'}}><View style={{width:18,height:18,backgroundColor:'#6194FE',borderRadius:18/2}}></View><Text>Shop</Text></View>
+            <View style={{flexDirection:'row',alignItems:'center'}}><View style={{width:18,height:18,backgroundColor:'#FA797D',borderRadius:18/2,marginRight:10}}></View><Text>Food</Text></View>
+            <View style={{flexDirection:'row',alignItems:'center'}}><View style={{width:18,height:18,backgroundColor:'#fbd203',borderRadius:18/2,marginRight:10}}></View><Text>Drink</Text></View>
+            <View style={{flexDirection:'row',alignItems:'center'}}><View style={{width:18,height:18,backgroundColor:'#6194FE',borderRadius:18/2,marginRight:10}}></View><Text>Shop</Text></View>
           </View>
-        <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',marginTop:20}}>
-            <View style={{flexDirection:'row',width:170,height:73,justifyContent:'center',alignItems:'center'}}>
-                <Image source={Income} />
+        <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',marginTop:20,width:'95%'}}>
+            <View style={{flexDirection:'row',width:170,height:73,justifyContent:'flex-start',alignItems:'center',backgroundColor:'white',borderRadius:15,paddingLeft:10}}>
+                <Image source={Income} style={{marginRight:10}} />
                 <View>
                     <Text>200 TND</Text>
                     <Text>Income</Text>
                 </View>
             </View>
-            <View style={{flexDirection:'row',width:170,height:73,justifyContent:'center',alignItems:'center'}}>
-            <Image source={Expense} />
+            <View style={{flexDirection:'row',width:170,height:73,justifyContent:'flex-start',alignItems:'center',backgroundColor:'white',borderRadius:15,paddingLeft:10}}>
+            <Image source={Expense} style={{marginRight:10}} />
             <View>
                     <Text>200 TND</Text>
                     <Text>Expense</Text>
