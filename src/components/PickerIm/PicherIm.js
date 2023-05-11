@@ -41,16 +41,15 @@ const PicherIm = () => {
     const uri = pickerResponse?.assets && pickerResponse.assets[0].uri;
   return (
     <SafeAreaView  >
-    <ImagePickerAvatar  style={{backgroundColor:"black",margin:0,padding:0,top:-20,height:100}} uri={uri} onPress={() => setVisible(true)}/>
+    <ImagePickerAvatar  style={{backgroundColor:"black",margin:0,padding:0,top:-20,height:90}} uri={uri} onPress={() => setVisible(true)}/>
     <ImagePickerModal
-    style={{backgroundColor:"black",height:100,top:1000,position:'absolute'}}
+    style={{backgroundColor:"black",height:90,top:1000,position:'absolute'}}
     isVisible={Visible}
     onClose={() => setVisible(false)}
     onImageLibraryPress={onImageLibraryPress}
     OnCameraPress={onCameraPress}
     />
-    <View style={{width:'100%',height:80,alignItems:'center',justifyContent:'center'}}>
-      <Text style={{fontSize:19,color:'#000000',fontWeight:'700'}}>User name</Text></View>
+    
     </SafeAreaView>
   )
 }

@@ -1,5 +1,5 @@
 import { View, Text ,ScrollView ,SafeAreaView,Image, TouchableOpacity} from 'react-native'
-import React from 'react'
+import React,{useState} from 'react'
 import PicherIm from '../../components/PickerIm/PicherIm'
 import User from '../../../assets/images/User.png'
 import Vector from '../../../assets/images/Vector.png'
@@ -10,11 +10,29 @@ import eye from '../../../assets/images/Eye.png'
 import Toggle from '../../../assets/images/Toggle.png'
 import Protect from '../../../assets/images/Protect.png'
 import { useNavigation } from '@react-navigation/native';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const Settings = () => {
   const navigation = useNavigation();
+  const [UserName, setUserName] = useState(null);
+  AsyncStorage.getItem('user')
+  .then(userString => {
+    // Check if user exists in storage
+    if (userString) {
+      // User found, parse user string to JavaScript object
+      const user = JSON.parse(userString);
+      setUserName(user.lastName+" "+user.firstName);
+      console.log(UserName);
+      // Do something with the user object
+    } else {
+      // User not found in storage
+      console.log('User not found in storage.');
+    }
+  })
+  .catch(error => {
+    console.error(error);
+  });
 
 
   const onArrowPressed = () => {
@@ -24,6 +42,8 @@ const Settings = () => {
     <SafeAreaView style={{ width:'100%',justifyContent: "flex-start", alignItems: "center",flex:1}} >
      <View style={{alignItems:"center",justifyContent:"flex-start",width:"100%",flex:1,marginTop:-150,top:140,marginBottom:140}}> 
     <PicherIm  />
+    <View style={{width:'100%',alignItems:'center',justifyContent:'center'}}>
+      <Text style={{fontSize:19,color:'#000000',fontWeight:'700'}}>{UserName}</Text></View>
     
     
     </View>

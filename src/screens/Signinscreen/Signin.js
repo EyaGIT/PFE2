@@ -3,17 +3,103 @@ import React,{useState} from 'react'
 import Custominput from '../../components/Custominput/Custominput'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import { useNavigation } from '@react-navigation/native';
-const Signin = () => {
-  const [username, setUsername] = useState('');
+import {user_login,AllInfoUser} from "../../api/user_api";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+const Signin = ({ navigation, onLoginSuccess }) => {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [seePassword, setSeePassword] = useState(true);
+  const [checkValidEmail, setCheckValidEmail] = useState(false);
 
-  const navigation = useNavigation();
+  const handleCheckEmail = text => {
+    let re = /\S+@\S+\.\S+/;
+    let regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
+    setEmail(text);
+    if (re.test(text) || regex.test(text)) {
+      setCheckValidEmail(false);
+    } else {
+      setCheckValidEmail(true);
+    }
+  };
+
+  const checkPasswordValidity = value => {
+    const isNonWhiteSpace = /^\S*$/;
+    if (!isNonWhiteSpace.test(value)) {
+      return 'Password must not contain Whitespaces.';
+    }
+
+   /* const isContainsUppercase = /^(?=.*[A-Z]).*$/;
+    if (!isContainsUppercase.test(value)) {
+      return 'Password must have at least one Uppercase Character.';
+    }*/
+
+    const isContainsLowercase = /^(?=.*[a-z]).*$/;
+    if (!isContainsLowercase.test(value)) {
+      return 'Password must have at least one Lowercase Character.';
+    }
+
+    const isContainsNumber = /^(?=.*[0-9]).*$/;
+    if (!isContainsNumber.test(value)) {
+      return 'Password must contain at least one Digit.';
+    }
+
+    const isValidLength = /^.{8,16}$/;
+    if (!isValidLength.test(value)) {
+      return 'Password must be 8-16 Characters Long.';
+    }
+
+    // const isContainsSymbol =
+    //   /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
+    // if (!isContainsSymbol.test(value)) {
+    //   return 'Password must contain at least one Special Symbol.';
+    // }
+
+    return null;
+  };
+
+  const handleLogin = () => {
+    const checkPassowrd = checkPasswordValidity(password);
+    console.log(email,password)
+    if (!checkPassowrd) {
+      console.log({
+        email: email.toLocaleLowerCase(),
+        password: password,
+      });
+      user_login({
+        email: email.toLocaleLowerCase(),
+        password: password,
+      })
+        .then(result => {
+          if (result.status == 200) {
+            AsyncStorage.setItem('AccessToken', result.data.token);
+            AllInfoUser(result.data.token).then(result =>{
+              AsyncStorage.setItem('user', JSON.stringify(result.data));
+              onLoginSuccess();
+              navigation.replace('HomeNav');
+            })
+            
+            
+          }
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    } else {
+      alert(checkPassowrd);
+    }
+  };
+
+
+ 
 
  
 
   const onSignInPressed = () => {
-    navigation.navigate("HomeNav");
-     }
+      console.warn("Sign in ");
+     
+
+  }
   const onforgetpasswordPressed = () => {
     
     navigation.navigate("Forget ¨Password");
@@ -39,10 +125,15 @@ const Signin = () => {
           <Text> Email or Phone Number </Text>
           <Text style={{color:'red'}}> *</Text>
           </Text>
+          {checkValidEmail ? (
+        <Text style={Styles.textFailed}>Wrong format email</Text>
+      ) : (
+        <Text style={Styles.textFailed}> </Text>
+      )}
           <Custominput 
-          placeholder="Username" 
-          value={username} 
-          setValue={setUsername}
+          placeholder="Email" 
+          value={email} 
+          setValue={setEmail}
           />
           </View>
         
@@ -57,9 +148,10 @@ const Signin = () => {
            setValue={setPassword}
            secureTextEntry={true}
            /></View>
+
       </View>
         <View style={{width:"80%"}}>
-        <CustomButton  text="Sign in " onPress={onSignInPressed}/>
+        <CustomButton  text="Sign in " onPress={handleLogin}/>
         </View>
         
         <Text style={{paddingTop:30}}>

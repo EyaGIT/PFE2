@@ -16,6 +16,7 @@ import card2 from '../../../assets/images/card2.png'
 import avatar from '../../../assets/images/avatar.png'
 import proAvatar from '../../../assets/images/proAvatar.png'
 import wallet from '../../../assets/images/Wallet.png'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const screenHeight = Dimensions.get('window').height;
@@ -23,8 +24,25 @@ const screenWidth = Dimensions.get('window').width;
 
 const HomeScreen = () => {
   const [Visible,setVisible]=useState(false);
+  const [Amount,setAmount]=useState(0);
   const navigation = useNavigation();
-
+  AsyncStorage.getItem('user')
+  .then(userString => {
+    // Check if user exists in storage
+    if (userString) {
+      // User found, parse user string to JavaScript object
+      const user = JSON.parse(userString);
+      setAmount(user.bracelets[0].amount)
+      
+      // Do something with the user object
+    } else {
+      // User not found in storage
+      console.log('User not found in storage.');
+    }
+  })
+  .catch(error => {
+    console.error(error);
+  });
  
 
   const onviewallPressed = () => {
@@ -64,7 +82,7 @@ const HomeScreen = () => {
               </View>
               <View style={styles.money}>
                 <Text style={{textAlign: 'center',fontSize: 13,color:'#AD9CDB'}}>Available Balance</Text>
-                <Text style={{textAlign: 'center',fontWeight: 'bold',fontSize: 40,color:'#FFFFFF'}}>$11.547.54</Text>
+                <Text style={{textAlign: 'center',fontWeight: 'bold',fontSize: 40,color:'#FFFFFF'}}>{Amount} TND</Text>
               </View>
           </View>
           

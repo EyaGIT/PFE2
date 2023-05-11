@@ -29,7 +29,7 @@ const Styles= StyleSheet.create({
     },
   
   avatar:{
-  flex:1,
+  
   alignItems:'center',
   marginTop:'20%',
   

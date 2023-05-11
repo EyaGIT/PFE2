@@ -1,5 +1,7 @@
 import { View, Text } from 'react-native';
-import React from 'react';
+import React,{useState,useEffect} from 'react';
+import {AllInfoUser} from "../api/user_api";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CreateNewAccount from '../screens/Createnewaccountscreen'
@@ -27,25 +29,48 @@ import Historique from '../screens/Historique/Historique';
 import SendMoneyAll from '../screens/SendMoneyAll/SendMoneyAll';
 const Stack = createNativeStackNavigator();
 
-/**<Stack.Screen name="Order Bracelet" component={OrderBracelet}/>
-      <Stack.Screen name="Map" component={Map}/>
-      <Stack.Screen name="Home Screen" component={HomeScreen}/>
-      <Stack.Screen name="Member" component={Member}/>
-      <Stack.Screen name="Receipt" component={Receipt}/>
-      <Stack.Screen name="Send Money" component={SendMoney}/>
-      <Stack.Screen name="New Member1" component={NewMember1}/>
-      <Stack.Screen name="Verification code" component={VerificationCode}/>
-      <Stack.Screen name="Essai" component={essai}/> */
+
+
 const Navigation = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+  }
+
+  useEffect(() => {
+    // Check if user is already logged in
+    if(isLoggedIn===false){
+    AsyncStorage.getItem('AccessToken')
+      .then(token => {
+        if (token) {
+          console.log(token)
+          AllInfoUser(token).then(result =>{
+            if(result.error){
+              setIsLoggedIn(false);
+            }
+            
+            AsyncStorage.setItem('user', JSON.stringify(result.data));
+            setIsLoggedIn(true);
+            
+            
+          }).catch(error=>{
+            
+            setIsLoggedIn(false);
+            console.log(error);});
+        } else {
+          setIsLoggedIn(false);
+        }
+      })
+      .catch(error => {
+        console.error(error);
+        setIsLoggedIn(false);
+      });
+  }}, []);
   return (
     <NavigationContainer >
       <Stack.Navigator screenOptions={{headerShown:false}}>
-      
-      <Stack.Screen name="Sign in" component={Signin}/>
-      <Stack.Screen name="Reset Password" component={ResetPassword}/>
-      
-      <Stack.Screen name="Forget ¨Password" component={ForgetPassword}/>
-      <Stack.Screen name="Sign up" component={CreateNewAccount}/>
+      {isLoggedIn ? (
+      <>
       <Stack.Screen name='HomeNav' component={HomeNav} />
       <Stack.Screen name="Order Bracelet" component={OrderBracelet}/>
       <Stack.Screen name="Map" component={Map}/>
@@ -63,7 +88,19 @@ const Navigation = () => {
       <Stack.Screen name="Edit Profil" component={EditProfil}/>
       <Stack.Screen name="Essai" component={essai}/> 
       <Stack.Screen name="Limits" component={Limits}/>
- 
+      </>
+      ) : (
+        <>
+        <Stack.Screen name="Sign in">
+            {(props) => <Signin {...props} onLoginSuccess={handleLoginSuccess} />}
+          </Stack.Screen>
+      
+      <Stack.Screen name="Reset Password" component={ResetPassword}/>
+      
+      <Stack.Screen name="Forget ¨Password" component={ForgetPassword}/>
+      <Stack.Screen name="Sign up" component={CreateNewAccount}/>
+      </>
+      )}
       </Stack.Navigator>
     </NavigationContainer>
   )
