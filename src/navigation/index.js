@@ -47,11 +47,11 @@ const Navigation = () => {
           AllInfoUser(token).then(result =>{
             if(result.error){
               setIsLoggedIn(false);
-            }
+            }else{
             
             AsyncStorage.setItem('user', JSON.stringify(result.data));
             setIsLoggedIn(true);
-            
+            }
             
           }).catch(error=>{
             

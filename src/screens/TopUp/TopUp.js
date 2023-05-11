@@ -7,6 +7,8 @@ import { RadioButton } from 'react-native-paper';
 import mastercard from '../../../assets/images/mastercard.png'
 import addnewcard from '../../../assets/images/addnewcard.png'
 import CustomButton from '../../components/CustomButton/CustomButton';
+import {addAmount,AllInfoUser} from "../../api/user_api";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
@@ -17,7 +19,46 @@ const TopUp = () => {
     
   const navigation = useNavigation();
 
- 
+  const addamount = () =>{
+    AsyncStorage.getItem('user')
+    .then(userString => {
+      // Check if user exists in storage
+      if (userString) {
+        // User found, parse user string to JavaScript object
+        const user = JSON.parse(userString);
+        token =AsyncStorage.getItem('AccessToken').then(token=>{
+          addAmount({
+            id: user.bracelets[0]._id,
+            amount: parseInt(Montant,10),
+          },token).then(result => {
+            
+              if (result.status == 200) {
+                
+                AllInfoUser(token).then(result =>{
+                  if (result.status == 200) {
+                  AsyncStorage.setItem('user', JSON.stringify(result.data));
+                  
+                  navigation.replace('HomeNav');
+                }else if (result.status== 401){
+                    navigation.replace('Sign in');
+                    }
+               
+                })}else if (result.status== 401){
+                    console.log('Not your bracelet')
+                    }
+                  })
+        });
+        
+        
+              
+        
+        // Do something with the user object
+      } else {
+        // User not found in storage
+        console.log('User not found in storage.');
+      }
+    })}
+    
 
   const onuserPressed = () => {
     navigation.navigate("Member");
@@ -166,7 +207,7 @@ const TopUp = () => {
 
   </View>
   <View style={{width:"80%",paddingTop:20}}>
-        <CustomButton  text="Top Up " />
+        <CustomButton  text="Top Up " onPress={addamount} />
         </View>
 </View>
 

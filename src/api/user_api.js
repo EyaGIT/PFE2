@@ -46,3 +46,28 @@ export const AllInfoUser = async (token) => {
     }
   }
 };
+export const addAmount = async (data,token) => {
+  try {
+   
+    const result = await ApiManager('/addAmount', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+         'Authorization': `Bearer ${token}` 
+      },
+      data:data
+      
+    });
+    
+    
+    return result;
+  } catch (error) {
+    console.log(error)
+    if (error.response && error.response.data) {
+      return error.response.data;
+    } else {
+      // Handle the error when response or response.data is undefined
+      return { error: 'An error occurred.' };
+    }
+  }
+};

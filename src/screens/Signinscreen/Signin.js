@@ -60,7 +60,7 @@ const Signin = ({ navigation, onLoginSuccess }) => {
 
   const handleLogin = () => {
     const checkPassowrd = checkPasswordValidity(password);
-    console.log(email,password)
+    
     if (!checkPassowrd) {
       console.log({
         email: email.toLocaleLowerCase(),
