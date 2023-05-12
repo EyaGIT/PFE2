@@ -3,13 +3,27 @@ import React,{useEffect, useRef} from 'react'
 
 
 const LoadingPage = () => {
-  const progress = useRef(new Animated.Value(0)).current
+  const progress = useRef(new Animated.Value(1)).current
   const scale = useRef(new Animated.Value(1)).current
 
     useEffect(()=>{
 
-      Animated.timing(progress,{toValue:1,useNativeDriver:true}).start();
-      Animated.timing(scale,{toValue:1,useNativeDriver:true,duration:3}).start();
+
+Animated.loop(
+  Animated.parallel(
+    [
+      Animated.sequence([
+        Animated.timing(progress,{toValue:0.5,useNativeDriver:true,duration:1000}),
+        Animated.timing(progress,{toValue:1,useNativeDriver:true,duration:1000}),
+      ]),
+      Animated.sequence([
+        Animated.timing(scale,{toValue:2,useNativeDriver:true}),
+        Animated.timing(scale,{toValue:1,useNativeDriver:true}),
+      ]),
+    ]),
+    
+  ).start();
+      
     })
   return (
     <View style={styles.container}>
@@ -31,7 +45,7 @@ const LoadingPage = () => {
         ],
         },]}>
 
-         <Text style={{color:'white',fontSize:80,fontWeight:'bold',position:'absolute'}}>C</Text>
+         <Text style={{color:'white',fontSize:80,fontWeight:'bold',position:'absolute',paddingBottom:5}}>C</Text>
           </Animated.View>
 
         <View style={{alignItems:'center',justifyContent:'center'}} >
@@ -51,11 +65,13 @@ const styles = StyleSheet.create({
 
  },
  square:{
- width:90,
+ width:80,
  height:90,
  backgroundColor:'#E20522',
 alignItems:'center',
-justifyContent : 'center'
+justifyContent : 'center',
+marginBottom:20
+
 
 
  }
