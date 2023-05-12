@@ -31,11 +31,11 @@ const LoadingPage = () => {
         ],
         },]}>
 
-         <Text style={{color:'white',fontSize:80,fontWeight:'bold'}}>C</Text>
+         <Text style={{color:'white',fontSize:80,fontWeight:'bold',position:'absolute'}}>C</Text>
           </Animated.View>
 
-        <View style={{flex:1,alignItems:'center',justifyContent:'center'}} >
-          <Text style={{color:'black',fontSize:60,fontWeight:'bold',marginRight:60,marginBottom:17}}>ashless</Text>
+        <View style={{alignItems:'center',justifyContent:'center'}} >
+          <Text style={{color:'black',fontSize:60,fontWeight:'bold',marginBottom:17}}>ashless</Text>
         </View>
     </View>
   )
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
  backgroundColor:'#E20522',
 alignItems:'center',
 justifyContent : 'center'
+
 
  }
 
