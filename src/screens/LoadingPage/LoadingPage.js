@@ -10,17 +10,20 @@ const LoadingPage = () => {
 
 
 Animated.loop(
+  Animated.sequence([
   Animated.parallel(
     [
       Animated.sequence([
-        Animated.timing(progress,{toValue:0.5,useNativeDriver:true,duration:1000}),
         Animated.timing(progress,{toValue:1,useNativeDriver:true,duration:1000}),
+        Animated.timing(progress,{toValue:2,useNativeDriver:true,duration:1000}),
       ]),
       Animated.sequence([
         Animated.timing(scale,{toValue:2,useNativeDriver:true}),
         Animated.timing(scale,{toValue:1,useNativeDriver:true}),
       ]),
     ]),
+    Animated.delay(1000), 
+  ]),
     
   ).start();
       
@@ -33,12 +36,12 @@ Animated.loop(
         ,
           
           opacity: progress,  
-        transform:[{scale},
+        transform:[
           {rotate: progress.interpolate(
         {
 
-          inputRange:[0.5,1],
-          outputRange :[`${Math.PI}rad`, `${2*Math.PI}rad`],
+          inputRange:[0,1],
+          outputRange :[`0rad`, `${2*Math.PI}rad`],
         }
         ),
       },
