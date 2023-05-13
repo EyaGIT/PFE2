@@ -43,6 +43,7 @@ Animated.loop(
           inputRange:[0,1],
           outputRange :[`0rad`, `${2*Math.PI}rad`],
         }
+        
         ),
       },
         ],

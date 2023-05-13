@@ -41,7 +41,7 @@ const HomeScreen = () => {
     }
   })
   .catch(error => {
-    console.error(error);
+    console.log(error);
   });
  
 
@@ -75,9 +75,9 @@ const HomeScreen = () => {
           
           <View style={styles.head}>
               <View style={styles.nav}>
-                <View style={{borderRadius:25,borderColor:"white",borderWidth:2,width:45,height:45,justifyContent:"center",alignItems:'center'}}><Image source={proAvatar} style={{width:'101%',height:'101%',borderRadius:25}} /></View>
+                <View style={{borderRadius:25,borderColor:"white",borderWidth:2,width:45,height:45,justifyContent:"center",alignItems:'center'}}><Image source={proAvatar} style={{width:'102%',height:'102%',borderRadius:25}} /></View>
                 <TouchableOpacity style={{width:45,height:45,justifyContent:'center',alignItems:'center', borderColor:"white",borderWidth:0,borderRadius:17}} onPress={onNotificationPressed}>
-                  <Image source={not} style={{width:22,height:24}} />
+                  <Image source={not} style={{width:26,height:28}} />
                 </TouchableOpacity>
               </View>
               <View style={styles.money}>

@@ -12,7 +12,7 @@ export const user_login = async data => {
     });
     return result;
   } catch (error) {
-    console.error(error);
+    console.log(error);
     if (error.response && error.response.data) {
       return error.response.data;
     } else {

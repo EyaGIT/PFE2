@@ -11,13 +11,15 @@ const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 const Historique = () => {
 
-    const navigation = useNavigation();
-      
+  const navigation = useNavigation();
   useLayoutEffect(()=>{
-    navigation.setOptions({
-      headerShown:false,
-    })
-  }, [])
+      navigation.setOptions({
+        headerShown:true,
+        headerStyle:{
+          backgroundColor:'#F2F2F2',
+          elevation:0,
+        }
+        })})
   return (
     
          

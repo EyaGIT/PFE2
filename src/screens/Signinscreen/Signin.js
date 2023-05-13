@@ -5,7 +5,7 @@ import CustomButton from '../../components/CustomButton/CustomButton'
 import { useNavigation } from '@react-navigation/native';
 import {user_login,AllInfoUser} from "../../api/user_api";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-const Signin = ({ navigation, onLoginSuccess }) => {
+const Signin = ({ navigation, onLoginSuccess,onLoad }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [seePassword, setSeePassword] = useState(true);
@@ -59,6 +59,7 @@ const Signin = ({ navigation, onLoginSuccess }) => {
   };
 
   const handleLogin = () => {
+    onLoad(true);
     const checkPassowrd = checkPasswordValidity(password);
     
     if (!checkPassowrd) {
@@ -76,16 +77,21 @@ const Signin = ({ navigation, onLoginSuccess }) => {
             AllInfoUser(result.data.token).then(result =>{
               AsyncStorage.setItem('user', JSON.stringify(result.data));
               onLoginSuccess();
+              onLoad(false);
               navigation.replace('HomeNav');
             })
             
             
+          }else{
+            onLoad(false);
           }
         })
         .catch(err => {
-          console.error(err);
+          
+          onLoad(false);
         });
     } else {
+      onLoad(false);
       alert(checkPassowrd);
     }
   };

@@ -34,12 +34,16 @@ const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
   }
-
+  const handleLoad = (test)=>{
+    setIsLoading(test)
+  }
   useEffect(() => {
     // Check if user is already logged in
+    setIsLoading(true);
     if(isLoggedIn===false){
     AsyncStorage.getItem('AccessToken')
       .then(token => {
@@ -47,31 +51,39 @@ const Navigation = () => {
           console.log(token)
           AllInfoUser(token).then(result =>{
             if(result.error){
+              console.log()
               setIsLoggedIn(false);
+              setIsLoading(false);
             }else{
             
             AsyncStorage.setItem('user', JSON.stringify(result.data));
             setIsLoggedIn(true);
+            setIsLoading(false);
             }
             
           }).catch(error=>{
             
             setIsLoggedIn(false);
+            setIsLoading(false);
             console.log(error);});
         } else {
           setIsLoggedIn(false);
+          setIsLoading(false);
         }
       })
       .catch(error => {
         console.error(error);
         setIsLoggedIn(false);
+        setIsLoading(false);
       });
   }}, []);
   return (
     <NavigationContainer >
       <Stack.Navigator screenOptions={{headerShown:false}}>
+      {isLoading ? (
       <Stack.Screen name="Load" component={LoadingPage}/>
-      {isLoggedIn ? (
+      ):(
+      isLoggedIn ? (
       <>
       
       <Stack.Screen name='HomeNav' component={HomeNav} />
@@ -96,7 +108,7 @@ const Navigation = () => {
       ) : (
         <>
         <Stack.Screen name="Sign in">
-            {(props) => <Signin {...props} onLoginSuccess={handleLoginSuccess} />}
+            {(props) => <Signin {...props} onLoginSuccess={handleLoginSuccess} onLoad={handleLoad} />}
           </Stack.Screen>
       
       <Stack.Screen name="Reset Password" component={ResetPassword}/>
@@ -104,6 +116,7 @@ const Navigation = () => {
       <Stack.Screen name="Forget ¨Password" component={ForgetPassword}/>
       <Stack.Screen name="Sign up" component={CreateNewAccount}/>
       </>
+      )
       )}
       </Stack.Navigator>
     </NavigationContainer>

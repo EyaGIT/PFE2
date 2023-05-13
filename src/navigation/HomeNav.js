@@ -58,9 +58,11 @@ function HomeNav() {
       
     })}>
       
-      <Tab.Screen name="Map" component={Map} options={{tabBarButton: props => <CustomTabBarButton route='Map' {... props} />}}/>
+      <Tab.Screen name="Map" component={Map} options={{tabBarButton: props => <CustomTabBarButton route='Map' {... props} />, headerStyle: {
+    backgroundColor: 'red',
+  }}}/>
       <Tab.Screen name="History" component={Historique} options={{tabBarButton: props => <CustomTabBarButton route='History' {... props} />}} />
-      <Tab.Screen name="Home" component={HomeScreen} options={{tabBarButton: props => <CustomTabBarButton route='Home' {... props} />}} />
+      <Tab.Screen name="Home" component={HomeScreen} options={{tabBarButton: props => <CustomTabBarButton route='Home' {... props} />,headerTitle: null,}} />
       <Tab.Screen name="Static" component={Statistics} options={{tabBarButton: props => <CustomTabBarButton route='Static' {... props} />}} />
       <Tab.Screen name="Settings" component={Settings1} options={{tabBarButton: props => <CustomTabBarButton route='Settings' {... props} />}} />
     </Tab.Navigator>

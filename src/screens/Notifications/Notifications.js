@@ -1,14 +1,23 @@
 import { View, Text,SafeAreaView,ScrollView,Image,Dimensions } from 'react-native'
-import React from 'react'
+import React ,{useLayoutEffect}from 'react'
 import ImageContact from '../../../assets/images/ImagContact.png'
-
+import { useNavigation } from '@react-navigation/native'
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 const Notifications = () => {
+    const navigation = useNavigation();
+    useLayoutEffect(()=>{
+        navigation.setOptions({
+          headerShown:true,
+          headerStyle:{
+            backgroundColor:'#F2F2F2',
+            elevation:0,
+          }
+          })})
   return (
     <SafeAreaView style={{ width:screenWidth,height:screenHeight}}>
     <ScrollView>
-    <View style={{paddingLeft:20,paddingTop:90,height:130,width:'100%'}}>
+    <View style={{paddingLeft:20,paddingTop:10,height:60,width:'100%'}}>
     <Text style={{fontSize:20,color:'#2C3A4B',fontWeight:'800'}}>Today</Text>
     </View>
     <View style={{width:'100%',paddingTop:20,flexDirection:'row'}}>

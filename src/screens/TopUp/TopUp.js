@@ -9,32 +9,35 @@ import addnewcard from '../../../assets/images/addnewcard.png'
 import CustomButton from '../../components/CustomButton/CustomButton';
 import {addAmount,AllInfoUser} from "../../api/user_api";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import arrow from '../../../assets/images/icons/ArrowBack.png'
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 const TopUp = () => {
     const [Montant, setMontant] = useState('');
     const [checked, setChecked] = React.useState('first');
+    [isAddingMoney, setIsAddingMoney] = useState(false);
     
   const navigation = useNavigation();
 
-  const addamount = () =>{
-    AsyncStorage.getItem('user')
-    .then(userString => {
+  const addamount = async  () =>{
+    if (!isAddingMoney) {
+      setIsAddingMoney(true);
+    await AsyncStorage.getItem('user')
+    .then(async userString => {
       // Check if user exists in storage
       if (userString) {
         // User found, parse user string to JavaScript object
         const user = JSON.parse(userString);
-        token =AsyncStorage.getItem('AccessToken').then(token=>{
-          addAmount({
+        token = await AsyncStorage.getItem('AccessToken').then(async token=>{
+          await addAmount({
             id: user.bracelets[0]._id,
             amount: parseInt(Montant,10),
-          },token).then(result => {
+          },token).then(async result => {
             
               if (result.status == 200) {
                 
-                AllInfoUser(token).then(result =>{
+                await AllInfoUser(token).then(result =>{
                   if (result.status == 200) {
                   AsyncStorage.setItem('user', JSON.stringify(result.data));
                   
@@ -57,7 +60,10 @@ const TopUp = () => {
         // User not found in storage
         console.log('User not found in storage.');
       }
-    })}
+      
+    })
+    setIsAddingMoney(false);
+  }}
     
 
   const onuserPressed = () => {
@@ -72,7 +78,45 @@ const TopUp = () => {
    
   useLayoutEffect(()=>{
     navigation.setOptions({
-      headerShown:false,
+      headerShown:true,
+      headerTransparent:true,
+      headerTitleAlign: 'center',
+      headerTitleStyle: { alignSelf:'center',color: 'white' ,height:'100%',
+      fontSize: 35,fontWeight:'100'},
+        
+      headerLeft: () => (
+        <TouchableOpacity
+          style={{
+            width: 45,
+            height: 45,
+            borderRadius: 25,
+            borderColor: 'white',
+            borderWidth: 2,
+            marginLeft: 20,
+            marginRight:30,
+            marginBottom:15,
+            marginTop:15,
+            justifyContent: 'center',
+            alignItems: 'center',
+            
+          }}
+          onPress={() => navigation.goBack()}
+        >
+          <Image
+            source={arrow}
+            style={{ width: '60%', height: '60%' }}
+          />
+        </TouchableOpacity>
+      ),headerStyle: {
+        
+        height:'auto'
+        
+      
+      
+
+        
+  
+        },
     })
   }, [])
   return (
@@ -85,19 +129,16 @@ const TopUp = () => {
     <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
     < View style={styles.head}>
               
-              <View  >
-            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:40}}>Top Up</Text>
-            
-        </View> 
+              
           </View>
     
 
         <View style={styles.body}>
         <View style={{paddingTop:40,alignItems:'center', justifyContent:'center',paddingLeft:30,paddingRight:30,marginBottom:30}}>
-<View style={{width:'100%',paddingBottom:30,}}>
+<View style={{width:'100%',paddingBottom:25,}}>
     <Text style={{color:'#8E9399'}}>Amount</Text>
 </View>
-<View style={{backgroundColor:"#EBEBEB",borderRadius:30,borderColor:'#EBEBEB',width:267,height:150,alignItems:"center",justifyContent:"center",flexDirection:"row"}}>
+<View style={{backgroundColor:"#EBEBEB",borderRadius:30,borderColor:'#EBEBEB',width:230,height:100,alignItems:"center",justifyContent:"center",flexDirection:"row"}}>
 <TextInput 
   style={{fontSize:35,height:"100%",paddingLeft:40}}
   placeholder="20"
@@ -112,19 +153,19 @@ const TopUp = () => {
 </View>
 
 <View style={{flexDirection:'row',paddingLeft:15,justifyContent:'space-between'}}>
-   <TouchableOpacity style={{backgroundColor:"#EBEBEB",borderRadius:30,borderColor:'#EBEBEB',width:90,height:70,alignItems:"center",justifyContent:"center",flexDirection:"row"}} onPress={() => setMontant('100')} >
+   <TouchableOpacity style={{backgroundColor:"#EBEBEB",borderRadius:15,borderColor:'#EBEBEB',width:90,height:50,alignItems:"center",justifyContent:"center",flexDirection:"row"}} onPress={() => setMontant('100')} >
 <Text>
     <Text style={{color:'#E20522'}} >100</Text>
     <Text style={{fontSize:10,fontWeight:'100',color:"#000000"}}>   TND</Text>
 </Text>
    </TouchableOpacity>
-   <TouchableOpacity style={{backgroundColor:"#EBEBEB",borderRadius:30,borderColor:'#EBEBEB',width:90,height:70,alignItems:"center",justifyContent:"center",flexDirection:"row"}} onPress={() => setMontant('200')}>
+   <TouchableOpacity style={{backgroundColor:"#EBEBEB",borderRadius:15,borderColor:'#EBEBEB',width:90,height:50,alignItems:"center",justifyContent:"center",flexDirection:"row"}} onPress={() => setMontant('200')}>
 <Text>
     <Text style={{color:'#E20522'}}>200</Text>
     <Text style={{fontSize:10,fontWeight:'100',color:"#000000"}}>   TND</Text>
 </Text>
    </TouchableOpacity>
-   <TouchableOpacity style={{backgroundColor:"#EBEBEB",borderRadius:30,borderColor:'#EBEBEB',width:90,height:70,alignItems:"center",justifyContent:"center",flexDirection:"row"}} onPress={() => setMontant('300')}>
+   <TouchableOpacity style={{backgroundColor:"#EBEBEB",borderRadius:15,borderColor:'#EBEBEB',width:90,height:50,alignItems:"center",justifyContent:"center",flexDirection:"row"}} onPress={() => setMontant('300')}>
 <Text>
     <Text style={{color:'#E20522'}}>300</Text>
     <Text style={{fontSize:10,fontWeight:'100',color:"#000000"}}>   TND</Text>
@@ -134,11 +175,11 @@ const TopUp = () => {
 </View>
 
 <View style={{paddingTop:10,alignItems:'center', justifyContent:'center',paddingLeft:20,paddingRight:20,marginBottom:30}}>
-<View style={{width:'100%',paddingBottom:30,paddingTop:25}}>
+<View style={{width:'100%',paddingBottom:25,paddingTop:15}}>
     <Text style={{color:'#8E9399'}}>Select Card</Text>
 </View>
-<View style={{backgroundColor:"#EBEBEB",borderRadius:30,borderColor:'#EBEBEB',width:"100%",minHeight:150,alignItems:'center',justifyContent:'center',flexDirection:"column"}}>
-<View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'center',height:90}}>
+<View style={{backgroundColor:"#EBEBEB",borderRadius:30,borderColor:'#EBEBEB',width:"100%",minHeight:100,alignItems:'center',justifyContent:'center',flexDirection:"column"}}>
+<View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'center',height:80}}>
       <View style={{width:'90%',height:100,flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
                 <View style={{width:'25%',alignItems:'center'}}>
                         <Image  source={mastercard} />
@@ -162,7 +203,7 @@ const TopUp = () => {
 </View>
 </View >
 <View style={{width:"101%",borderColor:'#F2F2F2',alignSelf:'center',borderTopWidth:1.4}}></View>
-<View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'center',height:90}}>
+<View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'center',height:80}}>
       <View style={{width:'90%',height:100,flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
                 <View style={{width:'25%',alignItems:'center'}}>
                         <Image  source={mastercard} />
@@ -186,7 +227,7 @@ const TopUp = () => {
 </View>
 </View >
 <View style={{width:"101%",borderColor:'#F2F2F2',alignSelf:'center',borderTopWidth:1.4}}></View>
-<View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'center',height:90}}>
+<View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'center',height:80}}>
       <View style={{flex:1,width:'90%',flexDirection:'row',alignItems:'center',justifyContent:'center',paddingRight:80}}>
                 <View style={{width:'25%',alignItems:'center'}}>
                         <Image  source={addnewcard} />
@@ -272,7 +313,7 @@ head:{
 flex:1
 },
 body:{
-  paddingtop:20,
+  paddingtop:15,
   paddingLeft:25,
   paddingRight:25,
   zIndex: 2,
