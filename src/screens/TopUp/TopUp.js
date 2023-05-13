@@ -82,7 +82,7 @@ const TopUp = () => {
       headerTransparent:true,
       headerTitleAlign: 'center',
       headerTitleStyle: { alignSelf:'center',color: 'white' ,height:'100%',
-      fontSize: 35,fontWeight:'100'},
+      fontSize: 27,fontWeight:'100'},
         
       headerLeft: () => (
         <TouchableOpacity
@@ -91,11 +91,11 @@ const TopUp = () => {
             height: 45,
             borderRadius: 25,
             borderColor: 'white',
-            borderWidth: 2,
-            marginLeft: 20,
+            borderWidth: 1,
+            marginLeft: 10,
             marginRight:30,
-            marginBottom:15,
-            marginTop:15,
+            marginBottom:37,
+            marginTop:37,
             justifyContent: 'center',
             alignItems: 'center',
             

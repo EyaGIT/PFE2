@@ -1,5 +1,5 @@
 import { View, Text,StyleSheet } from 'react-native'
-import React,{useState} from 'react'
+import React,{useState,useLayoutEffect} from 'react'
 import Custominput from '../../components/Custominput/Custominput'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import { useNavigation } from '@react-navigation/native';
@@ -118,7 +118,11 @@ const Signin = ({ navigation, onLoginSuccess,onLoad }) => {
 
   }
   
- 
+  useLayoutEffect(()=>{
+    navigation.setOptions({
+      headerShown:false,
+    })
+  }, [])
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <View style={{justifyContent: "flex-start",flexDirection:"row",alignItems:"center",width:"90%",paddingBottom:30}}>

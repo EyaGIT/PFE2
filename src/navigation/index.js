@@ -79,14 +79,14 @@ const Navigation = () => {
   }}, []);
   return (
     <NavigationContainer >
-      <Stack.Navigator screenOptions={{headerShown:false}}>
+      <Stack.Navigator >
       {isLoading ? (
-      <Stack.Screen name="Load" component={LoadingPage}/>
+      <Stack.Screen name="Load" component={LoadingPage} options={{headerShown:false}}/>
       ):(
       isLoggedIn ? (
       <>
       
-      <Stack.Screen name='HomeNav' component={HomeNav} />
+      <Stack.Screen name='HomeNav' component={HomeNav} options={{headerShown:false}} />
       <Stack.Screen name="Order Bracelet" component={OrderBracelet}/>
       <Stack.Screen name="Map" component={Map}/>
       <Stack.Screen name="Home Screen" component={HomeScreen}/>

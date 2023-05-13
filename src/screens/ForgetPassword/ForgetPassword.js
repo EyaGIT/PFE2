@@ -1,5 +1,5 @@
 import { View, Text,StyleSheet,SafeAreaView } from 'react-native'
-import React,{useState} from 'react'
+import React,{useState,useLayoutEffect} from 'react'
 import Custominput from '../../components/Custominput/Custominput'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import { useNavigation } from '@react-navigation/native';
@@ -14,7 +14,22 @@ const ForgetPassword = () => {
     }
         
 
-
+    useLayoutEffect(()=>{
+      navigation.setOptions({
+        headerShown:true,
+        headerTitle: null,
+        headerTransparent: true,
+        headerTitleStyle: {
+          width: 0,
+          height: 0,
+          fontSize:20,
+          color:'#F2F2F2'
+        },
+        headerStyle: {
+          backgroundColor:'#F2F2F2'
+        },
+      })
+    }, [])
 
 
 

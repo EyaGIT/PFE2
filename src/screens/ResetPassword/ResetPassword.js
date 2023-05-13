@@ -1,5 +1,5 @@
 import { View, Text,StyleSheet } from 'react-native'
-import React,{useState} from 'react'
+import React,{useState,useLayoutEffect} from 'react'
 import Custominput from '../../components/Custominput/Custominput'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import { useNavigation } from '@react-navigation/native';
@@ -19,7 +19,11 @@ const ResetPassword = () => {
 
   }
 
-
+  useLayoutEffect(()=>{
+    navigation.setOptions({
+      headerShown:false,
+    })
+  }, [])
 
 
    
