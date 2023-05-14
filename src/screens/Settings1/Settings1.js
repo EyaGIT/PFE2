@@ -34,7 +34,9 @@ const Settings = () => {
     console.error(error);
   });
 
-
+  const onSecurityPressed = () => {
+    navigation.navigate("Security");
+     }
   const onArrowPressed = () => {
     navigation.navigate("Edit Profil");
      }
@@ -62,18 +64,7 @@ const Settings = () => {
          
          </View>
          </TouchableOpacity>
-         <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>
-        <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
-            <Image source={not}   /> 
-            <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5}}>Notifications</Text>
-        </View>
-         
-         <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>
         
-         <Image source={Vector}/>
-         
-         </View>
-         </TouchableOpacity>
          <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>
         <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
             <Image source={lang}   /> 
@@ -86,10 +77,12 @@ const Settings = () => {
          
          </View>
          </TouchableOpacity>
-         <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>
+         <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}} onPress={onSecurityPressed}>
         <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
             <Image source={Protect}   /> 
-            <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5}}>Security</Text>
+
+            <Text style={{color:'black',fontSize:16,fontWeight:'600'}}>Security</Text>
+            <Text style={{marginLeft:100,fontWeight:'500'}}>English (US)</Text>
         </View>
          
          <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>
@@ -98,18 +91,7 @@ const Settings = () => {
          
          </View>
          </TouchableOpacity>
-         <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>
-        <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
-            <Image source={eye}   /> 
-            <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5,paddingLeft:1.5}}>Dark Theme</Text>
-        </View>
-         
-         <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>
         
-         <Image source={Vector}/>
-         
-         </View>
-         </TouchableOpacity>
          
          <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>
         <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>

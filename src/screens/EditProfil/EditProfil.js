@@ -6,14 +6,10 @@ import DatePicker from '../../components/DatePicker/DatePicker'
 import Tunisia from '../../../assets/images/Tunisia.png'
 import { TextInput } from 'react-native-paper'
 import CustominputImg from '../../components/CustominputImg/CustominputImg'
-import { SelectList } from 'react-native-dropdown-select-list'
+
 
 const EditProfil = () => {
-    const [category,setCategory]=useState('Male')
-    const categories1 =[
-        {key:'1', value:'Male'},
-        {key:'2', value:'Female'},
-      ];
+    
 
     const [userfirstname, setUserfirstname] = useState('');
     const [userlastname, setUserlastname] = useState('');
@@ -27,7 +23,8 @@ const EditProfil = () => {
            placeholder="Anas" 
            value={userfirstname} 
            setValue={setUserfirstname}
-           secureTextEntry={true}
+           secureTextEntry={false}
+           
            />
       </View>
       <View style={{width:"90%"}} >
@@ -36,6 +33,7 @@ const EditProfil = () => {
            value={userlastname} 
            setValue={setUserlastname}
            secureTextEntry={true}
+           key="visible-password"
            />
       </View>
       <View style={{width:"90%"}} >
@@ -43,7 +41,8 @@ const EditProfil = () => {
            placeholder="chernianas@gmail.com" 
            value={usermail} 
            setValue={setUsermail}
-           secureTextEntry={true}
+           secureTextEntry={false}
+           
            />
       </View>
       <View style={{width:"90%"}} >
@@ -57,19 +56,7 @@ const EditProfil = () => {
         secureTextEntry={true}/>
       
       </View>
-      <View  style={{width:"90%"}}>
-      <SelectList
-       setSelected={setCategory}
-       data={categories1}
-       placeholder={"Select Category"}
-       defaultOption={{key:'1', value:'Male'}}
-       search={false}
-       boxStyles={styles.container}
-
-
-       
-       />
-      </View>
+    
       <View style={{width:"60%",paddingTop:20}}>
       <TouchableOpacity >
         <CustomButton  text="Save Changes" />

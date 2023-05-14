@@ -197,11 +197,7 @@ const HomeScreen = () => {
               </View>
               <View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between',paddingTop:10}}>
                 <Text style={{fontSize:25,fontWeight:'bold'}}>Promo & Discount</Text>
-                <View>
-                  <TouchableOpacity>
-                  <Text>See More</Text>
-                  </TouchableOpacity>
-                </View>
+               
               </View>
               <View>
               <SafeAreaView >
