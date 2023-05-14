@@ -6,6 +6,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import  PieChart  from "react-native-pie-chart";
 import Income from "../../../assets/images/icons/Income.png";
 import Expense from "../../../assets/images/icons/Expense.png";
+import arrow from '../../../assets/images/icons/ArrowBack.png'
 
 
 
@@ -24,7 +25,12 @@ const Statistics = () => {
     const navigation=useNavigation();
     useLayoutEffect(()=>{
       navigation.setOptions({
-        headerShown:false,
+        headerShown:true,
+        headerTransparent:true,
+        headerTitleAlign: 'center',
+        headerTitleStyle: { alignSelf:'center',color: 'white' ,height:'100%',
+        fontSize: 27,fontWeight:'400',marginTop:54},
+        
       })
     }, [])
     const widthAndHeight = 250

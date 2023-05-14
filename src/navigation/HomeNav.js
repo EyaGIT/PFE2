@@ -47,7 +47,7 @@ function HomeNav() {
           iconName = focused
             ? Settings
             : SettingsOutline;
-        }else if (route.name === 'Static') {
+        }else if (route.name === 'Statistics') {
           iconName = focused
             ? Static
             : StaticOutline;
@@ -63,7 +63,9 @@ function HomeNav() {
   }}}/>
       <Tab.Screen name="History" component={Historique} options={{tabBarButton: props => <CustomTabBarButton route='History' {... props} />}} />
       <Tab.Screen name="Home" component={HomeScreen} options={{tabBarButton: props => <CustomTabBarButton route='Home' {... props} />,headerTitle: null,}} />
-      <Tab.Screen name="Static" component={Statistics} options={{tabBarButton: props => <CustomTabBarButton route='Static' {... props} />}} />
+      <Tab.Screen name="Statistics" component={Statistics} options={{tabBarButton: props => <CustomTabBarButton route='Static' {... props} />, headerTitleStyle: {
+      fontWeight: 'normal',
+    },}} />
       <Tab.Screen name="Settings" component={Settings1} options={{tabBarButton: props => <CustomTabBarButton route='Settings' {... props} />}} />
     </Tab.Navigator>
   );

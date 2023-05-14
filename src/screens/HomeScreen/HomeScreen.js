@@ -106,7 +106,7 @@ const HomeScreen = () => {
                     
                     </View>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity  onPress={()=> setVisible(true)}>
                     <View style={styles.flex}>
                     
                     <Image source={bra} style={{width:30,height:30}} />
