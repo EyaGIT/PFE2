@@ -50,15 +50,16 @@ const Navigation = () => {
         if (token) {
           console.log(token)
           AllInfoUser(token).then(result =>{
-            if(result.error){
+            if(result.status=200){
+              AsyncStorage.setItem('user', JSON.stringify(result.data));
+            setIsLoggedIn(true);
+            setIsLoading(false);
+              
+            }else{
+            
               console.log()
               setIsLoggedIn(false);
               setIsLoading(false);
-            }else{
-            
-            AsyncStorage.setItem('user', JSON.stringify(result.data));
-            setIsLoggedIn(true);
-            setIsLoading(false);
             }
             
           }).catch(error=>{
