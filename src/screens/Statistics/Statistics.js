@@ -44,8 +44,8 @@ const Statistics = () => {
             
           <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
           
-         <View>
-            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}>Statistics</Text>
+         <View style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',height:100}}>
+            
             
         </View>      
      <View>
