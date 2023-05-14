@@ -28,6 +28,7 @@ import TopUp from '../screens/TopUp/TopUp';
 import Historique from '../screens/Historique/Historique';
 import SendMoneyAll from '../screens/SendMoneyAll/SendMoneyAll';
 import LoadingPage from '../screens/LoadingPage/LoadingPage';
+import Security from '../screens/Security/Security';
 const Stack = createNativeStackNavigator();
 
 
@@ -79,13 +80,14 @@ const Navigation = () => {
   }}, []);
   return (
     <NavigationContainer >
+       
       <Stack.Navigator >
       {isLoading ? (
       <Stack.Screen name="Load" component={LoadingPage} options={{headerShown:false}}/>
       ):(
       isLoggedIn ? (
       <>
-      
+     
       <Stack.Screen name='HomeNav' component={HomeNav} options={{headerShown:false}} />
       <Stack.Screen name="Order Bracelet" component={OrderBracelet}/>
       <Stack.Screen name="Map" component={Map}/>
@@ -99,6 +101,7 @@ const Navigation = () => {
       <Stack.Screen name="Historique" component={Historique}/>
       <Stack.Screen name="Top Up" component={TopUp}/>
       <Stack.Screen name="Notifications" component={Notifications}/>
+      <Stack.Screen name="Security" component={Security}/>
       <Stack.Screen name="Contacts" component={Contacts}/>
       <Stack.Screen name="Edit Profil" component={EditProfil}/>
       <Stack.Screen name="Essai" component={essai}/> 
