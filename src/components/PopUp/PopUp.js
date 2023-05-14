@@ -11,6 +11,8 @@ const PopUp = ({
  isVisible,
  onClose,
  OnPress,
+ message,
+
 
 
 
@@ -22,14 +24,13 @@ const PopUp = ({
 
     isVisible={isVisible}
     onBackButtonPress={onClose}
-    onBackdropPress={onClose}
     style={styles.modal}
     >
 
   <View  style={styles.buttons}>
   <View style={{height:'90%',width:'90%',marginTop:10}}>
     <Text style={{alignSelf:'center',fontSize:24}}>Would tou like to block </Text>
-    <Text style={{alignSelf:'center',fontSize:24}}>Anas Bracelet ?</Text>
+    <Text style={{alignSelf:'center',fontSize:24}}>{message}bracelet ?</Text>
     
   <View style={{flexDirection:'row',justifyContent:'space-evenly',marginTop:10}}>
     
@@ -38,7 +39,7 @@ const PopUp = ({
   </View>
 
   <View style={{width:"30%"}}>
-        <CustomButton  text="No " />
+        <CustomButton  text="No " onPress={onClose}/>
   </View>
   </View>
 

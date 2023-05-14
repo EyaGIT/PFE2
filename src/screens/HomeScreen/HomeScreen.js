@@ -117,6 +117,7 @@ const HomeScreen = () => {
                     <PopUp
                 isVisible={Visible}
                 onClose={()=> setVisible(false)}
+                message='your '
                 />
                     
                     <TouchableOpacity>

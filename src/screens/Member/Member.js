@@ -89,6 +89,7 @@ const Member = () => {
             <PopUp
                 isVisible={Visible}
                 onClose={()=> setVisible(false)}
+                message="Anas "
                 />
               
             <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}} onPress={()=> navigation.navigate('Limits')}>
