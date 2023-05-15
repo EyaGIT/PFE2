@@ -32,8 +32,8 @@ const EditProfil = () => {
            placeholder="Cherni" 
            value={userlastname} 
            setValue={setUserlastname}
-           secureTextEntry={true}
-           key="visible-password"
+           secureTextEntry={false}
+          
            />
       </View>
       <View style={{width:"90%"}} >
