@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {StyleSheet,Image} from 'react-native';
 import { createBottomTabNavigator,transparent,Dimensions } from '@react-navigation/bottom-tabs'
 import OrderBracelet from '../screens/OrderBracelet/OrderBracelet';
@@ -26,10 +26,11 @@ import Historique from '../screens/Historique/Historique';
 import Statistics  from "../screens/Statistics/Statistics";
 const Tab = createBottomTabNavigator();
 
-function HomeNav() {
+function HomeNav({onLogoutSuccess,onLoad}) {
+  
   return (
     <Tab.Navigator initialRouteName='Home' screenOptions={({route})=>({
-      HeaderSown:false,
+      HeaderShown:false,
       tabBarShowLabel: false,
       tabBarStyle:styles.TabBarStyle,
       tabBarActiveTintColor:'red',
@@ -66,7 +67,10 @@ function HomeNav() {
       <Tab.Screen name="Statistics" component={Statistics} options={{tabBarButton: props => <CustomTabBarButton route='Static' {... props} />, headerTitleStyle: {
       fontWeight: 'normal',
     },}} />
-      <Tab.Screen name="Settings" component={Settings1} options={{tabBarButton: props => <CustomTabBarButton route='Settings' {... props} />}} />
+      
+      <Tab.Screen name="Settings" options={{tabBarButton: props => <CustomTabBarButton route='Settings' {... props} />}} >
+            {(props) => <Settings1 {...props} onLogoutSuccess={onLogoutSuccess} onLoad={onLoad} />}
+      </Tab.Screen>
     </Tab.Navigator>
   );
 }

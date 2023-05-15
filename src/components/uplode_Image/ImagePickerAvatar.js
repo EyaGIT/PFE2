@@ -39,7 +39,9 @@ const Styles= StyleSheet.create({
   },
   avatarImage:{
   
-  
+  width:120,
+  height:120,
+  borderRadius:120/2,
   },
   addButton:{
 

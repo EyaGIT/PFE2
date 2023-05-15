@@ -29,6 +29,7 @@ import Historique from '../screens/Historique/Historique';
 import SendMoneyAll from '../screens/SendMoneyAll/SendMoneyAll';
 import LoadingPage from '../screens/LoadingPage/LoadingPage';
 import Security from '../screens/Security/Security';
+import Camera from '../screens/Camera/Camera';
 const Stack = createNativeStackNavigator();
 
 
@@ -37,9 +38,18 @@ const Navigation = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const handleLoginSuccess = () => {
+    
     setIsLoggedIn(true);
   }
+  const handleLogoutSuccess = async () => {
+    setIsLoading(true)
+    
+    await AsyncStorage.removeItem('AccessToken');
+    await AsyncStorage.removeItem('user');
+    setIsLoggedIn(false);
+  }
   const handleLoad = (test)=>{
+    
     setIsLoading(test)
   }
   useEffect(() => {
@@ -51,7 +61,8 @@ const Navigation = () => {
         if (token) {
           console.log(token)
           AllInfoUser(token).then(result =>{
-            if(result.status=200){
+            if(result.status===200){
+              console.log(result.status)
               AsyncStorage.setItem('user', JSON.stringify(result.data));
             setIsLoggedIn(true);
             setIsLoading(false);
@@ -74,6 +85,7 @@ const Navigation = () => {
         }
       })
       .catch(error => {
+        console.log('lena')
         console.error(error);
         setIsLoggedIn(false);
         setIsLoading(false);
@@ -81,15 +93,18 @@ const Navigation = () => {
   }}, []);
   return (
     <NavigationContainer >
-       
       <Stack.Navigator >
+      
       {isLoading ? (
       <Stack.Screen name="Load" component={LoadingPage} options={{headerShown:false}}/>
       ):(
       isLoggedIn ? (
       <>
-     
-      <Stack.Screen name='HomeNav' component={HomeNav} options={{headerShown:false}} />
+      
+      
+      <Stack.Screen name="HomeNav" options={{headerShown:false}}>
+            {(props) => <HomeNav {...props} onLogoutSuccess={handleLogoutSuccess} onLoad={handleLoad} />}
+          </Stack.Screen>
       <Stack.Screen name="Order Bracelet" component={OrderBracelet}/>
       <Stack.Screen name="Map" component={Map}/>
       <Stack.Screen name="Home Screen" component={HomeScreen}/>
@@ -102,7 +117,6 @@ const Navigation = () => {
       <Stack.Screen name="Historique" component={Historique}/>
       <Stack.Screen name="Top Up" component={TopUp}/>
       <Stack.Screen name="Notifications" component={Notifications}/>
-      <Stack.Screen name="Security" component={Security}/>
       <Stack.Screen name="Contacts" component={Contacts}/>
       <Stack.Screen name="Edit Profil" component={EditProfil}/>
       <Stack.Screen name="Essai" component={essai}/> 

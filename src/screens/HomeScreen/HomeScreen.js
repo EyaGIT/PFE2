@@ -86,7 +86,7 @@ const HomeScreen = () => {
               </View>
           </View>
           
-          <SafeAreaView style={{ position: 'absolute', elevation: 3,zIndex: 3,flex:1,width:'100%',height:110,top:screenHeight/4.3 }}>
+          <SafeAreaView style={{ position: 'absolute', elevation: 3,zIndex: 3,flex:1,width:'100%',height:110,top:screenHeight/4.7 }}>
                 
                 <View style={{width:'100%',height:50,alignItems: 'center',justifyContent:'center',height:'100%'}}>
                   <View style={styles.menu}>
@@ -120,14 +120,7 @@ const HomeScreen = () => {
                 message='your '
                 />
                     
-                    <TouchableOpacity>
-                    <View style={styles.flex}>
                     
-                    <Image source={hist} style={{width:30,height:30}} />
-                    <Text>History</Text>
-                    
-                    </View>
-                    </TouchableOpacity>
                     
                   </View>
                 </View>
@@ -231,13 +224,13 @@ const styles = StyleSheet.create({
   justifyContent:'center',},
   menu:{
     
-    paddingLeft:25,
-    paddingRight:25,
+    paddingLeft:37,
+    paddingRight:37,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent:'space-between',
     backgroundColor:'#FFFFFF',
-    width:'87%',height:'100%',
+    width:'78%',height:'93%',
     borderRadius:20,
     shadowColor: "#000000",
     shadowOffset: {
@@ -269,7 +262,7 @@ elevation: 11
   },
 head:{
   zIndex: 2,
-  height:screenHeight / 3.2,
+  height:screenHeight / 3.4,
 flex:1
 },
 body:{

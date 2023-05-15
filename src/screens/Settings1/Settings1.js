@@ -13,7 +13,7 @@ import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-const Settings = () => {
+const Settings = ({onLogoutSuccess,onLoad}) => {
   const navigation = useNavigation();
   const [UserName, setUserName] = useState(null);
   AsyncStorage.getItem('user')
@@ -33,7 +33,16 @@ const Settings = () => {
   .catch(error => {
     console.error(error);
   });
+  const handleLogout = async ()=>{
+    onLogoutSuccess();
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    onLoad(false);
+    
 
+    // Navigate to Signin screen
+    
+    
+  }
   const onSecurityPressed = () => {
     navigation.navigate("Security");
      }
@@ -93,7 +102,7 @@ const Settings = () => {
          </TouchableOpacity>
         
          
-         <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>
+         <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}} onPress={handleLogout}>
         <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
             <Image source={logout}   /> 
             <Text style={{color:'#E20522',fontSize:16,fontWeight:'600',paddingTop:5}}>Logout</Text>
