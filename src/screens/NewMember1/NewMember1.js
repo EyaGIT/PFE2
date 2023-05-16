@@ -124,7 +124,7 @@ const NewMember1 = () => {
           stepCount={3}
           customStyles={firstIndicatorStyles}
           currentPosition={currentPage}
-          labels={['Account', 'Profile', 'Band']}
+          labels={['Account', 'Order bracelet', 'Success']}
           renderLabel={renderLabel}
           onPress={onStepPress}
         />

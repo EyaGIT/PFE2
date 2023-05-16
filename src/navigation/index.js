@@ -134,6 +134,7 @@ const Navigation = () => {
       
       <Stack.Screen name="Forget ¨Password" component={ForgetPassword}/>
       <Stack.Screen name="Sign up" component={CreateNewAccount}/>
+      <Stack.Screen name="Order Bracelet" component={OrderBracelet}/>
       </>
       )
       )}

@@ -17,12 +17,12 @@ const Swipe3 = ({handellogin}) => {
   return (
     <SafeAreaView style={{alignItems:'center',justifyContent:'center',flexDirection:'row'}}>
     <ScrollView style={{width:screenWidth,height:screenHeight}} showsVerticalScrollIndicator={false}>
-
-    <View style={{alignItems:'center',justifyContent:'center',paddingTop:'50%'}}>
+    <View style={{flex:1,justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
+    <View style={{alignItems:'center',justifyContent:'center',paddingTop:50}}>
       <Image source={SuccessAvatar} />
     </View>
 
-    <View style={{alignItems:'center',justifyContent:'center'}}>
+    <View style={{alignItems:'center',justifyContent:'center',flex:2}}>
 
         <Text style={{fontSize: 30, color: 'black',fontWeight: 'bold',paddingTop:40}}>Member created</Text>
     </View>
@@ -34,11 +34,9 @@ const Swipe3 = ({handellogin}) => {
         <Text> created a new member</Text>
     </View>
 
-    <View style={{width:"80%"}}>
-        <CustomButton  text="Confirm " onPress={onConfirmPressed}/>
-        </View>
-
     
+
+    </View>
     </ScrollView>
     </SafeAreaView>
 

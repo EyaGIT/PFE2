@@ -87,9 +87,7 @@ const OrderBracelet = ({handellogin}) => {
       <SafeAreaView style={Styles.ViewContainer}>
       <ScrollView style={{width:'100%',height:'500%',zIndex:-1,flex:1}}>
       <View style={{flex:1,justifyContent:'center',alignItems:'center',minHeight:700}}>
-      <TouchableOpacity onPress={onBackPressed}>
-      <BackArrowB />
-      </TouchableOpacity>
+      
         
       <View style={{justifyContent: "center",flexDirection:'column',alignItems:"center",width:"90%",flex:2,paddingTop:10}}>
       
@@ -186,9 +184,11 @@ const OrderBracelet = ({handellogin}) => {
     
     </View>
     <View style={{width:"80%"}}>
+      <TouchableOpacity>
         <CustomButton  text="Continue " onPress={handellogin}/>
+        </TouchableOpacity>
         </View>
-    
+        
              
     
     </View>

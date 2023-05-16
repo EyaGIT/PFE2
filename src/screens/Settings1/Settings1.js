@@ -77,7 +77,8 @@ const Settings = ({onLogoutSuccess,onLoad}) => {
          <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>
         <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
             <Image source={lang}   /> 
-            <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5,paddingLeft:2}}>Language</Text>
+            <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5,paddingLeft:4}}>Language</Text>
+            <Text style={{marginLeft:100,fontWeight:'500'}}>English (US)</Text>
         </View>
          
          <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>
@@ -90,8 +91,8 @@ const Settings = ({onLogoutSuccess,onLoad}) => {
         <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
             <Image source={Protect}   /> 
 
-            <Text style={{color:'black',fontSize:16,fontWeight:'600'}}>Security</Text>
-            <Text style={{marginLeft:100,fontWeight:'500'}}>English (US)</Text>
+            <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingLeft:3}}>Security</Text>
+           
         </View>
          
          <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>
@@ -105,7 +106,7 @@ const Settings = ({onLogoutSuccess,onLoad}) => {
          <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}} onPress={handleLogout}>
         <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
             <Image source={logout}   /> 
-            <Text style={{color:'#E20522',fontSize:16,fontWeight:'600',paddingTop:5}}>Logout</Text>
+            <Text style={{color:'#E20522',fontSize:16,fontWeight:'600',paddingTop:5,paddingLeft:2}}>Logout</Text>
         </View>
          
          <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>

@@ -13,7 +13,7 @@ const CreateNewAccount = () => {
 
   const navigation = useNavigation();
   const onContinuePressed = () => {
-   navigation.navigate("Verification code");
+   navigation.navigate("Order Bracelet");
 
 }
 useLayoutEffect(()=>{
@@ -103,7 +103,9 @@ const onSigninPressed = () => {
           </View>
 
           <View style={{width:"80%",paddingTop:20}}>
-        <CustomButton  text="Continue " onPress={onContinuePressed}/>
+            <TouchableOpacity onPress={onContinuePressed}>
+        <CustomButton  text="Continue "/>
+        </TouchableOpacity>
         </View>
 
         <Text style={{paddingTop:20}}>
