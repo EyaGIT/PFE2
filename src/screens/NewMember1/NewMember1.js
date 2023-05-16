@@ -133,7 +133,7 @@ const NewMember1 = () => {
      
        
       
-        {console.log(currentPage)}
+        
         { renderViewPagerPage(PAGES[currentPage], { handellogin: goToNextPage })}
      
 
