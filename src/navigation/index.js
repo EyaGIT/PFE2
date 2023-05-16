@@ -115,6 +115,7 @@ const Navigation = () => {
       <Stack.Screen name="Verification code" component={VerificationCode}/>
       <Stack.Screen name="Send Money All" component={SendMoneyAll}/>
       <Stack.Screen name="Historique" component={Historique}/>
+      <Stack.Screen name="Security" component={Security}/>
       <Stack.Screen name="Top Up" component={TopUp}/>
       <Stack.Screen name="Notifications" component={Notifications}/>
       <Stack.Screen name="Contacts" component={Contacts}/>
