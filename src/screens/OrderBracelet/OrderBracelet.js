@@ -36,7 +36,7 @@ const colors = [
 
 
 
-const OrderBracelet = () => {
+const OrderBracelet = ({handellogin}) => {
 
     const navigation = useNavigation();
 
@@ -186,7 +186,7 @@ const OrderBracelet = () => {
     
     </View>
     <View style={{width:"80%"}}>
-        <CustomButton  text="Continue " />
+        <CustomButton  text="Continue " onPress={handellogin}/>
         </View>
     
              

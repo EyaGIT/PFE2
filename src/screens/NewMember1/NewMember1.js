@@ -50,6 +50,7 @@ const NewMember1 = () => {
   
 
   const goToNextPage = () => {
+    console.log('hhhhhh');
     setCurrentPage(currentPage + 1);
   };
   const goToPreviousPage = () => {
@@ -62,9 +63,9 @@ const NewMember1 = () => {
   
   
 
-  const renderViewPagerPage = (Data) => {
+  const renderViewPagerPage = (Data, props) => {
     return (
-      <Data key={Data} />
+      <Data key={Data} {...props}/>
       
     );
   };
@@ -131,28 +132,12 @@ const NewMember1 = () => {
 
      
        
-      <Swiper
-        style={{  }}
-        loop={false}
-        showsPagination={false}
-        index={currentPage}
-        autoplay={false}
-        showsButtons={false}
-        onIndexChanged={(page) => {
-          setCurrentPage(page);
-        }}
-      >
-        {PAGES.map((page) => renderViewPagerPage(page))}
-      </Swiper>
+      
+        {console.log(currentPage)}
+        { renderViewPagerPage(PAGES[currentPage], { handellogin: goToNextPage })}
+     
 
-      <View style={{width:'50%',flexDirection:'row',justifyContent:'space-between',backgroundColor:'black'}}>
-  {currentPage > 0 && (
-    <CustomButton text="Précédent" onPress={goToPreviousPage} />
-  )}
-  {currentPage < PAGES.length - 1 && (
-    <CustomButton text="Suivant" onPress={goToNextPage} />
-  )}
-</View>
+      
       
       
       

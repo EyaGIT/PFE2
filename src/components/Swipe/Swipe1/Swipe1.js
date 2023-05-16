@@ -1,4 +1,4 @@
-import { View, Text,Image,StyleSheet } from 'react-native'
+import { View, Text,Image,StyleSheet,Dimensions} from 'react-native'
 import React,{useState, useRef,useCallback} from 'react'
 import { RadioButton } from 'react-native-paper';
 import PhoneInput from "react-native-phone-number-input";
@@ -11,13 +11,15 @@ import * as ImagePicker from 'react-native-image-picker'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DateTimePicker from '@react-native-community/datetimepicker'
 import PicherIm from '../../PickerIm/PicherIm';
-
-const Swipe1 = () => {
+const screenHeight = Dimensions.get('window').height;
+const screenWidth = Dimensions.get('window').width;
+const Swipe1 = ({handellogin}) => {
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
 
 
   const onContinePressed = () => {
+    handellogin();
     console.warn("Contine");}
 
   
@@ -40,7 +42,7 @@ const Swipe1 = () => {
   };
 
   return (
-    <SafeAreaView style={{ width:'100%',justifyContent: "flex-start", alignItems: "center"}}>
+    <SafeAreaView style={{ width:screenWidth,justifyContent: "flex-start", alignItems: "center"}}>
       
     <PicherIm/>
     <View style={{width:'80%',flexDirection:"row",paddingTop:10}}>

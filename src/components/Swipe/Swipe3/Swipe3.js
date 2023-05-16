@@ -6,9 +6,10 @@ import CustomButton from '../../CustomButton/CustomButton';
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
-const Swipe3 = () => {
+const Swipe3 = ({handellogin}) => {
 
     const onConfirmPressed = () => {
+      handellogin();
         console.warn("Sign in ");
        
   
