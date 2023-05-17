@@ -71,3 +71,28 @@ export const addAmount = async (data,token) => {
     }
   }
 };
+export const verifyEmailExists = async (data) => {
+  try {
+   
+    const result = await ApiManager('/verifyEmailExists', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+         
+      },
+      data:data
+      
+    });
+    
+    
+    return result;
+  } catch (error) {
+    console.log(error)
+    if (error.response && error.response.data) {
+      return error.response.data;
+    } else {
+      // Handle the error when response or response.data is undefined
+      return { error: 'An error occurred.' };
+    }
+  }
+};

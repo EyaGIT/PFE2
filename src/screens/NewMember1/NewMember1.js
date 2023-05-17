@@ -45,7 +45,9 @@ const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 const NewMember1 = () => {
-  
+  const userIn = (ob)=>{
+    console.log(ob);
+  }
 
   
 
@@ -133,8 +135,10 @@ const NewMember1 = () => {
      
        
       
+      {currentPage === 0 && <Swipe1 handellogin={goToNextPage} userInfo={userIn} />}
+      {currentPage === 1 && <Swipe2 />}
+      {currentPage === 2 && <Swipe3 />}
         
-        { renderViewPagerPage(PAGES[currentPage], { handellogin: goToNextPage })}
      
 
       

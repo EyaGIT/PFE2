@@ -1,5 +1,5 @@
 import { View, Text,Image,StyleSheet,SafeAreaView,PermissionsAndroid } from 'react-native'
-import React,{useState, useRef,useCallback} from 'react'
+import React,{useState, useRef,useCallback,useEffect} from 'react'
 import ImagePickerAvatar from '../uplode_Image/ImagePickerAvatar';
 import ImagePickerHeader from '../uplode_Image/ImagePickerHeader';
 import ImagePickerModal from '../uplode_Image/ImagePickerModal';
@@ -10,7 +10,7 @@ import GalleryScreen from './GalleryScreen';
 
 
 
-const PicherIm = () => {
+const PicherIm = ({uriForm}) => {
     const [pickerResponse,setPickerResponse]=useState(null);
     const[Visible,setVisible]=useState(false);
     const [isModalVisible, setModalVisible] = useState(false);
@@ -19,10 +19,18 @@ const PicherIm = () => {
 
     const addUri=(uri)=>{
       setPhoto(uri);
-      console.log(Photo)
+      uriForm(uri);
+      
+      
     }
+    
     //--------------------
-    const openGalleryModal = async () => {
+    useEffect(() => {
+      requestStoragePermission();
+      
+    }, []);
+  
+    const requestStoragePermission = async () => {
       try {
         const granted = await PermissionsAndroid.request(
           PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
@@ -32,14 +40,19 @@ const PicherIm = () => {
           }
         );
         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-          setModalVisible(true);
           console.log('Storage permission granted');
         } else {
           console.log('Storage permission denied');
         }
       } catch (err) {
-        console.warn(err);
+        console.error(err);
       }
+    };
+    const openGalleryModal = async () => {
+      
+          setModalVisible(true);
+          setVisible(false)
+          
     
       
     };
@@ -49,49 +62,14 @@ const PicherIm = () => {
     };
     //--------------------
   
-    let options = {
-      saveToPhotos: true,
-      mediaType: 'photo',
-    };
+    
   
-    const openCamera = async () => {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.CAMERA,
-      );
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        const result = await launchCamera(options);
-        setCameraPhoto(result.assets[0].uri);
-      }
-    };
+    
   
-    const openGallery = async () => {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE
-      );
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      launchImageLibrary({
-          
-            
-        selectionLimit: 2,
-        mediaType: 'photo',
-        includeBase64: false,
-      
-    },(res)=>console.log(res.assets.length));
-      /*if (result.didCancel) {
-        // User canceled the image selection
-        console.log('Image selection canceled');
-      } else {
-        // Image selected successfully
-        console.log('Selected image:', result.assets[0].uri);
-        // Perform further actions with the selected image
-      }
-    setGalleryPhoto(result.assets[0].uri);*/}
-    };
-
     
    
-    const onCameraPress=React.useCallback(async ()=>{
+    const onCameraPress=useCallback(async ()=>{
+      setVisible(false);
 
      const options ={
        saveToPhotos: true,
@@ -102,7 +80,7 @@ const PicherIm = () => {
       PermissionsAndroid.PERMISSIONS.CAMERA,
     );
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      const result = await ImagePicker.launchCamera(options,(data)=>setPhoto(data?.assets[0].uri));
+     await ImagePicker.launchCamera(options,(data)=>addUri(data?.assets[0].uri));
       //setCameraPhoto(result.assets[0].uri);
     }
      

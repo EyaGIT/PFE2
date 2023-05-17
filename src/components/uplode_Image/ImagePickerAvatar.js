@@ -3,7 +3,7 @@ import React from 'react'
 import BackgroundAvatar from '../../../assets/images/BackgroundAvatar.png'
 import addButton from '../../../assets/images/addButton.png'
 const ImagePickerAvatar = ({uri, onPress}) => {
-  console.log(uri)
+  
   return (
      
        <View style={Styles.avatar}> 

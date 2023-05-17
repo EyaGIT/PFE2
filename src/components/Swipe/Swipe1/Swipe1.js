@@ -10,11 +10,14 @@ import { launchImageLibrary } from 'react-native-image-picker';
 import * as ImagePicker from 'react-native-image-picker'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DateTimePicker from '@react-native-community/datetimepicker'
+import { verifyEmailExists } from "../../../api/user_api";
+
+
 import PicherIm from '../../PickerIm/PicherIm';
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
-const Swipe1 = ({handellogin}) => {
-  const [date, setDate] = useState(new Date());
+const Swipe1 = ({handellogin,userInfo}) => {
+  
   const [showDatePicker, setShowDatePicker] = useState(false);
 
 
@@ -25,15 +28,104 @@ const Swipe1 = ({handellogin}) => {
   
 
     
-
+  const [date, setDate] = useState(new Date());
   const [password, setpassword] = useState('');
-  const [valuee, setValuee] = useState("");
-  const [formattedValue, setFormattedValue] = useState("");
-  const phoneInput = useRef(null);
   const [firstname, setfirstname] = useState('');
   const [lastname, setlastname] = useState('');
   const [email, setemail] = useState('');
-  const [checked, setChecked] = React.useState('first');
+  const [imageuri, setimageuri] = useState('');
+  const [checked, setChecked] = React.useState('Male');
+  const [error, setError] = useState('');
+
+// Input validation functions
+const isPasswordValid = (password) => password.length >= 6;
+const isNameValid = (name) => name.trim() !== '';
+const isEmailValid = (email) => {
+  // Regular expression for basic email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
+const isImageUriValid = (imageuri) => imageuri !== '';
+
+// Handle form submission
+const handleSubmit = () => {
+  if (
+    password.trim() === '' ||
+    firstname.trim() === '' ||
+    lastname.trim() === '' ||
+    email.trim() === '' ||
+    imageuri === ''||imageuri === null
+  ) {
+    errorMessage = 'All fields are required';
+    setError(errorMessage)
+    return
+  }
+  if (!isImageUriValid(imageuri)) {
+    setError('Image is required');
+    return;
+  }
+  // Validate inputs
+  
+
+  if (!isNameValid(firstname)) {
+    setError('First name is required');
+    return;
+  }
+
+  if (!isNameValid(lastname)) {
+    setError('Last name is required');
+    return;
+  }
+
+  if (!isEmailValid(email)) {
+    setError('Invalid email address');
+    return;
+  }
+  if (!isPasswordValid(password)) {
+    setError('Password should be at least 6 characters long');
+    return;
+  }
+
+  
+
+  // Validate date (age > 10)
+  const currentDate = new Date();
+  const age = currentDate.getFullYear() - date.getFullYear();
+  if (age < 10) {
+    setError('Age should be at least 10 years');
+    return;
+  }
+  verifyEmailExists({
+    email: email.toLocaleLowerCase(),
+    
+  })
+    .then(result=>{
+      if(result.status===200){
+        if(result.data.exists===true){
+          setError('email address exists');
+          return;
+        }else{
+          const formData = {
+            password,
+            firstname,
+            lastname,
+            email,
+            imageuri,
+            dateOfBirth: date,
+            gender: checked
+          };
+          userInfo(formData);
+          handellogin();
+          console.log('Form submitted successfully');
+        }
+      }
+    })
+  // All inputs are valid, proceed with form submission
+  setError('');
+  console.log("lena",imageuri)
+  
+};
+
   const onDateChange = (event, selectedDate) => {
     setShowDatePicker(false);
     if (selectedDate) {
@@ -43,9 +135,11 @@ const Swipe1 = ({handellogin}) => {
 
   return (
     <SafeAreaView style={{ width:screenWidth,justifyContent: "flex-start", alignItems: "center"}}>
-      
-    <PicherIm/>
+    
+    <PicherIm uriForm={setimageuri}/>
+    {error && <Text style={{width:'80%',fontSize:15,color:'red'}}>{error}</Text>}
     <View style={{width:'80%',flexDirection:"row",paddingTop:10}}>
+      
 
 
 
@@ -69,7 +163,7 @@ color='#E20522'
 </View>
 <View style={{width:'80%'}}>
 <Text>
-          <Text> Firt name </Text>
+          <Text> First name </Text>
           <Text style={{color:'red'}}> *</Text>
           </Text>
 <Custominput 
@@ -144,7 +238,7 @@ color='#E20522'
         </View>
 
         <View style={{width:"80%"}}>
-        <CustomButton  text="Continue " onPress={onContinePressed}/>
+        <CustomButton  text="Continue " onPress={handleSubmit}/>
         </View>
 
 

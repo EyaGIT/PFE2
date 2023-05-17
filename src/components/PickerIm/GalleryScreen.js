@@ -3,8 +3,17 @@ import { View, Button, Image } from 'react-native';
 import Modal from 'react-native-modal';
 import CameraRollPicker from 'react-native-camera-roll-picker';
 import RNFS from 'react-native-fs';
+import { getType } from 'react-native-mime-types';
 const GalleryScreen = ({ isVisible, onClose,image}) => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+
+  function getImageType(uri) {
+    const parts = uri.split('.');
+    const extension = parts[parts.length - 1];
+    const mimeType = `image/${extension}`;
+    return mimeType.toLowerCase();
+  }
+  
 
   const handleImageSelection = async (selectedImages) => {
     if (selectedImages.length > 0) {
@@ -14,6 +23,11 @@ const GalleryScreen = ({ isVisible, onClose,image}) => {
         const fileUri = selectedImage.uri;
         const base64Data = await RNFS.readFile(fileUri, 'base64');
         console.log('Image URL:', fileUri);
+        
+        const imageUri = fileUri;
+        const imageName = fileUri.split('/').pop();
+        const imageType = getImageType(imageName);
+        console.log('hhhh',imageType)
         image(fileUri)
         //console.log('Base64 data:', base64Data);
       } catch (error) {
