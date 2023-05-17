@@ -54,9 +54,9 @@ const Signin = ({ navigation, onLoginSuccess,onLoad }) => {
     // if (!isContainsSymbol.test(value)) {
     //   return 'Password must contain at least one Special Symbol.';
     // }
-
+/*
     return null;
-  };
+  };*/
 
   const handleLogin = () => {
     onLoad(true);
