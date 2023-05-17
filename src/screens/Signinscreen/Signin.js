@@ -60,9 +60,9 @@ const Signin = ({ navigation, onLoginSuccess,onLoad }) => {
 
   const handleLogin = () => {
     onLoad(true);
-    const checkPassowrd = checkPasswordValidity(password);
+    //const checkPassowrd = checkPasswordValidity(password);
     
-    if (!checkPassowrd) {
+    
       console.log({
         email: email.toLocaleLowerCase(),
         password: password,
@@ -90,10 +90,7 @@ const Signin = ({ navigation, onLoginSuccess,onLoad }) => {
           
           onLoad(false);
         });
-    } else {
-      onLoad(false);
-      alert(checkPassowrd);
-    }
+    
   };
 
 
