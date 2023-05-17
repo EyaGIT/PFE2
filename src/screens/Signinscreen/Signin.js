@@ -22,17 +22,17 @@ const Signin = ({ navigation, onLoginSuccess,onLoad }) => {
       setCheckValidEmail(true);
     }
   };
-
+/*
   const checkPasswordValidity = value => {
     const isNonWhiteSpace = /^\S*$/;
     if (!isNonWhiteSpace.test(value)) {
       return 'Password must not contain Whitespaces.';
     }
-
+*/
    /* const isContainsUppercase = /^(?=.*[A-Z]).*$/;
     if (!isContainsUppercase.test(value)) {
       return 'Password must have at least one Uppercase Character.';
-    }*/
+    }
 
     const isContainsLowercase = /^(?=.*[a-z]).*$/;
     if (!isContainsLowercase.test(value)) {
@@ -47,7 +47,7 @@ const Signin = ({ navigation, onLoginSuccess,onLoad }) => {
     const isValidLength = /^.{8,16}$/;
     if (!isValidLength.test(value)) {
       return 'Password must be 8-16 Characters Long.';
-    }
+    }*/
 
     // const isContainsSymbol =
     //   /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
