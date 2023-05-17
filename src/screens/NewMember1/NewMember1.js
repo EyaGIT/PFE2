@@ -45,8 +45,11 @@ const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 const NewMember1 = () => {
+  const [userInfo, setUserInfo] = useState(new FormData());
   const userIn = (ob)=>{
-    console.log(ob);
+    setUserInfo(ob);
+    
+    
   }
 
   
@@ -136,7 +139,7 @@ const NewMember1 = () => {
        
       
       {currentPage === 0 && <Swipe1 handellogin={goToNextPage} userInfo={userIn} />}
-      {currentPage === 1 && <Swipe2 />}
+      {currentPage === 1 && <Swipe2 user={userInfo}/>}
       {currentPage === 2 && <Swipe3 />}
         
      

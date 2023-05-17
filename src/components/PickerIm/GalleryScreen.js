@@ -27,7 +27,7 @@ const GalleryScreen = ({ isVisible, onClose,image}) => {
         const imageUri = fileUri;
         const imageName = fileUri.split('/').pop();
         const imageType = getImageType(imageName);
-        console.log('hhhh',imageType)
+        
         image(fileUri)
         //console.log('Base64 data:', base64Data);
       } catch (error) {

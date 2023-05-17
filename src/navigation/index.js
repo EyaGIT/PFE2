@@ -90,6 +90,9 @@ const Navigation = () => {
         setIsLoggedIn(false);
         setIsLoading(false);
       });
+  }else{
+    test= new Promise(resolve => setTimeout(resolve, 2000));
+    setIsLoading(false);
   }}, []);
   return (
     <NavigationContainer >

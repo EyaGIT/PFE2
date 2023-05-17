@@ -46,24 +46,29 @@ const isEmailValid = (email) => {
   return emailRegex.test(email);
 };
 const isImageUriValid = (imageuri) => imageuri !== '';
-
+const getImageType=(uri) => {
+  const parts = uri.split('.');
+  const extension = parts[parts.length - 1];
+  const mimeType = `image/${extension}`;
+  return mimeType.toLowerCase();
+}
 // Handle form submission
 const handleSubmit = () => {
   if (
     password.trim() === '' ||
     firstname.trim() === '' ||
     lastname.trim() === '' ||
-    email.trim() === '' ||
-    imageuri === ''||imageuri === null
+    email.trim() === ''
+    
   ) {
     errorMessage = 'All fields are required';
     setError(errorMessage)
     return
   }
-  if (!isImageUriValid(imageuri)) {
+  /*if (!isImageUriValid(imageuri)) {
     setError('Image is required');
     return;
-  }
+  }*/
   // Validate inputs
   
 
@@ -106,14 +111,24 @@ const handleSubmit = () => {
           return;
         }else{
           const formData = {
-            password,
-            firstname,
-            lastname,
-            email,
-            imageuri,
-            dateOfBirth: date,
-            gender: checked
-          };
+         firstName: firstname,
+          lastName:lastname,
+          password:password,
+          email:email,
+          birthDate:date,
+          gender:checked
+          
+          }
+       /* const imageName = imageuri.split('/').pop();
+        
+        const imageType = getImageType(imageName);
+        
+          formData.append('image', {
+            uri: imageuri,
+            name: imageName,
+            type: imageType,
+          });*/
+          console.log(formData);
           userInfo(formData);
           handellogin();
           console.log('Form submitted successfully');
