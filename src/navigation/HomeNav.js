@@ -26,7 +26,12 @@ import Historique from '../screens/Historique/Historique';
 import Statistics  from "../screens/Statistics/Statistics";
 const Tab = createBottomTabNavigator();
 
-function HomeNav({onLogoutSuccess,onLoad}) {
+function HomeNav({onLogoutSuccess,onLoad,userInfo}) {
+  useEffect(() => {
+    // ...existing code...
+
+    console.log('lena',userInfo); // Update the user information state
+    });
   
   return (
     <Tab.Navigator initialRouteName='Home' screenOptions={({route})=>({
@@ -63,7 +68,9 @@ function HomeNav({onLogoutSuccess,onLoad}) {
     backgroundColor: 'red',
   }}}/>
       <Tab.Screen name="History" component={Historique} options={{tabBarButton: props => <CustomTabBarButton route='History' {... props} />}} />
-      <Tab.Screen name="Home" component={HomeScreen} options={{tabBarButton: props => <CustomTabBarButton route='Home' {... props} />,headerTitle: null,}} />
+      <Tab.Screen name="Home" options={{tabBarButton: props => <CustomTabBarButton route='Home' {... props} />,headerTitle: null,}} >
+      {props => <HomeScreen {...props} userInfo={userInfo} />}
+      </Tab.Screen>
       <Tab.Screen name="Statistics" component={Statistics} options={{tabBarButton: props => <CustomTabBarButton route='Static' {... props} />, headerTitleStyle: {
       fontWeight: 'normal',
     },}} />

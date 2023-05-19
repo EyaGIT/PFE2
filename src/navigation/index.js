@@ -30,6 +30,8 @@ import SendMoneyAll from '../screens/SendMoneyAll/SendMoneyAll';
 import LoadingPage from '../screens/LoadingPage/LoadingPage';
 import Security from '../screens/Security/Security';
 import Camera from '../screens/Camera/Camera';
+import NetInfo from '@react-native-community/netinfo';
+import { socket } from "../api/ApiManager";
 const Stack = createNativeStackNavigator();
 
 
@@ -37,6 +39,8 @@ const Stack = createNativeStackNavigator();
 const Navigation = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
+  const [isConnected, setIsConnected] = useState(true);
   const handleLoginSuccess = () => {
     
     setIsLoggedIn(true);
@@ -46,6 +50,7 @@ const Navigation = () => {
     
     await AsyncStorage.removeItem('AccessToken');
     await AsyncStorage.removeItem('user');
+    socket.disconnect();
     setIsLoggedIn(false);
   }
   const handleLoad = (test)=>{
@@ -53,6 +58,20 @@ const Navigation = () => {
     setIsLoading(test)
   }
   useEffect(() => {
+    const unsubscribe = NetInfo.addEventListener(state => {
+      setIsConnected(state.isConnected);
+    });
+  
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+  
+  useEffect(() => {
+    
+    socket.on('user_info', (user) => {
+      setUserInfo(user); // Update the user information state
+    });
     // Check if user is already logged in
     setIsLoading(true);
     if(isLoggedIn===false){
@@ -60,9 +79,11 @@ const Navigation = () => {
       .then(token => {
         if (token) {
           console.log(token)
+          
           AllInfoUser(token).then(result =>{
             if(result.status===200){
               console.log(result.status)
+              socket.emit('login',result.data._id);
               AsyncStorage.setItem('user', JSON.stringify(result.data));
             setIsLoggedIn(true);
             setIsLoading(false);
@@ -91,9 +112,23 @@ const Navigation = () => {
         setIsLoading(false);
       });
   }else{
-    test= new Promise(resolve => setTimeout(resolve, 2000));
+    new Promise(resolve => setTimeout(resolve, 2000));
     setIsLoading(false);
   }}, []);
+  useEffect(() => {
+    if (isConnected) {
+      console.log('hhhhhh')
+      if(isLoggedIn===true){
+        console.log('ccccc');
+        // Perform the automatic login to the socket
+      //const userId = 'yourUserId'; // Replace with the appropriate user ID
+      //socket.emit('login', userId);
+      }
+      
+    }else{
+      console.log('decdec')
+    }
+  }, [isConnected]);
   return (
     <NavigationContainer >
       <Stack.Navigator >
@@ -106,7 +141,7 @@ const Navigation = () => {
       
       
       <Stack.Screen name="HomeNav" options={{headerShown:false}}>
-            {(props) => <HomeNav {...props} onLogoutSuccess={handleLogoutSuccess} onLoad={handleLoad} />}
+            {(props) => <HomeNav {...props} onLogoutSuccess={handleLogoutSuccess} onLoad={handleLoad} userInfo={userInfo} />}
           </Stack.Screen>
       <Stack.Screen name="Order Bracelet" component={OrderBracelet}/>
       <Stack.Screen name="Map" component={Map}/>

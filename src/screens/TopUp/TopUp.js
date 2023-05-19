@@ -1,6 +1,6 @@
 import { StyleSheet,View, Text,Image,TouchableOpacity,ScrollView,Dimensions,StatusBar,TextInput } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import React, { useLayoutEffect,useState} from 'react'
+import React, { useLayoutEffect,useState,useEffect} from 'react'
 import { useNavigation } from '@react-navigation/native'
 import LinearGradient from 'react-native-linear-gradient'
 import { RadioButton } from 'react-native-paper';
@@ -9,7 +9,8 @@ import addnewcard from '../../../assets/images/addnewcard.png'
 import CustomButton from '../../components/CustomButton/CustomButton';
 import {addAmount,AllInfoUser} from "../../api/user_api";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import arrow from '../../../assets/images/icons/ArrowBack.png'
+import arrow from '../../../assets/images/icons/ArrowBack.png';
+import { socket } from "../../api/ApiManager";
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
@@ -19,7 +20,10 @@ const TopUp = () => {
     [isAddingMoney, setIsAddingMoney] = useState(false);
     
   const navigation = useNavigation();
-
+  useEffect(() => {
+    // Subscribe to the 'moneyAdded' event
+    //socket.emit('get_user_info',result.data._id);
+    });
   const addamount = async  () =>{
     if (!isAddingMoney) {
       setIsAddingMoney(true);
@@ -34,12 +38,14 @@ const TopUp = () => {
             id: user.bracelets[0]._id,
             amount: parseInt(Montant,10),
           },token).then(async result => {
+              
             
               if (result.status == 200) {
                 
                 await AllInfoUser(token).then(result =>{
                   if (result.status == 200) {
                   AsyncStorage.setItem('user', JSON.stringify(result.data));
+                  //socket.emit('get_user_info',result.data._id);
                   
                   navigation.replace('HomeNav');
                 }else if (result.status== 401){

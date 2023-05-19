@@ -77,8 +77,10 @@ const Signin = ({ navigation, onLoginSuccess,onLoad }) => {
             AsyncStorage.setItem('AccessToken', result.data.token);
             
             AllInfoUser(result.data.token).then(result =>{
-              socket.emit('get_user_info');
-              console.log(result.data._id)
+              socket.emit('login',result.data._id);
+              socket.emit('get_user_info',result.data._id);
+              
+              
               
               AsyncStorage.setItem('user', JSON.stringify(result.data));
               onLoginSuccess();

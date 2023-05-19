@@ -22,7 +22,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
-const HomeScreen = () => {
+const HomeScreen = ({userInfo}) => {
   const [Visible,setVisible]=useState(false);
   const [Amount,setAmount]=useState(0);
   const navigation = useNavigation();
@@ -32,7 +32,7 @@ const HomeScreen = () => {
     if (userString) {
       // User found, parse user string to JavaScript object
       const user = JSON.parse(userString);
-      setAmount(user.bracelets[0].amount)
+      setAmount(userInfo.bracelets[0].amount)
       
       // Do something with the user object
     } else {

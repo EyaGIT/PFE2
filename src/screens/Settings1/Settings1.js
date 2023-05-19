@@ -11,6 +11,7 @@ import Toggle from '../../../assets/images/Toggle.png'
 import Protect from '../../../assets/images/Protect.png'
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { socket } from "../../api/ApiManager";
 
 
 const Settings = ({onLogoutSuccess,onLoad}) => {
@@ -41,6 +42,8 @@ const Settings = ({onLogoutSuccess,onLoad}) => {
     console.error(error);
   });
   const handleLogout = async ()=>{
+    
+    
     onLogoutSuccess();
     await new Promise(resolve => setTimeout(resolve, 2000));
     onLoad(false);
