@@ -1,4 +1,4 @@
-import { View, Text,SafeAreaView, TouchableOpacity,Image,StyleSheet } from 'react-native'
+import { View, Text,SafeAreaView, TouchableOpacity,Image,StyleSheet,ScrollView} from 'react-native'
 import React,{useState} from 'react'
 import Custominput from '../../components/Custominput/Custominput'
 import CustomButton from '../../components/CustomButton/CustomButton'
@@ -7,18 +7,17 @@ import Tunisia from '../../../assets/images/Tunisia.png'
 import { TextInput } from 'react-native-paper'
 import CustominputImg from '../../components/CustominputImg/CustominputImg'
 import PicherIm from '../../components/PickerIm/PicherIm'
-import { ScrollView } from 'react-native-gesture-handler'
 
-const EditProfil = () => {
+
+const Settingsmember = () => {
     
-
+    const [Password, setPassword] = useState('');
     const [userfirstname, setUserfirstname] = useState('');
     const [userlastname, setUserlastname] = useState('');
     const [usermail, setUsermail] = useState('');
     const [userphone, setUserphone] = useState('');
   return (
-
-    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center',width:'100%' }}>
+<SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center',width:'100%' }}>
       <ScrollView style={{width:'100%',paddingLeft:20,paddingRight:30,height:180}}>
         <View style={{alignItems:"center",justifyContent:"flex-start",width:"100%",marginTop:-150,top:140,marginBottom:140}}> 
      <PicherIm/>
@@ -62,6 +61,13 @@ const EditProfil = () => {
         secureTextEntry={true}/>
       
       </View>
+      <View style={{width:'90%'}}> 
+         <Custominput 
+          placeholder="********" 
+          value={Password} 
+          setValue={setPassword}
+          />
+        </View>
     
       <View style={{width:"60%",paddingTop:20}}>
       <TouchableOpacity >
@@ -94,4 +100,4 @@ const styles= StyleSheet.create({
 
 })
 
-export default EditProfil
+export default Settingsmember

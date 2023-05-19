@@ -11,9 +11,8 @@ import Pin from '../../../assets/images/___.png'
 import Block from '../../../assets/images/Unavailable.png'
 import Limits from '../../../assets/images/NoEntry.png'
 import PopUp from '../../components/PopUp/PopUp';
-
-
-
+import Settings from '../../../assets/images/icons/Settings_outline.png'
+import udemy from '../../../assets/images/udemy.png'
 
 
 
@@ -58,10 +57,10 @@ const Member = () => {
         <Image source={AvatarAnas}></Image>
             <Text style={{fontSize:28,fontWeight:"bold",color:"black",marginBottom:30}}>Cherni Anas</Text>
             
-            <View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'center',borderWidth:1,borderRadius:20,height:70, marginBottom:30,borderColor:'#E20522',backgroundColor:'white'}}>
+            <View style={{width:'80%',borderWidth:1,borderRadius:20,height:70,backgroundColor:"#EBEBEB",borderColor:'#EBEBEB',alignItems:"center",justifyContent:"center",flexDirection:"row"}}>
                 
-                <Text style={{fontWeight:'bold',fontSize:30,color:'black'}}>1,500</Text>
-                <Text style={{fontWeight:'bold',fontSize:30,color:'#E20522'}}>TND</Text>
+                <Text style={{fontWeight:'bold',fontSize:30,color:'black',paddingLeft:30}}>1,500</Text>
+                <Text style={{fontWeight:'bold',fontSize:25,color:'#E20522',paddingLeft:30}}>TND</Text>
             </View>
         </View>
         
@@ -73,11 +72,11 @@ const Member = () => {
                 </View>
                 <Text>Send</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}}>
+            <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}}onPress={() => navigation.navigate('Settings member')}>
                 <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'rgba(209,208,208,0.5)',width:70,height:70,borderRadius:50}}>
-                <Image source={Pin} style={{width:45,height:12}}></Image>
+                <Image source={Settings} style={{width:40,height:40}}></Image>
                 </View>
-                <Text>PIN</Text>
+                <Text>Profil</Text>
             </TouchableOpacity>
             <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}} onPress={()=> setVisible(true)}>
                 <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'rgba(209,208,208,0.5)',width:70,height:70,borderRadius:50}}>
@@ -103,6 +102,37 @@ const Member = () => {
        
        <View style={{alignItems:"center",justifyContent:"center",width:"100%",top:screenHeight/4,height:screenHeight-270,backgroundColor:"#FBFBFB",paddingTop:250,paddingLeft:30,paddingRight:30}}>
         
+       
+       <View style={{width:'100%',alignItems:'center',justifyContent:'center',paddingBottom:100}}>
+       <View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between'}}>
+                <Text style={{fontSize:25,fontWeight:'bold'}}>Transaction</Text>
+                <View>
+                  <TouchableOpacity>
+                  <Text>Today</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              <View style={{flexDirection:'column',width:'100%',alignItems:'center',justifyContent:'space-between'}}>
+                <TouchableOpacity style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between', backgroundColor:'#F8F8F8',paddingLeft:25,paddingRight:25,height:70,marginTop:10,borderRadius:20}}>
+                <Image source={udemy} style={{width:20}} />
+                <View style={{flex:1,paddingLeft:20,paddingRight:20}}>
+                <Text style={{fontWeight:'bold',fontSize:20}}>Udemy</Text>
+                <Text>payment</Text>
+                </View>
+                <Text>-$165.00</Text>
+                </TouchableOpacity>
+
+
+                <TouchableOpacity style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between', backgroundColor:'#F8F8F8',paddingLeft:25,paddingRight:25,height:70,marginTop:10,borderRadius:20}}>
+                <Image source={udemy} style={{width:20}} />
+                <View style={{flex:1,paddingLeft:20,paddingRight:20}}>
+                <Text style={{fontWeight:'bold',fontSize:20}}>Amazon</Text>
+                <Text>payment</Text>
+                </View>
+                <Text>-$165.00</Text>
+                </TouchableOpacity>
+              </View>
+              </View>
        </View>
        </View>
           </ScrollView>
@@ -138,7 +168,7 @@ body:{
   borderRadius:45,
   
   flex:2,
-  height: 515,
+  height: 400,
   width:'90%',
   position:'absolute'
   

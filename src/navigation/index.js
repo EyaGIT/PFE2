@@ -30,6 +30,7 @@ import SendMoneyAll from '../screens/SendMoneyAll/SendMoneyAll';
 import LoadingPage from '../screens/LoadingPage/LoadingPage';
 import Security from '../screens/Security/Security';
 import Camera from '../screens/Camera/Camera';
+import Settingsmember from '../screens/Settingsmember/Settingsmember';
 const Stack = createNativeStackNavigator();
 
 
@@ -97,7 +98,7 @@ const Navigation = () => {
   return (
     <NavigationContainer >
       <Stack.Navigator >
-      
+     
       {isLoading ? (
       <Stack.Screen name="Load" component={LoadingPage} options={{headerShown:false}}/>
       ):(
@@ -121,6 +122,7 @@ const Navigation = () => {
       <Stack.Screen name="Security" component={Security}/>
       <Stack.Screen name="Top Up" component={TopUp}/>
       <Stack.Screen name="Notifications" component={Notifications}/>
+      <Stack.Screen name="Settings member" component={Settingsmember}/>
       <Stack.Screen name="Contacts" component={Contacts}/>
       <Stack.Screen name="Edit Profil" component={EditProfil}/>
       <Stack.Screen name="Essai" component={essai}/> 
@@ -129,6 +131,7 @@ const Navigation = () => {
       </>
       ) : (
         <>
+      
         <Stack.Screen name="Sign in">
             {(props) => <Signin {...props} onLoginSuccess={handleLoginSuccess} onLoad={handleLoad} />}
           </Stack.Screen>
