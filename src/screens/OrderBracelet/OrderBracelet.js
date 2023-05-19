@@ -115,7 +115,7 @@ const OrderBracelet = ({handellogin,user}) => {
           if (result.status === 201) {
             console.log(result.data.userId);
             formData.userId = result.data.userId;
-            console.log(formData);
+            console.log(formData)
             const braceletResult = await createBracelet(formData, token);
             if (braceletResult.status === 201) {
               console.log('yess');

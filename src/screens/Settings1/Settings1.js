@@ -16,7 +16,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const Settings = ({onLogoutSuccess,onLoad}) => {
   const navigation = useNavigation();
   const [UserName, setUserName] = useState(null);
+  const [imageuri, setimageuri] = useState('');
+  const adduriImage = (uri) =>{
+    
+    setimageuri(uri)
+  
+   }
   AsyncStorage.getItem('user')
+  
   .then(userString => {
     // Check if user exists in storage
     if (userString) {
@@ -52,7 +59,7 @@ const Settings = ({onLogoutSuccess,onLoad}) => {
   return (
     <SafeAreaView style={{ width:'100%',justifyContent: "flex-start", alignItems: "center",flex:1}} >
      <View style={{alignItems:"center",justifyContent:"flex-start",width:"100%",flex:1,marginTop:-150,top:140,marginBottom:140}}> 
-    <PicherIm  />
+     <PicherIm uriForm={adduriImage}/>
     <View style={{width:'100%',alignItems:'center',justifyContent:'center'}}>
       <Text style={{fontSize:19,color:'#000000',fontWeight:'700'}}>{UserName}</Text></View>
     

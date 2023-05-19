@@ -1,5 +1,5 @@
-import ApiManager from './ApiManager';
-
+import {ApiManager} from './ApiManager';
+import FormData from "form-data";
 export const user_login = async data => {
   try {
     console.log(data)
@@ -100,17 +100,36 @@ export const verifyEmailExists = async (data) => {
 export const childSignup = async (data, token) => {
   try {
     console.log('hetha', data, token);
-    const result = await ApiManager('/childSignup', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-       
-        
-      },
+    const dataArray = [
       
-      data:data
+      ['lastName', 'Ggggg'],
+      ['password', 'Anass.02'],
+      ['email', 'cherni.anabbbbvbssfchjll02@gmail.com'],
+      ['birthDate', new Date('2002-05-18')],
+      ['gender', 'Male'],
+      ['image',{
+        "uri": "file:///storage/emulated/0/Pictures/51673050-fb83-4da4-94d4-dc7fac239618.jpg",
+        "name": "51673050-fb83-4da4-94d4-dc7fac239618.jpg",
+        "type": "image/jpg"
+    }]
+    ];
+    
+    const formData = new FormData();
+    
+    dataArray.forEach(([key, value]) => {
+      formData.append(key, value);
     });
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      responseType: 'json',
+      
+    };
+    const boundary = `boundary-${Date.now()}`;
+    console.log(data);
+    const result = await ApiManager.post('/childSignup',data,config );
     console.log('hhhhhh')
     return result;
   } catch (error) {

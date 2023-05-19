@@ -11,7 +11,7 @@ import * as ImagePicker from 'react-native-image-picker'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DateTimePicker from '@react-native-community/datetimepicker'
 import { verifyEmailExists } from "../../../api/user_api";
-
+import FormData from "form-data";
 
 import PicherIm from '../../PickerIm/PicherIm';
 const screenHeight = Dimensions.get('window').height;
@@ -58,17 +58,17 @@ const handleSubmit = () => {
     password.trim() === '' ||
     firstname.trim() === '' ||
     lastname.trim() === '' ||
-    email.trim() === ''
-    
+    email.trim() === '' ||
+    imageuri === ''||imageuri === null
   ) {
     errorMessage = 'All fields are required';
     setError(errorMessage)
     return
   }
-  /*if (!isImageUriValid(imageuri)) {
+  if (!isImageUriValid(imageuri)) {
     setError('Image is required');
     return;
-  }*/
+  }
   // Validate inputs
   
 
@@ -110,15 +110,15 @@ const handleSubmit = () => {
           setError('email address exists');
           return;
         }else{
-          const formData = {
-         firstName: firstname,
-          lastName:lastname,
-          password:password,
-          email:email,
-          birthDate:date,
-          gender:checked
+          const formData ={'firstName': firstname,
+          'lastName': lastname,
+          'password': password,
+          'email': email,
+          'birthDate': date,
+          'gender': checked,
+        'image':imageuri}
           
-          }
+          
        /* const imageName = imageuri.split('/').pop();
         
         const imageType = getImageType(imageName);
@@ -127,8 +127,8 @@ const handleSubmit = () => {
             uri: imageuri,
             name: imageName,
             type: imageType,
-          });*/
-          console.log(formData);
+          });
+          console.log("hhhhhheader",formData);*/
           userInfo(formData);
           handellogin();
           console.log('Form submitted successfully');

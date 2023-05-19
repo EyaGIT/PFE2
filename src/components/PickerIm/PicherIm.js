@@ -15,11 +15,14 @@ const PicherIm = ({uriForm}) => {
     const[Visible,setVisible]=useState(false);
     const [isModalVisible, setModalVisible] = useState(false);
     const [Photo, setPhoto] = useState(null);
+    const [Photobase64, setPhotobase64] = useState(null);
     const [galleryPhoto, setGalleryPhoto] = useState();
-
-    const addUri=(uri)=>{
+    
+    const addUri=(uri,base64Data)=>{
       setPhoto(uri);
-      uriForm(uri);
+      setPhotobase64(base64Data)
+      console.log('test')
+      uriForm(base64Data)
       
       
     }
@@ -74,13 +77,13 @@ const PicherIm = ({uriForm}) => {
      const options ={
        saveToPhotos: true,
        mediaType:'photo',
-       includeBase64:false,
+       includeBase64:true,
      };
      const granted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.CAMERA,
     );
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-     await ImagePicker.launchCamera(options,(data)=>addUri(data?.assets[0].uri));
+     await ImagePicker.launchCamera(options,(data)=>addUri(data?.assets[0].uri,data?.assets[0].base64));
       //setCameraPhoto(result.assets[0].uri);
     }
      

@@ -5,6 +5,7 @@ import CustomButton from '../../components/CustomButton/CustomButton'
 import { useNavigation } from '@react-navigation/native';
 import {user_login,AllInfoUser} from "../../api/user_api";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { socket } from "../../api/ApiManager";
 const Signin = ({ navigation, onLoginSuccess,onLoad }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -74,7 +75,11 @@ const Signin = ({ navigation, onLoginSuccess,onLoad }) => {
         .then(result => {
           if (result.status == 200) {
             AsyncStorage.setItem('AccessToken', result.data.token);
+            
             AllInfoUser(result.data.token).then(result =>{
+              socket.emit('get_user_info');
+              console.log(result.data._id)
+              
               AsyncStorage.setItem('user', JSON.stringify(result.data));
               onLoginSuccess();
               onLoad(false);
