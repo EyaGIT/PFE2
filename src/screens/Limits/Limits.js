@@ -9,6 +9,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Takos from '../../../assets/images/Tacos.png';
 import  CustomButton  from "../../components/CustomButton/CustomButton";
 import ModalLimits from '../../components/ModalLimits/ModalLimits';
+import arrow from '../../../assets/images/icons/ArrowBack.png'
 const takos = require('../../../assets/images/Tacos.png');
 const TITLES = [
     'Record the dismissible tutorial 🎥',
@@ -35,7 +36,45 @@ const Limits = () => {
     const navigation=useNavigation();
     useLayoutEffect(()=>{
       navigation.setOptions({
-        headerShown:false,
+        headerShown:true,
+        headerTransparent:true,
+        headerTitleAlign: 'center',
+        headerTitleStyle: { alignSelf:'center',color: 'white' ,height:'100%',
+        fontSize: 27,fontWeight:'100'},
+          
+        headerLeft: () => (
+          <TouchableOpacity
+            style={{
+              width: 45,
+              height: 45,
+              borderRadius: 25,
+              borderColor: 'white',
+              borderWidth: 1,
+              marginLeft: 10,
+              marginRight:30,
+              marginBottom:37,
+              marginTop:37,
+              justifyContent: 'center',
+              alignItems: 'center',
+              
+            }}
+            onPress={() => navigation.goBack()}
+          >
+            <Image
+              source={arrow}
+              style={{ width: '60%', height: '60%' }}
+            />
+          </TouchableOpacity>
+        ),headerStyle: {
+          
+          height:'auto'
+          
+        
+        
+  
+          
+    
+          },
       })
     }, [])
     const[Visible,setVisible]=useState(false);
@@ -49,7 +88,7 @@ const Limits = () => {
     const scrollRef = useRef(null);
 
 
-    const [range, setRange] = useState('50%');
+    const [range, setRange] = useState('50');
     const [sliding, setSliding] = useState('Inactive');
     return (
         <LinearGradient start={{x: 1, y: 0}} end={{x: 0, y: 1}} locations={[0,0.6]} colors={['#E20522', '#000000']} style={styles.linearGradient}>
@@ -60,7 +99,7 @@ const Limits = () => {
           <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
           
          <View style={{flex: 1}}>
-            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}>Limits</Text>
+            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}></Text>
             
         </View>      
      
@@ -68,9 +107,9 @@ const Limits = () => {
           
       <SafeAreaView style={styles.body}>
       <View style={{flex: 1,height:90}}>
-      <Text>Limit Per transaction</Text>
-            <Text>{range}</Text>
-            
+      <Text style={{fontWeight:'600',fontSize:15}}>Limit Per transaction</Text>
+           
+            <View style={{flexDirection:'row',paddingTop:20}}>
             <Slider style={{flex: 1}}
             minimumValue={0}
             maximumValue={100}
@@ -80,11 +119,17 @@ const Limits = () => {
             value={1}
             onValueChange={value => setRange(value)}
             />
+             <View style={{borderWidth: 2, borderColor: 'black',width:60,borderRadius:5,alignItems:'center',justifyContent:'center'}}>
+              <Text>
+            <Text>{range}</Text>
+            <Text>D</Text></Text>
+            </View>
+            </View>
         </View>
         <View style={{flex: 1,height:90}}>
-        <Text>Limit Per transaction</Text>
-        <Text>{range}</Text>
-            
+        <Text style={{fontWeight:'600',fontSize:15}}>Limit Per payment</Text>
+        
+            <View style={{flexDirection:'row',paddingTop:20}}>
             <Slider style={{flex: 1}}
             minimumValue={0}
             maximumValue={100}
@@ -94,11 +139,17 @@ const Limits = () => {
             value={1}
             onValueChange={value => setRange(value)}
             />
+            <View style={{borderWidth: 2, borderColor: 'black',width:60,borderRadius:5,alignItems:'center',justifyContent:'center'}}>
+              <Text>
+            <Text>{range}</Text>
+            <Text>D</Text></Text>
+            </View>
+            </View>
         </View>
         <View style={{flex: 5,minHeight:300}}>
             <View style={{flexDirection:'row',justifyContent:'space-between'}}>
                 <Text style={{fontSize:24,fontWeight:'bold',color:'black'}}>Limits</Text>
-                <TouchableOpacity onPress={() => setVisible(true)}><Text>add</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => setVisible(true)}><Text style={{paddingTop:10}}>Add</Text></TouchableOpacity>
                 <ModalLimits
                 isVisible={Visible}
                 onClose={() => setVisible(false)}

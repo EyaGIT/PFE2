@@ -11,8 +11,12 @@ import Toggle from '../../../assets/images/Toggle.png'
 import Protect from '../../../assets/images/Protect.png'
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+<<<<<<< HEAD
 import { socket } from "../../api/ApiManager";
 
+=======
+import avataranas from '../../../assets/images/AvatarAnas.png'
+>>>>>>> 09fe7d18ed2518086560b780fbc1da5e54d6fedd
 
 const Settings = ({onLogoutSuccess,onLoad}) => {
   const navigation = useNavigation();
@@ -61,10 +65,10 @@ const Settings = ({onLogoutSuccess,onLoad}) => {
      }
   return (
     <SafeAreaView style={{ width:'100%',justifyContent: "flex-start", alignItems: "center",flex:1}} >
-     <View style={{alignItems:"center",justifyContent:"flex-start",width:"100%",flex:1,marginTop:-150,top:140,marginBottom:140}}> 
-     <PicherIm uriForm={adduriImage}/>
+     <View style={{alignItems:"center",justifyContent:"center",width:"100%",flex:1}}> 
+     <Image source={avataranas}/>
     <View style={{width:'100%',alignItems:'center',justifyContent:'center'}}>
-      <Text style={{fontSize:19,color:'#000000',fontWeight:'700'}}>{UserName}</Text></View>
+      <Text style={{fontSize:19,color:'#000000',fontWeight:'700',paddingTop:10}}>{UserName}</Text></View>
     
     
     </View>

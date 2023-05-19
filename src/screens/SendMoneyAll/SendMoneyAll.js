@@ -87,7 +87,7 @@ const SendMoneyAll = () => {
           
         <View style={{paddingTop:10,alignItems:'center', justifyContent:'center',paddingLeft:30,paddingRight:30,marginBottom:50}}>
 
-        <View style={{borderRadius:30,borderColor:'#EBEBEB',width:267,height:150,alignItems:"center",justifyContent:"center",flexDirection:"row"}}>
+        <View style={{backgroundColor:"#EBEBEB",borderRadius:30,borderColor:'#EBEBEB',width:230,height:100,alignItems:"center",justifyContent:"center",flexDirection:"row"}}>
 <TextInput 
   style={{fontSize:35,height:"100%",paddingLeft:40}}
   placeholder="20"

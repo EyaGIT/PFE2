@@ -1,9 +1,11 @@
-import { View, Text,Image,Pressable,SafeAreaView,StyleSheet,Dimensions} from 'react-native'
+import { View, Text,Image,Pressable,SafeAreaView,StyleSheet,Dimensions, TouchableOpacity} from 'react-native'
 import React from 'react'
 import Modal from 'react-native-modal'
 import Camera from '../../../assets/images/Camera.png'
 import Gallery from '../../../assets/images/Gallery.png'
 import { MultipleSelectList } from 'react-native-dropdown-select-list'
+import CustomButton from '../CustomButton/CustomButton'
+import { ScrollView } from 'react-native-gesture-handler'
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 const ModalLimits = ({
@@ -36,8 +38,8 @@ const ModalLimits = ({
     >
 
   <SafeAreaView  style={styles.buttons}>
-  <View style={{height:'90%',width:'90%'}}>
-    <Text style={{alignSelf:'center',fontSize:24}}>New Limit</Text>
+  <ScrollView style={{height:'50%',width:'90%'}}>
+    <Text style={{alignSelf:'center',fontSize:20,fontWeight:'700',paddingBottom:20,paddingTop:20}}>New Limit</Text>
     <MultipleSelectList 
         setSelected={(val) => setSelected(val)} 
         data={data} 
@@ -45,8 +47,18 @@ const ModalLimits = ({
        
         label="Select Shop"
     />
-  </View>
-
+     <View style={{flexDirection:'row',justifyContent:'space-evenly',paddingTop:20}}>
+  <View style={{width:'40%',paddingRight:10}}>
+          
+            <CustomButton text='Apply'></CustomButton>
+          </View>
+          <View style={{width:'40%',paddingLeft:10}}>
+            <CustomButton text='Reset'></CustomButton>
+          </View>
+  
+          </View>
+  </ScrollView>
+ 
   </SafeAreaView>
 
 
@@ -70,11 +82,11 @@ const styles = StyleSheet.create({
 
 buttons:{
   backgroundColor:'white',
-  flexDirection:'row',
+  flexDirection:'column',
   borderTopRightRadius:40,
   borderTopLeftRadius:40,
   minHeight:screenHeight/2,
-  justifyContent:'center',
+  
   alignItems:'center',
 
 

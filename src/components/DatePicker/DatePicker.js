@@ -33,7 +33,7 @@ const DatePicker = () => {
             
             
             />
-            <TouchableOpacity style={{paddingTop:10,paddingLeft:210}} onPress={() => setShowDatePicker(true)}>
+            <TouchableOpacity style={{paddingTop:10,paddingLeft:150}} onPress={() => setShowDatePicker(true)}>
             <Image source={cal}  />
             </TouchableOpacity>
             {showDatePicker && (
