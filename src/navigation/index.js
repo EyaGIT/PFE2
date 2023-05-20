@@ -136,7 +136,7 @@ const Navigation = () => {
     <NavigationContainer >
       <Stack.Navigator >
      
-     
+      <Stack.Screen name="Historique" component={Historique}/>
       {isLoading ? (
       <Stack.Screen name="Load" component={LoadingPage} options={{headerShown:false}}/>
       ):(

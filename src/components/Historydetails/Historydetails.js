@@ -28,22 +28,34 @@ const Historydetails = ({
     >
 
   <View  style={styles.buttons}>
-  <View style={{height:'90%',width:'90%',marginTop:10}}>
-    <Text style={{alignSelf:'center',fontSize:24}}>Would tou like to block </Text>
-    <Text style={{alignSelf:'center',fontSize:24}}>{message}bracelet ?</Text>
-    
-  <View style={{flexDirection:'row',justifyContent:'space-evenly',marginTop:10}}>
-    
-  <View style={{width:"30%"}}>
-        <CustomButton  text="Yes" />
-  </View>
+  <View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'space-between',height:70}}>
 
-  <View style={{width:"30%"}}>
-        <CustomButton  text="No " onPress={onClose}/>
-  </View>
-  </View>
+<Text style={{fontSize:20,fontWeight:'700'}}>Chaneb Tacos</Text>
 
-  </View>
+</View>
+  <View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'space-between'}}>
+               
+                <Text>Pizza</Text>
+                <Text>x2</Text>
+                
+                <Text style={{fontWeight:'bold',color:'black'}}>15 D</Text>
+            </View>
+            <View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'space-between',paddingTop:10}}>
+               
+                <Text>Coca</Text>
+                <Text>x1</Text>
+                
+                <Text style={{fontWeight:'bold',color:'black'}}>5 D</Text>
+            </View>
+
+            <View style={{width:"100%",borderColor:'#B3B3B5',alignSelf:'center',borderTopWidth:1.4}}></View>
+            <View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'space-between',paddingTop:10}}>
+               
+               <Text>Total</Text>
+               
+               
+               <Text style={{fontWeight:'bold',color:'black'}}>20 D</Text>
+           </View>
 </View>
 
 
@@ -69,7 +81,7 @@ const styles = StyleSheet.create({
 
 buttons:{
   backgroundColor:'white',
-  flexDirection:'row',
+  flexDirection:'column',
   borderRadius:30,
   minHeight:screenHeight/4,
   width:'85%',
