@@ -1,6 +1,6 @@
 import { StyleSheet,View, Text,Image,TouchableOpacity,ScrollView,Dimensions,StatusBar,TextInput } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import React, { useLayoutEffect ,useState, useRef} from 'react'
+import React, { useLayoutEffect ,useState, useRef,useEffect} from 'react'
 import { useNavigation } from '@react-navigation/native'
 import LinearGradient from 'react-native-linear-gradient'
 import CustomButton from '../../components/CustomButton/CustomButton'
@@ -24,18 +24,24 @@ import { SelectList } from 'react-native-dropdown-select-list'
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
-const SendMoneyAll = () => {
+const SendMoneyAll = ({userInfo}) => {
   
-  const [category,setCategory]=useState('Anas Cherni')
-  const categories1 =[
-    {key:'1', value:'Anas Cherni'},
-    {key:'2', value:'Eya Belkadhi'},
-  ];
+  const [category,setCategory]=useState({})
+  const [categories1,setCategories1]=useState([])
+ 
       const onSendPressed = () => {
         navigation.navigate("Receipt");
          }
     const [Montant, setMontant] = useState('');
     const navigation=useNavigation();
+    useEffect(()=>{
+      const test = userInfo.children.map((item) => ({
+        key: item._id,
+        value: item.firstName + ' ' + item.lastName,
+      }));
+      setCategories1(test);
+      console.log(categories1)
+    },[])
     useLayoutEffect(()=>{
       navigation.setOptions({
         headerShown:false,
@@ -61,31 +67,30 @@ const SendMoneyAll = () => {
 
           
       <View style={styles.body}>
-      <View style={{width:'100%',paddingTop:20,flexDirection:'row'}}>
-                <View style={{width:'25%',alignItems:'center'}}>
-                        <Image  source={ImageContact} />
+      <View style={{width:'100%',paddingTop:20,flexDirection:'row',justifyContent:'center'}}>
+
+
+                
+
+                <View style={{minHeight:90,paddingTop:10,paddingLeft:5,flexDirection:'column',width:'90%'}}>
+                <View style={{minHeight:90,paddingTop:10,paddingLeft:5,flexDirection:'column',width:'100%',position:"absolute",zIndex:9999}}>
+                
+    
+                      <SelectList
+                      
+                      setSelected={(key,val) => setCategory({key,val})} 
+                      data={categories1}
+                      placeholder={"Select Category"}
+                      dropdownStyles={{backgroundColor:'white'}}
+                      search={false}
+                      />
+ 
                 </View>
-                <View style={{height:90,paddingTop:10,paddingLeft:5,flexDirection:'column',width:'70%'}}>
-                <View >
-    
-    <SelectList
-    
-    setSelected={(val) => setCategory(val)} 
-    data={categories1}
-    placeholder={"Select Category"}
-    
-    search={false}
-
-
-    
-    />
-    {console.log(category)}
- </View>
                 </View>
             </View>
 
           
-        <View style={{paddingTop:10,alignItems:'center', justifyContent:'center',paddingLeft:30,paddingRight:30,marginBottom:50}}>
+        <View style={{paddingTop:10,alignItems:'center', justifyContent:'center',paddingLeft:30,paddingRight:30,marginBottom:50,zIndex:-99}}>
 
         <View style={{backgroundColor:"#EBEBEB",borderRadius:30,borderColor:'#EBEBEB',width:230,height:100,alignItems:"center",justifyContent:"center",flexDirection:"row"}}>
 <TextInput 

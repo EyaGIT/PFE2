@@ -1,7 +1,8 @@
 import { StyleSheet,View, Text,Image,TouchableOpacity,ScrollView,Dimensions,StatusBar,TextInput } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useLayoutEffect ,useState, useRef} from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation ,useRoute} from '@react-navigation/native'
+
 import LinearGradient from 'react-native-linear-gradient'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import AvatarAnas from '../../../assets/images/AvatarAnas.png'
@@ -13,6 +14,7 @@ import Limits from '../../../assets/images/NoEntry.png'
 import PopUp from '../../components/PopUp/PopUp';
 import Settings from '../../../assets/images/icons/Settings_outline.png'
 import udemy from '../../../assets/images/udemy.png'
+import { API_BASE_URL } from '@env';
 
 
 
@@ -27,7 +29,11 @@ const screenWidth = Dimensions.get('window').width;
 const Member = () => {
   
     const [Visible,setVisible]=useState(false);
+    
     const navigation=useNavigation();
+    const route = useRoute();
+    const { member } = route.params;
+    console.log(API_BASE_URL+"/uploads/"+member.image);
     useLayoutEffect(()=>{
       navigation.setOptions({
         headerShown:false,
@@ -54,8 +60,8 @@ const Member = () => {
         <View style={{alignItems:"center",width:'100%',flex:1,height:screenHeight-78}}> 
       <View style={styles.body}>
         <View style={{alignItems:"center",justifyContent:'flex-start',marginTop:10,width:'100%',height:245}}>
-        <Image source={AvatarAnas}></Image>
-            <Text style={{fontSize:28,fontWeight:"bold",color:"black",marginBottom:30}}>Cherni Anas</Text>
+        <Image style={{width:100,height:100,borderRadius:100/2}} source={{uri:API_BASE_URL+"/uploads/"+member.image}}></Image>
+            <Text style={{fontSize:28,fontWeight:"bold",color:"black",marginBottom:30}}>{member.lastName} {member.firstName}</Text>
             
             <View style={{width:'80%',borderWidth:1,borderRadius:20,height:70,backgroundColor:"#EBEBEB",borderColor:'#EBEBEB',alignItems:"center",justifyContent:"center",flexDirection:"row"}}>
                 

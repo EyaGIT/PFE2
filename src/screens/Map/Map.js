@@ -74,7 +74,7 @@ const ShopMapScreen = () => {
   
     return (
       <View style={styles.container}>
-        <Text style={{fontSize:30,height:72}}>Branches</Text>
+       
         {userLocation && (
           <MapView
             style={styles.map}

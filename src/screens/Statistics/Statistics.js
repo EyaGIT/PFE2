@@ -56,13 +56,10 @@ const Statistics = () => {
           
       <View style={styles.body}>
       <View style={styles.container1}>
-          <View>
-            <Text style={styles.title}>Statistics Graph</Text>
-
-          </View>
+          
 
 
-          <View style={{height:300}}>
+          <View style={{height:300,paddingTop:20}}>
             <PieChart
                 widthAndHeight={widthAndHeight}
                 series={series}
