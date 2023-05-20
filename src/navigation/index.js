@@ -30,12 +30,11 @@ import SendMoneyAll from '../screens/SendMoneyAll/SendMoneyAll';
 import LoadingPage from '../screens/LoadingPage/LoadingPage';
 import Security from '../screens/Security/Security';
 import Camera from '../screens/Camera/Camera';
-<<<<<<< HEAD
 import NetInfo from '@react-native-community/netinfo';
 import { socket } from "../api/ApiManager";
-=======
 import Settingsmember from '../screens/Settingsmember/Settingsmember';
->>>>>>> 09fe7d18ed2518086560b780fbc1da5e54d6fedd
+import OrderBracelet2 from '../screens/OrderBracelet2/OrderBracelet2';
+import CongratulationPrincipal from '../screens/Congratulation/CongratulationPrincipal';
 const Stack = createNativeStackNavigator();
 
 
@@ -137,6 +136,7 @@ const Navigation = () => {
     <NavigationContainer >
       <Stack.Navigator >
      
+     
       {isLoading ? (
       <Stack.Screen name="Load" component={LoadingPage} options={{headerShown:false}}/>
       ):(
@@ -159,6 +159,8 @@ const Navigation = () => {
       <Stack.Screen name="Historique" component={Historique}/>
       <Stack.Screen name="Security" component={Security}/>
       <Stack.Screen name="Top Up" component={TopUp}/>
+      <Stack.Screen name="Congratinscri" component={CongratulationPrincipal}/> 
+      <Stack.Screen name="Order Bracelet2" component={OrderBracelet2}/> 
       <Stack.Screen name="Notifications" component={Notifications}/>
       <Stack.Screen name="Settings member" component={Settingsmember}/>
       <Stack.Screen name="Contacts" component={Contacts}/>

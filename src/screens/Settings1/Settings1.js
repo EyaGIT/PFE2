@@ -11,12 +11,9 @@ import Toggle from '../../../assets/images/Toggle.png'
 import Protect from '../../../assets/images/Protect.png'
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-<<<<<<< HEAD
 import { socket } from "../../api/ApiManager";
 
-=======
 import avataranas from '../../../assets/images/AvatarAnas.png'
->>>>>>> 09fe7d18ed2518086560b780fbc1da5e54d6fedd
 
 const Settings = ({onLogoutSuccess,onLoad}) => {
   const navigation = useNavigation();

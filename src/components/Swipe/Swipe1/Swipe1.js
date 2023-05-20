@@ -203,7 +203,7 @@ color='#E20522'
 
 <View style={{width:'80%'}}>
 <Text>
-          <Text> Email name </Text>
+          <Text> Email  </Text>
           <Text style={{color:'red'}}> *</Text>
           </Text>
 <Custominput 
@@ -222,6 +222,7 @@ color='#E20522'
   placeholder="Password" 
   value={password} 
   setValue={setpassword}
+  secureTextEntry={true}
   />
 
 </View>

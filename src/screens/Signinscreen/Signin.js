@@ -136,7 +136,7 @@ const Signin = ({ navigation, onLoginSuccess,onLoad }) => {
       <View style={Styles.container}>
         <View style={{width:"100%"}}>
           <Text>
-          <Text> Email or Phone Number </Text>
+          <Text> Email  </Text>
           <Text style={{color:'red'}}> *</Text>
           </Text>
           {checkValidEmail ? (
@@ -164,7 +164,7 @@ const Signin = ({ navigation, onLoginSuccess,onLoad }) => {
            /></View>
 
       </View>
-        <View style={{width:"80%"}}>
+        <View style={{width:"60%"}}>
         <CustomButton  text="Sign in " onPress={handleLogin}/>
         </View>
         
