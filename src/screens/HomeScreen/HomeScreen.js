@@ -17,6 +17,7 @@ import avatar from '../../../assets/images/avatar.png'
 import proAvatar from '../../../assets/images/proAvatar.png'
 import wallet from '../../../assets/images/Wallet.png'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { API_BASE_URL } from '@env';
 
 
 const screenHeight = Dimensions.get('window').height;
@@ -25,6 +26,7 @@ const screenWidth = Dimensions.get('window').width;
 const HomeScreen = ({userInfo}) => {
   const [Visible,setVisible]=useState(false);
   const [Amount,setAmount]=useState(0);
+  const [children,setchildren]=useState([]);
   const navigation = useNavigation();
   AsyncStorage.getItem('user')
   .then(userString => {
@@ -33,6 +35,8 @@ const HomeScreen = ({userInfo}) => {
       // User found, parse user string to JavaScript object
       const user = JSON.parse(userString);
       setAmount(userInfo.bracelets[0].amount)
+      setchildren(userInfo.children)
+      console.log(userInfo.children)
       
       // Do something with the user object
     } else {
@@ -139,14 +143,13 @@ const HomeScreen = ({userInfo}) => {
                 </View>
               </View>
               <View style={{flexDirection:"row",marginTop:10}}>
-                <TouchableOpacity style={{alignItems:"center",marginRight:18}} onPress={() => navigation.navigate('Member')}>
-                <Image source={avatar} style={{width:45,height:45,borderRadius:10}} />
-                <Text>Hena</Text>
+              {children.map((item, index) => (
+                <TouchableOpacity key={index} style={{alignItems:"center",marginRight:18}} onPress={() => navigation.navigate('Member',{ member: item })}>
+                <Image source={{uri:API_BASE_URL+"/uploads/"+item.image}} style={{width:45,height:45,borderRadius:10}} />
+                <Text>{item.firstName}</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={{alignItems:"center",marginRight:18}} onPress={() => navigation.navigate('Member')}>
-                <Image source={avatar} style={{width:45,height:45,borderRadius:10}} />
-                <Text>Hena</Text>
-                </TouchableOpacity>
+              ))}
+                
 
                 <TouchableOpacity style={{alignItems:"center",marginRight:18}} onPress={() => navigation.navigate('New Member1')}>
                   <View style={{width:45,height:45,borderRadius:10, backgroundColor:'rgba(142, 147, 153, 0.24)',alignItems:"center",justifyContent:"center",padding:0}}>

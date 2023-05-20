@@ -1,28 +1,35 @@
 import { StyleSheet,View, Text,Image,TouchableOpacity,ScrollView,Dimensions,StatusBar } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import React, { useLayoutEffect } from 'react'
+import React, { useLayoutEffect,useState ,useEffect} from 'react'
 import { useNavigation } from '@react-navigation/native'
 import LinearGradient from 'react-native-linear-gradient'
 import ImageContact from '../../../assets/images/ImagContact.png'
 import plus from '../../../assets/images/plus.png'
+import { API_BASE_URL } from '@env';
 
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
-const Contacts = () => {
-    
+const Contacts = ({userInfo}) => {
+ const [children,setchildren]=useState([]);
   const navigation = useNavigation();
+  
+  useEffect(() => {
+    // ...existing code...
+
+    setchildren(userInfo.children); // Update the user information state
+    });
 
  
 
-  const onuserPressed = () => {
-    navigation.navigate("Member");
+  const onuserPressed = (item) => {
+    navigation.navigate("Member",{ member: item });
      }
  
 
-  const onplusPressed = () => {
-    navigation.navigate("New Member1");
+  const onplusPressed = (item) => {
+    navigation.navigate("New Member1",{ member: item });
      }
   
    
@@ -54,76 +61,20 @@ const Contacts = () => {
     
 
         <View style={styles.body}>
-            <TouchableOpacity onPress={onuserPressed}>
-            <View style={{width:'100%',paddingTop:20,flexDirection:'row'}}>
-                <View style={{width:'25%',alignItems:'center'}}>
-                        <Image  source={ImageContact} />
+        {children.map((item, index) => (
+                <TouchableOpacity key={index} onPress={()=>onuserPressed(item)}>
+                <View style={{width:'100%',paddingTop:20,flexDirection:'row'}}>
+                    <View style={{width:'25%',alignItems:'center'}}>
+                            <Image style={{width:65,height:65,borderRadius:65/2}}  source={{uri:API_BASE_URL+"/uploads/"+item.image}} />
+                    </View>
+                    <View style={{height:45,alignItems:'center',paddingTop:20,paddingLeft:10}}>
+                        <Text style={{fontSize:18,color:'#212121',fontWeight:'700'}}>{item.lastName} {item.firstName}</Text>
+                    </View>
                 </View>
-                <View style={{height:40,alignItems:'center',paddingTop:20,paddingLeft:10}}>
-                    <Text style={{fontSize:18,color:'#212121',fontWeight:'700'}}>User name</Text>
-                </View>
-            </View>
-           </TouchableOpacity>
-           <TouchableOpacity onPress={onuserPressed} >
-            <View style={{width:'100%',paddingTop:20,flexDirection:'row'}}>
-                <View style={{width:'25%',alignItems:'center'}}>
-                        <Image  source={ImageContact} />
-                </View>
-                <View style={{height:40,alignItems:'center',paddingTop:20,paddingLeft:10}}>
-                    <Text style={{fontSize:18,color:'#212121',fontWeight:'700'}}>User name</Text>
-                </View>
-            </View>
-           </TouchableOpacity>
-           <TouchableOpacity onPress={onuserPressed}>
-            <View style={{width:'100%',paddingTop:20,flexDirection:'row'}}>
-                <View style={{width:'25%',alignItems:'center'}}>
-                        <Image  source={ImageContact} />
-                </View>
-                <View style={{height:40,alignItems:'center',paddingTop:20,paddingLeft:10}}>
-                    <Text style={{fontSize:18,color:'#212121',fontWeight:'700'}}>User name</Text>
-                </View>
-            </View>
-           </TouchableOpacity>
-           <TouchableOpacity onPress={onuserPressed}> 
-            <View style={{width:'100%',paddingTop:20,flexDirection:'row'}}>
-                <View style={{width:'25%',alignItems:'center'}}>
-                        <Image  source={ImageContact} />
-                </View>
-                <View style={{height:40,alignItems:'center',paddingTop:20,paddingLeft:10}}>
-                    <Text style={{fontSize:18,color:'#212121',fontWeight:'700'}}>User name</Text>
-                </View>
-            </View>
-           </TouchableOpacity>
-           <TouchableOpacity onPress={onuserPressed}>
-            <View style={{width:'100%',paddingTop:20,flexDirection:'row'}}>
-                <View style={{width:'25%',alignItems:'center'}}>
-                        <Image  source={ImageContact} />
-                </View>
-                <View style={{height:40,alignItems:'center',paddingTop:20,paddingLeft:10}}>
-                    <Text style={{fontSize:18,color:'#212121',fontWeight:'700'}}>User name</Text>
-                </View>
-            </View>
-           </TouchableOpacity>
-           <TouchableOpacity onPress={onuserPressed}>
-            <View style={{width:'100%',paddingTop:20,flexDirection:'row'}}>
-                <View style={{width:'25%',alignItems:'center'}}>
-                        <Image  source={ImageContact} />
-                </View>
-                <View style={{height:40,alignItems:'center',paddingTop:20,paddingLeft:10}}>
-                    <Text style={{fontSize:18,color:'#212121',fontWeight:'700'}}>User name</Text>
-                </View>
-            </View>
-           </TouchableOpacity>
-           <TouchableOpacity onPress={onuserPressed}>
-            <View style={{width:'100%',paddingTop:20,flexDirection:'row'}}>
-                <View style={{width:'25%',alignItems:'center'}}>
-                        <Image  source={ImageContact} />
-                </View>
-                <View style={{height:40,alignItems:'center',paddingTop:20,paddingLeft:10}}>
-                    <Text style={{fontSize:18,color:'#212121',fontWeight:'700'}}>User name</Text>
-                </View>
-            </View>
-           </TouchableOpacity>
+               </TouchableOpacity>
+              ))}
+            
+          
             
             </View>   
      </ScrollView>

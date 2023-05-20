@@ -30,12 +30,9 @@ import SendMoneyAll from '../screens/SendMoneyAll/SendMoneyAll';
 import LoadingPage from '../screens/LoadingPage/LoadingPage';
 import Security from '../screens/Security/Security';
 import Camera from '../screens/Camera/Camera';
-<<<<<<< HEAD
 import NetInfo from '@react-native-community/netinfo';
 import { socket } from "../api/ApiManager";
-=======
 import Settingsmember from '../screens/Settingsmember/Settingsmember';
->>>>>>> 09fe7d18ed2518086560b780fbc1da5e54d6fedd
 const Stack = createNativeStackNavigator();
 
 
@@ -155,13 +152,19 @@ const Navigation = () => {
       <Stack.Screen name="Send Money" component={SendMoney}/>
       <Stack.Screen name="New Member1" component={NewMember1}/>
       <Stack.Screen name="Verification code" component={VerificationCode}/>
-      <Stack.Screen name="Send Money All" component={SendMoneyAll}/>
+      
+      <Stack.Screen name="Send Money All">
+            {(props) => <SendMoneyAll {...props} userInfo={userInfo} />}
+      </Stack.Screen>
       <Stack.Screen name="Historique" component={Historique}/>
       <Stack.Screen name="Security" component={Security}/>
       <Stack.Screen name="Top Up" component={TopUp}/>
       <Stack.Screen name="Notifications" component={Notifications}/>
       <Stack.Screen name="Settings member" component={Settingsmember}/>
-      <Stack.Screen name="Contacts" component={Contacts}/>
+      <Stack.Screen name="Contacts">
+            {(props) => <Contacts {...props} userInfo={userInfo} />}
+      </Stack.Screen>
+      
       <Stack.Screen name="Edit Profil" component={EditProfil}/>
       <Stack.Screen name="Essai" component={essai}/> 
       <Stack.Screen name="Limits" component={Limits}/>
