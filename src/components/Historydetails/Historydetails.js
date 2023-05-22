@@ -23,38 +23,51 @@ const Historydetails = ({
    <Modal
 
     isVisible={isVisible}
-    onBackButtonPress={onClose}
+   onBackdropPress={onClose}
     style={styles.modal}
+    
     >
 
   <View  style={styles.buttons}>
-  <View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'space-between',height:70}}>
+  <View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'space-between',height:40}}>
 
-<Text style={{fontSize:20,fontWeight:'700'}}>Chaneb Tacos</Text>
+<Text style={{fontSize:19,fontWeight:'600'}}>Payment details</Text>
 
 </View>
-  <View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'space-between'}}>
-               
+<View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'space-between',height:40}}>
+
+<Text style={{fontSize:16,color:'#756D81'}}>Shop name</Text>
+<Text style={{fontSize:16,fontWeight:'500'}}>Chaneb tacos</Text>
+
+</View>
+<View style={{width:"100%",borderColor:'#B3B3B5',alignSelf:'center',borderTopWidth:1.4}}></View>
+<View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'space-between',height:40}}>
+
+<Text style={{fontSize:16,color:'#756D81'}}>Products</Text>
+
+
+</View>
+  <View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'space-between',height:20}}>
+                 
                 <Text>Pizza</Text>
-                <Text>x2</Text>
+                <Text>Qte:2</Text>
                 
-                <Text style={{fontWeight:'bold',color:'black'}}>15 D</Text>
+                <Text style={{color:'black'}}>15 DT</Text>
             </View>
-            <View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'space-between',paddingTop:10}}>
+            <View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'space-between',height:40}}>
                
-                <Text>Coca</Text>
-                <Text>x1</Text>
+            <Text>Pizza</Text>
+                <Text>Qte:2</Text>
                 
-                <Text style={{fontWeight:'bold',color:'black'}}>5 D</Text>
+                <Text style={{color:'black'}}>15 DT</Text>
             </View>
 
             <View style={{width:"100%",borderColor:'#B3B3B5',alignSelf:'center',borderTopWidth:1.4}}></View>
-            <View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'space-between',paddingTop:10}}>
+            <View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'space-between',height:50}}>
+            <Text style={{fontSize:16,color:'#756D81'}}>Total</Text>
                
-               <Text>Total</Text>
                
-               
-               <Text style={{fontWeight:'bold',color:'black'}}>20 D</Text>
+               <Text style={{fontWeight:'bold',color:'red'}}>20 DT</Text>
            </View>
 </View>
 

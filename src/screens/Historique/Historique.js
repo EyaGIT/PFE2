@@ -65,7 +65,7 @@ const Historique = () => {
         
         isVisible={Visible}
         onClose={()=> setVisible(false)}
-        message='your '
+        
         />
 
         <View style={{width:screenWidth,paddingTop:10,flexDirection:'row',justifyContent:'space-between',alignItems:'center',paddingLeft:10,paddingRight:10}}>
