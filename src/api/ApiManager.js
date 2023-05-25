@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import { WEBSOCKET_URL, API_BASE_URL } from '@env';
 
 
-
+console.log(WEBSOCKET_URL);
 export const socket = io(WEBSOCKET_URL);
 
 export const ApiManager = axios.create({

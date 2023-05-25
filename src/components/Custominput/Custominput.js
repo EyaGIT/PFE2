@@ -14,6 +14,7 @@ const Custominput = ({value,setValue,placeholder,secureTextEntry,focus}) => {
       secureTextEntry={secureTextEntry}
       onFocus={focus}
       
+      
 
       
       />
@@ -24,7 +25,7 @@ const styles= StyleSheet.create({
     container:{
       backgroundColor :'white',
       width: '100%',
-
+      color:'black',
       bordercolor:'#A5ABB3',
       borderWidth:1,
       borderRadius:15,
@@ -37,7 +38,7 @@ const styles= StyleSheet.create({
 
 
     },
-    input : {},
+    input : {color:'black',},
 
 })
 

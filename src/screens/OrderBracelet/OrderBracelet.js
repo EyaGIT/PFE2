@@ -8,9 +8,9 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { SelectList } from 'react-native-dropdown-select-list'
 import SelectDropdown from 'react-native-select-dropdown'
 import CustomButton from '../../components/CustomButton/CustomButton'
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation,useRoute } from '@react-navigation/native';
 import BackArrowB from '../../components/BackArrowB/BackArrowB'
-import { childSignup,createBracelet } from "../../api/user_api";
+import { SignupMember,createBracelet } from "../../api/user_api";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const colors = [
     '#E20522',
@@ -38,17 +38,13 @@ const colors = [
 
 
 
-const OrderBracelet = ({handellogin,user}) => {
+const OrderBracelet = () => {
+  const route = useRoute();
+  const { formData1 } = route.params;
 
     const navigation = useNavigation();
 
-   
 
-    const onBackPressed = () => {
-    
-      navigation.navigate("Verification code");
-  
-    }
 
     
     const [selectedItem,setSelectedItem] = useState('')
@@ -78,7 +74,7 @@ const OrderBracelet = ({handellogin,user}) => {
 
 
     const handleFormSubmit = async () => {
-      console.log(user)
+      console.log(formData1)
       // Perform validation
       if (!selectedItem || !category || !bcategory2 || value === null) {
         setError('Please fill in all fields');
@@ -106,17 +102,14 @@ const OrderBracelet = ({handellogin,user}) => {
         color: colors[value],
       };
       try {
-        const token = await AsyncStorage.getItem('AccessToken');
-        if (token) {
-          console.log(token);
-          
-          const result = await childSignup(user, token);
+        
+          const result = await SignupMember(formData1);
           console.log("hhhhhh",result.data);
           if (result.status === 201) {
             console.log(result.data.userId);
             formData.userId = result.data.userId;
             console.log(formData)
-            const braceletResult = await createBracelet(formData, token);
+            const braceletResult = await createBracelet(formData);
             if (braceletResult.status === 201) {
               console.log('yess');
               handellogin();
@@ -127,7 +120,7 @@ const OrderBracelet = ({handellogin,user}) => {
             console.log(result);
             setError('impossible de create user');
           }
-        }
+        
       } catch (error) {
         console.log(error);
       }
@@ -249,9 +242,9 @@ const OrderBracelet = ({handellogin,user}) => {
     
     </View>
     <View style={{width:"80%"}}>
-      <TouchableOpacity>
+      
         <CustomButton  text="Continue " onPress={handleFormSubmit}/>
-        </TouchableOpacity>
+        
         </View>
         
              

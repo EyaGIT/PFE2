@@ -1,6 +1,6 @@
 import { StyleSheet,View, Text,Image,TouchableOpacity,ScrollView,Dimensions,StatusBar,TextInput } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import React, { useLayoutEffect,useState} from 'react'
+import React, { useLayoutEffect,useState,useEffect} from 'react'
 import { useNavigation } from '@react-navigation/native'
 import LinearGradient from 'react-native-linear-gradient'
 import tacos from '../../../assets/images/Tacos.png'
@@ -8,11 +8,14 @@ import income from '../../../assets/images/income.png'
 import expense from '../../../assets/images/expense.png'
 import AvatarAnas from '../../../assets/images/AvatarAnas.png'
 import Historydetails from '../../components/Historydetails/Historydetails';
+import { format } from 'date-fns';
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
-const Historique = () => {
+const Historique = ({userInfo}) => {
   const [Visible,setVisible]=useState(false);
   const navigation = useNavigation();
+  const [Operation,setOperation]=useState([{}])
+  const [sellingPoint,setSellingPoint]=useState({})
   useLayoutEffect(()=>{
       navigation.setOptions({
         headerShown:true,
@@ -21,6 +24,11 @@ const Historique = () => {
           elevation:0,
         }
         })})
+  useEffect(() => {
+   setOperation(userInfo.bracelets[0].operations);
+    
+  }, []);
+  
   return (
     
          
@@ -33,34 +41,40 @@ const Historique = () => {
     
 
         <View >
-        <TouchableOpacity onPress={()=> setVisible(true)}>
-        <View style={{width:screenWidth,paddingTop:10,flexDirection:'row',justifyContent:'space-between',alignItems:'center',paddingLeft:10,paddingRight:10}}>
-                <View style={{flex:1,width:'25%',alignItems:'center'}}>
-                     <Image source={tacos} style={{width:70,height:70,aspectRatio: 1, resizeMode: 'contain',marginRight:10}}/>   
+        {Operation.slice().reverse().map((item, index) => (
+          
+
+                <TouchableOpacity key={index} onPress={()=> setVisible(true)}>
+                <View style={{width:screenWidth,paddingTop:10,flexDirection:'row',justifyContent:'space-between',alignItems:'center',paddingLeft:10,paddingRight:10}}>
+                        <View style={{flex:1,width:'25%',alignItems:'center'}}>
+                             <Image source={tacos} style={{width:70,height:70,aspectRatio: 1, resizeMode: 'contain',marginRight:10}}/>   
+                        </View>
+                        
+                            <View style={{flex:2,flexDirection:'column',justifyContent:'flex-start'}}>
+                            {item.sellingPoint && <Text style={{ fontSize: 17, fontWeight: '500' }}>{item.sellingPoint.sp_name}</Text>}
+                              <View style={{flexDirection:'row'}}>
+                               
+                                <Text style={{color:'#6D7580',paddingTop:5}}>{new Date(item.date).toLocaleDateString("en-US", {year: "numeric",month: "short",day: "2-digit",})} |</Text>
+                                <Text style={{color:'#6D7580',paddingTop:5}}> {new Date(item.date).toLocaleTimeString("en-US", {hour: "numeric",minute: "numeric",hour12: true,})}</Text>
+                              </View>
+                            </View>
+                         
+        
+        
+                            <View style={{justifyContent:'space-between',alignItems:'flex-start'}}>
+                              <Text style={{color:'red', fontWeight:'700',alignSelf:'flex-end'}}> - {item.amount} TND</Text>
+                              <View style={{flexDirection:'row',paddingTop:5}} >
+                                  <Image source={expense} style={{width:20,aspectRatio: 1, resizeMode: 'contain',marginRight:2}}/>
+                                  <Text style={{}}>Expense</Text>
+                              </View>
+                            </View>
+        
+        
+        
                 </View>
-                
-                    <View style={{flex:2,flexDirection:'column',justifyContent:'flex-start'}}>
-                      <Text style={{fontSize:17,fontWeight:'500'}} >Chaneb Tacos</Text>
-                      <View style={{flexDirection:'row'}}>
-                        <Text style={{color:'#6D7580',paddingTop:5}}>Dec 09, 2023 |</Text>
-                        <Text style={{color:'#6D7580',paddingTop:5}}> 14:50 PM</Text>
-                      </View>
-                    </View>
-                 
-
-
-                    <View style={{justifyContent:'space-between',alignItems:'flex-start'}}>
-                      <Text style={{color:'red', fontWeight:'700',alignSelf:'flex-end'}}> - $25</Text>
-                      <View style={{flexDirection:'row',paddingTop:5}} >
-                          <Image source={expense} style={{width:20,aspectRatio: 1, resizeMode: 'contain',marginRight:2}}/>
-                          <Text style={{}}>Expense</Text>
-                      </View>
-                    </View>
-
-
-
-        </View>
-        </TouchableOpacity>
+                </TouchableOpacity>
+              ))}
+        
         <Historydetails
         
         isVisible={Visible}
