@@ -74,7 +74,7 @@ const OrderBracelet = () => {
 
 
     const handleFormSubmit = async () => {
-      console.log(formData1)
+      console.log(formData)
       // Perform validation
       if (!selectedItem || !category || !bcategory2 || value === null) {
         setError('Please fill in all fields');
