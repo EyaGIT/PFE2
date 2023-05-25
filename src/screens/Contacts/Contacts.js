@@ -6,7 +6,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import ImageContact from '../../../assets/images/ImagContact.png'
 import plus from '../../../assets/images/plus.png'
 import { API_BASE_URL } from '@env';
-
+import arrow from '../../../assets/images/icons/ArrowBack.png';
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
@@ -33,11 +33,49 @@ const Contacts = ({userInfo}) => {
      }
   
    
-  useLayoutEffect(()=>{
-    navigation.setOptions({
-      headerShown:false,
-    })
-  }, [])
+     useLayoutEffect(() => {
+      navigation.setOptions({
+        headerShown: true,
+        headerTransparent: true,
+        headerTitleAlign: 'center',
+        headerTitleStyle: {
+          alignSelf: 'center',
+          color: 'white',
+          height: '100%',
+          fontSize: 27,
+          fontWeight: '100'
+        },
+        headerLeft: () => (
+          <TouchableOpacity
+            style={{
+              width: 45,
+              height: 45,
+              borderRadius: 25,
+              borderColor: 'white',
+              borderWidth: 1,
+              marginLeft: 10,
+              marginRight: 30,
+              marginBottom: 37,
+              marginTop: 37,
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+            onPress={() => navigation.goBack()}
+          >
+            <Image source={arrow} style={{ width: '60%', height: '60%' }} />
+          </TouchableOpacity>
+        ),
+        headerRight: () => (
+          <TouchableOpacity
+            style={{ paddingRight: 20 }}
+            onPress={onplusPressed}
+          >
+            <Image source={plus} style={{ width: 22, height: 20 }} />
+          </TouchableOpacity>
+        ),
+        headerStyle: {}
+      });
+    }, [])
   return (
     <LinearGradient start={{x: 1, y: 0}} end={{x: 0, y: 1}} locations={[0,0.6]} colors={['#E20522', '#000000']} style={styles.linearGradient}>
          
@@ -47,16 +85,9 @@ const Contacts = ({userInfo}) => {
       
     <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
     < View style={styles.head}>
-              <View style={styles.nav}>
-                
-                <TouchableOpacity style={{paddingLeft:50}} onPress={onplusPressed}>
-                  <Image source={plus} style={{width:22,height:20}} />
-                </TouchableOpacity>
-              </View>
-              <View  >
-            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:40}}>Contacts</Text>
-            
-        </View> 
+              
+         
+    
           </View>
     
 
@@ -89,6 +120,7 @@ const styles = StyleSheet.create({
     width:screenWidth,
     
     height:screenHeight,
+    
   },
   flex:{alignItems: 'center',
   justifyContent:'center',},
@@ -130,8 +162,9 @@ elevation: 11
   
 head:{
   zIndex: 2,
-  height:screenHeight /5.2,
-flex:1
+  height:screenHeight /7,
+  flex:1
+
 },
 body:{
   paddingtop:20,
@@ -143,6 +176,7 @@ body:{
   borderTopRightRadius:45,
   flex:2,
   minHeight: screenHeight/1.1,
+  
   
   
   }

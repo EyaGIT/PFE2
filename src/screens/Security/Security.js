@@ -20,9 +20,10 @@ const Security = () => {
          
           
           <Custominput 
-          placeholder="********" 
+          placeholder="" 
           value={NewPassword} 
-          setValue={setNewPassword}
+          setValue={setCurrentPassword}
+          secureTextEntry={true}
           />
           </View>
 
@@ -32,9 +33,10 @@ const Security = () => {
           <Text> New password </Text>
         
           <Custominput 
-          placeholder="********" 
+          placeholder="" 
           value={NewPassword} 
           setValue={setNewPassword}
+          secureTextEntry={true}
           />
           </View>
 
@@ -44,9 +46,10 @@ const Security = () => {
           <Text> Retype New password </Text>
           
           <Custominput 
-          placeholder="********" 
+          placeholder="" 
           value={NewPassword} 
-          setValue={setNewPassword}
+          setValue={setRetypeNewPassword}
+          secureTextEntry={true}
           />
           </View>
 
