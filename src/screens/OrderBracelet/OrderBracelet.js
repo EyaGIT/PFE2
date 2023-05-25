@@ -103,7 +103,7 @@ const OrderBracelet = () => {
       };
       try {
         
-          const result = await SignupMember(formData1);
+          const result = await childSignup(formData1);
           console.log("hhhhhh",result.data);
           if (result.status === 201) {
             console.log(result.data.userId);

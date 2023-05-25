@@ -49,6 +49,7 @@ const SendMoneyAll = ({userInfo}) => {
 
         setIsLoading(true);
         AsyncStorage.getItem('AccessToken')
+        
       .then(token => {
         if (token) {
           transfer({
@@ -92,7 +93,7 @@ const SendMoneyAll = ({userInfo}) => {
     const navigation=useNavigation();
     useEffect(()=>{
       const test = userInfo.children.map((item) => ({
-        key: item.bracelets[0],
+        key: item.bracelets[0]._id,
         value: item.firstName + ' ' + item.lastName,
       }));
       setCategories1(test);
