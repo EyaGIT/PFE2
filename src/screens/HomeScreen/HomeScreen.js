@@ -122,7 +122,9 @@ const HomeScreen = ({userInfo}) => {
                     <PopUp
                 isVisible={Visible}
                 onClose={()=> setVisible(false)}
-                message='your '
+                message1='Whould you like to block '
+                message='anas bracelet ?'
+               
                 />
                     
                     
