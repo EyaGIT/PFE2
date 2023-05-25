@@ -212,6 +212,7 @@ const renderContent = () => {
           placeholder="Password" 
           value={password} 
           setValue={setPassword}
+          secureTextEntry={true}
           />
           </View>
           </View>
