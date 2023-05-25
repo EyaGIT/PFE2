@@ -16,7 +16,7 @@ import Settings from '../../../assets/images/icons/Settings_outline.png'
 import udemy from '../../../assets/images/udemy.png'
 import { API_BASE_URL } from '@env';
 import arrow from '../../../assets/images/icons/ArrowBack.png';
-
+import Delete from '../../../assets/images/icons/Delete.png';
 
 
 
@@ -29,7 +29,7 @@ const screenWidth = Dimensions.get('window').width;
 const Member = () => {
   
     const [Visible,setVisible]=useState(false);
-    
+    const [Visible1,setVisible1]=useState(false);
     const navigation=useNavigation();
     const route = useRoute();
     const { member } = route.params;
@@ -52,7 +52,7 @@ const Member = () => {
               borderWidth: 1,
               marginLeft: 10,
               marginRight:30,
-              marginBottom:37,
+              marginBottom:40,
               marginTop:37,
               justifyContent: 'center',
               alignItems: 'center',
@@ -65,18 +65,34 @@ const Member = () => {
               style={{ width: '60%', height: '60%' }}
             />
           </TouchableOpacity>
-        ),headerStyle: {
-          
-          height:'auto'
-          
-        
-        
-  
-          
-    
-          },
-      })
-    }, [])
+        ),
+          headerRight: () => (
+            <TouchableOpacity
+              style={{
+                width: 45,
+                height: 45,
+                
+                
+                marginBottom: 40,
+                marginTop: 37,
+                justifyContent: 'center',
+                alignItems: 'center',
+               
+                
+              } }
+             
+              onPress={()=> setVisible1(true)}
+            >
+             
+              <Image
+              source={Delete}
+              style={{ width: '60%', height: '60%' }}
+            />
+            </TouchableOpacity>
+           
+          ),
+        });
+      }, [])
 
   return (
     <LinearGradient start={{x: 1, y: 0}} end={{x: 0, y: 1}} locations={[0,0.6]} colors={['#E20522', '#000000']} style={styles.linearGradient}>
@@ -92,7 +108,13 @@ const Member = () => {
         </View>      
      <View>
 
-
+     <PopUp
+                isVisible={Visible1}
+                onClose={()=> setVisible1(false)}
+                message1='Whould you like to delete '
+                message='anas account ?'
+               
+                />
      </View>
 
         <View style={{alignItems:"center",width:'100%',flex:1,height:screenHeight-78}}> 
@@ -266,6 +288,13 @@ body:{
     borderWidth: 1,
     paddingHorizontal: 16,
     marginBottom: 16,
+  },
+  dot: {
+    width: 5,
+    height: 5,
+    borderRadius: 3,
+    backgroundColor: 'white',
+    margin: 2,
   },
 });
 

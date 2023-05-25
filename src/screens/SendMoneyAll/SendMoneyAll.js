@@ -151,7 +151,7 @@ const SendMoneyAll = ({userInfo}) => {
           <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
           
          <View>
-            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}>SendMoney</Text>
+            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}></Text>
             
         </View>      
      <View>

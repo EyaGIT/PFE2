@@ -12,6 +12,8 @@ const PopUp = ({
  onClose,
  OnPress,
  message,
+ onclick,
+ message1,
 
 
 
@@ -29,8 +31,8 @@ const PopUp = ({
 
   <View  style={styles.buttons}>
   <View style={{height:'90%',width:'90%',marginTop:10}}>
-    <Text style={{alignSelf:'center',fontSize:24}}>Would tou like to block </Text>
-    <Text style={{alignSelf:'center',fontSize:24}}>{message}bracelet ?</Text>
+    <Text style={{alignSelf:'center',fontSize:24}}>{message1}</Text>
+    <Text style={{alignSelf:'center',fontSize:24}}>{message}</Text>
     
   <View style={{flexDirection:'row',justifyContent:'space-evenly',marginTop:10}}>
     

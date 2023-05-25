@@ -59,7 +59,7 @@ const Statistics = () => {
           
 
 
-          <View style={{height:300,paddingTop:20}}>
+          <View style={{height:300,paddingTop:20,alignContent:'center',justifyContent:'center'}}>
             <PieChart
                 widthAndHeight={widthAndHeight}
                 series={series}
@@ -74,22 +74,7 @@ const Statistics = () => {
             <View style={{flexDirection:'row',alignItems:'center'}}><View style={{width:18,height:18,backgroundColor:'#fbd203',borderRadius:18/2,marginRight:10}}></View><Text>Drink</Text></View>
             <View style={{flexDirection:'row',alignItems:'center'}}><View style={{width:18,height:18,backgroundColor:'#6194FE',borderRadius:18/2,marginRight:10}}></View><Text>Shop</Text></View>
           </View>
-        <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',marginTop:20,width:'95%'}}>
-            <View style={{flexDirection:'row',width:170,height:73,justifyContent:'flex-start',alignItems:'center',backgroundColor:'white',borderRadius:15,paddingLeft:10}}>
-                <Image source={Income} style={{marginRight:10}} />
-                <View>
-                    <Text>200 TND</Text>
-                    <Text>Income</Text>
-                </View>
-            </View>
-            <View style={{flexDirection:'row',width:170,height:73,justifyContent:'flex-start',alignItems:'center',backgroundColor:'white',borderRadius:15,paddingLeft:10}}>
-            <Image source={Expense} style={{marginRight:10}} />
-            <View>
-                    <Text>200 TND</Text>
-                    <Text>Expense</Text>
-                </View>
-            </View>
-        </View>
+        
 
         </View>
       
@@ -147,7 +132,9 @@ body:{
   borderTopRightRadius:45,
   flex:2,
   minHeight: screenHeight-70,
-  width:'100%'
+  width:'100%',
+  alignItems:'center',
+  justifyContent:'center'
   
   
   },
