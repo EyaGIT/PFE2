@@ -9,7 +9,7 @@ import Swiper from 'react-native-swiper';
 import StepIndicator from 'react-native-step-indicator';
 import Swipe1 from '../../components/Swipe/Swipe1/Swipe1';
 import Swipe3 from '../../components/Swipe/Swipe3/Swipe3';
-import Swipe2 from '../../screens/OrderBracelet/OrderBracelet'
+import Swipe2 from '../../screens/OrderBracelet2/OrderBracelet2'
 
 
 

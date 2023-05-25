@@ -6,8 +6,7 @@ import CustomButton from '../../CustomButton/CustomButton';
 import Custominput from '../../Custominput/Custominput';
 import NewAvatar from '../../../../assets/images/NewAvatar.png'
 
-import { launchImageLibrary } from 'react-native-image-picker';
-import * as ImagePicker from 'react-native-image-picker'
+
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DateTimePicker from '@react-native-community/datetimepicker'
 import { verifyEmailExists } from "../../../api/user_api";

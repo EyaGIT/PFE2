@@ -74,7 +74,7 @@ const OrderBracelet = () => {
 
 
     const handleFormSubmit = async () => {
-      console.log(formData)
+      console.log(formData1)
       // Perform validation
       if (!selectedItem || !category || !bcategory2 || value === null) {
         setError('Please fill in all fields');
@@ -103,7 +103,7 @@ const OrderBracelet = () => {
       };
       try {
         
-          const result = await childSignup(formData);
+          const result = await SignupMember(formData1);
           console.log("hhhhhh",result.data);
           if (result.status === 201) {
             console.log(result.data.userId);

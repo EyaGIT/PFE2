@@ -3,7 +3,7 @@ import React,{useState, useRef,useCallback,useEffect} from 'react'
 import ImagePickerAvatar from '../uplode_Image/ImagePickerAvatar';
 import ImagePickerHeader from '../uplode_Image/ImagePickerHeader';
 import ImagePickerModal from '../uplode_Image/ImagePickerModal';
-import { launchImageLibrary } from 'react-native-image-picker';
+
 import * as ImagePicker from 'react-native-image-picker';
 import GalleryScreen from './GalleryScreen';
 
