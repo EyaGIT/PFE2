@@ -11,8 +11,9 @@ import cal from '../../../assets/images/Calendar.png'
 import Receipt from '../Receipt/Receipt'
 import ImageContact from '../../../assets/images/ImagContact.png'
 import { SelectList } from 'react-native-dropdown-select-list'
-
-
+import arrow from '../../../assets/images/icons/ArrowBack.png';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { transfer } from "../../api/user_api";
 
 
 
