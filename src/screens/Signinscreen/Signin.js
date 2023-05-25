@@ -11,17 +11,29 @@ const Signin = ({ navigation, onLoginSuccess,onLoad }) => {
   const [password, setPassword] = useState('');
   const [seePassword, setSeePassword] = useState(true);
   const [checkValidEmail, setCheckValidEmail] = useState(false);
+  const [emailError, setEmailError] = useState('');
+const [passwordError, setPasswordError] = useState('');
+const handleEmailChange = text => {
+  setEmail(text);
+  setEmailError('');
+};
+
+const handlePasswordChange = text => {
+  setPassword(text);
+  setPasswordError('');
+};
 
   const handleCheckEmail = text => {
     let re = /\S+@\S+\.\S+/;
     let regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
-
     setEmail(text);
-    if (re.test(text) || regex.test(text)) {
-      setCheckValidEmail(false);
-    } else {
-      setCheckValidEmail(true);
-    }
+  if (re.test(text) || regex.test(text)) {
+    setCheckValidEmail(false);
+    setEmailError('');
+  } else {
+    setCheckValidEmail(true);
+    setEmailError('Wrong email format');
+  }
   };
 /*
   const checkPasswordValidity = value => {
@@ -62,6 +74,22 @@ const Signin = ({ navigation, onLoginSuccess,onLoad }) => {
   const handleLogin = () => {
     onLoad(true);
     //const checkPassowrd = checkPasswordValidity(password);
+   
+    
+    if (email === '') {
+      setEmailError('Please enter your email');
+      setPasswordError('');
+      onLoad(false);
+      return;
+    }
+  
+    if (password === '') {
+      setPasswordError('Please enter your password');
+      setEmailError('');
+      onLoad(false);
+      return;
+    }
+  
     
     
       console.log({
@@ -139,16 +167,16 @@ const Signin = ({ navigation, onLoginSuccess,onLoad }) => {
           <Text> Email  </Text>
           <Text style={{color:'red'}}> *</Text>
           </Text>
-          {checkValidEmail ? (
-        <Text style={Styles.textFailed}>Wrong format email</Text>
-      ) : (
-        <Text style={Styles.textFailed}> </Text>
-      )}
+          {emailError !== '' && <Text style={Styles.textFailed}>{emailError}</Text>}
+          
           <Custominput 
           placeholder="Email" 
           value={email} 
           setValue={setEmail}
+          onChangeText={handleEmailChange}
+          
           />
+         
           </View>
         
         <View style={{width:"100%"}}>
@@ -156,10 +184,12 @@ const Signin = ({ navigation, onLoginSuccess,onLoad }) => {
           <Text> Password</Text>
           <Text style={{color:'red'}}> *</Text>
           </Text>
+          {passwordError !== '' && <Text style={Styles.textFailed}>{passwordError}</Text>}
           <Custominput
            placeholder="Password" 
            value={password} 
            setValue={setPassword}
+           onChangeText={handlePasswordChange}
            secureTextEntry={true}
            /></View>
 
@@ -193,5 +223,11 @@ const Styles = StyleSheet.create({
     color: 'white',
     fontSize: 24,
   },
+  textFailed:{
+
+    color: 'red',
+    fontSize: 14,
+    marginTop: 5,
+  }
 });
 export default Signin

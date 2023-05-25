@@ -9,7 +9,7 @@ import Custominput from '../../components/Custominput/Custominput';
 import DateTimePicker from '@react-native-community/datetimepicker'
 import cal from '../../../assets/images/Calendar.png'
 import Receipt from '../Receipt/Receipt'
-
+import arrow from '../../../assets/images/icons/ArrowBack.png';
 
 
 
@@ -48,11 +48,49 @@ const SendMoney = () => {
          }
     const [Montant, setMontant] = useState('');
     const navigation=useNavigation();
-    useLayoutEffect(()=>{
-      navigation.setOptions({
-        headerShown:false,
-      })
-    }, [])
+     useLayoutEffect(()=>{
+    navigation.setOptions({
+      headerShown:true,
+      headerTransparent:true,
+      headerTitleAlign: 'center',
+      headerTitleStyle: { alignSelf:'center',color: 'white' ,height:'100%',
+      fontSize: 27,fontWeight:'100'},
+        
+      headerLeft: () => (
+        <TouchableOpacity
+          style={{
+            width: 45,
+            height: 45,
+            borderRadius: 25,
+            borderColor: 'white',
+            borderWidth: 1,
+            marginLeft: 10,
+            marginRight:30,
+            marginBottom:37,
+            marginTop:37,
+            justifyContent: 'center',
+            alignItems: 'center',
+            
+          }}
+          onPress={() => navigation.goBack()}
+        >
+          <Image
+            source={arrow}
+            style={{ width: '60%', height: '60%' }}
+          />
+        </TouchableOpacity>
+      ),headerStyle: {
+        
+        height:'auto'
+        
+      
+      
+
+        
+  
+        },
+    })
+  }, [])
 
   return (
     <LinearGradient start={{x: 1, y: 0}} end={{x: 0, y: 1}} locations={[0,0.6]} colors={['#E20522', '#000000']} style={styles.linearGradient}>
@@ -62,8 +100,8 @@ const SendMoney = () => {
             
           <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
           
-         <View>
-            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}>SendMoney</Text>
+         <View style={styles.nav}>
+            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}></Text>
             
         </View>      
      <View>
@@ -192,6 +230,16 @@ body:{
     paddingHorizontal: 16,
     marginBottom: 16,
   },
+  nav:{
+    flex:2,
+    paddingTop:30,
+    paddingLeft:260,
+    paddingRight:30,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent:'space-between',
+  },
+  
 });
 
 export default SendMoney

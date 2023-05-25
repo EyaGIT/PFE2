@@ -15,7 +15,7 @@ import PopUp from '../../components/PopUp/PopUp';
 import Settings from '../../../assets/images/icons/Settings_outline.png'
 import udemy from '../../../assets/images/udemy.png'
 import { API_BASE_URL } from '@env';
-
+import arrow from '../../../assets/images/icons/ArrowBack.png';
 
 
 
@@ -36,7 +36,45 @@ const Member = () => {
     console.log(API_BASE_URL+"/uploads/"+member.image);
     useLayoutEffect(()=>{
       navigation.setOptions({
-        headerShown:false,
+        headerShown:true,
+        headerTransparent:true,
+        headerTitleAlign: 'center',
+        headerTitleStyle: { alignSelf:'center',color: 'white' ,height:'100%',
+        fontSize: 27,fontWeight:'100'},
+          
+        headerLeft: () => (
+          <TouchableOpacity
+            style={{
+              width: 45,
+              height: 45,
+              borderRadius: 25,
+              borderColor: 'white',
+              borderWidth: 1,
+              marginLeft: 10,
+              marginRight:30,
+              marginBottom:37,
+              marginTop:37,
+              justifyContent: 'center',
+              alignItems: 'center',
+              
+            }}
+            onPress={() => navigation.goBack()}
+          >
+            <Image
+              source={arrow}
+              style={{ width: '60%', height: '60%' }}
+            />
+          </TouchableOpacity>
+        ),headerStyle: {
+          
+          height:'auto'
+          
+        
+        
+  
+          
+    
+          },
       })
     }, [])
 
@@ -49,7 +87,7 @@ const Member = () => {
           <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
           
          <View>
-            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}>Member</Text>
+            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}></Text>
             
         </View>      
      <View>
@@ -59,7 +97,7 @@ const Member = () => {
 
         <View style={{alignItems:"center",width:'100%',flex:1,height:screenHeight-78}}> 
       <View style={styles.body}>
-        <View style={{alignItems:"center",justifyContent:'flex-start',marginTop:10,width:'100%',height:245}}>
+        <View style={{alignItems:"center",justifyContent:'flex-start',marginTop:10,width:'100%',height:230}}>
         <Image style={{width:100,height:100,borderRadius:100/2}} source={{uri:API_BASE_URL+"/uploads/"+member.image}}></Image>
             <Text style={{fontSize:28,fontWeight:"bold",color:"black",marginBottom:30}}>{member.lastName} {member.firstName}</Text>
             
@@ -70,7 +108,7 @@ const Member = () => {
             </View>
         </View>
         
-        <View style={{width:'100%',alignItems:'center',flexDirection:'row',justifyContent:'space-between'}}>
+        <View style={{width:'100%',alignItems:'center',flexDirection:'row',justifyContent:'space-between',paddingTop:20}}>
             
             <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}} onPress={() => navigation.navigate('Send Money')}>
                 <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'rgba(209,208,208,0.5)',width:70,height:70,borderRadius:50}}>

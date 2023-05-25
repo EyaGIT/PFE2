@@ -15,6 +15,8 @@ const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 const TopUp = () => {
+  const [inputError, setInputError] = useState('');
+  const [error, setError] = useState('');
     const [Montant, setMontant] = useState('');
     const [checked, setChecked] = React.useState('first');
     [isAddingMoney, setIsAddingMoney] = useState(false);
@@ -25,6 +27,10 @@ const TopUp = () => {
     //socket.emit('get_user_info',result.data._id);
     });
   const addamount = async  () =>{
+    if (Montant === '') {
+      setInputError('Please enter an amount.');
+      return; // Set error message when the input is empty
+    }
     if (!isAddingMoney) {
       setIsAddingMoney(true);
     await AsyncStorage.getItem('user')
@@ -150,8 +156,10 @@ const TopUp = () => {
   placeholder=""
   value={Montant}
   keyboardType="numeric"
-  onChangeText={setMontant}
-  
+  onChangeText={(text) => {
+    setMontant(text);
+    setInputError(''); // Effacer l'erreur lorsque le texte change
+  }}
   
   />
   <Text style={{fontSize:30,fontWeight:'500',color:"#000000",paddingLeft:30}}>TND</Text>
@@ -203,9 +211,12 @@ const TopUp = () => {
 
 </View>
 </View>
+
         <View style={{width:"70%",paddingTop:40}}>
         <CustomButton  text="Top Up " onPress={addamount} />
         </View>
+
+        {inputError !== '' && <Text style={{ color: 'red' }}>{inputError}</Text>}
             </View>
             
 

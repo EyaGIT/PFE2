@@ -11,8 +11,7 @@ import cal from '../../../assets/images/Calendar.png'
 import Receipt from '../Receipt/Receipt'
 import ImageContact from '../../../assets/images/ImagContact.png'
 import { SelectList } from 'react-native-dropdown-select-list'
-
-
+import arrow from '../../../assets/images/icons/ArrowBack.png';
 
 
 
@@ -44,7 +43,45 @@ const SendMoneyAll = ({userInfo}) => {
     },[])
     useLayoutEffect(()=>{
       navigation.setOptions({
-        headerShown:false,
+        headerShown:true,
+        headerTransparent:true,
+        headerTitleAlign: 'center',
+        headerTitleStyle: { alignSelf:'center',color: 'white' ,height:'100%',
+        fontSize: 27,fontWeight:'100'},
+          
+        headerLeft: () => (
+          <TouchableOpacity
+            style={{
+              width: 45,
+              height: 45,
+              borderRadius: 25,
+              borderColor: 'white',
+              borderWidth: 1,
+              marginLeft: 10,
+              marginRight:30,
+              marginBottom:37,
+              marginTop:37,
+              justifyContent: 'center',
+              alignItems: 'center',
+              
+            }}
+            onPress={() => navigation.goBack()}
+          >
+            <Image
+              source={arrow}
+              style={{ width: '60%', height: '60%' }}
+            />
+          </TouchableOpacity>
+        ),headerStyle: {
+          
+          height:'auto'
+          
+        
+        
+  
+          
+    
+          },
       })
     }, [])
 

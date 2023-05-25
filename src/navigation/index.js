@@ -35,6 +35,7 @@ import { socket } from "../api/ApiManager";
 import Settingsmember from '../screens/Settingsmember/Settingsmember';
 import OrderBracelet2 from '../screens/OrderBracelet2/OrderBracelet2';
 import CongratulationPrincipal from '../screens/Congratulation/CongratulationPrincipal';
+import Statistics from '../screens/Statistics/Statistics';
 const Stack = createNativeStackNavigator();
 
 
@@ -150,6 +151,7 @@ const Navigation = () => {
       <Stack.Screen name="Order Bracelet" component={OrderBracelet}/>
       <Stack.Screen name="Map" component={Map}/>
       <Stack.Screen name="Home Screen" component={HomeScreen}/>
+     
       <Stack.Screen name="Member" component={Member}/>
       <Stack.Screen name="Receipt" component={Receipt}/>
       <Stack.Screen name="Send Money" component={SendMoney}/>
