@@ -11,7 +11,8 @@ import cal from '../../../assets/images/Calendar.png'
 import Receipt from '../Receipt/Receipt'
 import ImageContact from '../../../assets/images/ImagContact.png'
 import { SelectList } from 'react-native-dropdown-select-list'
-
+import { transfer } from "../../api/user_api";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -28,15 +29,70 @@ const SendMoneyAll = ({userInfo}) => {
   
   const [category,setCategory]=useState({})
   const [categories1,setCategories1]=useState([])
- 
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [Montant, setMontant] = useState('');
       const onSendPressed = () => {
-        navigation.navigate("Receipt");
+        
+        if (isLoading) {
+          // Prevent multiple submissions while already loading
+          return;
+        }
+        if (Object.keys(category).length === 0) {
+          setError('Selcet user bracelet');
+          return ;
+        }
+        if(Montant===''||Montant==='0'){
+          setError('Add Amount');
+          return ;
+        }
+
+        setIsLoading(true);
+        AsyncStorage.getItem('AccessToken')
+      .then(token => {
+        if (token) {
+          transfer({
+            idSender: userInfo.bracelets[0]._id,
+            idReceiver:category.key,
+            amount:parseInt(Montant)
+      
+    },token)
+      .then(result=>{
+        if(result.status===200){
+          if(result.data.error){
+            setIsLoading(false);
+            setError(result.data.error);
+            
+            return;
+          }else{
+            console.log(result.data);
+            setTimeout(() => {
+            setIsLoading(false); // Stop loading
+            data=result.data
+            dir="Home"
+            navigation.navigate("Receipt",{ data,dir });
+          }, 2000)
+          }
+        }
+      }).catch((error) => {
+        setIsLoading(false);
+        console.log(error);
+        setIsLoading(false); // Stop loading
+        // Handle error
+      })
+        }}).catch(error => {
+         
+          console.error(error);
+          
+          setIsLoading(false);
+        }); // Start loading
+        ;
          }
-    const [Montant, setMontant] = useState('');
+    
     const navigation=useNavigation();
     useEffect(()=>{
       const test = userInfo.children.map((item) => ({
-        key: item._id,
+        key: item.bracelets[0],
         value: item.firstName + ' ' + item.lastName,
       }));
       setCategories1(test);

@@ -33,7 +33,7 @@ const Member = () => {
     const navigation=useNavigation();
     const route = useRoute();
     const { member } = route.params;
-    console.log(API_BASE_URL+"/uploads/"+member.image);
+    console.log(member.bracelets[0]);
     useLayoutEffect(()=>{
       navigation.setOptions({
         headerShown:false,

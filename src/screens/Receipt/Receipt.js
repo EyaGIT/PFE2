@@ -1,12 +1,15 @@
 import { StyleSheet,View, Text,Image,TouchableOpacity,ScrollView,Dimensions,StatusBar,TextInput } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useLayoutEffect ,useState, useRef} from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation,useRoute } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import AvatarAnas from '../../../assets/images/AvatarAnas.png'
 
 import succ from '../../../assets/images/Succ.png'
+import { API_BASE_URL } from '@env';
+
+
 
 
 
@@ -24,8 +27,21 @@ const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 const Receipt = () => {
-  
-    
+  const route = useRoute();
+  const { data,dir } = route.params;
+  const done=()=>{
+    navigation.navigate(dir)
+  }
+  const options = {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true
+  }
+  const date = new Date(data.date);
+  console.log(API_BASE_URL+"/uploads/"+data.image);
     const navigation=useNavigation();
     useLayoutEffect(()=>{
       navigation.setOptions({
@@ -61,25 +77,25 @@ const Receipt = () => {
             <View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'space-between',height:70}}>
 
                 <Text>Transfer Amount</Text>
-                <Text style={{fontWeight:'bold',color:'black'}}>$1500</Text>
+                <Text style={{fontWeight:'bold',color:'black'}}>{data.amount} TND</Text>
             </View>
             <View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'flex-start',borderWidth:1,borderRadius:20,height:70, marginBottom:30,borderColor:'rgba(0,0,0,0.2)'}}>
-                <Image source={AvatarAnas} style={{width:48,height:48,margin:10}} ></Image>
-                <Text style={{fontWeight:'bold',fontSize:20,color:'black'}}>Cherni Anas</Text>
+                <Image source={{uri:API_BASE_URL+"/uploads/"+data.image}} style={{width:48,height:48,margin:10,borderRadius:48/2}} ></Image>
+                <Text style={{fontWeight:'bold',fontSize:20,color:'black'}}>{data.lastName} {data.firstName}</Text>
             </View>
             <View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'space-between'}}>
                 <Text>Data & time</Text>
-                <Text style={{fontWeight:'bold',color:'black'}}>1 Jan 2023, 10:30PM</Text>
+                <Text style={{fontWeight:'bold',color:'black'}}>{date.toLocaleDateString("en-US", options)}</Text>
             </View>
             <View style={{width:'90%',alignItems:'center',flexDirection:'row',justifyContent:'space-between'}}>
                 <Text>No. Ref</Text>
-                <Text style={{fontWeight:'bold',color:'black'}}>11288889058722</Text>
+                <Text style={{fontWeight:'bold',color:'black'}}>{data.receiverBracelet}</Text>
             </View>
        </View>
        </View>
        
        <View style={{alignItems:"center",justifyContent:"center",width:"100%",backgroundColor:"white",top:screenHeight/4,height:screenHeight-270,backgroundColor:"#F3F3F3",paddingTop:250,paddingLeft:30,paddingRight:30}}>
-        <CustomButton text={'Done'} style={{marginTop:30}}/>
+        <CustomButton text={'Done'} onPress={done} style={{marginTop:30}}/>
        </View>
        </View>
           </ScrollView>
