@@ -21,7 +21,7 @@ const Security = () => {
           
           <Custominput 
           placeholder="" 
-          value={NewPassword} 
+          value={CurrentPassword} 
           setValue={setCurrentPassword}
           secureTextEntry={true}
           />
@@ -47,7 +47,7 @@ const Security = () => {
           
           <Custominput 
           placeholder="" 
-          value={NewPassword} 
+          value={RetypeNewPassword} 
           setValue={setRetypeNewPassword}
           secureTextEntry={true}
           />
