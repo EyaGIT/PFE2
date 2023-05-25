@@ -19,12 +19,13 @@ import proAvatar from '../../../assets/images/proAvatar.png'
 import wallet from '../../../assets/images/Wallet.png'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_BASE_URL } from '@env';
-
+import bra2 from '../../../assets/images/braceletbloquer2.png'
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 const HomeScreen = ({userInfo}) => {
+  
   const [Visible,setVisible]=useState(false);
   const [Amount,setAmount]=useState(0);
   const [children,setchildren]=useState([]);
@@ -114,7 +115,7 @@ const HomeScreen = ({userInfo}) => {
                     <TouchableOpacity  onPress={()=> setVisible(true)}>
                     <View style={styles.flex}>
                     
-                    <Image source={bra} style={{width:30,height:30}} />
+                    <Image source={bra2} style={{width:30,height:30}} />
                     <Text>Braclet</Text>
                     
                     </View>
