@@ -12,7 +12,7 @@ import Receipt from '../Receipt/Receipt'
 import ImageContact from '../../../assets/images/ImagContact.png'
 import { SelectList } from 'react-native-dropdown-select-list'
 
-
+import arrow from '../../../assets/images/icons/ArrowBack.png';
 
 
 
@@ -150,7 +150,7 @@ const SendMoneyAll = ({userInfo}) => {
           <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
           
          <View>
-            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}>SendMoney</Text>
+            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}></Text>
             
         </View>      
      <View>
