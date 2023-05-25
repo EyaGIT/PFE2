@@ -96,7 +96,7 @@ const handleSubmit = () => {
           const formData1 ={'firstName': firstname,
           'lastName': lastname,
           'password': password,
-          'email': mail,
+          'email': mail.toLocaleLowerCase(),
         'image':imageuri}
           
           
