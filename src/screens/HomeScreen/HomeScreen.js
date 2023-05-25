@@ -5,7 +5,8 @@ import {useNavigation } from '@react-navigation/native'
 import LinearGradient from 'react-native-linear-gradient'
 import PopUp from '../../components/PopUp/PopUp';
 import SendMoneyAll from '../SendMoneyAll/SendMoneyAll';
-
+import chanebpromo from '../../../assets/images/chanebpromo2.png'
+import magicpromo from '../../../assets/images/magicpromo.png'
 import tran from '../../../assets/images/tran.png'
 import bra from '../../../assets/images/bra.png'
 import hist from '../../../assets/images/hist.png'
@@ -195,11 +196,11 @@ const HomeScreen = ({userInfo}) => {
                 <Text style={{fontSize:25,fontWeight:'bold'}}>Promo & Discount</Text>
                
               </View>
-              <View>
+              <View >
               <SafeAreaView >
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-      <Image source={card} style={{width:300,marginRight:10}} />
-      <Image source={card2} style={{width:300}} />
+      <Image source={chanebpromo} style={{width:300,marginRight:10,height:300,borderRadius:15}} />
+      <Image source={magicpromo} style={{width:300,height:5,height:300,borderRadius:15}} />
       </ScrollView>
     </SafeAreaView>
                 
