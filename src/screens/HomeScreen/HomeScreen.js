@@ -147,7 +147,7 @@ const HomeScreen = ({userInfo}) => {
               </View>
               <View style={{flexDirection:"row",marginTop:10}}>
               {children.map((item, index) => (
-                <TouchableOpacity key={index} style={{alignItems:"center",marginRight:18}} onPress={() => navigation.navigate('Member',{ member: item })}>
+                <TouchableOpacity key={index} style={{alignItems:"center",marginRight:18}} onPress={() => navigation.navigate('Member',{ member: item ,userInfo:userInfo})}>
                 <Image source={{uri:API_BASE_URL+"/uploads/"+item.image}} style={{width:45,height:45,borderRadius:10}} />
                 <Text>{item.firstName}</Text>
                 </TouchableOpacity>

@@ -32,8 +32,10 @@ const Member = () => {
     const [Visible1,setVisible1]=useState(false);
     const navigation=useNavigation();
     const route = useRoute();
-    const { member } = route.params;
-    console.log(member.bracelets[0]);
+    const { member,userInfo } = route.params;
+    console.log(userInfo.bracelets[0]._id);
+    const idBracelets= member.bracelets[0]._id;
+    const idUser = userInfo.bracelets[0]._id;
     useLayoutEffect(()=>{
       navigation.setOptions({
         headerShown:true,
@@ -125,14 +127,14 @@ const Member = () => {
             
             <View style={{width:'80%',borderWidth:1,borderRadius:20,height:70,backgroundColor:"#EBEBEB",borderColor:'#EBEBEB',alignItems:"center",justifyContent:"center",flexDirection:"row"}}>
                 
-                <Text style={{fontWeight:'bold',fontSize:30,color:'black',paddingLeft:30}}>1,500</Text>
+                <Text style={{fontWeight:'bold',fontSize:30,color:'black',paddingLeft:30}}>{member.bracelets[0].amount}</Text>
                 <Text style={{fontWeight:'bold',fontSize:25,color:'#E20522',paddingLeft:30}}>TND</Text>
             </View>
         </View>
         
         <View style={{width:'100%',alignItems:'center',flexDirection:'row',justifyContent:'space-between',paddingTop:20}}>
             
-            <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}} onPress={() => navigation.navigate('Send Money')}>
+            <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}} onPress={() => navigation.navigate('Send Money',{idBracelets,idUser})}>
                 <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'rgba(209,208,208,0.5)',width:70,height:70,borderRadius:50}}>
                     <Image source={Send} style={{width:45,height:45,marginTop:5}}></Image>
                 </View>

@@ -9,6 +9,7 @@ import CustominputImg from '../../components/CustominputImg/CustominputImg'
 import PicherIm from '../../components/PickerIm/PicherIm'
 import { ScrollView } from 'react-native-gesture-handler'
 
+
 const EditProfil = () => {
     
 

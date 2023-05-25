@@ -1,7 +1,7 @@
 import { StyleSheet,View, Text,Image,TouchableOpacity,ScrollView,Dimensions,StatusBar,TextInput } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useLayoutEffect ,useState, useRef} from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation,useRoute } from '@react-navigation/native'
 import LinearGradient from 'react-native-linear-gradient'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import AvatarAnas from '../../../assets/images/AvatarAnas.png'
@@ -10,8 +10,8 @@ import DateTimePicker from '@react-native-community/datetimepicker'
 import cal from '../../../assets/images/Calendar.png'
 import Receipt from '../Receipt/Receipt'
 import arrow from '../../../assets/images/icons/ArrowBack.png';
-
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { transfer } from "../../api/user_api";
 
 
 
@@ -26,27 +26,74 @@ const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 const SendMoney = () => {
-  
-    const [date, setDate] = useState(new Date());
-    const [showDatePicker, setShowDatePicker] = useState(false);
-  
-    const onDateChange = (event, selectedDate) => {
-        setShowDatePicker(false);
-        if (selectedDate) {
-          setDate(selectedDate);
-        }
-      };
+  const route = useRoute();
+  const { idBracelets,idUser} = route.params;
+  console.log(idBracelets)
     
-      const showDate = () =>{
-        console.log("test");
-        setShowDatePicker(true);
-        console.log("test");
-      }
+  const [Montant, setMontant] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+    
 
       const onSendPressed = () => {
-        navigation.navigate("Receipt");
+        if (isLoading) {
+          // Prevent multiple submissions while already loading
+          return;
+        }
+        if(Montant===''||Montant==='0'){
+          setError('Add Amount');
+          return ;
+        }
+        console.log({
+          idSender: idUser,
+          idReceiver:idBracelets,
+          amount:parseInt(Montant)
+    
+  });
+        setIsLoading(true);
+        AsyncStorage.getItem('AccessToken')
+      .then(token => {
+        if (token) {
+          transfer({
+            idSender: idUser,
+            idReceiver:idBracelets,
+            amount:parseInt(Montant)
+      
+    },token)
+      .then(result=>{
+        if(result.status===200){
+          if(result.data.error){
+            setIsLoading(false);
+            setError(result.data.error);
+            
+            return;
+          }else{
+            console.log(result.data);
+            setTimeout(() => {
+            setIsLoading(false); // Stop loading
+            data=result.data
+            dir="Home"
+            navigation.navigate("Receipt",{ data,dir });
+          }, 2000)
+          }
+        }
+      }).catch((error) => {
+        setIsLoading(false);
+        console.log(error);
+        setIsLoading(false); // Stop loading
+        // Handle error
+      })
+        }}).catch(error => {
+         
+          console.error(error);
+          
+          setIsLoading(false);
+        }); // Start loading
+        ;
+
+        
          }
-    const [Montant, setMontant] = useState('');
+    
     const navigation=useNavigation();
      useLayoutEffect(()=>{
     navigation.setOptions({
