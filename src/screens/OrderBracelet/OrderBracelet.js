@@ -10,7 +10,7 @@ import SelectDropdown from 'react-native-select-dropdown'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import { useNavigation,useRoute } from '@react-navigation/native';
 import BackArrowB from '../../components/BackArrowB/BackArrowB'
-import { SignupMember,createBracelet } from "../../api/user_api";
+import { childSignup,createBracelet } from "../../api/user_api";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const colors = [
     '#E20522',
