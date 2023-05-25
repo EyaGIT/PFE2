@@ -30,7 +30,7 @@ function HomeNav({onLogoutSuccess,onLoad,userInfo}) {
   useEffect(() => {
     // ...existing code...
 
-    console.log('lena',userInfo); // Update the user information state
+     // Update the user information state
     });
   
   return (
@@ -79,7 +79,7 @@ function HomeNav({onLogoutSuccess,onLoad,userInfo}) {
     },}} />
       
       <Tab.Screen name="Settings" options={{tabBarButton: props => <CustomTabBarButton route='Settings' {... props} />}} >
-            {(props) => <Settings1 {...props} onLogoutSuccess={onLogoutSuccess} onLoad={onLoad} />}
+            {(props) => <Settings1 {...props} onLogoutSuccess={onLogoutSuccess} onLoad={onLoad} userInfo={userInfo} />}
       </Tab.Screen>
     </Tab.Navigator>
   );

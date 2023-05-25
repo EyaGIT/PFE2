@@ -103,7 +103,7 @@ const SendMoneyAll = ({userInfo}) => {
         headerShown:true,
         headerTransparent:true,
         headerTitleAlign: 'center',
-        headerTitleStyle: { alignSelf:'center',color: 'white' ,height:'100%',
+        headerTitleStyle: { alignSelf:'center',color: 'rgba(0,0,0,0)' ,height:'100%',
         fontSize: 27,fontWeight:'100'},
           
         headerLeft: () => (

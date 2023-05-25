@@ -1,5 +1,5 @@
-import { View, Text ,ScrollView ,SafeAreaView,Image, TouchableOpacity} from 'react-native'
-import React,{useState} from 'react'
+import { View, Text ,ScrollView ,SafeAreaView,Image, TouchableOpacity,StyleSheet} from 'react-native'
+import React,{useState,useEffect} from 'react'
 import PicherIm from '../../components/PickerIm/PicherIm'
 import User from '../../../assets/images/User.png'
 import Vector from '../../../assets/images/Vector.png'
@@ -12,13 +12,23 @@ import Protect from '../../../assets/images/Protect.png'
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { socket } from "../../api/ApiManager";
-
+import  ImagePickerAvatar  from "../../components/uplode_Image/ImagePickerAvatar";
 import avataranas from '../../../assets/images/AvatarAnas.png'
 
-const Settings = ({onLogoutSuccess,onLoad}) => {
+const Settings = ({onLogoutSuccess,onLoad,userInfo}) => {
   const navigation = useNavigation();
   const [UserName, setUserName] = useState(null);
-  const [imageuri, setimageuri] = useState('');
+  const [uri, setimageuri] = useState('');
+
+  useEffect(() => {
+    if(userInfo.image){
+      setimageuri(userInfo.image);
+    }
+    
+    
+  }, []);
+
+  
   const adduriImage = (uri) =>{
     
     setimageuri(uri)
@@ -31,7 +41,7 @@ const Settings = ({onLogoutSuccess,onLoad}) => {
     if (userString) {
       // User found, parse user string to JavaScript object
       const user = JSON.parse(userString);
-      setUserName(user.lastName+" "+user.firstName);
+      setUserName(userInfo.lastName+" "+userInfo.firstName);
       console.log(UserName);
       // Do something with the user object
     } else {
@@ -63,7 +73,10 @@ const Settings = ({onLogoutSuccess,onLoad}) => {
   return (
     <SafeAreaView style={{ width:'100%',justifyContent: "flex-start", alignItems: "center",flex:1}} >
      <View style={{alignItems:"center",justifyContent:"center",width:"100%",flex:1}}> 
-     <Image source={avataranas}/>
+     <Image
+         style={Styles.avatarImage}
+         source={uri ? {uri:uri}: avataranas}
+         />
     <View style={{width:'100%',alignItems:'center',justifyContent:'center'}}>
       <Text style={{fontSize:19,color:'#000000',fontWeight:'700',paddingTop:10}}>{UserName}</Text></View>
     
@@ -145,5 +158,19 @@ const Settings = ({onLogoutSuccess,onLoad}) => {
     
   )
 }
+const Styles= StyleSheet.create({
+
+  
+avatarImage:{
+
+width:120,
+height:120,
+borderRadius:120/2,
+},
+
+
+
+
+});
 
 export default Settings
