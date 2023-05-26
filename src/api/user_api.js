@@ -200,3 +200,29 @@ export const transfer = async (data,token) => {
     }
   }
 };
+
+export const deletemember1 = async (data) => {
+  try {
+    
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        
+      },
+      responseType: 'json',
+      
+    };
+    
+    const result = await ApiManager.post('/deletechild',data,config );
+    
+    return result;
+  } catch (error) {
+    console.log(error);
+    if (error.response && error.response.data) {
+      return error.response.data;
+    } else {
+      console.log(error);
+      return { error: 'An error occurred.' };
+    }
+  }
+};

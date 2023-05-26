@@ -10,7 +10,7 @@ const screenWidth = Dimensions.get('window').width;
 const PopUp = ({
  isVisible,
  onClose,
- OnPress,
+ onPress,
  message,
  onclick,
  message1,
@@ -37,7 +37,7 @@ const PopUp = ({
   <View style={{flexDirection:'row',justifyContent:'space-evenly',marginTop:10}}>
     
   <View style={{width:"30%"}}>
-        <CustomButton  text="Yes" />
+        <CustomButton  text="Yes" onPress={onPress}/>
   </View>
 
   <View style={{width:"30%"}}>

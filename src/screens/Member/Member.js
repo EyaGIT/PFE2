@@ -17,7 +17,7 @@ import udemy from '../../../assets/images/udemy.png'
 import { API_BASE_URL } from '@env';
 import arrow from '../../../assets/images/icons/ArrowBack.png';
 import Delete from '../../../assets/images/icons/Delete.png';
-
+import { deletemember1 } from '../../api/user_api';
 
 
 
@@ -36,6 +36,22 @@ const Member = () => {
     console.log(userInfo.bracelets[0]._id);
     const idBracelets= member.bracelets[0]._id;
     const idUser = userInfo.bracelets[0]._id;
+
+    const deletemember =()=>{
+         const parent=userInfo._id;
+         const member1=member._id;
+
+        deletemember1({childId:member1 ,parentId:parent}).then(result =>{
+          if (result.status == 200) {
+         
+          
+          navigation.replace('HomeNav');
+        }else{console.log(result.data.message)}
+      }
+        )
+
+
+    }
     useLayoutEffect(()=>{
       navigation.setOptions({
         headerShown:true,
@@ -113,6 +129,7 @@ const Member = () => {
      <PopUp
                 isVisible={Visible1}
                 onClose={()=> setVisible1(false)}
+                onPress={deletemember}
                 message1='Whould you like to delete '
                 message='anas account ?'
                
