@@ -10,7 +10,7 @@ import GalleryScreen from './GalleryScreen';
 
 
 
-const PicherIm = ({uriForm}) => {
+const PicherIm = ({uriForm, default1 }) => {
     const [pickerResponse,setPickerResponse]=useState(null);
     const[Visible,setVisible]=useState(false);
     const [isModalVisible, setModalVisible] = useState(false);
@@ -30,6 +30,9 @@ const PicherIm = ({uriForm}) => {
     //--------------------
     useEffect(() => {
       requestStoragePermission();
+      if(default1){
+        setPhoto(default1)
+      }
       
     }, []);
   

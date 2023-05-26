@@ -1,17 +1,22 @@
 import { StyleSheet,View, Text,Image,TouchableOpacity,ScrollView,Dimensions,StatusBar,TextInput } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import React, { useLayoutEffect ,useState, useRef} from 'react'
+import React, { useLayoutEffect ,useState, useRef,useEffect} from 'react'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import cal from '../../../assets/images/Calendar.png'
 
-const DatePicker = () => {
+const DatePicker = ({Birth,def}) => {
     const [date, setDate] = useState(new Date());
     const [showDatePicker, setShowDatePicker] = useState(false);
-  
+    useEffect(() => {
+      if(def){
+        setDate(def)
+      }
+    }, []);
     const onDateChange = (event, selectedDate) => {
         setShowDatePicker(false);
         if (selectedDate) {
           setDate(selectedDate);
+          Birth(date)
         }
       };
     

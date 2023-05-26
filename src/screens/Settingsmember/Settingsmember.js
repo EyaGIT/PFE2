@@ -1,5 +1,5 @@
 import { View, Text,SafeAreaView, TouchableOpacity,Image,StyleSheet,ScrollView} from 'react-native'
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import Custominput from '../../components/Custominput/Custominput'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import DatePicker from '../../components/DatePicker/DatePicker'
@@ -7,20 +7,32 @@ import Tunisia from '../../../assets/images/Tunisia.png'
 import { TextInput } from 'react-native-paper'
 import CustominputImg from '../../components/CustominputImg/CustominputImg'
 import PicherIm from '../../components/PickerIm/PicherIm'
-
+import { useRoute } from '@react-navigation/native';
+import { API_BASE_URL } from '@env';
 
 const Settingsmember = () => {
-    
+  const route = useRoute();
+  const { member} = route.params;
+  const [date, setDate] = useState();
     const [Password, setPassword] = useState('');
     const [userfirstname, setUserfirstname] = useState('');
     const [userlastname, setUserlastname] = useState('');
     const [usermail, setUsermail] = useState('');
     const [userphone, setUserphone] = useState('');
+    const [Img, setImg ]= useState('');
+    console.log(date);
+    useEffect(() => {
+      setUserfirstname(member.firstName);
+      setUserlastname(member.lastName)
+      setUsermail(member.email);
+      setDate()
+      setUserphone(member.phone);
+    }, []);
   return (
 <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center',width:'100%' }}>
       <ScrollView style={{width:'100%',paddingLeft:20,paddingRight:30,height:180}}>
         <View style={{alignItems:"center",justifyContent:"flex-start",width:"100%",marginTop:-150,top:140,marginBottom:140}}> 
-     <PicherIm/>
+     <PicherIm uriForm={setImg} default1={API_BASE_URL+"/uploads/"+member.Image}/>
    </View>
     <View style={{justifyContent: 'center', alignItems: 'center',width:'100%' }}>
       <View style={{width:"90%"}} >
@@ -51,7 +63,7 @@ const Settingsmember = () => {
            />
       </View>
       <View style={{width:"90%"}} >
-      <DatePicker/>
+      <DatePicker Birth={setDate} def={new Date(member.birthDate)} />
       </View>
       <View style={{width:"90%"}} >
         <CustominputImg

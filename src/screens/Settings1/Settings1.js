@@ -14,6 +14,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { socket } from "../../api/ApiManager";
 import  ImagePickerAvatar  from "../../components/uplode_Image/ImagePickerAvatar";
 import avataranas from '../../../assets/images/AvatarAnas.png'
+import { API_BASE_URL } from '@env';
 
 const Settings = ({onLogoutSuccess,onLoad,userInfo}) => {
   const navigation = useNavigation();
@@ -22,7 +23,8 @@ const Settings = ({onLogoutSuccess,onLoad,userInfo}) => {
 
   useEffect(() => {
     if(userInfo.image){
-      setimageuri(userInfo.image);
+      console.log(API_BASE_URL+"/uploads/"+userInfo.image);
+      setimageuri(API_BASE_URL+"/uploads/"+userInfo.image);
     }
     
     

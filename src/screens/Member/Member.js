@@ -140,7 +140,7 @@ const Member = () => {
                 </View>
                 <Text>Send</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}}onPress={() => navigation.navigate('Settings member')}>
+            <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}}onPress={() => navigation.navigate('Settings member',{member})}>
                 <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'rgba(209,208,208,0.5)',width:70,height:70,borderRadius:50}}>
                 <Image source={Settings} style={{width:40,height:40}}></Image>
                 </View>

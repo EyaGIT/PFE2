@@ -11,7 +11,7 @@ const GalleryScreen = ({ isVisible, onClose, image }) => {
   useEffect(() => {
     // Code to handle selectedPhoto changes
     // ...
-
+    console.warn = () => {}
     return () => {
       // Cleanup code
       // ...
