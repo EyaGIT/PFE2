@@ -1,6 +1,6 @@
 import { StyleSheet,View, Text,Image,TouchableOpacity,ScrollView,Dimensions,StatusBar } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import React, { useLayoutEffect,useState } from 'react'
+import React, { useLayoutEffect,useState ,useEffect} from 'react'
 import {useNavigation } from '@react-navigation/native'
 import LinearGradient from 'react-native-linear-gradient'
 import PopUp from '../../components/PopUp/PopUp';
@@ -20,16 +20,55 @@ import wallet from '../../../assets/images/Wallet.png'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_BASE_URL } from '@env';
 import bra2 from '../../../assets/images/braceletbloquer2.png'
+import { blockbracelt1 } from '../../api/user_api';
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 const HomeScreen = ({userInfo}) => {
+  useEffect(() => {
+    setinfo(userInfo)
+    console.log(info)
+    /*if(userInfo.bracelets[0].is_disabled){
+      setimgbracelet(bra2)
+    }else{
+      setimgbracelet(bra)
+    }
+    */
+  
+    return () => {
+    }
+  }, [info])
   
   const [Visible,setVisible]=useState(false);
   const [Amount,setAmount]=useState(0);
   const [children,setchildren]=useState([]);
   const navigation = useNavigation();
+  const [info,setinfo]=useState();
+  const[imgbracelet,setimgbracelet]=useState(bra)
+
+  const blockbracelet =()=>{
+    const bracelet=info.bracelets[0]._id;
+    console.log(bracelet)
+    AsyncStorage.getItem('AccessToken').then((token => {
+      if (token) {
+        console.log(token)
+        blockbracelt1({id_bracelet:bracelet },token).then(result=>{
+          if (result.status == 200) {
+         
+          
+           setVisible(false);
+        }else{console.log(result.data)}
+      }
+        )
+      } else {
+        
+      }
+    }))
+    
+
+
+}
   AsyncStorage.getItem('user')
   .then(userString => {
     // Check if user exists in storage
@@ -115,7 +154,7 @@ const HomeScreen = ({userInfo}) => {
                     <TouchableOpacity  onPress={()=> setVisible(true)}>
                     <View style={styles.flex}>
                     
-                    <Image source={bra2} style={{width:30,height:30}} />
+                    <Image source={imgbracelet} style={{width:30,height:30}} />
                     <Text>Braclet</Text>
                     
                     </View>
@@ -123,8 +162,9 @@ const HomeScreen = ({userInfo}) => {
                     <PopUp
                 isVisible={Visible}
                 onClose={()=> setVisible(false)}
-                message1='Whould you like to block '
-                message='anas bracelet ?'
+                onPress={ blockbracelet}
+                message1='Whould you like to block'
+                message='your bracelet ?'
                
                 />
                     
