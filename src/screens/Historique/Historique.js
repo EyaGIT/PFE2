@@ -26,6 +26,15 @@ const Historique = ({userInfo}) => {
         })})
   useEffect(() => {
    setOperation(userInfo.bracelets[0].operations);
+   console.log(Operation.map((item, index) => {
+    if(item){
+      console.log(item.amount,item.type);
+    }
+    
+   }
+    )
+    
+    )
     
   }, []);
   
