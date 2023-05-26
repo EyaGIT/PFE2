@@ -19,13 +19,15 @@ const Settingsmember = () => {
     const [userlastname, setUserlastname] = useState('');
     const [usermail, setUsermail] = useState('');
     const [userphone, setUserphone] = useState('');
+    const [userId, setUserId] = useState('');
     const [Img, setImg ]= useState('');
-    console.log(date);
+    
     useEffect(() => {
+      setUserId(member._id)
       setUserfirstname(member.firstName);
       setUserlastname(member.lastName)
       setUsermail(member.email);
-      setDate()
+      
       setUserphone(member.phone);
     }, []);
   return (
