@@ -122,11 +122,11 @@ const ShopMapScreen = () => {
         <StatusBar
           
         />
-        <View style={{width:'100%',height:500}}>
+        <View style={{width:'100%',height:350}}>
         <ShopMapScreen></ShopMapScreen>
         </View>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic" style={{height:330}}>
+        <ScrollView showsVerticalScrollIndicator={false}
+          style={{height:330}}>
             <View style={{alignItems:'center',flex:1}}>
                 <TouchableOpacity style={{justifyContent:'center',width:'100%',height:80,flexDirection:'row',alignItems:"center"}}>
                     <View><Image source={loc} style={{width:56,height:56}}></Image></View>
@@ -188,26 +188,7 @@ const ShopMapScreen = () => {
                 <View style={{width:'85%',borderWidth:0.5,marginTop:10,marginBottom:10,borderColor:'#C0C6CD'}}>
 
                 </View>
-                <TouchableOpacity style={{justifyContent:'center',width:'100%',height:80,flexDirection:'row',alignItems:"center"}}>
-                    <View><Image source={loc} style={{width:56,height:56}}></Image></View>
-                    <View style={{justifyContent:'flex-start',width:200,paddingLeft:10}}>
-                        <Text style={{fontSize:18,fontWeight:'bold',color:'black'}}>Franklin Guvk</Text>
-                        <Text>Franklin Guvk</Text>
-                    </View>
-                    <View style={{alignItems:'flex-end'}}>
-                    <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',alignSelf:'flex-start'}}>
-                        <Image source={star} style={{width:16,height:16}} />
-                        <Image source={star} style={{width:16,height:16}} />
-                        <Image source={star} style={{width:16,height:16}} />
-                        <Image source={star} style={{width:16,height:16}} />
-                        <Image source={star} style={{width:16,height:16}} />
-                    </View>
-                        <Text>0.7 km</Text>
-                    </View>
-                </TouchableOpacity>
-                <View style={{width:'85%',borderWidth:0.5,marginTop:10,marginBottom:10,borderColor:'#C0C6CD'}}>
-
-                </View>
+               
           </View>
         </ScrollView>
       </SafeAreaView>);
