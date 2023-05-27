@@ -23,8 +23,8 @@ const Contacts = ({userInfo}) => {
 
  
 
-  const onuserPressed = (item) => {
-    navigation.navigate("Member",{ member: item });
+  const onuserPressed = (item,item2) => {
+    navigation.navigate("Member",{ member: item ,userInfo:item2});
      }
  
 
@@ -65,14 +65,19 @@ const Contacts = ({userInfo}) => {
             <Image source={arrow} style={{ width: '60%', height: '60%' }} />
           </TouchableOpacity>
         ),
-        headerRight: () => (
-          <TouchableOpacity
-            style={{ paddingRight: 20 }}
-            onPress={onplusPressed}
-          >
-            <Image source={plus} style={{ width: 22, height: 20 }} />
-          </TouchableOpacity>
-        ),
+        headerRight: () => {
+          if (userInfo.role.name === 'member') {
+            return (
+              <TouchableOpacity
+                style={{ paddingRight: 20 }}
+                onPress={onplusPressed}
+              >
+                <Image source={plus} style={{ width: 22, height: 20 }} />
+              </TouchableOpacity>
+            );
+          }
+          return null;
+        },
         headerStyle: {}
       });
     }, [])
@@ -93,7 +98,7 @@ const Contacts = ({userInfo}) => {
 
         <View style={styles.body}>
         {children.map((item, index) => (
-                <TouchableOpacity key={index} onPress={()=>onuserPressed(item)}>
+                <TouchableOpacity key={index} onPress={()=>onuserPressed(item,userInfo)}>
                 <View style={{width:'100%',paddingTop:20,flexDirection:'row'}}>
                     <View style={{width:'25%',alignItems:'center'}}>
                             <Image style={{width:65,height:65,borderRadius:65/2}}  source={{uri:API_BASE_URL+"/uploads/"+item.image}} />

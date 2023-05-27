@@ -149,7 +149,7 @@ const SendMoneyAll = ({userInfo}) => {
           <SafeAreaView style={styles.SafeAreaView}>
           <StatusBar barStyle="light-content" backgroundColor={'transparent'} translucent={true} />
             
-          <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
+         
           
          <View>
             <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}></Text>
@@ -215,7 +215,7 @@ const SendMoneyAll = ({userInfo}) => {
         <View style={{backgroundColor:"#EBEBEB",borderRadius:30,borderColor:'#EBEBEB',width:230,height:100,alignItems:"center",justifyContent:"center",flexDirection:"row"}}>
 <TextInput 
   style={{fontSize:35,height:"100%",paddingLeft:40}}
-  placeholder="20"
+  placeholder=""
   value={Montant}
   keyboardType="numeric"
   onChangeText={setMontant}
@@ -239,7 +239,7 @@ const SendMoneyAll = ({userInfo}) => {
       
             
           </View>
-          </ScrollView>
+         
           </SafeAreaView>
         </LinearGradient>
         
@@ -265,6 +265,9 @@ const styles = StyleSheet.create({
  
 
 body:{
+  width:screenWidth,
+    
+  height:screenHeight,
   paddingtop:10,
   paddingLeft:10,
   paddingRight:10,

@@ -111,11 +111,11 @@ const TopUp = ({userInfo}) => {
     <StatusBar barStyle="light-content" backgroundColor={'transparent'} translucent={true} />
    
       
-    <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
-    < View style={styles.head}>
-              
-              
-          </View>
+    <View>
+            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}></Text>
+            
+        </View>  
+  
     
 
         <View style={styles.body}>
@@ -185,7 +185,7 @@ const TopUp = ({userInfo}) => {
 </View>
 </View>
 
-        <View style={{width:"70%",paddingTop:40}}>
+<View style={{width:"60%",paddingTop:40,marginLeft:70}}>
         <CustomButton  text="Top Up " onPress={addamount} />
         </View>
 
@@ -194,7 +194,7 @@ const TopUp = ({userInfo}) => {
             
 
 
-     </ScrollView>
+    
     </SafeAreaView> 
     </LinearGradient> 
     
@@ -251,6 +251,9 @@ head:{
 flex:1
 },
 body:{
+  width:screenWidth,
+    
+  height:screenHeight,
   paddingtop:15,
   paddingLeft:25,
   paddingRight:25,

@@ -49,7 +49,7 @@ const HomeScreen = ({userInfo}) => {
   const navigation = useNavigation();
   const [info,setinfo]=useState();
   const[imgbracelet,setimgbracelet]=useState(bra)
-
+  const [mesg1,setmsg1]=useState();
   const blockbracelet =()=>{
     const bracelet=info.bracelets[0]._id;
     
@@ -61,8 +61,10 @@ const HomeScreen = ({userInfo}) => {
             console.log(result.data)
          if(result.data.Bracelet){
       setimgbracelet(bra2)
+      setmsg1("Would you like to unblock");
     }else{
       setimgbracelet(bra)
+      setmsg1("Would you like to block");
     }
           
            setVisible(false);
@@ -152,7 +154,7 @@ const HomeScreen = ({userInfo}) => {
                 isVisible={Visible}
                 onClose={()=> setVisible(false)}
                 onPress={ blockbracelet}
-                message1='Whould you like to block'
+                message1={mesg1}
                 message='your bracelet ?'
                
                 />
@@ -166,34 +168,34 @@ const HomeScreen = ({userInfo}) => {
           
           <View style={styles.body}>
           
-            <View style={{marginTop:70,width:'100%',marginBottom:10}}>
-              <View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between'}}>
-                <Text style={{fontSize:25,fontWeight:'bold'}}>Members</Text>
-                <View>
-                  <TouchableOpacity onPress={onviewallPressed}>
-                  <Text>View All</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-              <View style={{flexDirection:"row",marginTop:10}}>
-              {children.map((item, index) => (
-                <TouchableOpacity key={index} style={{alignItems:"center",marginRight:18}} onPress={() => navigation.navigate('Member',{ member: item ,userInfo:userInfo})}>
-                <Image source={{uri:API_BASE_URL+"/uploads/"+item.image}} style={{width:45,height:45,borderRadius:10}} />
-                <Text>{item.firstName}</Text>
-                </TouchableOpacity>
-              ))}
-                
+          <View style={{marginTop: 70, width: '100%', marginBottom: 10}}>
+ 
+    <View style={{flexDirection: 'row', width: '100%', alignItems: 'center', justifyContent: 'space-between'}}>
+      <Text style={{fontSize: 25, fontWeight: 'bold'}}>Members</Text>
+      <View>
+        <TouchableOpacity onPress={onviewallPressed}>
+          <Text>View All</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  
+  <View style={{flexDirection: "row", marginTop: 10}}>
+    {children.map((item, index) => (
+      <TouchableOpacity key={index} style={{alignItems: "center", marginRight: 18}} onPress={() => navigation.navigate('Member', {member: item, userInfo: userInfo})}>
+        <Image source={{uri: API_BASE_URL + "/uploads/" + item.image}} style={{width: 45, height: 45, borderRadius: 10}} />
+        <Text>{item.firstName}</Text>
+      </TouchableOpacity>
+    ))}
+    {userInfo.role.name === 'member' && (
+      <TouchableOpacity style={{alignItems: "center", marginRight: 18}} onPress={() => navigation.navigate('New Member1')}>
+        <View style={{width: 45, height: 45, borderRadius: 10, backgroundColor: 'rgba(142, 147, 153, 0.24)', alignItems: "center", justifyContent: "center", padding: 0}}>
+          <Text style={{fontSize: 35, margin: 0, padding: 0, textAlignVertical: 'bottom', textAlign: 'center', lineHeight: 47}}>+</Text>
+        </View>
+      </TouchableOpacity>
+    )}
+  </View>
+</View>
 
-                <TouchableOpacity style={{alignItems:"center",marginRight:18}} onPress={() => navigation.navigate('New Member1')}>
-                  <View style={{width:45,height:45,borderRadius:10, backgroundColor:'rgba(142, 147, 153, 0.24)',alignItems:"center",justifyContent:"center",padding:0}}>
-                    <Text style={{fontSize:35,margin:0,padding:0,textAlignVertical:'bottom',textAlign:'center',lineHeight:47}}>+</Text>
-                  </View>
-                  
-                
-                
-                </TouchableOpacity>
-              </View>
-            </View>
 
 
             <View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between'}}>
