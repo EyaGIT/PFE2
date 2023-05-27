@@ -10,7 +10,7 @@ import StepIndicator from 'react-native-step-indicator';
 import Swipe1 from '../../components/Swipe/Swipe1/Swipe1';
 import Swipe3 from '../../components/Swipe/Swipe3/Swipe3';
 import Swipe2 from '../../screens/OrderBracelet2/OrderBracelet2'
-
+import arrow from '../../../assets/images/icons/ArrowBack.png';
 
 
 
@@ -101,24 +101,60 @@ const NewMember1 = () => {
   };
 
     const navigation=useNavigation();
-    useLayoutEffect(()=>{
+    useLayoutEffect(() => {
       navigation.setOptions({
-        headerShown:false,
-      })
-    }, [])
-
+        headerShown: true,
+        headerTransparent: true,
+        headerTitleAlign: 'center',
+        headerTitleStyle: {
+          alignSelf: 'center',
+          color: 'white',
+          height: '100%',
+          fontSize: 27,
+          fontWeight: '100',
+        },
+        headerLeft: () => (
+          <TouchableOpacity
+            style={{
+              width: 45,
+              height: 45,
+              borderRadius: 25,
+              borderColor: 'white',
+              borderWidth: 1,
+              marginLeft: 10,
+              marginRight: 30,
+              marginBottom: 37,
+              marginTop: 30,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+            onPress={() => navigation.goBack()}
+          >
+            <Image source={arrow} style={{ width: '60%', height: '60%' }} />
+          </TouchableOpacity>
+        ),
+        headerStyle: {
+          
+          position: 'sticky',
+          zIndex: 100, // Ajout de la propriété "zIndex" pour superposer le header
+        },
+      });
+    }, []);
+  
   return (
     <LinearGradient start={{x: 1, y: 0}} end={{x: 0, y: 1}} locations={[0,0.6]} colors={['#E20522', '#000000']} style={styles.linearGradient}>
           
           <SafeAreaView style={styles.SafeAreaView}>
           <StatusBar barStyle="light-content" backgroundColor={'transparent'} translucent={true} />
+              
+          <View>
+            <Text style={{fontSize: 25,color:'#FFFFFF',paddingBottom:10,paddingTop:30}}></Text>
             
+        </View>    
+ 
           <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
+         
           
-         <View>
-            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}>New member</Text>
-            
-        </View>      
 
 
           
@@ -196,7 +232,7 @@ body:{
     marginVertical: 50,
     position:"absolute",
     width:screenWidth,
-    top:-70,
+    top:-60,
     
     
   },
