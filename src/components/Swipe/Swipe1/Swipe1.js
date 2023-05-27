@@ -252,7 +252,7 @@ color='#E20522'
         />)}
         </View>
 
-        <View style={{width:"80%"}}>
+        <View style={{width:"60%"}}>
         <CustomButton  text="Continue " onPress={handleSubmit}/>
         </View>
 

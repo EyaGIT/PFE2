@@ -95,13 +95,13 @@ const Limits = () => {
           
           <SafeAreaView style={styles.SafeAreaView}>
           <StatusBar barStyle="light-content" backgroundColor={'transparent'} translucent={true} />
-            
-          <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
-          
-         <View style={{flex: 1}}>
+          <View style={{}}>
             <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}></Text>
             
-        </View>      
+        </View>   
+          <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
+          
+           
      
 
           

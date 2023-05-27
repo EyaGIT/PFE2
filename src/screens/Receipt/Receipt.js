@@ -55,10 +55,10 @@ const Receipt = () => {
           <SafeAreaView style={styles.SafeAreaView}>
           <StatusBar barStyle="light-content" backgroundColor={'transparent'} translucent={true} />
             
-          <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
+          
           
          <View>
-            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}>Receipt</Text>
+            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}></Text>
             
         </View>      
      <View>
@@ -94,11 +94,13 @@ const Receipt = () => {
        </View>
        </View>
        
-       <View style={{alignItems:"center",justifyContent:"center",width:"100%",backgroundColor:"white",top:screenHeight/4,height:screenHeight-270,backgroundColor:"#F3F3F3",paddingTop:250,paddingLeft:30,paddingRight:30}}>
-        <CustomButton text={'Done'} onPress={done} style={{marginTop:30}}/>
+       <View style={{alignItems:"center",justifyContent:"center",width:"100%",backgroundColor:"white",top:screenHeight/4,height:screenHeight-270,backgroundColor:"#F3F3F3",paddingLeft:30,paddingRight:30,minHeight: screenHeight-70,paddingTop:100}}>
+        <View style={{width:'70%'}}>
+
+        <CustomButton text={'Done'} onPress={done} style={{marginTop:30}}/></View>
        </View>
        </View>
-          </ScrollView>
+   
           </SafeAreaView>
         </LinearGradient>
         
@@ -125,7 +127,9 @@ const styles = StyleSheet.create({
 
 body:{
   paddingtop:10,
-  
+  width:screenWidth,
+    
+  height:screenHeight,
   zIndex: 2,
   backgroundColor:'#FBFBFB',
   borderRadius:45,

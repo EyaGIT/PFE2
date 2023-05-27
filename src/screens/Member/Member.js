@@ -1,6 +1,6 @@
 import { StyleSheet,View, Text,Image,TouchableOpacity,ScrollView,Dimensions,StatusBar,TextInput } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import React, { useLayoutEffect ,useState, useRef} from 'react'
+import React, { useLayoutEffect ,useState, useRef,useEffect} from 'react'
 import { useNavigation ,useRoute} from '@react-navigation/native'
 
 import LinearGradient from 'react-native-linear-gradient'
@@ -20,14 +20,14 @@ import Delete from '../../../assets/images/icons/Delete.png';
 import { deletemember1 } from '../../api/user_api';
 import blockred from '../../../assets/images/Unavailablered.png'
 import Security from '../Security/Security'
-
-
+import { blockbracelt1 } from '../../api/user_api';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 const Member = () => {
-  
+  const[imgbracelet,setimgbracelet]=useState(Block)
     const [Visible,setVisible]=useState(false);
     const [Visible1,setVisible1]=useState(false);
     const navigation=useNavigation();
@@ -36,6 +36,53 @@ const Member = () => {
     console.log(userInfo.bracelets[0]._id);
     const idBracelets= member.bracelets[0]._id;
     const idUser = userInfo.bracelets[0]._id;
+    const [info,setinfo]=useState();
+    const [mesg1,setmsg1]=useState();
+
+    useEffect(() => {
+      if(member){
+      console.log(member.bracelets[0].is_disabled,"hhhh")
+      setinfo(member)
+      
+    if(member.bracelets[0].is_disabled){
+        setimgbracelet(Block)
+      }else{
+        setimgbracelet(blockred)
+      }
+     
+    
+      return () => {
+      }
+  }}, [userInfo])
+    const blockbracelet =()=>{
+      const bracelet=member.bracelets[0]._id;
+      
+      AsyncStorage.getItem('AccessToken').then((token => {
+        if (token) {
+          
+          blockbracelt1({id_bracelet:bracelet },token).then(result=>{
+            if (result.status == 200) {
+              console.log(result.data)
+           if(result.data.Bracelet){
+        setimgbracelet(blockred)
+        setmsg1("Would you like to unblock");
+      }else{
+        setimgbracelet(Block)
+        setmsg1("Would you like to block");
+      }
+            
+             setVisible(false);
+          }else{console.log(result.data)}
+        }
+          )
+        } else {
+          
+        }
+      }))
+      
+  
+  
+  }
 
     const deletemember =()=>{
          const parent=userInfo._id;
@@ -118,8 +165,7 @@ const Member = () => {
           <SafeAreaView style={styles.SafeAreaView}>
           <StatusBar barStyle="light-content" backgroundColor={'transparent'} translucent={true} />
             
-          <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
-          
+         
          <View>
             <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}></Text>
             
@@ -130,7 +176,7 @@ const Member = () => {
                 isVisible={Visible1}
                 onClose={()=> setVisible1(false)}
                 onPress={deletemember}
-                message1='Whould you like to delete '
+                message1={mesg1}
                 message='anas account ?'
                
                 />
@@ -172,7 +218,7 @@ const Member = () => {
             </TouchableOpacity>
             <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}} onPress={()=> setVisible(true)}>
                 <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'rgba(209,208,208,0.5)',width:60,height:60,borderRadius:50}}>
-                <Image source={Block} style={{width:40,height:40}}></Image>
+                <Image source={imgbracelet} style={{width:40,height:40}}></Image>
                 </View>
                 <Text>Block</Text>
                 
@@ -180,7 +226,9 @@ const Member = () => {
             <PopUp
                 isVisible={Visible}
                 onClose={()=> setVisible(false)}
-                message="Anas "
+                onPress={ blockbracelet}
+                message1={mesg1}
+                message='your bracelet ?'
                 />
               
             <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}} onPress={()=> navigation.navigate('Limits')}>
@@ -229,7 +277,7 @@ const Member = () => {
               </View>
        </View>
        </View>
-          </ScrollView>
+          
           </SafeAreaView>
         </LinearGradient>
         
@@ -264,13 +312,16 @@ body:{
   flex:2,
   height: 400,
   width:'90%',
-  position:'absolute'
+  position:'absolute',
+  
+ 
   
   
   },
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
+    
   },
   stepIndicator: {
     marginVertical: 50,

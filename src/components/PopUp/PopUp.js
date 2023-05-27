@@ -31,7 +31,7 @@ const PopUp = ({
 
   <View  style={styles.buttons}>
   <View style={{height:'90%',width:'90%',marginTop:10}}>
-    <Text style={{alignSelf:'center',fontSize:24}}>{message1}</Text>
+    <Text style={{alignSelf:'center',fontSize:24,fontFamily:''}}>{message1}</Text>
     <Text style={{alignSelf:'center',fontSize:24}}>{message}</Text>
     
   <View style={{flexDirection:'row',justifyContent:'space-evenly',marginTop:10}}>

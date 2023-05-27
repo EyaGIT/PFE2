@@ -45,7 +45,8 @@ const Styles= StyleSheet.create({
   },
   addButton:{
 
-    top:-6
+    top:-12,
+    marginLeft:35
   },
   usernameText:{},
   

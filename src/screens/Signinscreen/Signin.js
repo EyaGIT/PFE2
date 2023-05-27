@@ -170,6 +170,7 @@ const handlePasswordChange = text => {
           value={email} 
           setValue={setEmail}
           onChangeText={handleEmailChange}
+          keyboard="email-address"
           
           />
          
@@ -194,9 +195,9 @@ const handlePasswordChange = text => {
         <CustomButton  text="Sign in " onPress={handleLogin}/>
         </View>
         
-        <Text style={{paddingTop:30}}>
+       {/*} <Text style={{paddingTop:30}}>
           <Text style={{color:'#E20522',fontWeight:'bold'}}  onPress={onforgetpasswordPressed}> Forgot the password ?</Text>
-       </Text>
+  </Text>{*/}
          
        <Text style={{paddingTop:40}}>
           <Text style={{color:'#858C94'}}> Don’t have an account ?</Text>

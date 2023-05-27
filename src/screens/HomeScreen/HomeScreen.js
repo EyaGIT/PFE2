@@ -28,8 +28,10 @@ const screenWidth = Dimensions.get('window').width;
 const HomeScreen = ({userInfo}) => {
   useEffect(() => {
     if(userInfo){
+    
     console.log(userInfo.bracelets[0].is_disabled,"hhhh")
     setinfo(userInfo)
+    setrole(userInfo.role.name)
     
   if(userInfo.bracelets[0].is_disabled){
       setimgbracelet(bra2)
@@ -38,11 +40,12 @@ const HomeScreen = ({userInfo}) => {
     }
     setAmount(userInfo.bracelets[0].amount)
     setchildren(userInfo.children)
+
   
     return () => {
     }
 }}, [userInfo])
-  
+  const[role,setrole]=useState();
   const [Visible,setVisible]=useState(false);
   const [Amount,setAmount]=useState(0);
   const [children,setchildren]=useState([]);
@@ -186,7 +189,7 @@ const HomeScreen = ({userInfo}) => {
         <Text>{item.firstName}</Text>
       </TouchableOpacity>
     ))}
-    {userInfo.role.name === 'member' && (
+    {role=== 'member' && (
       <TouchableOpacity style={{alignItems: "center", marginRight: 18}} onPress={() => navigation.navigate('New Member1')}>
         <View style={{width: 45, height: 45, borderRadius: 10, backgroundColor: 'rgba(142, 147, 153, 0.24)', alignItems: "center", justifyContent: "center", padding: 0}}>
           <Text style={{fontSize: 35, margin: 0, padding: 0, textAlignVertical: 'bottom', textAlign: 'center', lineHeight: 47}}>+</Text>

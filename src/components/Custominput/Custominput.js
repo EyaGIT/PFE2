@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
-const Custominput = ({ value, setValue, placeholder, secureTextEntry, focus }) => {
+const Custominput = ({ value, setValue, placeholder, secureTextEntry, focus,keyboard }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const toggleShowPassword = () => {
@@ -17,6 +17,8 @@ const Custominput = ({ value, setValue, placeholder, secureTextEntry, focus }) =
         style={styles.input}
         secureTextEntry={secureTextEntry && !showPassword}
         onFocus={focus}
+        keyboardType={keyboard}
+        
       />
 
       {secureTextEntry && (
@@ -40,9 +42,10 @@ const styles = StyleSheet.create({
     color: 'black',
     borderColor: '#A5ABB3',
     borderWidth: 1,
-    borderRadius: 15,
+    borderRadius: 10,
     paddingHorizontal: 10,
     marginVertical: 10,
+   
   },
   input: {
     flex: 1,

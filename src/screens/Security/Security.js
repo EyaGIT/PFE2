@@ -12,7 +12,7 @@ const Security = () => {
     const [NewPassword, setNewPassword] = useState('');
   const [RetypeNewPassword, setRetypeNewPassword] = useState('');
   return (
-    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center',backgroundColor:'#F2F2F2' }}>
 
         <View style={{width:'90%'}}> 
          

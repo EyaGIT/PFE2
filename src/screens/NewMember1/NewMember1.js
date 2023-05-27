@@ -123,8 +123,8 @@ const NewMember1 = () => {
               borderWidth: 1,
               marginLeft: 10,
               marginRight: 30,
-              marginBottom: 37,
-              marginTop: 30,
+              marginBottom: 30,
+              marginTop: 25,
               justifyContent: 'center',
               alignItems: 'center',
             }}
@@ -133,6 +133,7 @@ const NewMember1 = () => {
             <Image source={arrow} style={{ width: '60%', height: '60%' }} />
           </TouchableOpacity>
         ),
+        
         headerStyle: {
           
           position: 'sticky',
@@ -147,10 +148,10 @@ const NewMember1 = () => {
           <SafeAreaView style={styles.SafeAreaView}>
           <StatusBar barStyle="light-content" backgroundColor={'transparent'} translucent={true} />
               
-          <View>
-            <Text style={{fontSize: 25,color:'#FFFFFF',paddingBottom:10,paddingTop:30}}></Text>
+          <View style={{}}>
+            <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}></Text>
             
-        </View>    
+        </View>   
  
           <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
          
@@ -165,7 +166,7 @@ const NewMember1 = () => {
           stepCount={3}
           customStyles={firstIndicatorStyles}
           currentPosition={currentPage}
-          labels={['Account', 'Order bracelet', 'Success']}
+          labels={['Form', 'Order bracelet', 'Success']}
           renderLabel={renderLabel}
           onPress={onStepPress}
         />
@@ -232,7 +233,8 @@ body:{
     marginVertical: 50,
     position:"absolute",
     width:screenWidth,
-    top:-60,
+    top:-30,
+
     
     
   },
