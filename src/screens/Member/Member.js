@@ -8,7 +8,7 @@ import CustomButton from '../../components/CustomButton/CustomButton'
 import AvatarAnas from '../../../assets/images/AvatarAnas.png'
 import Send from '../../../assets/images/EmailSend.png'
 import succ from '../../../assets/images/Succ.png'
-import Pin from '../../../assets/images/___.png'
+import Pin from '../../../assets/images/PIN.png'
 import Block from '../../../assets/images/Unavailable.png'
 import Limits from '../../../assets/images/NoEntry.png'
 import PopUp from '../../components/PopUp/PopUp';
@@ -18,8 +18,8 @@ import { API_BASE_URL } from '@env';
 import arrow from '../../../assets/images/icons/ArrowBack.png';
 import Delete from '../../../assets/images/icons/Delete.png';
 import { deletemember1 } from '../../api/user_api';
-
-
+import blockred from '../../../assets/images/Unavailablered.png'
+import Security from '../Security/Security'
 
 
 
@@ -152,20 +152,27 @@ const Member = () => {
         <View style={{width:'100%',alignItems:'center',flexDirection:'row',justifyContent:'space-between',paddingTop:20}}>
             
             <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}} onPress={() => navigation.navigate('Send Money',{idBracelets,idUser})}>
-                <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'rgba(209,208,208,0.5)',width:70,height:70,borderRadius:50}}>
-                    <Image source={Send} style={{width:45,height:45,marginTop:5}}></Image>
+                <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'rgba(209,208,208,0.5)',width:60,height:60,borderRadius:50}}>
+                    <Image source={Send} style={{width:40,height:40,marginTop:5}}></Image>
                 </View>
                 <Text>Send</Text>
             </TouchableOpacity>
             <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}}onPress={() => navigation.navigate('Settings member',{member})}>
-                <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'rgba(209,208,208,0.5)',width:70,height:70,borderRadius:50}}>
-                <Image source={Settings} style={{width:40,height:40}}></Image>
+                <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'rgba(209,208,208,0.5)',width:60,height:60,borderRadius:50}}>
+                <Image source={Settings} style={{width:38,height:38}}></Image>
                 </View>
                 <Text>Profil</Text>
+                
+            </TouchableOpacity>
+            <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}} onPress={()=> navigation.navigate('Limits')}>
+                <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'rgba(209,208,208,0.5)',width:60,height:60,borderRadius:50}}>
+                    <Image source={Pin} style={{width:10,height:10,paddingRight:40}}></Image>
+                </View>
+                <Text>PIN</Text>
             </TouchableOpacity>
             <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}} onPress={()=> setVisible(true)}>
-                <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'rgba(209,208,208,0.5)',width:70,height:70,borderRadius:50}}>
-                <Image source={Block} style={{width:45,height:45}}></Image>
+                <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'rgba(209,208,208,0.5)',width:60,height:60,borderRadius:50}}>
+                <Image source={Block} style={{width:40,height:40}}></Image>
                 </View>
                 <Text>Block</Text>
                 
@@ -177,15 +184,17 @@ const Member = () => {
                 />
               
             <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}} onPress={()=> navigation.navigate('Limits')}>
-                <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'rgba(209,208,208,0.5)',width:70,height:70,borderRadius:50}}>
-                    <Image source={Limits} style={{width:45,height:45}}></Image>
+                <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'rgba(209,208,208,0.5)',width:60,height:60,borderRadius:50}}>
+                    <Image source={Limits} style={{width:40,height:40}}></Image>
                 </View>
                 <Text>Limits</Text>
             </TouchableOpacity>
+            
+            
        </View>
        </View>
        
-       <View style={{alignItems:"center",justifyContent:"center",width:"100%",top:screenHeight/4,height:screenHeight-270,backgroundColor:"#FBFBFB",paddingTop:250,paddingLeft:30,paddingRight:30}}>
+       <View style={{alignItems:"center",justifyContent:"center",width:"100%",top:screenHeight/4,height:screenHeight-270,backgroundColor:"#F2F2F2",paddingTop:250,paddingLeft:30,paddingRight:30}}>
         
        
        <View style={{width:'100%',alignItems:'center',justifyContent:'center',paddingBottom:100}}>
@@ -249,7 +258,7 @@ body:{
   paddingtop:10,
   
   zIndex: 2,
-  backgroundColor:'#FBFBFB',
+  backgroundColor:'#F2F2F2',
   borderRadius:45,
   
   flex:2,

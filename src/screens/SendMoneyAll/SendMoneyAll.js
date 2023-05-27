@@ -175,8 +175,33 @@ const SendMoneyAll = ({userInfo}) => {
                       
                       setSelected={(key,val) => setCategory({key,val})} 
                       data={categories1}
-                      placeholder={"Select Category"}
-                      dropdownStyles={{backgroundColor:'white'}}
+                      placeholder={"Choose member"}
+                     
+                      dropdownStyles={{
+                        container: {
+                          backgroundColor: '#EBEBEB',
+                          borderWidth: 1,
+                          borderColor: 'gray',
+                          borderRadius: 8,
+                          paddingHorizontal: 10,
+                          paddingVertical: 8,
+                        },
+                        listContainer: {
+                          maxHeight: 200,
+                        },
+                        listItem: {
+                          paddingVertical: 8,
+                          paddingHorizontal: 10,
+                        },
+                        selectedItem: {
+                          backgroundColor: 'lightblue',
+                        },
+                      }}
+                      itemStyles={{
+                        label: {
+                          color: 'black',
+                        },
+                      }}
                       search={false}
                       />
  
@@ -244,7 +269,7 @@ body:{
   paddingLeft:10,
   paddingRight:10,
   zIndex: 2,
-  backgroundColor:'#FBFBFB',
+  backgroundColor:'#F2F2F2',
   borderTopLeftRadius:45,
   borderTopRightRadius:45,
   flex:2,
