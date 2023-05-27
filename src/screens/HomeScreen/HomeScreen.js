@@ -28,13 +28,13 @@ const screenWidth = Dimensions.get('window').width;
 const HomeScreen = ({userInfo}) => {
   useEffect(() => {
     setinfo(userInfo)
-    console.log(info)
-    /*if(userInfo.bracelets[0].is_disabled){
+    
+  if(userInfo.bracelets[0].is_disabled){
       setimgbracelet(bra2)
     }else{
       setimgbracelet(bra)
     }
-    */
+    
   
     return () => {
     }
@@ -48,14 +48,19 @@ const HomeScreen = ({userInfo}) => {
   const[imgbracelet,setimgbracelet]=useState(bra)
 
   const blockbracelet =()=>{
-    const bracelet=info.bracelets[0]._id;
-    console.log(bracelet)
+    const bracelet=userInfo.bracelets[0]._id;
+    
     AsyncStorage.getItem('AccessToken').then((token => {
       if (token) {
-        console.log(token)
+        
         blockbracelt1({id_bracelet:bracelet },token).then(result=>{
           if (result.status == 200) {
-         
+            console.log(result.data)
+         if(result.data.Bracelet){
+      setimgbracelet(bra2)
+    }else{
+      setimgbracelet(bra)
+    }
           
            setVisible(false);
         }else{console.log(result.data)}
@@ -77,7 +82,7 @@ const HomeScreen = ({userInfo}) => {
       const user = JSON.parse(userString);
       setAmount(userInfo.bracelets[0].amount)
       setchildren(userInfo.children)
-      console.log(userInfo.children)
+      
       
       // Do something with the user object
     } else {

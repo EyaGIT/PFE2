@@ -53,7 +53,7 @@ const Navigation = () => {
     setIsLoading(true)
     
     await AsyncStorage.removeItem('AccessToken');
-    await AsyncStorage.removeItem('user');
+    
     socket.disconnect();
     setIsLoggedIn(false);
   }
@@ -73,60 +73,58 @@ const Navigation = () => {
   
   useEffect(() => {
     
-    socket.on('user_info', (user) => {
-      setUserInfo(user); // Update the user information state
-    });
-    // Check if user is already logged in
-    setIsLoading(true);
-    if(isLoggedIn===false){
-    AsyncStorage.getItem('AccessToken')
-      .then(token => {
-        if (token) {
-          console.log(token)
-          
-          AllInfoUser(token).then(result =>{
-            if(result.status===200){
-              console.log(result.status)
-              socket.emit('login',result.data._id);
-              AsyncStorage.setItem('user', JSON.stringify(result.data));
-            setIsLoggedIn(true);
-            setIsLoading(false);
-              
-            }else{
-            
-              console.log()
-              setIsLoggedIn(false);
-              setIsLoading(false);
-            }
-            
-          }).catch(error=>{
+    }, []);
+  useEffect(() => {
+    if (isConnected) {
+      console.log('hhhhhh11')
+      socket.on('user_info', (user,error) => {
+        if(!error){
+          setUserInfo(user);}else{
             
             setIsLoggedIn(false);
             setIsLoading(false);
-            console.log(error);});
-        } else {
+          }
+        
+      });
+      // Check if user is already logged in
+      setIsLoading(true);
+      if(isLoggedIn===false){
+      AsyncStorage.getItem('AccessToken')
+        .then(token => {
+          if (token) {
+            console.log(token)
+            socket.emit('login',token);
+            socket.on('user_info', (user,error) => {
+        if(!error){
+          setUserInfo(user);
+          setIsLoggedIn(true);
+            setIsLoading(false);
+        }else{
+            
+            setIsLoggedIn(false);
+            setIsLoading(false);
+          }
+        
+      });
+          } else {
+            setIsLoggedIn(false);
+            setIsLoading(false);
+          }
+        })
+        .catch(error => {
+          
+          console.error(error);
           setIsLoggedIn(false);
           setIsLoading(false);
-        }
-      })
-      .catch(error => {
-        console.log('lena')
-        console.error(error);
-        setIsLoggedIn(false);
-        setIsLoading(false);
-      });
-  }else{
-    new Promise(resolve => setTimeout(resolve, 2000));
-    setIsLoading(false);
-  }}, []);
-  useEffect(() => {
-    if (isConnected) {
-      console.log('hhhhhh')
+        });
+    }else{
+      new Promise(resolve => setTimeout(resolve, 2000));
+      setIsLoading(false);
+    }
       if(isLoggedIn===true){
         console.log('ccccc');
-        // Perform the automatic login to the socket
-      //const userId = 'yourUserId'; // Replace with the appropriate user ID
-      //socket.emit('login', userId);
+        setIsLoggedIn(false);
+       
       }
       
     }else{
@@ -181,7 +179,7 @@ const Navigation = () => {
         <>
       
         <Stack.Screen name="Sign in">
-            {(props) => <Signin {...props} onLoginSuccess={handleLoginSuccess} onLoad={handleLoad} />}
+            {(props) => <Signin {...props} onLoginSuccess={handleLoginSuccess} onLoad={handleLoad} setUserInfo={setUserInfo} />}
           </Stack.Screen>
       
       <Stack.Screen name="Reset Password" component={ResetPassword}/>

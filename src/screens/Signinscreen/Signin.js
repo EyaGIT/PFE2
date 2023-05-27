@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import {user_login,AllInfoUser} from "../../api/user_api";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { socket } from "../../api/ApiManager";
-const Signin = ({ navigation, onLoginSuccess,onLoad }) => {
+const Signin = ({ navigation, onLoginSuccess,onLoad,setUserInfo }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [seePassword, setSeePassword] = useState(true);
@@ -103,18 +103,22 @@ const handlePasswordChange = text => {
         .then(result => {
           if (result.status == 200) {
             AsyncStorage.setItem('AccessToken', result.data.token);
-            
-            AllInfoUser(result.data.token).then(result =>{
-              socket.emit('login',result.data._id);
-              socket.emit('get_user_info',result.data._id);
+            socket.emit('login',result.data.token);
+            console.log('lena');
+            socket.on('user_info', (user,error) => {
+              if(!error){
+              setUserInfo(user);
               
-              
-              
-              AsyncStorage.setItem('user', JSON.stringify(result.data));
-              onLoginSuccess();
+            }else{
+                onLoad(false);
+              } // Update the user information state
+            });
+            console.log('lena');
+            onLoginSuccess();
               onLoad(false);
               navigation.replace('HomeNav');
-            })
+            
+            
             
             
           }else{
