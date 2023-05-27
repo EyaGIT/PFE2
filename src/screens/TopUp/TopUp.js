@@ -14,7 +14,7 @@ import { socket } from "../../api/ApiManager";
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
-const TopUp = () => {
+const TopUp = ({userInfo}) => {
   const [inputError, setInputError] = useState('');
   const [error, setError] = useState('');
     const [Montant, setMontant] = useState('');
@@ -23,9 +23,8 @@ const TopUp = () => {
     
   const navigation = useNavigation();
   useEffect(() => {
-    // Subscribe to the 'moneyAdded' event
-    //socket.emit('get_user_info',result.data._id);
-    });
+    
+  }, [userInfo]);
   const addamount = async  () =>{
     if (Montant === '') {
       setInputError('Please enter an amount.');
@@ -33,47 +32,21 @@ const TopUp = () => {
     }
     if (!isAddingMoney) {
       setIsAddingMoney(true);
-    await AsyncStorage.getItem('user')
-    .then(async userString => {
-      // Check if user exists in storage
-      if (userString) {
-        // User found, parse user string to JavaScript object
-        const user = JSON.parse(userString);
-        token = await AsyncStorage.getItem('AccessToken').then(async token=>{
-          await addAmount({
-            id: user.bracelets[0]._id,
-            amount: parseInt(Montant,10),
-          },token).then(async result => {
-              
+      token = await AsyncStorage.getItem('AccessToken').then(async token=>{
+        await addAmount({
+          id: userInfo.bracelets[0]._id,
+          amount: parseInt(Montant,10),
+        },token).then(async result => {
             
-              if (result.status == 200) {
-                
-                await AllInfoUser(token).then(result =>{
-                  if (result.status == 200) {
-                  AsyncStorage.setItem('user', JSON.stringify(result.data));
-                  //socket.emit('get_user_info',result.data._id);
-                  
-                  navigation.replace('HomeNav');
-                }else if (result.status== 401){
-                    navigation.replace('Sign in');
-                    }
-               
-                })}else if (result.status== 401){
-                    console.log('Not your bracelet')
-                    }
-                  })
-        });
-        
-        
-              
-        
-        // Do something with the user object
-      } else {
-        // User not found in storage
-        console.log('User not found in storage.');
-      }
-      
-    })
+          
+            if (result.status == 200) {
+              navigation.replace('HomeNav');
+              }else if (result.status== 401){
+                  console.log('Not your bracelet')
+                  }
+                })
+      });
+   
     setIsAddingMoney(false);
   }}
     

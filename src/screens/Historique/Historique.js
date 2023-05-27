@@ -25,6 +25,7 @@ const Historique = ({userInfo}) => {
         }
         })})
   useEffect(() => {
+    if(userInfo){
    setOperation(userInfo.bracelets[0].operations);
    console.log(Operation.map((item, index) => {
     if(item){
@@ -36,7 +37,7 @@ const Historique = ({userInfo}) => {
     
     )
     
-  }, []);
+  }}, [userInfo]);
   
   return (
     

@@ -27,14 +27,14 @@ const Settingsmember = () => {
       setUserfirstname(member.firstName);
       setUserlastname(member.lastName)
       setUsermail(member.email);
-      
+      console.log(API_BASE_URL+"/uploads/"+member.image)
       setUserphone(member.phone);
     }, []);
   return (
 <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center',width:'100%' }}>
       <ScrollView style={{width:'100%',paddingLeft:20,paddingRight:30,height:180}}>
         <View style={{alignItems:"center",justifyContent:"flex-start",width:"100%",marginTop:-150,top:140,marginBottom:140}}> 
-     <PicherIm uriForm={setImg} default1={API_BASE_URL+"/uploads/"+member.Image}/>
+     <PicherIm uriForm={setImg} default1={API_BASE_URL+"/uploads/"+member.image}/>
    </View>
     <View style={{justifyContent: 'center', alignItems: 'center',width:'100%' }}>
       <View style={{width:"90%"}} >

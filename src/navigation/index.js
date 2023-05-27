@@ -74,63 +74,56 @@ const Navigation = () => {
   useEffect(() => {
     
     }, []);
-  useEffect(() => {
-    if (isConnected) {
-      console.log('hhhhhh11')
-      socket.on('user_info', (user,error) => {
-        if(!error){
-          setUserInfo(user);}else{
-            
-            setIsLoggedIn(false);
-            setIsLoading(false);
-          }
-        
-      });
-      // Check if user is already logged in
-      setIsLoading(true);
-      if(isLoggedIn===false){
-      AsyncStorage.getItem('AccessToken')
-        .then(token => {
-          if (token) {
-            console.log(token)
-            socket.emit('login',token);
-            socket.on('user_info', (user,error) => {
-        if(!error){
-          setUserInfo(user);
-          setIsLoggedIn(true);
-            setIsLoading(false);
-        }else{
-            
-            setIsLoggedIn(false);
-            setIsLoading(false);
-          }
-        
-      });
-          } else {
-            setIsLoggedIn(false);
-            setIsLoading(false);
-          }
-        })
-        .catch(error => {
+    useEffect(() => {
+      const handleUserInfo = async (user, error) => {
+        if (!error) {
           
-          console.error(error);
+          await setUserInfo(user);
+          console.log(userInfo)
+          setIsLoggedIn(true);
+          setIsLoading(false);
+        } else {
           setIsLoggedIn(false);
           setIsLoading(false);
-        });
-    }else{
-      new Promise(resolve => setTimeout(resolve, 2000));
-      setIsLoading(false);
-    }
-      if(isLoggedIn===true){
-        console.log('ccccc');
+        }
+      };
+      socket.on('user_info', handleUserInfo);
+      if (isConnected) {
+        
+        
+    
+        setIsLoading(true);
+        if (isLoggedIn === false) {
+          AsyncStorage.getItem('AccessToken')
+            .then(token => {
+              if (token) {
+                socket.emit('login', token);
+              } else {
+                setIsLoggedIn(false);
+                setIsLoading(false);
+              }
+            })
+            .catch(error => {
+              console.error(error);
+              setIsLoggedIn(false);
+              setIsLoading(false);
+            });
+        } else {
+          setIsLoading(false);
+        }
+      } else {
+        setIsLoading(true);
         setIsLoggedIn(false);
-       
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 2000);
       }
-      
-    }else{
-      console.log('decdec')
-    }
-  }, [isConnected]);
+    
+      return () => {
+        socket.off('user_info', handleUserInfo);
+      };
+    }, [isConnected, isLoggedIn]);
+    
   return (
     <NavigationContainer >
       <Stack.Navigator >
@@ -141,7 +134,7 @@ const Navigation = () => {
       ):(
       isLoggedIn ? (
       <>
-      
+      {console.log(userInfo)}
       
       <Stack.Screen name="HomeNav" options={{headerShown:false}}>
             {(props) => <HomeNav {...props} onLogoutSuccess={handleLogoutSuccess} onLoad={handleLoad} userInfo={userInfo} />}
@@ -161,7 +154,10 @@ const Navigation = () => {
       </Stack.Screen>
       <Stack.Screen name="Historique" component={Historique}/>
       <Stack.Screen name="Security" component={Security}/>
-      <Stack.Screen name="Top Up" component={TopUp}/>
+      
+      <Stack.Screen name="Top Up">
+            {(props) => <TopUp {...props} userInfo={userInfo} />}
+      </Stack.Screen>
       <Stack.Screen name="Congratinscri" component={CongratulationPrincipal}/> 
       <Stack.Screen name="Order Bracelet2" component={OrderBracelet2}/> 
       <Stack.Screen name="Notifications" component={Notifications}/>

@@ -27,6 +27,8 @@ const screenWidth = Dimensions.get('window').width;
 
 const HomeScreen = ({userInfo}) => {
   useEffect(() => {
+    if(userInfo){
+    console.log(userInfo.bracelets[0].is_disabled,"hhhh")
     setinfo(userInfo)
     
   if(userInfo.bracelets[0].is_disabled){
@@ -34,11 +36,12 @@ const HomeScreen = ({userInfo}) => {
     }else{
       setimgbracelet(bra)
     }
-    
+    setAmount(userInfo.bracelets[0].amount)
+    setchildren(userInfo.children)
   
     return () => {
     }
-  }, [info])
+}}, [userInfo])
   
   const [Visible,setVisible]=useState(false);
   const [Amount,setAmount]=useState(0);
@@ -48,7 +51,7 @@ const HomeScreen = ({userInfo}) => {
   const[imgbracelet,setimgbracelet]=useState(bra)
 
   const blockbracelet =()=>{
-    const bracelet=userInfo.bracelets[0]._id;
+    const bracelet=info.bracelets[0]._id;
     
     AsyncStorage.getItem('AccessToken').then((token => {
       if (token) {
@@ -74,25 +77,6 @@ const HomeScreen = ({userInfo}) => {
 
 
 }
-  AsyncStorage.getItem('user')
-  .then(userString => {
-    // Check if user exists in storage
-    if (userString) {
-      // User found, parse user string to JavaScript object
-      const user = JSON.parse(userString);
-      setAmount(userInfo.bracelets[0].amount)
-      setchildren(userInfo.children)
-      
-      
-      // Do something with the user object
-    } else {
-      // User not found in storage
-      console.log('User not found in storage.');
-    }
-  })
-  .catch(error => {
-    console.log(error);
-  });
  
 
   const onviewallPressed = () => {

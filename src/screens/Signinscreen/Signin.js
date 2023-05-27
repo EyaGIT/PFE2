@@ -100,19 +100,11 @@ const handlePasswordChange = text => {
         email: email.toLocaleLowerCase(),
         password: password,
       })
-        .then(result => {
+        .then(async result => {
           if (result.status == 200) {
             AsyncStorage.setItem('AccessToken', result.data.token);
             socket.emit('login',result.data.token);
             console.log('lena');
-            socket.on('user_info', (user,error) => {
-              if(!error){
-              setUserInfo(user);
-              
-            }else{
-                onLoad(false);
-              } // Update the user information state
-            });
             console.log('lena');
             onLoginSuccess();
               onLoad(false);
