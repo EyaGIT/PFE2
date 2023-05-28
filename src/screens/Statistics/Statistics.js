@@ -13,19 +13,19 @@ const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 const Statistics = ({ userInfo }) => {
-  const [chartData, setChartData] = useState([]);
+  const [chartData, setChartData] = useState([1,1,1]);
 
   useEffect(() => {
-    console.log(userInfo.bracelets[0]._id, 'fffff');
+    if(userInfo){
     stat({ braceletId: userInfo.bracelets[0]._id }).then((result) => {
       if (result.status === 200) {
         console.log(result.data);
         setChartData(result.data);
       }
     });
-
+  }
     return () => {};
-  }, []);
+  }, [userInfo]);
 
   const navigation = useNavigation();
 
