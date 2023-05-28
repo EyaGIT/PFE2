@@ -35,6 +35,8 @@ import { socket } from "../api/ApiManager";
 import Settingsmember from '../screens/Settingsmember/Settingsmember';
 import OrderBracelet2 from '../screens/OrderBracelet2/OrderBracelet2';
 import CongratulationPrincipal from '../screens/Congratulation/CongratulationPrincipal';
+
+
 import Statistics from '../screens/Statistics/Statistics';
 const Stack = createNativeStackNavigator();
 
@@ -45,15 +47,20 @@ const Navigation = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
   const [isConnected, setIsConnected] = useState(true);
-  const handleLoginSuccess = () => {
+  const [isSignin, setIsSignin] = useState(false);
+  const handleLoginSuccess = async (token) => {
     
     setIsLoggedIn(true);
-  }
+      
+    
+  };
+
   const handleLogoutSuccess = async () => {
+    
     setIsLoading(true)
     
     await AsyncStorage.removeItem('AccessToken');
-    
+    setUserInfo(null);
     socket.disconnect();
     setIsLoggedIn(false);
   }
@@ -80,6 +87,7 @@ const Navigation = () => {
           
           await setUserInfo(user);
           console.log(userInfo)
+          setIsSignin(true)
           setIsLoggedIn(true);
           setIsLoading(false);
         } else {
@@ -97,7 +105,14 @@ const Navigation = () => {
           AsyncStorage.getItem('AccessToken')
             .then(token => {
               if (token) {
+                console.log(token)
+                socket.connect();
                 socket.emit('login', token);
+                
+                
+              // Redirect to the desired screen in the stack navigator
+              
+              
               } else {
                 setIsLoggedIn(false);
                 setIsLoading(false);
@@ -108,9 +123,31 @@ const Navigation = () => {
               setIsLoggedIn(false);
               setIsLoading(false);
             });
-        } else {
-          setIsLoading(false);
         }
+         else {
+          console.log("hhhhh")
+          AsyncStorage.getItem('AccessToken')
+            .then(token => {
+              if (token) {
+                console.log(token,"hhh")
+                socket.connect();
+                socket.emit('login', token);
+                
+                
+              // Redirect to the desired screen in the stack navigator
+              
+              
+              } else {
+                setIsLoggedIn(false);
+                setIsLoading(false);
+              }
+            })
+            .catch(error => {
+              console.error(error);
+              setIsLoggedIn(false);
+              setIsLoading(false);
+            });
+          console.log('emchy plz')        }
       } else {
         setIsLoading(true);
         setIsLoggedIn(false);

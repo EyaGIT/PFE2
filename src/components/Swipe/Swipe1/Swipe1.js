@@ -112,7 +112,7 @@ const handleSubmit = () => {
           const formData ={'firstName': firstname,
           'lastName': lastname,
           'password': password,
-          'email': email,
+          'email': email.toLocaleLowerCase(),
           'birthDate': date,
           'gender': checked,
         'image':imageuri}

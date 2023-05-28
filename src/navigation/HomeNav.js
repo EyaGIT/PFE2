@@ -74,9 +74,11 @@ function HomeNav({onLogoutSuccess,onLoad,userInfo}) {
       <Tab.Screen name="Home" options={{tabBarButton: props => <CustomTabBarButton route='Home' {... props} />,headerTitle: null,}} >
       {props => <HomeScreen {...props} userInfo={userInfo} />}
       </Tab.Screen>
-      <Tab.Screen name="Statistics" component={Statistics} options={{tabBarButton: props => <CustomTabBarButton route='Static' {... props} />, headerTitleStyle: {
-      fontWeight: 'normal',
-    },}} />
+      <Tab.Screen name="Statistics" options={{tabBarButton: props => <CustomTabBarButton route='Static' {... props} />,eaderTitleStyle: {
+      fontWeight: 'normal',}}} >
+      {props => <Statistics {...props} userInfo={userInfo} />}
+      </Tab.Screen>
+      
       
       <Tab.Screen name="Settings" options={{tabBarButton: props => <CustomTabBarButton route='Settings' {... props} />}} >
             {(props) => <Settings1 {...props} onLogoutSuccess={onLogoutSuccess} onLoad={onLoad} userInfo={userInfo} />}

@@ -1,4 +1,4 @@
-import { View, Text,Image,StyleSheet,Pressable,shadow, TouchableWithoutFeedback, ScrollView, TouchableOpacity} from 'react-native'
+import { View, Text,Image,StyleSheet,Pressable,shadow, TouchableWithoutFeedback, ScrollView,ActivityIndicator, TouchableOpacity} from 'react-native'
 import React ,{useState} from 'react'
 import bracelet1 from '../../../assets/images/bracelet1.png'
 import bracelet2 from '../../../assets/images/bracelet2.png'
@@ -57,7 +57,7 @@ const OrderBracelet2 = ({handellogin,user}) => {
     const [bcategory2,setCategory2]=useState('Cash on delivery')
     const [error,setError]=useState('')
     const [isImageClicked, setIsImageClicked] = useState(false);
-
+    const [isLoading, setIsLoading] = useState(false);
    
 
     const handleImageClick = () => {
@@ -73,11 +73,15 @@ const OrderBracelet2 = ({handellogin,user}) => {
 
 
     const [value, setValue] = useState(0);
-
+    
    
 
 
     const handleFormSubmit = async () => {
+      if (isLoading) {
+        // Prevent multiple submissions while already loading
+        return;
+      }
       console.log(user)
       // Perform validation
       if (!selectedItem || !category || !bcategory2 || value === null) {
@@ -105,6 +109,7 @@ const OrderBracelet2 = ({handellogin,user}) => {
         delivery_method:delivery_method.value.toLocaleLowerCase(),
         color: colors[value],
       };
+      setIsLoading(true);
       try {
         const token = await AsyncStorage.getItem('AccessToken');
         if (token) {
@@ -120,11 +125,14 @@ const OrderBracelet2 = ({handellogin,user}) => {
             if (braceletResult.status === 201) {
               console.log('yess');
               handellogin();
+              setIsLoading(false)
             } else {
+              setIsLoading(false)
               setError('impossible orderBraclet');
             }
           } else {
             console.log(result);
+            setIsLoading(false)
             setError('impossible de create user');
           }
         }
@@ -144,8 +152,12 @@ const OrderBracelet2 = ({handellogin,user}) => {
 
   return (
    
-
-      
+    <View style={{ flex: 1 }}>
+    {isLoading ? (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <ActivityIndicator size="large" color="#FF0000" />
+    </View>
+    ):(
     
       
       
@@ -260,8 +272,8 @@ const OrderBracelet2 = ({handellogin,user}) => {
     </ScrollView>
     </SafeAreaView>
     
-    
-   
+    )}
+   </View>
   )
 }
 const Styles = StyleSheet.create({

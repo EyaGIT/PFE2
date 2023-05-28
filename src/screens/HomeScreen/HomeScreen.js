@@ -129,14 +129,23 @@ const HomeScreen = ({userInfo}) => {
                 
                 <View style={{width:'100%',height:50,alignItems: 'center',justifyContent:'center',height:'100%'}}>
                   <View style={styles.menu}>
-                  <TouchableOpacity onPress={onTopUpPressed}>
-                    <View style={styles.flex}>
-                      
-                    <Image source={wallet} style={{width:33,height:30}} />
-                    <Text>Top Up</Text>
-                    
-                    </View>
-                    </TouchableOpacity>
+                  {role === 'member' ? (
+  <TouchableOpacity onPress={onTopUpPressed}>
+    <View style={styles.flex}>
+      <Image source={wallet} style={{ width: 33, height: 30 }} />
+      <Text>Top Up</Text>
+    </View>
+  </TouchableOpacity>
+) : (
+  <TouchableOpacity >
+    <View style={styles.flex}>
+      <Image source={wallet} style={{ width: 33, height: 30 }} />
+      <Text>Top Up</Text>
+    </View>
+  </TouchableOpacity>
+)}
+
+                  
                     <TouchableOpacity  onPress={onTransressed}>
                     <View style={styles.flex}>
                     

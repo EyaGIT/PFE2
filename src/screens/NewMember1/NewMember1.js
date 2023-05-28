@@ -176,7 +176,7 @@ const NewMember1 = () => {
        
       
       {currentPage === 0 && <Swipe1 handellogin={goToNextPage} userInfo={userIn} />}
-      {currentPage === 1 && <Swipe2 user={userInfo}/>}
+      {currentPage === 1 && <Swipe2 handellogin={goToNextPage} user={userInfo}/>}
       {currentPage === 2 && <Swipe3 />}
         
      

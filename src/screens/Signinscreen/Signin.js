@@ -1,18 +1,19 @@
 import { View, Text,StyleSheet } from 'react-native'
-import React,{useState,useLayoutEffect} from 'react'
+import React,{useState,useLayoutEffect,useEffect} from 'react'
 import Custominput from '../../components/Custominput/Custominput'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import { useNavigation } from '@react-navigation/native';
 import {user_login,AllInfoUser} from "../../api/user_api";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { socket } from "../../api/ApiManager";
-const Signin = ({ navigation, onLoginSuccess,onLoad,setUserInfo }) => {
+const Signin = ({onLoginSuccess,onLoad,setUserInfo }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [seePassword, setSeePassword] = useState(true);
   const [checkValidEmail, setCheckValidEmail] = useState(false);
   const [emailError, setEmailError] = useState('');
 const [passwordError, setPasswordError] = useState('');
+const navigation=useNavigation();
 const handleEmailChange = text => {
   setEmail(text);
   setEmailError('');
@@ -70,6 +71,29 @@ const handlePasswordChange = text => {
 /*
     return null;
   };*/
+  useEffect(() => {
+    
+  }, []);
+  useEffect(() => {
+    const handleUserInfo = async (user, error) => {
+      if (!error) {
+        
+        await setUserInfo(user);
+        console.log(user)
+        
+      } else {
+        
+      }
+    };
+    socket.on('user_info', handleUserInfo);
+
+       
+    
+  
+    return () => {
+      socket.off('user_info', handleUserInfo);
+    };
+  }, [setUserInfo]);
 
   const handleLogin = () => {
     onLoad(true);
@@ -102,13 +126,18 @@ const handlePasswordChange = text => {
       })
         .then(async result => {
           if (result.status == 200) {
-            AsyncStorage.setItem('AccessToken', result.data.token);
-            socket.emit('login',result.data.token);
-            console.log('lena');
-            console.log('lena');
-            onLoginSuccess();
-              onLoad(false);
-              navigation.replace('HomeNav');
+            await AsyncStorage.setItem('AccessToken', result.data.token);
+            await AsyncStorage.getItem('AccessToken').then(async token =>{
+              console.log(token)
+            
+              
+              
+              
+           onLoginSuccess(token);
+              
+             
+            }).catch(e=>console.log(e));
+            
             
             
             

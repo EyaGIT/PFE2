@@ -174,6 +174,33 @@ export const createBracelet = async (data) => {
     }
   }
 };
+export const stat = async (data) => {
+  try {
+    console.log(data)
+    const result = await ApiManager('/stati', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json' 
+      },
+      data:data
+      
+    });
+    
+    
+    return result;
+  } catch (error) {
+    console.log(error)
+    if (error.response && error.response.data) {
+      return error.response.data;
+    } else {
+      console.log('lelelel')
+      console.log(error);
+      // Handle the error when response or response.data is undefined
+      return { error: 'An error occurred.' };
+    }
+  }
+};
+
 
 export const transfer = async (data,token) => {
   try {
