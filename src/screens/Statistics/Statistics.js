@@ -8,7 +8,7 @@ import Expense from '../../../assets/images/icons/Expense.png';
 import arrow from '../../../assets/images/icons/ArrowBack.png';
 import { stat } from '../../api/user_api';
 import { useNavigation } from '@react-navigation/native'
-
+import udemy from '../../../assets/images/udemy.png'
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
@@ -66,12 +66,14 @@ if (sumOfSeries === 0) {
       <SafeAreaView style={styles.SafeAreaView}>
         <StatusBar barStyle="light-content" backgroundColor={'transparent'} translucent={true} />
 
-        <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+        
           <View style={{ textAlign: 'center', fontSize: 25, color: '#FFFFFF', height: 100 }}></View>
           <View></View>
 
           <View style={styles.body}>
+         
             <View style={styles.container1}>
+            
               <View style={{ height: 300, paddingTop: 20, alignItems: 'center', justifyContent: 'center' }}>
                 <PieChart
                   widthAndHeight={widthAndHeight}
@@ -79,16 +81,20 @@ if (sumOfSeries === 0) {
                   sliceColor={sliceColor}
                   coverRadius={0.45}
                   coverFill={'#FFF'}
+                 
+                 
                 />
               </View>
-
+             
               <View
                 style={{
                   flexDirection: 'row',
                   width: '70%',
                   alignSelf: 'flex-start',
                   justifyContent: 'space-between',
-                  marginLeft: 10,
+                  marginLeft: 50,
+               
+                
                 }}
               >
                 {chartData.map((item, index) => (
@@ -106,9 +112,43 @@ if (sumOfSeries === 0) {
                   </View>
                 ))}
               </View>
+              
             </View>
+            <View style={{flexDirection:'row',width:'90%',alignItems:'center',justifyContent:'space-between'}}>
+                <Text style={{fontSize:25,fontWeight:'bold'}}>Transaction</Text>
+                <View>
+                  <TouchableOpacity>
+                  <Text>Today</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              <View style={{flexDirection:'column',width:'100%',alignItems:'center',justifyContent:'space-between',marginBottom:80}}>
+                <TouchableOpacity style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between', backgroundColor:'#F8F8F8',paddingLeft:25,paddingRight:25,height:70,marginTop:10,borderRadius:20}}>
+                <Image source={udemy} style={{width:20}} />
+                <View style={{flex:1,paddingLeft:20,paddingRight:20}}>
+                <Text style={{fontWeight:'bold',fontSize:20}}>Udemy</Text>
+                <Text>payment</Text>
+                </View>
+                <Text>-$165.00</Text>
+                </TouchableOpacity>
+
+
+                <TouchableOpacity style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between', backgroundColor:'#F8F8F8',paddingLeft:25,paddingRight:25,height:70,marginTop:10,borderRadius:20}}>
+                <Image source={udemy} style={{width:20}} />
+                <View style={{flex:1,paddingLeft:20,paddingRight:20}}>
+                <Text style={{fontWeight:'bold',fontSize:20}}>Amazon</Text>
+                <Text>payment</Text>
+                </View>
+                <Text>-$165.00</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between',paddingTop:10}}>
+                <Text style={{fontSize:25,fontWeight:'bold'}}>Promo & Discount</Text>
+               
+              </View>
+              
           </View>
-        </ScrollView>
+       
       </SafeAreaView>
     </LinearGradient>
   );
@@ -130,6 +170,9 @@ const styles = StyleSheet.create({
   container1: {
     flex: 1,
     alignItems: 'center',
+   
+    width:'100%',
+    
   },
   title: {
     fontSize: 24,
@@ -196,6 +239,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     marginBottom: 16,
   },
+  
 });
 
 export default Statistics;

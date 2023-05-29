@@ -178,6 +178,7 @@ const SendMoneyAll = ({userInfo}) => {
                       placeholder={"Choose member"}
                      
                       dropdownStyles={{
+                        backgroundColor:'white',
                         container: {
                           backgroundColor: '#EBEBEB',
                           borderWidth: 1,
@@ -192,6 +193,7 @@ const SendMoneyAll = ({userInfo}) => {
                         listItem: {
                           paddingVertical: 8,
                           paddingHorizontal: 10,
+                         
                         },
                         selectedItem: {
                           backgroundColor: 'lightblue',
