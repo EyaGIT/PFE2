@@ -3,7 +3,8 @@ import { View, Text, TouchableOpacity, StyleSheet, FlatList } from 'react-native
 import { VictoryPie, VictoryLabel } from 'victory-native';
 import { Svg, G, Text as SvgText } from 'react-native-svg';
 
-const Stat = () => {
+const Stat = ({categoriesData1}) => {
+    console.log("hhhhh",categoriesData1);
   const categoriesData = [
     {
       category: 'Drink',
@@ -19,7 +20,7 @@ const Stat = () => {
     }
   ];
 
-  const [categories, setCategories] = useState(categoriesData);
+  const [categories, setCategories] = useState(categoriesData1);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   function processCategoryDataDisplay() {
@@ -85,7 +86,7 @@ const Stat = () => {
 
 
     return (
-      <View style={{ alignItems: 'center', justifyContent: 'center' ,flexDirection:'column'}}>
+      <View style={{flex:1, alignItems: 'center', justifyContent: 'center' ,flexDirection:'column',position:'relative',minHeight:170}}>
         <Svg width={300} height={300} style={{ width: '100%', height: 'auto' }}>
           <VictoryPie
             standalone={false}
@@ -122,7 +123,7 @@ const Stat = () => {
           />
           
         </Svg>
-        <View style={{ position: 'absolute', top: '45%', left: '43%'}}>
+        <View style={{ position: 'absolute', top: '45%', left: '40%'}}>
           <Text style={{ textAlign: 'center', color: '#000' }}>{totalExpenseCount} TND</Text>
           <Text style={{ textAlign: 'center', color: '#000' }}>Expenses</Text>
         </View>
@@ -183,10 +184,13 @@ const Stat = () => {
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'lightGray' }}>
-      <View>
+    <View style={{ flex: 1, backgroundColor: 'lightGray',position:'relative' }}>
+      <View style={{ flex: 1,position:'relative',minHeight:300 }}>
         {renderChart()}
+        <View style={{ flex: 1,backgroundColor:'green',justifyContent:'center',position:'relative'}}>
         {renderExpenseSummary()}
+        </View>
+        
       </View>
     </View>
   );

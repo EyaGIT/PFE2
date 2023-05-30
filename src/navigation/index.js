@@ -164,8 +164,6 @@ const Navigation = () => {
   return (
     <NavigationContainer >
       <Stack.Navigator >
-     
-      <Stack.Screen name="statt" component={Stat} options={{headerShown:false}}/>
       {isLoading ? (
       <Stack.Screen name="Load" component={LoadingPage} options={{headerShown:false}}/>
       ):(
