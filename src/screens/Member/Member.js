@@ -33,16 +33,24 @@ const Member = () => {
     const navigation=useNavigation();
     const route = useRoute();
     const { member,userInfo } = route.params;
-    console.log(userInfo.bracelets[0]._id);
-    const idBracelets= member.bracelets[0]._id;
-    const idUser = userInfo.bracelets[0]._id;
-    const [info,setinfo]=useState();
+    
+    
+    
+    const [info,setinfo]=useState({});
+    const [user,setUser]=useState();
     const [mesg1,setmsg1]=useState();
-
+    const [idBracelets,setIdBracelets]=useState();
+    const [idUser,setIdUser]=useState();
+    const [amount,setAmount]=useState("0");
     useEffect(() => {
-      if(member){
-      console.log(member.bracelets[0].is_disabled,"hhhh")
-      setinfo(member)
+      if(member && userInfo && member.bracelets[0].amount){
+        setAmount(member.bracelets[0].amount)
+        
+      console.log(member,"hhhh");
+      setIdBracelets(member.bracelets[0]._id);
+      setIdUser(userInfo.bracelets[0]._id);
+      setinfo(member);
+      setUser(userInfo);
       
     if(member.bracelets[0].is_disabled){
         setimgbracelet(Block)
@@ -53,9 +61,9 @@ const Member = () => {
     
       return () => {
       }
-  }}, [userInfo])
+  }}, [member,userInfo])
     const blockbracelet =()=>{
-      const bracelet=member.bracelets[0]._id;
+      const bracelet=info.bracelets[0]._id;
       
       AsyncStorage.getItem('AccessToken').then((token => {
         if (token) {
@@ -85,9 +93,10 @@ const Member = () => {
   }
 
     const deletemember =()=>{
+      
          const parent=userInfo._id;
          const member1=member._id;
-
+      if(parent && member1){
         deletemember1({childId:member1 ,parentId:parent}).then(result =>{
           if (result.status == 200) {
          
@@ -97,7 +106,7 @@ const Member = () => {
       }
         )
 
-
+    }
     }
     useLayoutEffect(()=>{
       navigation.setOptions({
@@ -185,12 +194,12 @@ const Member = () => {
         <View style={{alignItems:"center",width:'100%',flex:1,height:screenHeight-78}}> 
       <View style={styles.body}>
         <View style={{alignItems:"center",justifyContent:'flex-start',marginTop:10,width:'100%',height:230}}>
-        <Image style={{width:100,height:100,borderRadius:100/2}} source={{uri:API_BASE_URL+"/uploads/"+member.image}}></Image>
-            <Text style={{fontSize:28,fontWeight:"bold",color:"black",marginBottom:30}}>{member.lastName} {member.firstName}</Text>
+        <Image style={{width:100,height:100,borderRadius:100/2}} source={{uri:API_BASE_URL+"/uploads/"+info.image}}></Image>
+            <Text style={{fontSize:28,fontWeight:"bold",color:"black",marginBottom:30}}>{member.lastName} {info.firstName}</Text>
             
             <View style={{width:'80%',borderWidth:1,borderRadius:20,height:70,backgroundColor:"#EBEBEB",borderColor:'#EBEBEB',alignItems:"center",justifyContent:"center",flexDirection:"row"}}>
                 
-                <Text style={{fontWeight:'bold',fontSize:30,color:'black',paddingLeft:30}}>{member.bracelets[0].amount}</Text>
+                <Text style={{fontWeight:'bold',fontSize:30,color:'black',paddingLeft:30}}>{amount}</Text>
                 <Text style={{fontWeight:'bold',fontSize:25,color:'#E20522',paddingLeft:30}}>TND</Text>
             </View>
         </View>

@@ -35,7 +35,7 @@ import { socket } from "../api/ApiManager";
 import Settingsmember from '../screens/Settingsmember/Settingsmember';
 import OrderBracelet2 from '../screens/OrderBracelet2/OrderBracelet2';
 import CongratulationPrincipal from '../screens/Congratulation/CongratulationPrincipal';
-
+import Stat from '../screens/Stat/Stat'
 
 import Statistics from '../screens/Statistics/Statistics';
 const Stack = createNativeStackNavigator();
@@ -165,7 +165,7 @@ const Navigation = () => {
     <NavigationContainer >
       <Stack.Navigator >
      
-      
+      <Stack.Screen name="statt" component={Stat} options={{headerShown:false}}/>
       {isLoading ? (
       <Stack.Screen name="Load" component={LoadingPage} options={{headerShown:false}}/>
       ):(
