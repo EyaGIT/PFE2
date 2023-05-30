@@ -165,7 +165,7 @@ const Navigation = () => {
     <NavigationContainer >
       <Stack.Navigator >
      
-     
+      
       {isLoading ? (
       <Stack.Screen name="Load" component={LoadingPage} options={{headerShown:false}}/>
       ):(
@@ -210,7 +210,7 @@ const Navigation = () => {
       </>
       ) : (
         <>
-      
+        
         <Stack.Screen name="Sign in">
             {(props) => <Signin {...props} onLoginSuccess={handleLoginSuccess} onLoad={handleLoad} setUserInfo={setUserInfo} />}
           </Stack.Screen>
