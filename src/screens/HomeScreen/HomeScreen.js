@@ -64,10 +64,10 @@ const HomeScreen = ({userInfo}) => {
             console.log(result.data)
          if(result.data.Bracelet){
       setimgbracelet(bra2)
-      setmsg1("Would you like to unblock");
+      setmsg1("Do you want to unblock");
     }else{
       setimgbracelet(bra)
-      setmsg1("Would you like to block");
+      setmsg1("Do you want to block");
     }
           
            setVisible(false);
@@ -190,7 +190,7 @@ const HomeScreen = ({userInfo}) => {
         </TouchableOpacity>
       </View>
     </View>
-  
+    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
   <View style={{flexDirection: "row", marginTop: 10}}>
   {children && userInfo && children.map((item, index) => (
     
@@ -201,12 +201,13 @@ const HomeScreen = ({userInfo}) => {
 ))}
     {role=== 'member' && (
       <TouchableOpacity style={{alignItems: "center", marginRight: 18}} onPress={() => navigation.navigate('New Member1')}>
-        <View style={{width: 45, height: 45, borderRadius: 10, backgroundColor: 'rgba(142, 147, 153, 0.24)', alignItems: "center", justifyContent: "center", padding: 0}}>
-          <Text style={{fontSize: 35, margin: 0, padding: 0, textAlignVertical: 'bottom', textAlign: 'center', lineHeight: 47}}>+</Text>
+        <View style={{width: 45, height: 45, borderRadius: 10, backgroundColor: 'rgba(122, 127, 133, 0.24)', alignItems: "center", justifyContent: "center", padding: 0}}>
+          <Text style={{fontSize: 35, margin: 0, padding: 0, textAlignVertical: 'bottom', textAlign: 'center', lineHeight: 47,color:'#333333'}}>+</Text>
         </View>
       </TouchableOpacity>
     )}
   </View>
+  </ScrollView>
 </View>
 
 
@@ -306,6 +307,7 @@ elevation: 11
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent:'space-between',
+    
   },
   money:{
     
@@ -321,7 +323,7 @@ body:{
   paddingLeft:25,
   paddingRight:25,
   zIndex: 2,
-  backgroundColor:'#F2F2F2',
+  backgroundColor:'#FFFFFF',
   borderTopLeftRadius:45,
   borderTopRightRadius:45,
   flex:2,

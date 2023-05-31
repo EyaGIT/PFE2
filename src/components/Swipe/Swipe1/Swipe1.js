@@ -13,6 +13,7 @@ import { verifyEmailExists } from "../../../api/user_api";
 import FormData from "form-data";
 
 import PicherIm from '../../PickerIm/PicherIm';
+import { ScrollView } from 'react-native-gesture-handler';
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 const Swipe1 = ({handellogin,userInfo}) => {
@@ -149,10 +150,13 @@ const handleSubmit = () => {
 
   return (
     <SafeAreaView style={{ width:screenWidth,justifyContent: "flex-start", alignItems: "center"}}>
-    
+       <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
+    <View style={{alignItems:'center',justifyContent:'center',marginTop:-40}}>
     <PicherIm uriForm={setimageuri}/>
+    </View>
     {error && <Text style={{width:'80%',fontSize:15,color:'red'}}>{error}</Text>}
-    <View style={{width:'80%',flexDirection:"row",paddingTop:10}}>
+    <View style={styles.body}>
+    <View style={{width:'80%',flexDirection:"row"}}>
       
 
 
@@ -209,6 +213,7 @@ color='#E20522'
   placeholder="Email" 
   value={email} 
   setValue={setemail}
+  keyboard="email-address"
   />
 
 </View>
@@ -252,13 +257,37 @@ color='#E20522'
         />)}
         </View>
 
-        <View style={{width:"60%"}}>
+        <View style={{width:"50%"}}>
         <CustomButton  text="Continue " onPress={handleSubmit}/>
         </View>
-
-
+        </View>
+ </ScrollView>
 </SafeAreaView>
   )
 }
+const styles = StyleSheet.create({
+  scrollView: {
+    width:screenWidth,
+    
+    height:screenHeight,
+  },
+  body:{
+      
+    
+    backgroundColor:'#FBFBFB',
+    borderTopLeftRadius:45,
+    borderTopRightRadius:45,
+    flex:1,
+    minHeight:screenHeight-77,
+    marginBottom:30,
+    width:'100%',
+    alignItems:'center',
+    justifyContent:'center',
 
+   paddingBottom:100
+   
+    
+    
+    },})
+ 
 export default Swipe1

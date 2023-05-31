@@ -73,7 +73,7 @@ const Settings = ({onLogoutSuccess,onLoad,userInfo}) => {
     navigation.navigate("Edit Profil");
      }
   return (
-    <SafeAreaView style={{ width:'100%',justifyContent: "flex-start", alignItems: "center",flex:1}} >
+    <SafeAreaView style={{ width:'100%',justifyContent: "flex-start", alignItems: "center",flex:1,backgroundColor:'#FFFFFF',}} >
      <View style={{alignItems:"center",justifyContent:"center",width:"100%",flex:1}}> 
      <Image
          style={Styles.avatarImage}
@@ -89,8 +89,8 @@ const Settings = ({onLogoutSuccess,onLoad,userInfo}) => {
     
       <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}} onPress={onArrowPressed}>
         <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
-            <Image source={User}   /> 
-            <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5}}>Edit Profile </Text>
+            <Image source={User} style={{marginLeft:-4}}  /> 
+            <Text style={{color:'black',fontSize:16,fontWeight:'600'}}>Edit Profile </Text>
         </View>
          
          <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>
@@ -103,7 +103,7 @@ const Settings = ({onLogoutSuccess,onLoad,userInfo}) => {
          <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}}>
         <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
             <Image source={lang}   /> 
-            <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingTop:5,paddingLeft:4}}>Language</Text>
+            <Text style={{color:'black',fontSize:16,fontWeight:'600',paddingLeft:4}}>Language</Text>
             <Text style={{marginLeft:100,fontWeight:'500'}}>English (US)</Text>
         </View>
          
@@ -132,7 +132,7 @@ const Settings = ({onLogoutSuccess,onLoad,userInfo}) => {
          <TouchableOpacity style={{flex:1,flexDirection:'row',height:50}} onPress={handleLogout}>
         <View style={{flex:5,flexDirection:'row',alignItems:'center'}}>
             <Image source={logout}   /> 
-            <Text style={{color:'#E20522',fontSize:16,fontWeight:'600',paddingTop:5,paddingLeft:2}}>Logout</Text>
+            <Text style={{color:'#E20522',fontSize:16,fontWeight:'600',paddingLeft:2}}>Logout</Text>
         </View>
          
          <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>

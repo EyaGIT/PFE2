@@ -12,9 +12,9 @@ const Security = () => {
     const [NewPassword, setNewPassword] = useState('');
   const [RetypeNewPassword, setRetypeNewPassword] = useState('');
   return (
-    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center',backgroundColor:'#F2F2F2' }}>
-
-        <View style={{width:'90%'}}> 
+    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center',backgroundColor:'#FFFFFF' }}>
+<View style={{ justifyContent: 'center', alignItems: 'center',width:'100%',paddingBottom:120 }}> 
+        <View style={{width:'80%'}}> 
          
           <Text> Current password </Text>
          
@@ -28,7 +28,7 @@ const Security = () => {
           </View>
 
 
-          <View style={{width:'90%'}}> 
+          <View style={{width:'80%'}}> 
           
           <Text> New password </Text>
         
@@ -41,7 +41,7 @@ const Security = () => {
           </View>
 
 
-          <View style={{width:'90%'}}> 
+          <View style={{width:'80%'}}> 
          
           <Text> Retype New password </Text>
           
@@ -54,10 +54,11 @@ const Security = () => {
           </View>
 
 
-          <View style={{width:"60%"}}>
+          <View style={{width:"50%"}}>
       <TouchableOpacity >
         <CustomButton  text="Save Changes" />
         </TouchableOpacity>
+        </View>
         </View>
         </SafeAreaView>
   )

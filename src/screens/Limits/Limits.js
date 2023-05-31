@@ -106,26 +106,7 @@ const Limits = () => {
 
           
       <SafeAreaView style={styles.body}>
-      <View style={{flex: 1,height:90}}>
-      <Text style={{fontWeight:'600',fontSize:15}}>Limit Per transaction</Text>
-           
-            <View style={{flexDirection:'row',paddingTop:20}}>
-            <Slider style={{flex: 1}}
-            minimumValue={0}
-            maximumValue={100}
-            minimumTrackTintColor='tomato'
-            maximumTrackTintColor='#000'
-            thumbTintColor='red'
-            value={1}
-            onValueChange={value => setRange(value)}
-            />
-             <View style={{borderWidth: 2, borderColor: 'black',width:60,borderRadius:5,alignItems:'center',justifyContent:'center'}}>
-              <Text>
-            <Text>{range}</Text>
-            <Text>D</Text></Text>
-            </View>
-            </View>
-        </View>
+    
         <View style={{flex: 1,height:90}}>
         <Text style={{fontWeight:'600',fontSize:15}}>Limit Per payment</Text>
         

@@ -23,7 +23,7 @@ const Custominput = ({value,setValue,placeholder,secureTextEntry,focus}) => {
 }
 const styles= StyleSheet.create({
     container:{
-      backgroundColor :'white',
+      backgroundColor:"#F9F9F9",
       width: '100%',
       flexDirection:'row',
       borderColor: '#A5ABB3',
