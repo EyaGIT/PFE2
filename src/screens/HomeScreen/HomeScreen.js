@@ -11,7 +11,7 @@ import tran from '../../../assets/images/tran.png'
 import bra from '../../../assets/images/bra.png'
 import hist from '../../../assets/images/hist.png'
 import not from '../../../assets/images/not.png'
-import udemy from '../../../assets/images/udemy.png'
+import udemy from '../../../assets/images/Tacos.png'
 import card from '../../../assets/images/card.png'
 import card2 from '../../../assets/images/card2.png'
 import avatar from '../../../assets/images/avatar.png'
@@ -222,22 +222,22 @@ const HomeScreen = ({userInfo}) => {
               </View>
               <View style={{flexDirection:'column',width:'100%',alignItems:'center',justifyContent:'space-between'}}>
                 <TouchableOpacity style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between', backgroundColor:'#F8F8F8',paddingLeft:25,paddingRight:25,height:70,marginTop:10,borderRadius:20}}>
-                <Image source={udemy} style={{width:20}} />
+                <Image source={udemy} style={{width:40,height:30}} />
                 <View style={{flex:1,paddingLeft:20,paddingRight:20}}>
-                <Text style={{fontWeight:'bold',fontSize:20}}>Udemy</Text>
+                <Text style={{fontWeight:'bold',fontSize:20}}>Tacos</Text>
                 <Text>payment</Text>
                 </View>
-                <Text>-$165.00</Text>
+                <Text>-30.000 TND</Text>
                 </TouchableOpacity>
 
 
                 <TouchableOpacity style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between', backgroundColor:'#F8F8F8',paddingLeft:25,paddingRight:25,height:70,marginTop:10,borderRadius:20}}>
-                <Image source={udemy} style={{width:20}} />
+                <Image source={udemy} style={{width:40,height:30}} />
                 <View style={{flex:1,paddingLeft:20,paddingRight:20}}>
-                <Text style={{fontWeight:'bold',fontSize:20}}>Amazon</Text>
+                <Text style={{fontWeight:'bold',fontSize:20}}>Tacos</Text>
                 <Text>payment</Text>
                 </View>
-                <Text>-$165.00</Text>
+                <Text>-7.000 TND</Text>
                 </TouchableOpacity>
               </View>
               <View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between',paddingTop:10}}>
