@@ -279,3 +279,23 @@ export const blockbracelt1 = async (data,token) => {
     }
   }
 };
+export const getHistory = async (page, limit, accessToken) => {
+  const headers = {
+    Authorization: `Bearer ${accessToken}`,
+    'Content-Type': 'application/json',
+    'Cache-Control': 'no-cache',
+    Pragma: 'no-cache',
+  };
+
+  try {
+    const response = await ApiManager.get("/checkout/getOperations", {
+      params: { page, limit },
+      headers: headers,
+    });
+
+    return response;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Failed to fetch history data');
+  }
+};

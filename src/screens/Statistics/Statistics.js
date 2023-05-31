@@ -74,7 +74,7 @@ const Statistics = ({ userInfo }) => {
   if (loading) {
     return (
       <View style={styles.loaderContainer}>
-        <ActivityIndicator size="large" color="#FFFFFF" />
+        <ActivityIndicator size="large" color="red" />
       </View>
     );
   }
