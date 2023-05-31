@@ -31,17 +31,17 @@ const PopUp = ({
 
   <View  style={styles.buttons}>
   <View style={{height:'90%',width:'90%',marginTop:10}}>
-    <Text style={{alignSelf:'center',fontSize:24,fontFamily:''}}>{message1}</Text>
-    <Text style={{alignSelf:'center',fontSize:24}}>{message}</Text>
+    <Text style={{alignSelf:'center',fontSize:20,color:'#333333'}}>{message1}</Text>
+    <Text style={{alignSelf:'center',fontSize:20,color:'#333333'}}>{message}</Text>
     
-  <View style={{flexDirection:'row',justifyContent:'space-evenly',marginTop:10}}>
+  <View style={{flexDirection:'row',justifyContent:'space-evenly',marginTop:15}}>
     
   <View style={{width:"30%"}}>
         <CustomButton  text="Yes" onPress={onPress}/>
   </View>
 
   <View style={{width:"30%"}}>
-        <CustomButton  text="No " onPress={onClose}/>
+        <CustomButton  text="No" onPress={onClose}/>
   </View>
   </View>
 
@@ -73,8 +73,8 @@ buttons:{
   backgroundColor:'white',
   flexDirection:'row',
   borderRadius:30,
-  minHeight:screenHeight/4,
-  width:'85%',
+  minHeight:screenHeight/4.5,
+  width:'75%',
   justifyContent:'center',
   alignItems:'center',
 

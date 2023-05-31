@@ -135,49 +135,50 @@ const Stat = ({categoriesData1}) => {
     let data = processCategoryDataDisplay();
 
     const renderItem = ({ item }) => (
-      <TouchableOpacity
-        style={{
-          flexDirection: 'row',
-          height: 40,
-          paddingHorizontal: 10,
-          borderRadius: 10,
-          backgroundColor:
-            selectedCategory && selectedCategory.name === item.name ? item.color : 'white'
-        }}
-        onPress={() => {
-          let categoryName = item.name;
-          setSelectedCategoryByName(categoryName);
-        }}
-      >
-        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-          <View
-            style={{
-              width: 20,
-              height: 20,
-              backgroundColor:
-                selectedCategory && selectedCategory.name === item.name ? 'white' : item.color,
-              borderRadius: 5
-            }}
-          />
-          <Text
-            style={{
-              marginLeft: 10,
-              color: selectedCategory && selectedCategory.name === item.name ? 'white' : 'blue'
-            }}
-          >
-            {item.name}
-          </Text>
-        </View>
-        <View style={{ justifyContent: 'center' }}>
-          <Text style={{ color: selectedCategory && selectedCategory.name === item.name ? 'white' : 'blue' }}>
-            {item.y} TND
-          </Text>
-        </View>
-      </TouchableOpacity>
+      <View style={{ flexDirection: 'column', justifyContent: 'space-between' }}>
+      
+        <TouchableOpacity
+        
+          style={{
+            flexDirection: 'row',
+            height: 40,
+            width: 160,
+            paddingHorizontal: 10,
+            borderRadius: 10,
+            backgroundColor: selectedCategory && selectedCategory.name === item.name ? item.color : 'black'
+          }}
+          onPress={() => {
+            let categoryName = item.name;
+            setSelectedCategoryByName(categoryName);
+          }}
+        >
+          <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 10 }}>
+            <View
+              style={{
+                width: 20,
+                height: 20,
+                backgroundColor: selectedCategory && selectedCategory.name === item.name ? 'white' : item.color,
+                borderRadius: 5
+              }}
+            />
+            <Text
+              style={{
+                marginLeft: 10,
+                backgroundColor: 'red',
+                color: selectedCategory && selectedCategory.name === item.name ? 'white' : 'blue'
+              }}
+            >
+              {item.name}
+            </Text>
+          </View>
+        </TouchableOpacity>
+    
+    </View>
+    
     );
 
     return (
-      <View style={{ padding: 10 }}>
+      <View style={{ padding: 10}}>
         <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => `${item.id}`} />
       </View>
     );

@@ -19,7 +19,7 @@ const EditProfil = () => {
     const [userphone, setUserphone] = useState('');
   return (
 
-    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center',width:'100%',backgroundColor:'#F2F2F2' }}>
+    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center',width:'100%',backgroundColor:'#FFFFFF' }}>
       <ScrollView style={{width:'100%',paddingLeft:20,paddingRight:30,height:180}}>
         <View style={{alignItems:"center",justifyContent:"flex-start",width:"100%",marginTop:-150,top:140,marginBottom:140}}> 
      <PicherIm/>

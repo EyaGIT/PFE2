@@ -142,19 +142,19 @@ const TopUp = ({userInfo}) => {
 <View style={{flexDirection:'row',paddingLeft:15,justifyContent:'space-between'}}>
    <TouchableOpacity style={{backgroundColor:"#EBEBEB",borderRadius:15,borderColor:'#EBEBEB',width:90,height:50,alignItems:"center",justifyContent:"center",flexDirection:"row"}} onPress={() => setMontant('10')} >
 <Text>
-    <Text style={{color:'#E20522'}} >10</Text>
+    <Text style={{color:'#E20522',fontWeight:'700'}} >10</Text>
     <Text style={{fontSize:10,fontWeight:'100',color:"#000000"}}>   TND</Text>
 </Text>
    </TouchableOpacity>
    <TouchableOpacity style={{backgroundColor:"#EBEBEB",borderRadius:15,borderColor:'#EBEBEB',width:90,height:50,alignItems:"center",justifyContent:"center",flexDirection:"row"}} onPress={() => setMontant('20')}>
 <Text>
-    <Text style={{color:'#E20522'}}>20</Text>
+    <Text style={{color:'#E20522',fontWeight:'700'}}>20</Text>
     <Text style={{fontSize:10,fontWeight:'100',color:"#000000"}}>   TND</Text>
 </Text>
    </TouchableOpacity>
    <TouchableOpacity style={{backgroundColor:"#EBEBEB",borderRadius:15,borderColor:'#EBEBEB',width:90,height:50,alignItems:"center",justifyContent:"center",flexDirection:"row"}} onPress={() => setMontant('30')}>
 <Text>
-    <Text style={{color:'#E20522'}}>30</Text>
+    <Text style={{color:'#E20522',fontWeight:'700'}}>30</Text>
     <Text style={{fontSize:10,fontWeight:'100',color:"#000000"}}>   TND</Text>
 </Text>
    </TouchableOpacity>
@@ -164,19 +164,19 @@ const TopUp = ({userInfo}) => {
 <View style={{flexDirection:'row',paddingLeft:15,justifyContent:'space-between',paddingTop:10}}>
    <TouchableOpacity style={{backgroundColor:"#EBEBEB",borderRadius:15,borderColor:'#EBEBEB',width:90,height:50,alignItems:"center",justifyContent:"center",flexDirection:"row"}} onPress={() => setMontant('40')} >
 <Text>
-    <Text style={{color:'#E20522'}} >40</Text>
+    <Text style={{color:'#E20522',fontWeight:'700'}} >40</Text>
     <Text style={{fontSize:10,fontWeight:'100',color:"#000000"}}>   TND</Text>
 </Text>
    </TouchableOpacity>
    <TouchableOpacity style={{backgroundColor:"#EBEBEB",borderRadius:15,borderColor:'#EBEBEB',width:90,height:50,alignItems:"center",justifyContent:"center",flexDirection:"row"}} onPress={() => setMontant('50')}>
 <Text>
-    <Text style={{color:'#E20522'}}>50</Text>
+    <Text style={{color:'#E20522',fontWeight:'700'}}>50</Text>
     <Text style={{fontSize:10,fontWeight:'100',color:"#000000"}}>   TND</Text>
 </Text>
    </TouchableOpacity>
    <TouchableOpacity style={{backgroundColor:"#EBEBEB",borderRadius:15,borderColor:'#EBEBEB',width:90,height:50,alignItems:"center",justifyContent:"center",flexDirection:"row"}} onPress={() => setMontant('60')}>
 <Text>
-    <Text style={{color:'#E20522'}}>60</Text>
+    <Text style={{color:'#E20522',fontWeight:'700'}}>60</Text>
     <Text style={{fontSize:10,fontWeight:'100',color:"#000000"}}>   TND</Text>
 </Text>
    </TouchableOpacity>

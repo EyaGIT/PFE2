@@ -54,7 +54,7 @@ const DatePicker = ({Birth,def}) => {
 }
 const styles= StyleSheet.create({
     container:{
-      backgroundColor :'white',
+      backgroundColor:"#F9F9F9",
       width:'100%',
       flexDirection:'row',
 

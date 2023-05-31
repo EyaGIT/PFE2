@@ -133,7 +133,7 @@ const NewMember1 = () => {
             <Image source={arrow} style={{ width: '60%', height: '60%' }} />
           </TouchableOpacity>
         ),
-        
+        headerTitle: ' Add member', 
         headerStyle: {
           
           position: 'sticky',
@@ -147,16 +147,15 @@ const NewMember1 = () => {
           
           <SafeAreaView style={styles.SafeAreaView}>
           <StatusBar barStyle="light-content" backgroundColor={'transparent'} translucent={true} />
-              
           <View style={{}}>
             <Text style={{textAlign: 'center',fontSize: 25,color:'#FFFFFF',paddingBottom:30,paddingTop:30}}></Text>
             
         </View>   
+           
  
-          <ScrollView style={styles.scrollView}  showsVerticalScrollIndicator={false}>
+          
          
           
-
 
           
       <View style={styles.body}>
@@ -187,7 +186,7 @@ const NewMember1 = () => {
       
             
           </View>
-          </ScrollView>
+          
           </SafeAreaView>
         </LinearGradient>
         
@@ -233,7 +232,7 @@ body:{
     marginVertical: 50,
     position:"absolute",
     width:screenWidth,
-    top:-30,
+    top:-70,
 
     
     
