@@ -15,8 +15,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const colors = [
     '#E20522',
     '#000000',
-    '#F4A1DD',
-    '#52EB85',
+    '#87CEFA',
+    '#FFA500',
     
   ];
   
@@ -170,11 +170,12 @@ const OrderBracelet = () => {
     </View>
     </View>
    
-    <View style={{justifyContent: "flex-start",flexDirection:'column',width:"90%",flex:0.8}}>
-
+    <View style={{justifyContent: "flex-start",flexDirection:'column',width:"90%",flex:0.8,paddingTop:10}}>
     <Text style={{fontSize: 20, color: '#394452',height:60,paddingTop:30}}>Choose the color</Text> 
-   
+  
           <View style={[Styles.group]}>
+              
+   
             {colors.map((item, index) => {
               const isActive = value === index;
               return (
@@ -204,7 +205,7 @@ const OrderBracelet = () => {
 
     <View style={{justifyContent: "flex-start",flexDirection:'column',width:"90%",flex:1}}>
 
-    <Text style={{fontSize: 20, color: '#394452',height:60}}>Choose your payment method</Text> 
+    <Text style={{fontSize: 20, color: '#394452',height:40}}>Choose your payment method</Text> 
    
     <View >
     
@@ -223,7 +224,7 @@ const OrderBracelet = () => {
     </View>
 
     <View style={{justifyContent: "flex-start",flexDirection:'column',width:"90%",flex:1}}>
-    <Text style={{fontSize: 20, color: '#394452',height:60}}>Choose your delivery method</Text> 
+    <Text style={{fontSize: 20, color: '#394452',height:40}}>Choose your delivery method</Text> 
     
 
     <View>
@@ -241,7 +242,7 @@ const OrderBracelet = () => {
     </View>
     
     </View>
-    <View style={{width:"80%"}}>
+    <View style={{width:"50%"}}>
       
         <CustomButton  text="Continue " onPress={handleFormSubmit}/>
         
@@ -263,6 +264,7 @@ const Styles = StyleSheet.create({
        flex: 1,
        justifyContent: 'center', 
        alignItems: 'center',
+       backgroundColor:'#FFFFFF'
        
 
 
@@ -285,6 +287,7 @@ const Styles = StyleSheet.create({
     width:'90%',
     height:160,
     paddingTop:20,
+    
    
 },
 
@@ -312,12 +315,14 @@ const Styles = StyleSheet.create({
       },
       shadowOpacity: 0.5,
       shadowRadius: 2,
+     
     },
 
     imageStyle:{
 
         width: '100%',
         height: '100%',
+        
        
         
 
