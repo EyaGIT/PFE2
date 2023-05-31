@@ -121,7 +121,7 @@ const History = () => {
               <TouchableOpacity key={index} onPress={() => handleItemPress(item)}>
                 <View style={{ width: screenWidth, paddingTop: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingLeft: 10, paddingRight: 10 }}>
                   <View style={{ flex: 1, width: '25%', alignItems: 'center' }}>
-                    <Image source={{ uri: API_BASE_URL + '/uploads/' + item.sellingPoint.chain_id.chain_image }} style={{ width: 70, height: 70, aspectRatio: 1, resizeMode: 'contain', marginRight: 10 }} />
+                    <Image source={{ uri: API_BASE_URL + '/uploads/' + item.sellingPoint.chain_id.chain_image }} style={{ width: 70, height: 70,borderRadius:70/2, aspectRatio: 1, resizeMode: 'contain', marginRight: 10 }} />
                   </View>
                   <View style={{ flex: 2, flexDirection: 'column', justifyContent: 'flex-start' }}>
                     {item.sellingPoint && <Text style={{ fontSize: 17, fontWeight: '500' }}>{item.sellingPoint.sp_name}</Text>}
@@ -171,7 +171,7 @@ const History = () => {
               <TouchableOpacity key={index} onPress={() => handleItemPress(item)}>
                 <View style={{ width: screenWidth, paddingTop: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingLeft: 10, paddingRight: 10 }}>
                   <View style={{ flex: 1, width: '25%', alignItems: 'center' }}>
-                    <Image source={{ uri: API_BASE_URL + '/uploads/' + item.bracelet.user.image }} style={{ width: 70, height: 70, aspectRatio: 1, resizeMode: 'contain', marginRight: 10 }} />
+                    <Image source={{ uri: API_BASE_URL + '/uploads/' + item.bracelet.user.image }} style={{ width: 70, height: 70, aspectRatio: 1, resizeMode: 'contain', marginRight: 10 ,borderRadius:70/2}} />
                   </View>
                   <View style={{ flex: 2, flexDirection: 'column', justifyContent: 'flex-start' }}>
                     <Text style={{ fontSize: 17, fontWeight: '500' }}>You Receive from {item.bracelet.user.firstName}</Text>
