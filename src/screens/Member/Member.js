@@ -165,6 +165,7 @@ const Member = () => {
             </TouchableOpacity>
            
           ),
+          headerTitle: 'Member', 
         });
       }, [])
 

@@ -217,15 +217,15 @@ const renderContent = () => {
           </View>
           </View>
            <View style={Styles.container}>
-          <View style={{width:"70%",paddingTop:20}}>
+          <View style={{width:"60%",paddingTop:10}}>
            
         <CustomButton  text="Continue " onPress={handleSubmit}/>
         
         </View>
 
-        <Text style={{paddingTop:10,paddingBottom:30}}>
+        <Text style={{paddingTop:5,paddingBottom:30}}>
           <Text style={{color:'#858C94'}}>Already have an account ?</Text>
-          <TouchableOpacity onPress={onSigninPressed}  >
+          <TouchableOpacity onPress={onSigninPressed} >
           <Text style={{color:'#E20522',fontWeight:'bold'}} > Sign in</Text></TouchableOpacity>
        </Text>
 

@@ -162,7 +162,7 @@ const OrderBracelet2 = ({handellogin,user}) => {
       
       
       <SafeAreaView style={Styles.ViewContainer}>
-      <ScrollView style={{width:'100%',height:'500%',zIndex:-1,flex:1}}>
+      <ScrollView style={{width:'100%',height:'500%',zIndex:-1,flex:1, backgroundColor:'red'}}>
       <View style={{flex:1,justifyContent:'center',alignItems:'center',minHeight:700}}>
       
       
@@ -282,6 +282,7 @@ const Styles = StyleSheet.create({
        flex: 1,
        justifyContent: 'center', 
        alignItems: 'center',
+      
        
 
 

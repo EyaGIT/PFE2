@@ -163,6 +163,7 @@ const Navigation = () => {
     
   return (
     <NavigationContainer >
+       <Stack.Screen name="Congratinscri" component={CongratulationPrincipal}/> 
       <Stack.Navigator >
       {isLoading ? (
       <Stack.Screen name="Load" component={LoadingPage} options={{headerShown:false}}/>
