@@ -88,7 +88,7 @@ const ListItem = ({
       >
         <Animated.View  key={task.index} style={[styles.task, rStyle]}>
          
-            <Image source={task.image} style={{width:55,aspectRatio: 1, resizeMode: 'contain',marginRight:10}} />
+            <Image source={{uri:task.image}} style={{width:55,aspectRatio: 1, resizeMode: 'contain',marginRight:10}} />
             <View>
           <Text style={styles.taskTitle}>{task.title}</Text>
           <Text>Products not allowed :</Text>

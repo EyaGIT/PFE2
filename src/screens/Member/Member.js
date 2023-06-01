@@ -42,6 +42,7 @@ const Member = () => {
     const [idBracelets,setIdBracelets]=useState();
     const [idUser,setIdUser]=useState();
     const [amount,setAmount]=useState("0");
+    const [Bracelet,setBracelet]=useState();
     useEffect(() => {
       if(member && userInfo && member.bracelets[0].amount){
         setAmount(member.bracelets[0].amount)
@@ -49,6 +50,7 @@ const Member = () => {
       console.log(member,"hhhh");
       setIdBracelets(member.bracelets[0]._id);
       setIdUser(userInfo.bracelets[0]._id);
+      setBracelet(member.bracelets[0]);
       setinfo(member);
       setUser(userInfo);
       
@@ -241,7 +243,7 @@ const Member = () => {
                 message='your bracelet ?'
                 />
               
-            <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}} onPress={()=> navigation.navigate('Limits')}>
+            <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}} onPress={()=> navigation.navigate('Limits',{bracelet: Bracelet})}>
                 <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'rgba(209,208,208,0.5)',width:60,height:60,borderRadius:50}}>
                     <Image source={Limits} style={{width:40,height:40}}></Image>
                 </View>
