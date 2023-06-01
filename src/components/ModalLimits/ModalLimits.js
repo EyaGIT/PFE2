@@ -48,17 +48,24 @@ const [selectedProducts, setSelectedProducts] = React.useState([]);
 
   <SafeAreaView  style={styles.buttons}>
   <ScrollView style={{height:'50%',width:'90%'}}>
+    
+ 
+
+    <Text style={{alignSelf:'center',fontSize:20,fontWeight:'700',paddingBottom:40,paddingTop:20}}>New Limit</Text>
+    <View style={{ borderWidth: 1, borderColor: 'gray',borderRadius:10,height:50 }}>
     <Picker
   selectedValue={selectedShop}
   onValueChange={(itemValue, itemIndex) => setSelectedShop(itemValue)}
+
+ 
 >
   {shopData.map((item, index) => (
     <Picker.Item key={index} label={item.value} value={item.value} />
   ))}
-</Picker>
- 
 
-    <Text style={{alignSelf:'center',fontSize:20,fontWeight:'700',paddingBottom:20,paddingTop:20}}>New Limit</Text>
+</Picker>
+</View>
+<View style={{paddingTop:20}}>
     <MultipleSelectList 
     setSelected={(val) => {
       
@@ -69,6 +76,7 @@ const [selectedProducts, setSelectedProducts] = React.useState([]);
     save="value"
     label="Select Shop"
 />
+</View>
      <View style={{flexDirection:'row',justifyContent:'space-evenly',paddingTop:20}}>
   <View style={{width:'40%',paddingRight:10}}>
           
