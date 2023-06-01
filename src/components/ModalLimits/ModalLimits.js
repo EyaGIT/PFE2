@@ -31,12 +31,14 @@ const ModalLimits = ({
       productsData.push({ key: type, value: type, disabled: true });
   
       products[type].forEach(product => {
-        productsData.push({ key: product.id, value: product.name });
+        
+        productsData.push({ key: product.id,value:product.name,productid:product.id});
+        console.log(productsData,'lelelelee');
       });
     }
   
     let shops = response.data.chains.map((chain, index) => {
-      return { key: index.toString(), label: chain.chain_name, value: { name: chain.chain_name, image: chain.chain_image } };
+      return { key: index.toString(), label: chain.chain_name, value: { name: chain.chain_name, image: chain.chain_image,chainId:chain._id } };
     });
   
     setData(productsData);
@@ -71,8 +73,9 @@ const ModalLimits = ({
           </View>
           <View style={{ paddingTop: 20 }}>
             <MultipleSelectList 
-              setSelected={(val) => {
-                console.log(val)
+              setSelected={(key,val) => {
+                console.log(key,"key");
+                console.log(val,"val");
                 setSelectedProducts(val);
               }}
               data={data} 
@@ -83,9 +86,17 @@ const ModalLimits = ({
           <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', paddingTop: 20 }}>
             <View style={{ width: '40%', paddingRight: 10 }}>
               <CustomButton text='Apply' onPress={() => {
+                console.log(selectedChain,"hhh");
                 const selectedChain = shopData[selectedShop]?.value || { name: '', image: '' };
-                console.log({ title: selectedChain.name, product: selectedProducts, image: selectedChain.image });
-                addShop({ title: selectedChain.name, product: selectedProducts, image: API_BASE_URL + "/uploads/" + selectedChain.image }); 
+                console.log(selectedProducts,"hhh");
+                addShop({ 
+                  title: selectedChain.name,
+                  product: selectedProducts,
+                  image: selectedChain.image,
+                  idShops: selectedChain.chainId,
+                  productid: selectedChain.test,
+                  index: selectedChain.index
+                }); 
               }} />
             </View>
             <View style={{ width: '40%', paddingLeft: 10 }}>
@@ -97,6 +108,7 @@ const ModalLimits = ({
     </Modal>
   );
 };
+
 
 const styles = StyleSheet.create({
    

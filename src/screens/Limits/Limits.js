@@ -13,14 +13,6 @@ import arrow from '../../../assets/images/icons/ArrowBack.png'
 import { API_BASE_URL } from '@env';
 const takos = require('../../../assets/images/Tacos.png');
 
-  const data = [
-    { shopTitle:'shop', product:['pizza','sandwich'] ,image:takos},
-    { shopTitle:'Chaneb tacos', product:['pizza','sandwich'],image:takos},
-    { shopTitle:'shop', product:['pizza','sandwich'] ,image:takos},
-    { shopTitle:'Chaneb tacos', product:['pizza','sandwich'],image:takos},
-    { shopTitle:'shop', product:['pizza','sandwich'] ,image:takos},
-    { shopTitle:'Chaneb tacos', product:['pizza','sandwich'],image:takos}
-];
   
 
   const BACKGROUND_COLOR = '#FAFBFF';
