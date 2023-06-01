@@ -300,23 +300,22 @@ export const getHistory = async (page, limit, accessToken) => {
   }
 };
 
-export const edituser = async (token, userData) => {
+
+export const getShopsProduct = async () => {
+  const headers = {
+    'Content-Type': 'application/json',
+    'Cache-Control': 'no-cache',
+    Pragma: 'no-cache',
+  };
+
   try {
-    const result = await ApiManager('/editUser', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}` 
-      },
-      body: JSON.stringify(userData)
+    const response = await ApiManager.get("/checkout/getChainsAndProducts", {
+      headers: headers,
     });
-    
-    return result;
+
+    return response;
   } catch (error) {
-    if (error.response && error.response.data) {
-      return error.response.data;
-    } else {
-      return { error: 'An error occurred.' };
-    }
+    console.error(error);
+    throw new Error('Failed to fetch history data');
   }
 };
