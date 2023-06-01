@@ -252,7 +252,7 @@ const Member = () => {
        </View>
        </View>
        
-       <View style={{alignItems:"center",justifyContent:"center",width:"100%",top:screenHeight/4,height:screenHeight-270,backgroundColor:"#F2F2F2",paddingTop:250,paddingLeft:30,paddingRight:30}}>
+       <View style={{alignItems:"center",justifyContent:"center",width:"100%",top:screenHeight/4,height:screenHeight-270,backgroundColor:'#FFFFFF',paddingTop:250,paddingLeft:30,paddingRight:30}}>
         
        
        <View style={{width:'100%',alignItems:'center',justifyContent:'center',paddingBottom:100}}>
@@ -316,7 +316,7 @@ body:{
   paddingtop:10,
   
   zIndex: 2,
-  backgroundColor:'#F2F2F2',
+  backgroundColor:'#FFFFFF',
   borderRadius:45,
   
   flex:2,
@@ -330,7 +330,7 @@ body:{
   },
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor:'#FFFFFF'
     
   },
   stepIndicator: {

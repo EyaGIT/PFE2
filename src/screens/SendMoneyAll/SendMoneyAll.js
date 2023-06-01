@@ -275,7 +275,7 @@ body:{
   paddingLeft:10,
   paddingRight:10,
   zIndex: 2,
-  backgroundColor:'#F2F2F2',
+  backgroundColor:'#FFFFFF',
   borderTopLeftRadius:45,
   borderTopRightRadius:45,
   flex:2,

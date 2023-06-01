@@ -134,10 +134,10 @@ useLayoutEffect(()=>{
       width: 0,
       height: 0,
       fontSize:20,
-      color:'#F2F2F2'
+      color:'#FFFFFF'
     },
     headerStyle: {
-      backgroundColor:'#F2F2F2'
+      backgroundColor:'#FFFFFF'
     },
   })})
 
@@ -147,7 +147,7 @@ const onSigninPressed = () => {
 }
 const renderContent = () => {
   return (
-    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center',backgroundColor:'#FFFFFF' }}>
    <ScrollView style={{width:'100%',paddingLeft:20,paddingRight:30,height:180}}>
       <View style={{justifyContent: "flex-start",flexDirection:"row",alignItems:"center",height:150,width:'100%',paddingTop:110}}>
       <Text style={{fontSize: 33, color: '#394452',height:60 }}>Sign up to</Text> 

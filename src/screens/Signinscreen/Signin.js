@@ -181,7 +181,7 @@ const handlePasswordChange = text => {
     })
   }, [])
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' , backgroundColor:'#FFFFFF'}}>
       <View style={{justifyContent: "flex-start",flexDirection:"row",alignItems:"center",width:"90%",paddingBottom:30}}>
         <Text style={{fontSize: 33, color: '#394452',height:60 }}>Sign in to</Text> 
         <Text style={{fontSize: 33, color: '#E20522',height:60 }}> Cashless</Text>
