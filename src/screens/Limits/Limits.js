@@ -41,12 +41,17 @@ const Limits = () => {
       const output = bracelet.restriction.map(item => ({
         shopTitle: item.restrictedshop.chain_name,
         product: item.restrictedProducts.map(product => product.name),
-        image: API_BASE_URL+"/uploads/"+item.restrictedshop.chain_image
+        productid: item.restrictedProducts.map(product => product._id),
+        image: API_BASE_URL+"/uploads/"+item.restrictedshop.chain_image,
+        idShop: item.restrictedshop._id,
+        
     }))
     const newTasks  = output.map((item, index) => ({
       title: item.shopTitle,
       product: item.product,
       image: item.image, 
+      idShops:item.idShop,
+      productid:item.productid,
       index
     }));
     setTasks(newTasks);  // directly set the tasks

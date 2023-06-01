@@ -299,3 +299,23 @@ export const getHistory = async (page, limit, accessToken) => {
     throw new Error('Failed to fetch history data');
   }
 };
+
+
+export const getShopsProduct = async () => {
+  const headers = {
+    'Content-Type': 'application/json',
+    'Cache-Control': 'no-cache',
+    Pragma: 'no-cache',
+  };
+
+  try {
+    const response = await ApiManager.get("/checkout/getChainsAndProducts", {
+      headers: headers,
+    });
+
+    return response;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Failed to fetch history data');
+  }
+};
