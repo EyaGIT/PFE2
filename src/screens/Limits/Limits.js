@@ -1,7 +1,7 @@
-import React,{useState,useLayoutEffect,useCallback,useRef} from 'react';
+import React,{useState,useLayoutEffect,useCallback,useRef,useEffect} from 'react';
 import {StyleSheet,View, Text,Image,TouchableOpacity,ScrollView,Dimensions,StatusBar} from 'react-native';
 import Slider from "@react-native-community/slider";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation,useRoute } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ListItem from '../../components/ListItem/ListItem'
@@ -10,14 +10,9 @@ import Takos from '../../../assets/images/Tacos.png';
 import  CustomButton  from "../../components/CustomButton/CustomButton";
 import ModalLimits from '../../components/ModalLimits/ModalLimits';
 import arrow from '../../../assets/images/icons/ArrowBack.png'
+import { API_BASE_URL } from '@env';
 const takos = require('../../../assets/images/Tacos.png');
-const TITLES = [
-    'Record the dismissible tutorial 🎥',
-    'Leave 👍🏼 to the video',
-    'Check YouTube comments',
-    'Subscribe to the channel 🚀',
-    'Leave a ⭐️ on the GitHub Repo',
-  ];
+
   const data = [
     { shopTitle:'shop', product:['pizza','sandwich'] ,image:takos},
     { shopTitle:'Chaneb tacos', product:['pizza','sandwich'],image:takos},
@@ -27,13 +22,50 @@ const TITLES = [
     { shopTitle:'Chaneb tacos', product:['pizza','sandwich'],image:takos}
 ];
   
-  const TASKS = data.map((item, index) => ({ title:item.shopTitle,product:item.product,image:item.image, index }));
-  const BACKGROUND_COLOR = '#FAFBFF';
 
+  const BACKGROUND_COLOR = '#FAFBFF';
+  //const TASKS = data.map((item, index) => ({ title:item.shopTitle,product:item.product,image:item.image, index }));
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 const Limits = () => {
     const navigation=useNavigation();
+    const route = useRoute();
+    const { bracelet } = route.params;
+    const [Bracelet,setBracelet]=useState();
+    const [TASKS, setTASKS] = useState([]);
+    useEffect(() => {
+      if(bracelet){
+       
+      setBracelet(bracelet);
+      console.log(bracelet);   
+      const output = bracelet.restriction.map(item => ({
+        shopTitle: item.restrictedshop.chain_name,
+        product: item.restrictedProducts.map(product => product.name),
+        image: API_BASE_URL+"/uploads/"+item.restrictedshop.chain_image
+    }))
+    const newTasks  = output.map((item, index) => ({
+      title: item.shopTitle,
+      product: item.product,
+      image: item.image, 
+      index
+    }));
+    setTasks(newTasks);  // directly set the tasks
+    
+      return () => {
+      }
+  }}, [bracelet])
+  useEffect(() => {
+    console.log(TASKS,"ti");  // this will log the updated TASKS
+}, [TASKS]);
+    const addShop = (newShop) => {
+      setTasks(oldTasks => {
+        // Get the highest current index
+        const currentIndex = oldTasks.length > 0 ? Math.max(...oldTasks.map(task => task.index)) : -1;
+        // Use current index + 1 for new task
+        newShop.index = currentIndex + 1;
+        return [...oldTasks, newShop];
+      });
+  };
     useLayoutEffect(()=>{
       navigation.setOptions({
         headerShown:true,
@@ -78,7 +110,7 @@ const Limits = () => {
       })
     }, [])
     const[Visible,setVisible]=useState(false);
-
+    const[Data,setData]=useState([])
     const [tasks, setTasks] = useState(TASKS);
 
     const onDismiss = useCallback((task) => {
@@ -132,14 +164,14 @@ const Limits = () => {
                 <Text style={{fontSize:24,fontWeight:'bold',color:'black'}}>Limits</Text>
                 <TouchableOpacity onPress={() => setVisible(true)}><Text style={{paddingTop:10}}>Add</Text></TouchableOpacity>
                 <ModalLimits
-                isVisible={Visible}
-                onClose={() => setVisible(false)}
-                
-                />
+                  isVisible={Visible}
+                  onClose={() => setVisible(false)}
+                  addShop={addShop}  // pass the function here
+                  />
                
               
             </View>
-            
+            {console.log(tasks,'llll')}
             {tasks.map((task) => (
           <ListItem
             simultaneousHandlers={scrollRef}
@@ -169,6 +201,7 @@ const Limits = () => {
           </SafeAreaView>
           </ScrollView>
           <View style={{width:'100%',backgroundColor:'white',paddingLeft:50,paddingRight:50}}>
+            
             <CustomButton text='Save Changes'></CustomButton>
           </View>
           
