@@ -108,8 +108,23 @@ const Limits = () => {
     const[Visible,setVisible]=useState(false);
     const[Data,setData]=useState([])
     const [tasks, setTasks] = useState(TASKS);
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
       console.log(tasks);
+      try {
+        const requestBody = {
+          braceletId: bracelet._id, // Replace with the actual ID of the bracelet
+          limits: tasks.map((task) => ({
+            idShops: task.idShops,
+            productid: task.productid,
+          })),
+        };
+        console.log(requestBody)
+    
+        await updateLimits(requestBody);
+        console.log('Limits updated successfully');
+      } catch (error) {
+        console.error('Error updating limits:', error);
+      }
       // Call any other necessary functions or APIs to handle the submission
     };
     const onDismiss = useCallback((task) => {

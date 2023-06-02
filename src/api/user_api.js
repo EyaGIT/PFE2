@@ -308,7 +308,7 @@ export const updateLimits = async (data) => {
   };
 
   try {
-    const response = await ApiManager.post("/checkout/updateLimits", {
+    const response = await ApiManager.post("/checkout/updateLimits",data, {
       headers: headers,
     });
 
