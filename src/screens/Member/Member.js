@@ -222,7 +222,7 @@ const Member = () => {
                 <Text>Profil</Text>
                 
             </TouchableOpacity>
-            <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}} onPress={()=> navigation.navigate('Limits')}>
+            <TouchableOpacity style={{alignItems:"center",justifyContent:'flex-start'}} onPress={()=> navigation.navigate('Security',{ id: info._id })}>
                 <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'rgba(209,208,208,0.5)',width:60,height:60,borderRadius:50}}>
                     <Image source={Pin} style={{width:10,height:10,paddingRight:40}}></Image>
                 </View>

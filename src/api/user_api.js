@@ -336,15 +336,15 @@ export const getShopsProduct = async () => {
     throw new Error('Failed to fetch history data');
   }
 };
-export const edituser = async (token, userData) => {
+export const edituser = async ( userData) => {
   try {
-    const result = await ApiManager('/editUser', {
+    const result = await ApiManager('/editUserMobile', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}` 
+         
       },
-      body: JSON.stringify(userData)
+      data: userData
     });
     
     return result;
@@ -357,3 +357,44 @@ export const edituser = async (token, userData) => {
   }
 };
 
+export const edituserPrinc = async ( userData) => {
+  try {
+    const result = await ApiManager('/editUserMobilePrinc', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+         
+      },
+      data: userData
+    });
+    
+    return result;
+  } catch (error) {
+    if (error.response && error.response.data) {
+      return error.response.data;
+    } else {
+      return { error: 'An error occurred.' };
+    }
+  }
+};
+
+export const editpassword = async ( userData) => {
+  try {
+    const result = await ApiManager('/resetPassword', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+         
+      },
+      data: userData
+    });
+    
+    return result;
+  } catch (error) {
+    if (error.response && error.response.data) {
+      return error.response.data;
+    } else {
+      return { error: 'An error occurred.' };
+    }
+  }
+};

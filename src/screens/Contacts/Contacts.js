@@ -96,23 +96,36 @@ const Contacts = ({userInfo}) => {
           </View>
     
 
-        <View style={styles.body}>
-        {children.map((item, index) => (
-                <TouchableOpacity key={index} onPress={()=>onuserPressed(item,userInfo)}>
-                <View style={{width:'100%',paddingTop:20,flexDirection:'row'}}>
-                    <View style={{width:'25%',alignItems:'center'}}>
-                            <Image style={{width:65,height:65,borderRadius:65/2}}  source={{uri:API_BASE_URL+"/uploads/"+item.image}} />
-                    </View>
-                    <View style={{height:45,alignItems:'center',paddingTop:20,paddingLeft:10}}>
-                        <Text style={{fontSize:18,color:'#212121',fontWeight:'700'}}>{item.lastName} {item.firstName}</Text>
-                    </View>
-                </View>
-               </TouchableOpacity>
-              ))}
-            
-          
-            
-            </View>   
+          <View style={styles.body}>
+  {children.role && children.role.name === 'member' ? (
+    children.map((item, index) => (
+      <TouchableOpacity key={index} onPress={() => onuserPressed(item,userInfo)}>
+        <View style={{width:'100%', paddingTop:20, flexDirection:'row'}}>
+          <View style={{width:'25%', alignItems:'center'}}>
+            <Image style={{width:65, height:65, borderRadius:65/2}}  source={{uri:API_BASE_URL+"/uploads/"+item.image}} />
+          </View>
+          <View style={{height:45, alignItems:'center', paddingTop:20, paddingLeft:10}}>
+            <Text style={{fontSize:18, color:'#212121', fontWeight:'700'}}>{item.lastName} {item.firstName}</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    ))
+  ) : (
+    children.map((item, index) => (
+   
+        <View key={index} style={{width:'100%', paddingTop:20, flexDirection:'row'}}>
+          <View style={{width:'25%', alignItems:'center'}}>
+            <Image style={{width:65, height:65, borderRadius:65/2}}  source={{uri:API_BASE_URL+"/uploads/"+item.image}} />
+          </View>
+          <View style={{height:45, alignItems:'center', paddingTop:20, paddingLeft:10}}>
+            <Text style={{fontSize:18, color:'#212121', fontWeight:'700'}}>{item.lastName} {item.firstName}</Text>
+          </View>
+        </View>
+    
+    ))
+  )}
+</View>
+
      </ScrollView>
     </SafeAreaView> 
     </LinearGradient> 

@@ -26,9 +26,10 @@ const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 const HomeScreen = ({userInfo}) => {
+  const [uri, setimageuri] = useState('');
   useEffect(() => {
     if(userInfo){
-    
+      setimageuri(API_BASE_URL+"/uploads/"+userInfo.image);
     console.log(userInfo.bracelets[0].is_disabled,"hhhh")
     setinfo(userInfo)
     setrole(userInfo.role.name)
@@ -114,7 +115,7 @@ const HomeScreen = ({userInfo}) => {
           
           <View style={styles.head}>
               <View style={styles.nav}>
-                <View style={{borderRadius:25,borderColor:"white",borderWidth:2,width:45,height:45,justifyContent:"center",alignItems:'center'}}><Image source={proAvatar} style={{width:'102%',height:'102%',borderRadius:25}} /></View>
+                <View style={{borderRadius:25,borderColor:"white",borderWidth:2,width:45,height:45,justifyContent:"center",alignItems:'center'}}><Image  source={uri ? {uri:uri}: proAvatar} style={{width:40,height:40,borderRadius:25}} /></View>
                 <TouchableOpacity style={{width:45,height:45,justifyContent:'center',alignItems:'center', borderColor:"white",borderWidth:0,borderRadius:17}} onPress={onNotificationPressed}>
                   <Image source={not} style={{width:26,height:28}} />
                 </TouchableOpacity>
@@ -192,13 +193,21 @@ const HomeScreen = ({userInfo}) => {
     </View>
     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
   <View style={{flexDirection: "row", marginTop: 10}}>
-  {children && userInfo && children.map((item, index) => (
-    
-  <TouchableOpacity key={index} style={{alignItems: "center", marginRight: 18}} onPress={() => navigation.navigate('Member', {member: item, userInfo: userInfo})}>
-    <Image source={{uri: API_BASE_URL + "/uploads/" + item.image}} style={{width: 45, height: 45, borderRadius: 10}} />
-    <Text>{item.firstName}</Text>
-  </TouchableOpacity>
-))}
+  {role === 'member' ?
+  (children && userInfo && children.map((item, index) => (
+    <TouchableOpacity key={index} style={{alignItems: "center", marginRight: 18}} onPress={() => navigation.navigate('Member', {member: item, userInfo: userInfo})}>
+      <Image source={{uri: API_BASE_URL + "/uploads/" + item.image}} style={{width: 45, height: 45, borderRadius: 10}} />
+      <Text>{item.firstName}</Text>
+    </TouchableOpacity>
+  ))) : 
+  (children && userInfo && children.map((item, index) => (
+    <View key={index} style={{alignItems: "center", marginRight: 18}}>
+      <Image source={{uri: API_BASE_URL + "/uploads/" + item.image}} style={{width: 45, height: 45, borderRadius: 10}} />
+      <Text>{item.firstName}</Text>
+    </View>
+  )))
+}
+
     {role=== 'member' && (
       <TouchableOpacity style={{alignItems: "center", marginRight: 18}} onPress={() => navigation.navigate('New Member1')}>
         <View style={{width: 45, height: 45, borderRadius: 10, backgroundColor: 'rgba(122, 127, 133, 0.24)', alignItems: "center", justifyContent: "center", padding: 0}}>
