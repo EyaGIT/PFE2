@@ -12,7 +12,7 @@ import ModalLimits from '../../components/ModalLimits/ModalLimits';
 import arrow from '../../../assets/images/icons/ArrowBack.png'
 import { API_BASE_URL } from '@env';
 const takos = require('../../../assets/images/Tacos.png');
-
+import {updateLimits} from '../../api/user_api'
   
 
   const BACKGROUND_COLOR = '#FAFBFF';
