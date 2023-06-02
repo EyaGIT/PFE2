@@ -73,28 +73,29 @@ const ModalLimits = ({
           </View>
           <View style={{ paddingTop: 20 }}>
             <MultipleSelectList 
-              setSelected={(key,val) => {
-                console.log(key,"key");
-                console.log(val,"val");
+              setSelected={(val) => {
+                
                 setSelectedProducts(val);
               }}
               data={data} 
-              save="value"
+              save="key"
               label="Select Shop"
             />
           </View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', paddingTop: 20 }}>
             <View style={{ width: '40%', paddingRight: 10 }}>
               <CustomButton text='Apply' onPress={() => {
-                console.log(selectedChain,"hhh");
                 const selectedChain = shopData[selectedShop]?.value || { name: '', image: '' };
-                console.log(selectedProducts,"hhh");
+                const selectedProductData = data
+    .filter(item => selectedProducts.includes(item.key))
+    .map(item => item.value);
+                
                 addShop({ 
                   title: selectedChain.name,
-                  product: selectedProducts,
-                  image: selectedChain.image,
+                  product: selectedProductData,
+                  image: API_BASE_URL+"/uploads/"+selectedChain.image,
                   idShops: selectedChain.chainId,
-                  productid: selectedChain.test,
+                  productid:selectedProducts,
                   index: selectedChain.index
                 }); 
               }} />
