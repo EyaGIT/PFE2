@@ -135,10 +135,10 @@ const Stat = ({categoriesData1}) => {
     let data = processCategoryDataDisplay();
 
     const renderItem = ({ item }) => (
-      <View style={{ flexDirection: 'column', justifyContent: 'space-between' }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
       
         <TouchableOpacity
-        
+          key={index}
           style={{
             flexDirection: 'row',
             height: 40,

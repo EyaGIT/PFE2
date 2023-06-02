@@ -9,7 +9,7 @@ import CustominputImg from '../../components/CustominputImg/CustominputImg'
 import PicherIm from '../../components/PickerIm/PicherIm'
 import { useRoute } from '@react-navigation/native';
 import { API_BASE_URL } from '@env';
-
+import { edituser } from '../../api/user_api';
 const Settingsmember = () => {
   const route = useRoute();
   const { member} = route.params;
@@ -21,6 +21,36 @@ const Settingsmember = () => {
     const [userphone, setUserphone] = useState('');
     const [userId, setUserId] = useState('');
     const [Img, setImg ]= useState('');
+    const editUserInfo = () => {
+      AsyncStorage.getItem('AccessToken').then((token) => {
+        if (token) {
+          const userData = {
+            userId: userId, // Use the actual user Id
+            firstName: userfirstname, // Use the actual First Name
+            lastName: userlastname, // Use the actual Last Name
+            email: usermail, // Use the actual Email
+            phone: userphone, // Use the actual Phone
+            birthDate: date, // Use the actual Birth Date
+            image: Img, // Use the actual Image
+          };
+      
+          edituser(userData, token).then(result => {
+            if (result.status == 200) {
+              console.log(result.data);
+              // Add further actions as needed
+            } else {
+              console.log(result.error);
+            }
+          }).catch(error => {
+            console.log(error);
+          });
+        } else {
+          console.error('Token not found');
+        }
+      }).catch(error => {
+        console.error('Error retrieving token:', error);
+      });
+    };
     
     useEffect(() => {
       setUserId(member._id)
@@ -72,19 +102,13 @@ const Settingsmember = () => {
         placeholder="22453769" 
         value={userphone} 
         setValue={setUserphone}
-        secureTextEntry={true}/>
+        />
       
       </View>
-      <View style={{width:'90%'}}> 
-         <Custominput 
-          placeholder="********" 
-          value={Password} 
-          setValue={setPassword}
-          />
-        </View>
+      
     
       <View style={{width:"60%",paddingTop:20}}>
-      <TouchableOpacity >
+      <TouchableOpacity onPress={editUserInfo}>
         <CustomButton  text="Save Changes" />
         </TouchableOpacity>
         </View>
