@@ -319,3 +319,24 @@ export const getShopsProduct = async () => {
     throw new Error('Failed to fetch history data');
   }
 };
+export const edituser = async (token, userData) => {
+  try {
+    const result = await ApiManager('/editUser', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` 
+      },
+      body: JSON.stringify(userData)
+    });
+    
+    return result;
+  } catch (error) {
+    if (error.response && error.response.data) {
+      return error.response.data;
+    } else {
+      return { error: 'An error occurred.' };
+    }
+  }
+};
+
