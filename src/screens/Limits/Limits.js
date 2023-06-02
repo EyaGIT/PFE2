@@ -12,15 +12,7 @@ import ModalLimits from '../../components/ModalLimits/ModalLimits';
 import arrow from '../../../assets/images/icons/ArrowBack.png'
 import { API_BASE_URL } from '@env';
 const takos = require('../../../assets/images/Tacos.png');
-
-  const data = [
-    { shopTitle:'shop', product:['pizza','sandwich'] ,image:takos},
-    { shopTitle:'Chaneb tacos', product:['pizza','sandwich'],image:takos},
-    { shopTitle:'shop', product:['pizza','sandwich'] ,image:takos},
-    { shopTitle:'Chaneb tacos', product:['pizza','sandwich'],image:takos},
-    { shopTitle:'shop', product:['pizza','sandwich'] ,image:takos},
-    { shopTitle:'Chaneb tacos', product:['pizza','sandwich'],image:takos}
-];
+import {updateLimits} from '../../api/user_api'
   
 
   const BACKGROUND_COLOR = '#FAFBFF';
@@ -60,7 +52,6 @@ const Limits = () => {
       }
   }}, [bracelet])
   useEffect(() => {
-    console.log(TASKS,"ti");  // this will log the updated TASKS
 }, [TASKS]);
     const addShop = (newShop) => {
       setTasks(oldTasks => {
@@ -117,7 +108,10 @@ const Limits = () => {
     const[Visible,setVisible]=useState(false);
     const[Data,setData]=useState([])
     const [tasks, setTasks] = useState(TASKS);
-
+    const handleSubmit = () => {
+      console.log(tasks);
+      // Call any other necessary functions or APIs to handle the submission
+    };
     const onDismiss = useCallback((task) => {
       setTasks((tasks) => tasks.filter((item) => item.index !== task.index));
     }, []);
@@ -148,20 +142,23 @@ const Limits = () => {
         <Text style={{fontWeight:'600',fontSize:15}}>Limit Per payment</Text>
         
             <View style={{flexDirection:'row',paddingTop:20}}>
-            <Slider style={{flex: 1}}
-            minimumValue={0}
-            maximumValue={100}
-            minimumTrackTintColor='tomato'
-            maximumTrackTintColor='#000'
-            thumbTintColor='red'
-            value={1}
-            onValueChange={value => setRange(value)}
-            />
-            <View style={{borderWidth: 2, borderColor: 'black',width:60,borderRadius:5,alignItems:'center',justifyContent:'center'}}>
-              <Text>
-            <Text>{range}</Text>
-            <Text>D</Text></Text>
-            </View>
+            <Slider
+  style={{ flex: 1 }}
+  minimumValue={0}
+  maximumValue={100}
+  minimumTrackTintColor="tomato"
+  maximumTrackTintColor="#000"
+  thumbTintColor="red"
+  value={Math.round(range)}
+  onValueChange={(value) => setRange(Math.round(value))}
+/>
+<View style={{ borderWidth: 2, borderColor: 'black', width: 60, borderRadius: 5, alignItems: 'center', justifyContent: 'center' }}>
+  <Text>
+    <Text>{Math.round(range)}</Text>
+    <Text>D</Text>
+  </Text>
+</View>
+            
             </View>
         </View>
         <View style={{flex: 5,minHeight:300}}>
@@ -176,7 +173,7 @@ const Limits = () => {
                
               
             </View>
-            {console.log(tasks,'llll')}
+            
             {tasks.map((task) => (
           <ListItem
             simultaneousHandlers={scrollRef}
@@ -207,7 +204,7 @@ const Limits = () => {
           </ScrollView>
           <View style={{width:'100%',backgroundColor:'white',paddingLeft:50,paddingRight:50}}>
             
-            <CustomButton text='Save Changes'></CustomButton>
+            <CustomButton text='Save Changes' onPress={handleSubmit}></CustomButton>
           </View>
           
           </SafeAreaView>
