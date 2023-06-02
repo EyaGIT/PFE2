@@ -19,11 +19,12 @@ const Settingsmember = () => {
     const [userlastname, setUserlastname] = useState('');
     const [usermail, setUsermail] = useState('');
     const [userphone, setUserphone] = useState('');
+
     const [userId, setUserId] = useState('');
     const [Img, setImg ]= useState('');
-    const editUserInfo = () => {
-      AsyncStorage.getItem('AccessToken').then((token) => {
-        if (token) {
+    const editUserInfo = async () => {
+      console.log("dddd")
+      
           const userData = {
             userId: userId, // Use the actual user Id
             firstName: userfirstname, // Use the actual First Name
@@ -33,8 +34,8 @@ const Settingsmember = () => {
             birthDate: date, // Use the actual Birth Date
             image: Img, // Use the actual Image
           };
-      
-          edituser(userData, token).then(result => {
+          console.log(userData);
+         await edituser(userData).then(result => {
             if (result.status == 200) {
               console.log(result.data);
               // Add further actions as needed
@@ -44,12 +45,8 @@ const Settingsmember = () => {
           }).catch(error => {
             console.log(error);
           });
-        } else {
-          console.error('Token not found');
-        }
-      }).catch(error => {
-        console.error('Error retrieving token:', error);
-      });
+        
+      
     };
     
     useEffect(() => {
@@ -59,6 +56,7 @@ const Settingsmember = () => {
       setUsermail(member.email);
       console.log(API_BASE_URL+"/uploads/"+member.image)
       setUserphone(member.phone);
+      setDate(member.birthDate);
     }, []);
   return (
 <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center',width:'100%' }}>
@@ -95,7 +93,9 @@ const Settingsmember = () => {
            />
       </View>
       <View style={{width:"90%"}} >
-      <DatePicker Birth={setDate} def={new Date(member.birthDate)} />
+      <DatePicker Birth={setDate} def={member.birthDate ? new Date(member.birthDate) : null} />
+
+
       </View>
       <View style={{width:"90%"}} >
         <CustominputImg
@@ -108,9 +108,9 @@ const Settingsmember = () => {
       
     
       <View style={{width:"60%",paddingTop:20}}>
-      <TouchableOpacity onPress={editUserInfo}>
-        <CustomButton  text="Save Changes" />
-        </TouchableOpacity>
+     
+        <CustomButton  onPress={editUserInfo} text="Save Changes" />
+        
         </View>
         </View>
         </ScrollView>

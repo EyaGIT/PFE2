@@ -67,11 +67,11 @@ const Settings = ({onLogoutSuccess,onLoad,userInfo}) => {
     
   }
   const onSecurityPressed = () => {
-    navigation.navigate("Security");
+    navigation.navigate("Security",{ id: userInfo._id });
      }
-  const onArrowPressed = () => {
-    navigation.navigate("Edit Profil");
-     }
+     const onArrowPressed = () => {
+      navigation.navigate("Edit Profil", { member: userInfo });
+    };
   return (
     <SafeAreaView style={{ width:'100%',justifyContent: "flex-start", alignItems: "center",flex:1,backgroundColor:'#FFFFFF',}} >
      <View style={{alignItems:"center",justifyContent:"center",width:"100%",flex:1}}> 

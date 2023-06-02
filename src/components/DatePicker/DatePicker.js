@@ -11,7 +11,7 @@ const DatePicker = ({Birth,def}) => {
       if(def){
         setDate(def)
       }
-    }, []);
+    }, [def]);
     const onDateChange = (event, selectedDate) => {
         setShowDatePicker(false);
         if (selectedDate) {
