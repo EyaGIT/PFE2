@@ -54,10 +54,13 @@ const Member = () => {
       setinfo(member);
       setUser(userInfo);
       
-    if(member.bracelets[0].is_disabled){
+   
+      if(member.bracelets[0].is_disabled){
         setimgbracelet(Block)
+        setmsg1("Do you want to unblock");
       }else{
         setimgbracelet(blockred)
+        setmsg1("Do you want to block");
       }
      
     

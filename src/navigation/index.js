@@ -196,7 +196,7 @@ const Navigation = () => {
       <Stack.Screen name="Top Up">
             {(props) => <TopUp {...props} userInfo={userInfo} />}
       </Stack.Screen>
-      <Stack.Screen name="congrat" component={CongratulationPrincipal}/> 
+      
       <Stack.Screen name="Order Bracelet2" component={OrderBracelet2}/> 
       <Stack.Screen name="Notifications" component={Notifications}/>
       <Stack.Screen name="Settings member" component={Settingsmember}/>
@@ -217,7 +217,7 @@ const Navigation = () => {
           </Stack.Screen>
       
       <Stack.Screen name="Reset Password" component={ResetPassword}/>
-      
+      <Stack.Screen name="congrat" component={CongratulationPrincipal}/> 
       <Stack.Screen name="Forget ¨Password" component={ForgetPassword}/>
       <Stack.Screen name="Sign up" component={CreateNewAccount} />
       <Stack.Screen name="Order Bracelet" component={OrderBracelet}/>
