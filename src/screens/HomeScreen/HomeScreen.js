@@ -33,11 +33,14 @@ const HomeScreen = ({userInfo}) => {
     console.log(userInfo.bracelets[0].is_disabled,"hhhh")
     setinfo(userInfo)
     setrole(userInfo.role.name)
+
     
   if(userInfo.bracelets[0].is_disabled){
       setimgbracelet(bra2)
+      setmsg1("Do you want to unblock");
     }else{
       setimgbracelet(bra)
+      setmsg1("Do you want to block");
     }
     setAmount(userInfo.bracelets[0].amount)
     setchildren(userInfo.children)

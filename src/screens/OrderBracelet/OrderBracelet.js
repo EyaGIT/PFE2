@@ -1,4 +1,4 @@
-import { View, Text,Image,StyleSheet,Pressable,shadow, TouchableWithoutFeedback, ScrollView, TouchableOpacity} from 'react-native'
+import { View, Text,Image,StyleSheet,Pressable,shadow, TouchableWithoutFeedback, ScrollView,ActivityIndicator, TouchableOpacity} from 'react-native'
 import React ,{useState} from 'react'
 import bracelet1 from '../../../assets/images/bracelet1.png'
 import bracelet2 from '../../../assets/images/bracelet2.png'
@@ -10,7 +10,7 @@ import SelectDropdown from 'react-native-select-dropdown'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import { useNavigation,useRoute } from '@react-navigation/native';
 import BackArrowB from '../../components/BackArrowB/BackArrowB'
-import { childSignup,createBracelet } from "../../api/user_api";
+import { SignupMember,createBracelet } from "../../api/user_api";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const colors = [
     '#E20522',
@@ -53,6 +53,7 @@ const OrderBracelet = () => {
     const [bcategory2,setCategory2]=useState('Cash on delivery')
     const [error,setError]=useState('')
     const [isImageClicked, setIsImageClicked] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
    
 
@@ -74,6 +75,10 @@ const OrderBracelet = () => {
 
 
     const handleFormSubmit = async () => {
+      if (isLoading) {
+        // Prevent multiple submissions while already loading
+        return;
+      }
       console.log(formData1)
       // Perform validation
       if (!selectedItem || !category || !bcategory2 || value === null) {
@@ -102,7 +107,7 @@ const OrderBracelet = () => {
         color: colors[value],
       };
       try {
-        
+        setIsLoading(true);
           const result = await SignupMember(formData1);
           console.log("hhhhhh",result.data);
           if (result.status === 201) {
@@ -112,7 +117,9 @@ const OrderBracelet = () => {
             const braceletResult = await createBracelet(formData);
             if (braceletResult.status === 201) {
               console.log('yess');
-              handellogin();
+              navigation.navigate("congrat");
+              setIsLoading(false);
+              
             } else {
               setError('impossible orderBraclet');
             }
@@ -143,7 +150,12 @@ const OrderBracelet = () => {
       
       
       <SafeAreaView style={Styles.ViewContainer}>
-      <ScrollView style={{width:'100%',height:'500%',zIndex:-1,flex:1}}>
+        {isLoading ? (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color="#FF0000" />
+      </View>
+      ) : (
+        <ScrollView style={{width:'100%',height:'500%',zIndex:-1,flex:1}}>
       <View style={{flex:1,justifyContent:'center',alignItems:'center',minHeight:700}}>
       
       
@@ -252,6 +264,8 @@ const OrderBracelet = () => {
     
     </View>
     </ScrollView>
+      )}
+      
     </SafeAreaView>
     
     
