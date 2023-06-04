@@ -135,17 +135,18 @@ const Stat = ({categoriesData1}) => {
     let data = processCategoryDataDisplay();
 
     const renderItem = ({ item }) => (
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'center',height:50, width:'90%' }}>
       
         <TouchableOpacity
-          key={index}
+          
           style={{
             flexDirection: 'row',
             height: 40,
-            width: 160,
+            width: '95%',
+            
             paddingHorizontal: 10,
             borderRadius: 10,
-            backgroundColor: selectedCategory && selectedCategory.name === item.name ? item.color : 'black'
+            backgroundColor: selectedCategory && selectedCategory.name === item.name ? item.color : '#f5f5f5'
           }}
           onPress={() => {
             let categoryName = item.name;
@@ -164,8 +165,8 @@ const Stat = ({categoriesData1}) => {
             <Text
               style={{
                 marginLeft: 10,
-                backgroundColor: 'red',
-                color: selectedCategory && selectedCategory.name === item.name ? 'white' : 'blue'
+                
+                color: selectedCategory && selectedCategory.name === item.name ? 'white' : 'black'
               }}
             >
               {item.name}
@@ -188,7 +189,7 @@ const Stat = ({categoriesData1}) => {
     <View style={{ flex: 1, backgroundColor: 'lightGray',position:'relative' }}>
       <View style={{ flex: 1,position:'relative',minHeight:300 }}>
         {renderChart()}
-        <View style={{ flex: 1,backgroundColor:'green',justifyContent:'center',position:'relative'}}>
+        <View style={{ flex: 1,justifyContent:'center',alignItems:'center',position:'relative'}}>
         {renderExpenseSummary()}
         </View>
         

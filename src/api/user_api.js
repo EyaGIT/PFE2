@@ -398,3 +398,28 @@ export const editpassword = async ( userData) => {
     }
   }
 };
+
+export const getSellingPointsNearPosition = async (data) => {
+  try {
+   
+    const result = await ApiManager('/getSellingPointsNearPosition', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      data:data
+      
+    });
+    
+    
+    return result;
+  } catch (error) {
+    console.log(error)
+    if (error.response && error.response.data) {
+      return error.response.data;
+    } else {
+      // Handle the error when response or response.data is undefined
+      return { error: 'An error occurred.' };
+    }
+  }
+};

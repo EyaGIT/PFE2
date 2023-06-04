@@ -65,7 +65,7 @@ function HomeNav({onLogoutSuccess,onLoad,userInfo}) {
     })}>
       
       <Tab.Screen name="Map" component={Map} options={{tabBarButton: props => <CustomTabBarButton route='Map' {... props} />, headerStyle: {
-    backgroundColor: 'red',
+    backgroundColor: 'white',
   }}}/>
       <Tab.Screen name="History" options={{tabBarButton: props => <CustomTabBarButton route='History' {... props} />}} >
       {props => <Historique {...props} userInfo={userInfo} />}
