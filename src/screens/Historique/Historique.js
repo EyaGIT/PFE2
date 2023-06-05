@@ -5,7 +5,7 @@ import { getHistory } from '../../api/user_api';
 import Historydetails from '../../components/Historydetails/Historydetails';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_BASE_URL } from '@env';
-
+import proAvatar from '../../../assets/images/proAvatar.png'
 const screenWidth = Dimensions.get('window').width;
 
 const History = () => {
@@ -141,15 +141,19 @@ const History = () => {
               </TouchableOpacity>
             );
           }
-          if (item.type === 'transfer') {
+          if (item.type === 'transfer'&& item.approved ) {
             return (
               <TouchableOpacity key={index} onPress={() => handleItemPress(item)}>
                 <View style={{ width: screenWidth, paddingTop: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingLeft: 10, paddingRight: 10 }}>
                   <View style={{ flex: 1, width: '25%', alignItems: 'center' }}>
-                    <Image source={{ uri: item.braceletReceiver ? API_BASE_URL + '/uploads/' + item.braceletReceiver.user.image : item.image }} style={{ width: 70, height: 70, aspectRatio: 1, resizeMode: 'contain', marginRight: 10, borderRadius: 70 / 2 }} />
+                    <Image source={
+    item.braceletReceiver
+      ? { uri: API_BASE_URL + '/uploads/' + item.braceletReceiver.user.image }
+      : proAvatar
+  } style={{ width: 70, height: 70, aspectRatio: 1, resizeMode: 'contain', marginRight: 10, borderRadius: 70 / 2 }} />
                   </View>
                   <View style={{ flex: 2, flexDirection: 'column', justifyContent: 'flex-start' }}>
-                    {item.braceletReceiver && (<Text style={{ fontSize: 17, fontWeight: '500' }}>Send to {item.braceletReceiver.user.firstName}</Text>)}
+                    {item.braceletReceiver && (<Text style={{ fontSize: 17, fontWeight: '500' }}>Send to {item.braceletReceiver.user.firstName==''?'hhh':item.braceletReceiver.user.firstName}</Text>)}
                     <View style={{ flexDirection: 'row' }}>
                       <Text style={{ color: '#6D7580', paddingTop: 5 }}>{new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit' })} |</Text>
                       <Text style={{ color: '#6D7580', paddingTop: 5 }}> {new Date(item.date).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</Text>
@@ -166,12 +170,17 @@ const History = () => {
               </TouchableOpacity>
             );
           }
-          if (item.type === 'receive') {
+          if (item.type === 'receive'&& item.approved && item.bracelet.user.firstName!='') {
+            console.log(item.bracelet.user.firstName)
             return (
               <TouchableOpacity key={index} onPress={() => handleItemPress(item)}>
                 <View style={{ width: screenWidth, paddingTop: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingLeft: 10, paddingRight: 10 }}>
                   <View style={{ flex: 1, width: '25%', alignItems: 'center' }}>
-                    <Image source={{ uri: API_BASE_URL + '/uploads/' + item.bracelet.user.image }} style={{ width: 70, height: 70, aspectRatio: 1, resizeMode: 'contain', marginRight: 10 ,borderRadius:70/2}} />
+                    <Image  source={
+    item.bracelet && item.bracelet.user && item.bracelet.user.image
+      ? { uri: API_BASE_URL + '/uploads/' + item.bracelet.user.image }
+      : proAvatar
+  } style={{ width: 70, height: 70, aspectRatio: 1, resizeMode: 'contain', marginRight: 10 ,borderRadius:70/2}} />
                   </View>
                   <View style={{ flex: 2, flexDirection: 'column', justifyContent: 'flex-start' }}>
                     <Text style={{ fontSize: 17, fontWeight: '500' }}>You Receive from {item.bracelet.user.firstName}</Text>
