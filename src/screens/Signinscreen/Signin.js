@@ -97,62 +97,51 @@ const handlePasswordChange = text => {
 
   const handleLogin = () => {
     onLoad(true);
-    //const checkPassowrd = checkPasswordValidity(password);
-   
-    
+  
     if (email === '') {
-      setEmailError('Please enter your email');
-      setPasswordError('');
+      alert('Please enter your email');
       onLoad(false);
       return;
     }
   
     if (password === '') {
-      setPasswordError('Please enter your password');
-      setEmailError('');
+      alert('Please enter your password');
       onLoad(false);
       return;
     }
   
-    
-    
-      console.log({
-        email: email.toLocaleLowerCase(),
-        password: password,
-      });
-      user_login({
-        email: email.toLocaleLowerCase(),
-        password: password,
-      })
-        .then(async result => {
-          if (result.status == 200) {
-            await AsyncStorage.setItem('AccessToken', result.data.token);
-            await AsyncStorage.getItem('AccessToken').then(async token =>{
-              console.log(token)
-            
-              
-              
-              
-           onLoginSuccess(token);
-              
-             
-            }).catch(e=>console.log(e));
-            
-            
-            
-            
-            
-          }else{
-            onLoad(false);
-          }
-        })
-        .catch(err => {
-          
+    user_login({
+      email: email.toLocaleLowerCase(),
+      password: password,
+    })
+      .then(async result => {
+        if (result.status === 200) {
+          await AsyncStorage.setItem('AccessToken', result.data.token);
+          await AsyncStorage.getItem('AccessToken').then(async token => {
+            console.log(token);
+            onLoginSuccess(token);
+          }).catch(e => console.log(e));
+        } else if (result.status === 404) {
+          // If the status is 404, show a specific error message
+          alert('The email does not exist. Please check your email.');
           onLoad(false);
-        });
-    
+        } else if (result.status === 401) {
+          // If the status is 401, show a specific error message
+          alert('Incorrect password. Please check your password.');
+          onLoad(false);
+        } else {
+          // For all other failed status codes
+          alert('Failed to login. Please check your email and password.');
+          onLoad(false);
+        }
+      })
+      .catch(err => {
+        // In case of an error, show a more specific error message
+        alert(`An error occurred during login: ${err.message}`);
+        onLoad(false);
+      });
   };
-
+  
 
  
 
