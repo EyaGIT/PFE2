@@ -1,4 +1,4 @@
-import { StyleSheet,View, Text,Image,TouchableOpacity,ScrollView,Dimensions,StatusBar,TextInput } from 'react-native'
+import { StyleSheet,View, Text,Image,TouchableOpacity,ScrollView,Dimensions,StatusBar,TextInput,Alert } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useLayoutEffect ,useState, useRef,useEffect} from 'react'
 import { useNavigation } from '@react-navigation/native'
@@ -32,63 +32,60 @@ const SendMoneyAll = ({userInfo}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [Montant, setMontant] = useState('');
-      const onSendPressed = () => {
-        
-        if (isLoading) {
-          // Prevent multiple submissions while already loading
-          return;
-        }
-        if (Object.keys(category).length === 0) {
-          setError('Selcet user bracelet');
-          return ;
-        }
-        if(Montant===''||Montant==='0'){
-          setError('Add Amount');
-          return ;
-        }
-
-        setIsLoading(true);
-        AsyncStorage.getItem('AccessToken')
-        
+  const onSendPressed = () => {
+    if (isLoading) {
+      // Prevent multiple submissions while already loading
+      return;
+    }
+    if (Object.keys(category).length === 0) {
+      Alert.alert('Error', 'Select user bracelet');
+      return;
+    }
+    if(Montant === '' || Montant === '0'){
+      Alert.alert('Error', 'Add Amount');
+      return;
+    }
+  
+    setIsLoading(true);
+    AsyncStorage.getItem('AccessToken')
       .then(token => {
         if (token) {
           transfer({
             idSender: userInfo.bracelets[0]._id,
-            idReceiver:category.key,
-            amount:parseInt(Montant)
-      
-    },token)
-      .then(result=>{
-        if(result.status===200){
-          if(result.data.error){
-            setIsLoading(false);
-            setError(result.data.error);
-            
-            return;
-          }else{
-            console.log(result.data);
-            setTimeout(() => {
-            setIsLoading(false); // Stop loading
-            data=result.data
-            dir="Home"
-            navigation.navigate("Receipt",{ data,dir });
-          }, 2000)
-          }
+            idReceiver: category.key,
+            amount: parseInt(Montant)
+          }, token)
+            .then(result => {
+              if(result.status === 200){
+                if(result.data.error){
+                  setIsLoading(false);
+                  Alert.alert('Error', result.data.error);
+                  return;
+                } else {
+                  console.log(result.data);
+                  setTimeout(() => {
+                    setIsLoading(false); // Stop loading
+                    data = result.data;
+                    dir = "Home";
+                    navigation.navigate("Receipt", { data, dir });
+                  }, 2000)
+                }
+              }
+            })
+            .catch((error) => {
+              setIsLoading(false);
+              Alert.alert('Error', 'An error occurred while processing your request');
+              console.log(error);
+            })
         }
-      }).catch((error) => {
-        setIsLoading(false);
-        console.log(error);
-        setIsLoading(false); // Stop loading
-        // Handle error
       })
-        }}).catch(error => {
-         
-          console.error(error);
-          
-          setIsLoading(false);
-        }); // Start loading
-        ;
-         }
+      .catch(error => {
+        setIsLoading(false);
+        Alert.alert('Error', 'An error occurred while retrieving your access token');
+        console.error(error);
+      }); 
+  }
+  
     
     const navigation=useNavigation();
     useEffect(()=>{
