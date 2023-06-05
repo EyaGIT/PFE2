@@ -40,24 +40,27 @@ const ShopMapScreen = ({ userLocation, shops }) => {
           <Marker coordinate={userLocation} image={mark} />
 
           {/* Display the nearby shop location markers */}
-          {shops.map((shop,index) => (
-            <Marker
-              key={index}
-              coordinate={{
-                latitude: shop.sellingPoint.location.coordinates[1],
-                longitude: shop.sellingPoint.location.coordinates[0],
-              }}
-              image={mark2}
-              title={shop.sellingPoint.chain_id.chain_name}
-              description={shop.sellingPoint.sp_name}
-              onPress={() => setSelectedMarker(shop)}
-            >
-              {/* Custom marker callout */}
-              {selectedMarker && selectedMarker._id === shop._id && (
-                <CustomMarkerCallout marker={selectedMarker} />
-              )}
-            </Marker>
-          ))}
+          {shops.map((shop, index) => (
+  <Marker
+    key={index}
+    coordinate={{
+      latitude: shop.sellingPoint.location.coordinates[1],
+      longitude: shop.sellingPoint.location.coordinates[0],
+    }}
+    image={mark2}
+    title={shop.sellingPoint.chain_id.chain_name}
+    description={shop.sellingPoint.sp_name}
+    onPress={() => setSelectedMarker(shop)}
+  >
+    {selectedMarker && selectedMarker._id === shop._id ? (
+      <CustomMarkerCallout marker={selectedMarker} />
+    ) : null}
+
+    {/* Image on marker press */}
+    
+  </Marker>
+))}
+
 
         </MapView>
       )}
@@ -69,7 +72,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    
+
   },
   map: {
     flex: 1,
@@ -82,6 +87,10 @@ const styles = StyleSheet.create({
     left: 16,
     right: 16,
     alignItems: 'center',
+    
+    height:100,
+    width:80,
+    justifyContent:'center'
   },
   markerCallout: {
     backgroundColor: 'white',
