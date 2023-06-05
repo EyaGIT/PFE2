@@ -35,7 +35,7 @@ const Member = () => {
     const { member,userInfo } = route.params;
     
     
-    
+    const [mesg2,setmsg2]=useState();
     const [info,setinfo]=useState({});
     const [user,setUser]=useState();
     const [mesg1,setmsg1]=useState();
@@ -44,6 +44,7 @@ const Member = () => {
     const [amount,setAmount]=useState("0");
     const [Bracelet,setBracelet]=useState();
     useEffect(() => {
+      console.log('useEffect called');
       if(member && userInfo && member.bracelets[0].amount){
         setAmount(member.bracelets[0].amount)
         
@@ -57,10 +58,10 @@ const Member = () => {
    
       if(member.bracelets[0].is_disabled){
         setimgbracelet(Block)
-        setmsg1("Do you want to unblock");
+        setmsg2("Do you want to unblock");
       }else{
         setimgbracelet(blockred)
-        setmsg1("Do you want to block");
+        setmsg2("Do you want to block");
       }
      
     
@@ -68,6 +69,7 @@ const Member = () => {
       }
   }}, [member,userInfo])
     const blockbracelet =()=>{
+      console.log('blockbracelet called');
       const bracelet=info.bracelets[0]._id;
       
       AsyncStorage.getItem('AccessToken').then((token => {
@@ -78,10 +80,10 @@ const Member = () => {
               console.log(result.data)
            if(result.data.Bracelet){
         setimgbracelet(blockred)
-        setmsg1("Would you like to unblock");
+        setmsg2("Would you like to unblock");
       }else{
         setimgbracelet(Block)
-        setmsg1("Would you like to block");
+        setmsg2("Would you like to block");
       }
             
              setVisible(false);
@@ -98,7 +100,7 @@ const Member = () => {
   }
 
     const deletemember =()=>{
-      
+      console.log('deletemember called');
          const parent=userInfo._id;
          const member1=member._id;
       if(parent && member1){
@@ -160,7 +162,11 @@ const Member = () => {
                 
               } }
              
-              onPress={()=> setVisible1(true)}
+              onPress={() => {
+                setVisible1(true);
+                console.log('headerRight onPress called');
+                setmsg1("Do you want to delete?");
+              }}
             >
              
               <Image
@@ -192,7 +198,7 @@ const Member = () => {
                 onClose={()=> setVisible1(false)}
                 onPress={deletemember}
                 message1={mesg1}
-                message='anas account ?'
+                message='this account ?'
                
                 />
      </View>
@@ -242,7 +248,7 @@ const Member = () => {
                 isVisible={Visible}
                 onClose={()=> setVisible(false)}
                 onPress={ blockbracelet}
-                message1={mesg1}
+                message1={mesg2}
                 message='your bracelet ?'
                 />
               
